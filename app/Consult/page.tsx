@@ -15,7 +15,7 @@ const ConsultationPage: React.FC = () => {
           <li><a href="/" className="hover:text-blue-700 transition duration-300">Home</a></li>
           <li><a href="/services" className="hover:text-blue-700 transition duration-300">Services</a></li>
           <li><a href="/resources" className="hover:text-blue-700 transition duration-300">Resources</a></li>
-          <li><a href="/contact" className="hover:text-blue-700 transition duration-300">Contact Us</a></li>
+          <li><a href="/ContactUs" className="hover:text-blue-700 transition duration-300">Contact Us</a></li>
           <li><a href="/about" className="hover:text-blue-700 transition duration-300">About</a></li>
         </ul>
         <div className="space-x-2 md:space-x-3 text-sm hidden md:block">

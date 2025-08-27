@@ -45,7 +45,7 @@ const HomePage: React.FC = () => {
           <li><a href="#" className="hover:text-blue-700">Home</a></li>
           <li><a href="#" className="hover:text-blue-700">Services</a></li>
           <li><a href="#" className="hover:text-blue-700">Resources</a></li>
-          <li><a href="#" className="hover:text-blue-700">Contact Us</a></li>
+          <li><a href="/ContactUs" className="hover:text-blue-700">Contact Us</a></li>
           <li><a href="/AboutUs" className="hover:text-blue-700">About</a></li>
         </ul>
         <div className="space-x-3 text-sm hidden md:block">
