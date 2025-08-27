@@ -46,7 +46,7 @@ const HomePage: React.FC = () => {
           <li><a href="#" className="hover:text-blue-700">Services</a></li>
           <li><a href="#" className="hover:text-blue-700">Resources</a></li>
           <li><a href="#" className="hover:text-blue-700">Contact Us</a></li>
-          <li><a href="#" className="hover:text-blue-700">About</a></li>
+          <li><a href="/AboutUs" className="hover:text-blue-700">About</a></li>
         </ul>
         <div className="space-x-3 text-sm hidden md:block">
           <button className="border border-blue-600 text-blue-600 px-4 py-1 rounded hover:bg-blue-50">Sign Up</button>
