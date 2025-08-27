@@ -6,6 +6,7 @@ import Link from "next/link";
 // Optional: if you want to read email from the URL (?email=...)
 import { useSearchParams } from "next/navigation";
 import ContactUs from "../components/ContactUs";
+import Header from "../components/Header";
 
 // A small eye icon for the password toggle (no external deps)
 const EyeIcon: React.FC<{ open?: boolean; className?: string }> = ({ open, className }) => (
@@ -68,25 +69,7 @@ export default function SignUpAdditionalData() {
 
   return (
     <main className="min-h-screen bg-white text-slate-900">
-      {/* Top Nav */}
-      <header className="border-b">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-          <div className="flex items-center gap-2">
-            <div className="grid h-8 w-8 place-items-center rounded-lg bg-sky-600 text-white">
-              <span className="font-bold">A</span>
-            </div>
-            <span className="font-semibold tracking-tight">AALIConsulting</span>
-          </div>
-
-          <nav className="hidden gap-6 text-sm md:flex">
-            <Link href="#" className="text-slate-600 hover:text-slate-900">Home</Link>
-            <Link href="#" className="text-slate-600 hover:text-slate-900">Services</Link>
-            <Link href="#" className="text-slate-600 hover:text-slate-900">Resources</Link>
-            <Link href="#" className="text-slate-600 hover:text-slate-900">Contact</Link>
-            <Link href="#" className="text-slate-600 hover:text-slate-900">About</Link>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       {/* Content */}
       <section className="mx-auto grid max-w-xl place-items-center px-4 py-16">

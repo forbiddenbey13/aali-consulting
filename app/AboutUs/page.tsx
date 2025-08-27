@@ -1,4 +1,6 @@
+import Head from 'next/head';
 import React from 'react';
+import Header from '../components/Header';
 
 // The main AboutUsPage component.
 // It displays information about the company, including its vision, mission, and values.
@@ -55,24 +57,7 @@ const AboutUsPage: React.FC = () => {
     <div className="font-sans text-gray-800 bg-white min-h-screen">
       
       {/* Navbar section */}
-      <nav className="flex justify-between items-center px-4 md:px-10 py-4 shadow-md bg-white sticky top-0 z-50">
-        <div className="text-xl md:text-2xl font-bold text-blue-700">AAUConsulting</div>
-        
-        {/* Navigation links, hidden on small screens */}
-        <ul className="hidden md:flex space-x-4 md:space-x-6 text-sm">
-          <li><a href="/" className="hover:text-blue-700 transition duration-300">Home</a></li>
-          <li><a href="/services" className="hover:text-blue-700 transition duration-300">Services</a></li>
-          <li><a href="/resources" className="hover:text-blue-700 transition duration-300">Resources</a></li>
-          <li><a href="/ContactUs" className="hover:text-blue-700 transition duration-300">Contact Us</a></li>
-          <li><a href="/about" className="hover:text-blue-700 transition duration-300">About</a></li>
-        </ul>
-
-        {/* Auth buttons, hidden on small screens */}
-        <div className="space-x-2 md:space-x-3 text-sm hidden md:block">
-          <button className="border border-blue-600 text-blue-600 px-3 md:px-4 py-1 rounded-full hover:bg-blue-50 transition duration-300">Sign Up</button>
-          <button className="bg-blue-600 text-white px-3 md:px-4 py-1 rounded-full hover:bg-blue-700 transition duration-300">Log In</button>
-        </div>
-      </nav>
+      <Header />
 
       {/* Hero section with a background gradient */}
       <section className="relative overflow-hidden bg-gradient-to-br from-blue-100 to-white px-4 md:px-10 py-16 md:py-24">
