@@ -18,7 +18,7 @@ const HomePage: React.FC = () => {
     {
       title: 'Accounting & Bookkeeping',
       text: 'We offer precise and dependable accounting and bookkeeping services that keep your business financially organized and audit-ready. From daily transaction tracking to monthly financial reporting, our solutions help you stay compliant and make informed business decisions.',
-      img1: '/image3.jpg',
+      img1: '/accountandbookkeeping.jpeg',
       reverse: false,
     },
     {
