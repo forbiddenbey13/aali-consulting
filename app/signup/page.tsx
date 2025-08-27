@@ -5,7 +5,6 @@ import Link from "next/link";
 
 // Optional: if you want to read email from the URL (?email=...)
 import { useSearchParams } from "next/navigation";
-import ContactUs from "../components/ContactUs";
 import Header from "../components/Header";
 
 // A small eye icon for the password toggle (no external deps)
