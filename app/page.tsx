@@ -18,7 +18,7 @@ const HomePage: React.FC = () => {
       reverse: true,
     },
     {
-      title: 'Accounting & Bookkeeping',
+      title: 'Bookkeeping & Accounting',
       text: 'We offer precise and dependable accounting and bookkeeping services that keep your business financially organized and audit-ready. From daily transaction tracking to monthly financial reporting, our solutions help you stay compliant and make informed business decisions.',
       img1: '/accountandbookkeeping.jpeg',
       reverse: false,
@@ -52,8 +52,8 @@ const HomePage: React.FC = () => {
             Helping individuals and businesses thrive with trusted financial guidance.
           </p>
           <div className="mt-8 space-x-4">
-            <button className="bg-blue-700 text-white px-6 py-3 rounded-xl shadow hover:bg-blue-800">Book Now</button>
-            <button className="border border-blue-700 text-blue-700 px-6 py-3 rounded-xl hover:bg-blue-100">Learn More</button>
+            <a href="/Consult"className="bg-blue-700 text-white px-6 py-3 rounded-xl shadow hover:bg-blue-800 inline-block">Book Now</a>
+            <a href="/AboutUs" className="border border-blue-700 text-blue-700 px-6 py-3 rounded-xl hover:bg-blue-100">Learn More</a>
           </div>
         </div>
         <div className="mt-12 md:mt-0 md:ml-10">
@@ -65,15 +65,37 @@ const HomePage: React.FC = () => {
       <section className="px-10 py-24 bg-white">
         <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">What We Do</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {["Personal & Corporate Tax", "Strategic Financial Planning", "Bookkeeping & Accounting", "Systems Implementation"].map((title, i) => (
-            <div key={i} className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-              <h3 className="font-semibold text-lg mb-3 text-blue-800">{title}</h3>
-              <p className="text-gray-600 text-sm mb-4">Expert guidance tailored to your financial needs.</p>
-              <a href="#" className="text-blue-600 hover:underline font-medium">Learn more</a>
-            </div>
-          ))}
+          {/* Card 1 */}
+          <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+            <h3 className="font-semibold text-lg mb-3 text-blue-800">Personal & Corporate Tax</h3>
+            <p className="text-gray-600 text-sm mb-4">Expert guidance tailored to your financial needs.</p>
+            <a href="/P&C" className="text-blue-600 hover:underline font-medium">Learn more</a>
+          </div>
+
+      {/* Card 2 */}
+      <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+        <h3 className="font-semibold text-lg mb-3 text-blue-800">Strategic Financial Planning</h3>
+        <p className="text-gray-600 text-sm mb-4">Expert guidance tailored to your financial needs.</p>
+        <a href="/SFP" className="text-blue-600 hover:underline font-medium">Learn more</a>
+      </div>
+
+      {/* Card 3 */}
+      <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+        <h3 className="font-semibold text-lg mb-3 text-blue-800">Bookkeeping & Accounting</h3>
+        <p className="text-gray-600 text-sm mb-4">Expert guidance tailored to your financial needs.</p>
+        <a href="/B&A" className="text-blue-600 hover:underline font-medium">Learn more</a>
+      </div>
+
+      {/* Card 4 */}
+      <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+        <h3 className="font-semibold text-lg mb-3 text-blue-800">Systems Implementation</h3>
+        <p className="text-gray-600 text-sm mb-4">Expert guidance tailored to your financial needs.</p>
+        <a href="#" className="text-blue-600 hover:underline font-medium">Learn more</a>
         </div>
-      </section>
+
+    </div>
+  </section>
+
 
       {/* Detailed Sections */}
       {detailedSections.map((section, index) => (
@@ -85,7 +107,7 @@ const HomePage: React.FC = () => {
             <div>
               <h3 className="text-2xl font-semibold mb-4">{section.title}</h3>
               <p className="mb-6 text-gray-700">{section.text}</p>
-              <button className="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">View more</button>
+              <a href='/P&C' className="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">View more</a>
             </div>
           )}
           <div>
@@ -96,7 +118,7 @@ const HomePage: React.FC = () => {
             <div>
               <h3 className="text-2xl font-semibold mb-4">{section.title}</h3>
               <p className="mb-6 text-gray-700">{section.text}</p>
-              <button className="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">View more</button>
+              <a href='/SFP' className="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">View more</a>
             </div>
           )}
         </section>
