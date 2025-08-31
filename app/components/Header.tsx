@@ -7,7 +7,7 @@ const HomePage: React.FC = () => {
     <div className="font-sans text-gray-800">
       {/* Navbar */}
       <nav className="flex justify-between items-center px-10 py-4 shadow-md bg-white sticky top-0 z-50">
-        <div className="text-2xl font-bold text-blue-700">AAUConsulting</div>
+        <img src="Assets/Logo Design/E537C7B6-C30C-48F9-A4EC-C69A8C5C07B1.png" alt="" className='w-24 h-24' />
         <ul className="hidden md:flex space-x-6 text-sm">
           <li><a href="/" className="hover:text-blue-700">Home</a></li>
           <li><a href="#" className="hover:text-blue-700">Services</a></li>
