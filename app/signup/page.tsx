@@ -203,7 +203,7 @@ export default function SignUpAdditionalData() {
           {/* Submit */}
           <button
             type="submit"
-            className="mt-2 inline-flex w-full items-center justify-center rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+            className="mt-2 inline-flex w-full items-center justify-center bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 text-sm font-medium"
           >
             Sign Up
           </button>

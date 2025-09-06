@@ -1,6 +1,8 @@
 import React from "react";
+import { CheckCircle } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import MapleLeafLogo from '../components/MapleLeafLogo';
 
 const BookkeepingPage: React.FC = () => {
   const steps = [
@@ -55,7 +57,7 @@ const BookkeepingPage: React.FC = () => {
         <p className="mt-6 max-w-2xl text-lg text-gray-700">
           Stay organized, stay compliant. Let us handle your books so you can focus on growth.
         </p>
-        <button className="mt-8 bg-blue-700 text-white px-8 py-3 rounded-xl shadow hover:bg-blue-800">
+        <button className="mt-8 bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 inline-block">
           Start Bookkeeping
         </button>
       </section>
@@ -75,25 +77,25 @@ const BookkeepingPage: React.FC = () => {
       </section>
 
       {/* Services */}
-      <section className="px-10 py-24 bg-gray-50">
+      <section className="px-10 py-24 bg-blue-50">
         <h2 className="text-3xl font-bold text-center mb-12">What We Offer</h2>
-        <div className="grid md:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-xl font-semibold text-blue-800 mb-4">Bookkeeping Services</h3>
-            <ul className="space-y-2 text-gray-700">
+        <div className="grid md:grid-cols-2 divide-x divide-gray-300 max-w-6xl mx-auto">
+          <div className="px-8">
+            <h3 className="text-xl font-semibold text-blue-800 mb-4 text-center">Bookkeeping Services</h3>
+            <ul className="space-y-3 text-gray-700">
               {bookkeepingServices.map((service, i) => (
                 <li key={i} className="flex items-start">
-                  <span className="text-blue-600 mr-2">✔</span>{service}
+                  <CheckCircle className="text-blue-600 mr-2 w-5 h-5" /> {service}
                 </li>
               ))}
             </ul>
           </div>
-          <div>
-            <h3 className="text-xl font-semibold text-blue-800 mb-4">Accounting Services</h3>
-            <ul className="space-y-2 text-gray-700">
+          <div className="px-8">
+            <h3 className="text-xl font-semibold text-blue-800 mb-4 text-center">Accounting Services</h3>
+            <ul className="space-y-3 text-gray-700">
               {accountingServices.map((service, i) => (
                 <li key={i} className="flex items-start">
-                  <span className="text-blue-600 mr-2">✔</span>{service}
+                  <CheckCircle className="text-blue-600 mr-2 w-5 h-5" /> {service}
                 </li>
               ))}
             </ul>
@@ -102,13 +104,9 @@ const BookkeepingPage: React.FC = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="grid md:grid-cols-2 gap-12 items-center px-10 py-24 bg-white">
-        <div>
-          <img
-            src="/images/bookkeeping.jpg"
-            alt="Bookkeeping"
-            className="rounded-lg shadow-lg"
-          />
+      <section className="grid md:grid-cols-2 gap-12 items-center px-10 py-24 bg-blue-50">
+        <div className="flex justify-center">
+          <MapleLeafLogo />
         </div>
         <div>
           <h2 className="text-3xl font-bold mb-6">Why Choose Us?</h2>

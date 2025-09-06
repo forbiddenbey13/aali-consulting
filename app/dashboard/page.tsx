@@ -90,7 +90,7 @@ const FileIcon: React.FC<{ kind: Item["kind"]; className?: string }> = ({ kind, 
 };
 
 const ToolbarButton: React.FC<{ label: string; icon?: React.ReactNode; caret?: boolean }>=({ label, icon, caret }) => (
-  <button className="inline-flex items-center gap-2 rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700 shadow-sm transition hover:bg-slate-50">
+  <button className="inline-flex items-center gap-2 bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200">
     {icon}
     <span>{label}</span>
     {caret && (

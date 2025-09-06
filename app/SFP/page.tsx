@@ -3,6 +3,7 @@ import { CheckCircle } from "lucide-react";
 import Head from "next/head";
 import Header from "../components/Header";
 import Footer from '../components/Footer'
+import MapleLeafLogo from '../components/MapleLeafLogo';
 
 const FinancialPlanningPage: React.FC = () => {
   const steps = [
@@ -56,7 +57,7 @@ const FinancialPlanningPage: React.FC = () => {
         <p className="mt-6 max-w-2xl text-lg text-gray-700">
           Whether you’re scaling your business or planning personally, we create smart financial strategies that guide success.
         </p>
-        <button className="mt-8 bg-blue-700 text-white px-8 py-3 rounded-xl shadow hover:bg-blue-800">
+        <button className="mt-8 bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 inline-block">
           Book a Planning Session
         </button>
       </section>
@@ -76,12 +77,12 @@ const FinancialPlanningPage: React.FC = () => {
       </section>
 
       {/* Services */}
-      <section className="px-10 py-24 bg-gray-50">
+      <section className="px-10 py-24 bg-blue-50">
         <h2 className="text-3xl font-bold text-center mb-12">What We Offer</h2>
-        <div className="grid md:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-xl font-semibold text-blue-800 mb-4">Personal Financial Services</h3>
-            <ul className="space-y-2 text-gray-700">
+        <div className="grid md:grid-cols-2 divide-x divide-gray-300 max-w-6xl mx-auto">
+          <div className="px-8">
+            <h3 className="text-xl font-semibold text-blue-800 mb-4 text-center">Personal Financial Services</h3>
+            <ul className="space-y-3 text-gray-700">
               {personalServices.map((service, i) => (
                 <li key={i} className="flex items-start">
                   <CheckCircle className="text-blue-600 mr-2 w-5 h-5" /> {service}
@@ -89,9 +90,9 @@ const FinancialPlanningPage: React.FC = () => {
               ))}
             </ul>
           </div>
-          <div>
-            <h3 className="text-xl font-semibold text-blue-800 mb-4">Business Financial Services</h3>
-            <ul className="space-y-2 text-gray-700">
+          <div className="px-8">
+            <h3 className="text-xl font-semibold text-blue-800 mb-4 text-center">Business Financial Services</h3>
+            <ul className="space-y-3 text-gray-700">
               {businessServices.map((service, i) => (
                 <li key={i} className="flex items-start">
                   <CheckCircle className="text-blue-600 mr-2 w-5 h-5" /> {service}
@@ -99,6 +100,21 @@ const FinancialPlanningPage: React.FC = () => {
               ))}
             </ul>
           </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="grid md:grid-cols-2 gap-12 items-center px-10 py-24 bg-blue-50">
+        {/* <div className="flex justify-center">
+          <MapleLeafLogo />
+        </div> */}
+        <div>
+          <h2 className="text-3xl font-bold mb-6">Why Choose Us?</h2>
+          <p className="text-gray-700 leading-relaxed">
+            At AALIConsulting, we help you see the bigger picture behind your number. Our strategic financial planning serevices, combine expert insight with real world
+            data to guide tour personal or business goals. Whethere you're bdgeting for a major purchase, planning for retirement or preparing your business for expansion,
+            we craft your business actionalble strategies tailored to your situation. With regular reviews and forecasting tools, we keep your financial plans adaptable, measurable,
+            and built for long-term success. </p>
         </div>
       </section>
 

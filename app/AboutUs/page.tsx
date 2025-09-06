@@ -72,7 +72,7 @@ const AboutUsPage: React.FC = () => {
             <p className="text-gray-700 max-w-lg mx-auto md:mx-0">
               Take a look inside our team and view our mission and vision.
             </p>
-            <button className="mt-6 bg-blue-700 text-white px-6 py-2 rounded-xl shadow-lg hover:bg-blue-800 transition duration-300">
+            <button className="mt-6 bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200">
               Learn More
             </button>
           </div>
@@ -80,7 +80,7 @@ const AboutUsPage: React.FC = () => {
           {/* Right-side image and logo */}
           <div className="order-1 md:order-2 flex justify-center md:justify-end">
             <img
-              src="https://placehold.co/500x500/DDE7F6/0E1C36?text=AALI+Consulting+%26+Associates"
+              src="C:\Users\USER\Desktop\Ali\aali-consulting\public\Web Assets\NEW\About Us"
               alt="AALI Consulting & Associates"
               className="w-full max-w-sm rounded-lg"
             />
@@ -112,8 +112,8 @@ const AboutUsPage: React.FC = () => {
           {/* Right-side image */}
           <div>
             <img
-              src="https://placehold.co/500x350/E6F0F9/0E1C36?text=Our+Team"
-              alt="Our Team"
+              src="/Web Assets/NEW/About Us/a-group-of-business-people-standing-together-free-png.png"
+              alt="A group of business people standing together"
               className="w-full rounded-lg shadow-md"
             />
           </div>
