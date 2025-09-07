@@ -3,6 +3,19 @@ import React, { useEffect, useMemo, useState } from "react";
 import emailjs from "@emailjs/browser";
 import "./contact-us.css";
 
+import { db } from "@/firebase";
+import {
+  addDoc,
+  collection,
+  serverTimestamp,
+  onSnapshot,
+  query,
+  where,
+  runTransaction,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
+
 /** ---------- Types ---------- */
 type Step = 1 | 2 | 3;
 type FormData = {
@@ -80,7 +93,7 @@ const BookingFlowEmail: React.FC = () => {
     return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
   }, []);
 
-  // When entering step 2 the first time, preselect today if empty
+  // Preselect today when entering Step 2
   useEffect(() => {
     if (step === 2 && !data.date) {
       setData(d => ({ ...d, date: todayStr }));
@@ -97,7 +110,7 @@ const BookingFlowEmail: React.FC = () => {
     );
   }, [data.date]);
 
-  const visibleSlots = useMemo(() => {
+  const visibleSlotsTodayFiltered = useMemo(() => {
     if (!isToday) return slots;
     const n = new Date(), hh = n.getHours(), mm = n.getMinutes();
     return slots.filter(t => {
@@ -111,7 +124,6 @@ const BookingFlowEmail: React.FC = () => {
   const [start, setStart] = useState(0);
   const maxStart = Math.max(0, days.length - visCount);
 
-  // Pager handlers: move page AND move the selected date with it
   const pagePrev = () => {
     if (start === 0) return;
     setStart(s => {
@@ -130,8 +142,50 @@ const BookingFlowEmail: React.FC = () => {
     });
   };
 
-  // If the user taps a pill, just set that date
-  const pickDate = (iso: string) => setData(prev => ({ ...prev, date: iso }));
+  const pickDate = (iso: string) => setData(prev => ({ ...prev, date: iso, time: "" }));
+
+  /** ---------------- Real-time bookings map for visible dates ----------------
+   * We keep a map: dateISO -> Set of booked "HH:mm".
+   * We listen only to the currently visible date pills (<= 6 items).
+   * ------------------------------------------------------------------------- */
+  const [bookedByDate, setBookedByDate] = useState<Record<string, Set<string>>>({});
+
+  // Compute the currently visible date isos
+  const visibleDateIsos = useMemo(
+    () => days.slice(start, start + visCount).map(d => d.iso),
+    [days, start, visCount]
+  );
+
+  useEffect(() => {
+    if (visibleDateIsos.length === 0) return;
+
+    // Firestore supports 'in' with up to 10 values — we have <= 6
+    const qy = query(
+      collection(db, "bookingSlots"),
+      where("date", "in", visibleDateIsos)
+    );
+
+    const unsub = onSnapshot(qy, (snap) => {
+      const map: Record<string, Set<string>> = {};
+      for (const iso of visibleDateIsos) map[iso] = new Set();
+
+      snap.forEach(doc => {
+        const d = doc.data() as { date?: string; time?: string };
+        if (d?.date && d?.time) {
+          if (!map[d.date]) map[d.date] = new Set();
+          map[d.date].add(d.time);
+        }
+      });
+
+      setBookedByDate(map);
+    });
+
+    return unsub;
+  }, [visibleDateIsos]);
+
+  // Convenience getters for selected date
+  const bookedTimes = bookedByDate[data.date] ?? new Set<string>();
+  const isDateFull = (iso: string) => (bookedByDate[iso]?.size ?? 0) >= slots.length;
 
   const nextFrom1 = () => {
     const e: typeof errors = {};
@@ -149,12 +203,13 @@ const BookingFlowEmail: React.FC = () => {
     if (data.date && data.time) {
       const c = new Date(`${data.date}T${data.time}`);
       if (c < new Date()) e.time = "Please choose a future time.";
+      if (bookedTimes.has(data.time)) e.time = "That time was just taken. Pick another.";
     }
     setErrors(e);
     if (!Object.keys(e).length) setStep(3);
   };
 
-  // EmailJS (init once)
+  // EmailJS init
   const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
   const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
   const publicKey  = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
@@ -164,11 +219,7 @@ const BookingFlowEmail: React.FC = () => {
       console.error("Missing NEXT_PUBLIC_EMAILJS_PUBLIC_KEY");
       return;
     }
-    try {
-      emailjs.init(publicKey); // init with key once
-    } catch (e) {
-      console.error("EmailJS init failed:", e);
-    }
+    try { emailjs.init(publicKey); } catch (e) { console.error("EmailJS init failed:", e); }
   }, [publicKey]);
 
   const submit = async (e: React.FormEvent) => {
@@ -180,6 +231,10 @@ const BookingFlowEmail: React.FC = () => {
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) e2.email = "Enter a valid email.";
     if (data.phone && !/^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/.test(data.phone))
       e2.phone = "Enter a valid phone (e.g. 123-456-7890).";
+    if (!data.date) e2.date = "Select a date.";
+    if (!data.time) e2.time = "Select a time.";
+    if (data.time && bookedTimes.has(data.time)) e2.time = "That time is already booked.";
+
     setErrors(e2);
     if (Object.keys(e2).length) return;
 
@@ -201,16 +256,55 @@ const BookingFlowEmail: React.FC = () => {
       phone: data.phone,
     };
 
+    const slotId = `${data.date}T${data.time}`;
+    const slotRef = doc(db, "bookingSlots", slotId);
+    const bookingRef = doc(collection(db, "bookings"));
+
     try {
       setSending(true);
-      // already initialized → 3-arg form
-      await emailjs.send(serviceId, templateId, params);
+
+      // --- ATOMIC RESERVATION ---
+      await runTransaction(db, async (tx) => {
+        const existing = await tx.get(slotRef);
+        if (existing.exists()) {
+          throw new Error("SLOT_TAKEN");
+        }
+        tx.set(slotRef, {
+          date: data.date,
+          time: data.time,
+          service: data.service,
+          createdAt: serverTimestamp(),
+          bookingRef: bookingRef.path,
+        });
+        tx.set(bookingRef, {
+          ...params,
+          status: "requested",
+          createdAt: serverTimestamp(),
+          slotId,
+        });
+      });
+
+      // --- EMAIL ---
+      try {
+        await emailjs.send(serviceId, templateId, params);
+      } catch (mailErr) {
+        await deleteDoc(slotRef);
+        await deleteDoc(bookingRef);
+        console.error("Email send failed, reservation rolled back:", mailErr);
+        alert("Email failed to send. Please try again later.");
+        return;
+      }
+
       alert("Thanks! Your booking request was sent.");
       setStep(1);
       setData({ service: "", date: "", time: "", firstName: "", lastName: "", email: "", phone: "" });
-    } catch (err) {
-      console.error("EmailJS send failed:", err);
-      alert("Email failed to send. Please try again later.");
+    } catch (err: any) {
+      if (err?.message === "SLOT_TAKEN") {
+        alert("Sorry, someone just booked that time. Please choose another.");
+      } else {
+        console.error("Submit failed:", err);
+        alert("Something went wrong. Please try again.");
+      }
     } finally {
       setSending(false);
     }
@@ -256,34 +350,27 @@ const BookingFlowEmail: React.FC = () => {
             <div className="date-grid-wrap">
               <label className="slot-label">Choose a date</label>
               <div className="date-grid-controls">
-                <button
-                  type="button"
-                  className={`date-nav-btn ${start===0?"disabled":""}`}
-                  onClick={pagePrev}
-                  disabled={start===0}
-                >‹</button>
+                <button type="button" className={`date-nav-btn ${start===0?"disabled":""}`} onClick={pagePrev} disabled={start===0}>‹</button>
 
                 <div className="date-grid" role="tablist" aria-label="Pick a date">
                   {days.slice(start, start + visCount).map(d => {
                     const sel = data.date===d.iso || (!data.date && d.iso===todayStr);
+                    const full = isDateFull(d.iso);
                     return (
                       <button key={d.iso} type="button"
-                        className={`date-pill ${sel?"selected":""}`}
-                        onClick={() => pickDate(d.iso)}
-                        role="tab" aria-selected={sel}>
+                        className={`date-pill ${sel?"selected":""} ${full?"full":""}`}
+                        onClick={() => !full && pickDate(d.iso)}
+                        role="tab" aria-selected={sel}
+                        aria-disabled={full}>
                         <span className="date-pill-top">{d.labelTop}</span>
                         <span className="date-pill-bottom">{d.labelBottom}</span>
+                        {full && <span aria-hidden="true"> (Full)</span>}
                       </button>
                     );
                   })}
                 </div>
 
-                <button
-                  type="button"
-                  className={`date-nav-btn ${start>=maxStart?"disabled":""}`}
-                  onClick={pageNext}
-                  disabled={start>=maxStart}
-                >›</button>
+                <button type="button" className={`date-nav-btn ${start>=maxStart?"disabled":""}`} onClick={pageNext} disabled={start>=maxStart}>›</button>
               </div>
               {errors.date && <p className="cf-error">{errors.date}</p>}
             </div>
@@ -292,17 +379,22 @@ const BookingFlowEmail: React.FC = () => {
               <label className="slot-label">Choose a time (EST)</label>
               <div className="time-grid">
                 {slots.map(t=>{
-                  const disabled = isToday && !visibleSlots.includes(t);
+                  const pastDisabled = isToday && !visibleSlotsTodayFiltered.includes(t);
+                  const taken = bookedTimes.has(t);
+                  const disabled = pastDisabled || taken;
                   const selected = data.time===t;
                   const [H, M] = t.split(":").map(Number);
                   const h12 = ((H + 11) % 12) + 1, ampm = H < 12 ? "AM" : "PM";
                   const label = `${pad(h12)}:${pad(M)} ${ampm}`;
                   return (
                     <button key={t} type="button"
-                      className={`slot-btn ${selected?"selected":""} ${disabled?"disabled":""}`}
+                      className={`slot-btn ${selected?"selected":""} ${disabled?"disabled":""} ${taken?"booked":""}`}
                       disabled={disabled}
                       onClick={() => !disabled && setData(d=>({...d, time: t}))}
-                      aria-pressed={selected}>{label}</button>
+                      aria-pressed={selected}
+                      aria-disabled={disabled}>
+                      {label}{taken ? " (Booked)" : ""}
+                    </button>
                   );
                 })}
               </div>

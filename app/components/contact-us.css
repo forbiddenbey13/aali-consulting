@@ -9,7 +9,24 @@
   background-size: 600px 600px;   /* scale of the pattern */
   background-color: #cfe9ff;      /* fallback */
   border: 1px solid rgba(0,0,0,0.15);
+}/* contact-us.css additions */
+.slot-btn.booked,
+.date-pill.full {
+  text-decoration: line-through;
+  opacity: 0.55;
+  pointer-events: none;
 }
+
+.date-pill.full.selected {
+  /* keep selection style but still indicate it's full */
+  text-decoration: line-through;
+}
+
+.slot-btn.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 
 /* ===== Outer wrapper ===== */
 .cf-wrap {
