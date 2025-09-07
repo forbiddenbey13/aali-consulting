@@ -3,11 +3,11 @@ import Link from 'next/link';
 
 const HomePage: React.FC = () => {
     return(
-<footer className="bg-[#282c34] text-white py-20 px-10">
-        <div className="grid md:grid-cols-2 gap-16 text-sm">
+<footer className="bg-[#282c34] text-white py-10 px-4 md:py-20 md:px-10">
+        <div className="grid grid-cols-1 gap-12 text-sm md:grid-cols-2 md:gap-16">
           <div className="md:col-span-1">
-            <h1 className="font-bold text-6xl leading-tight mb-6">Let's Talk About Your Financial Goals!</h1>
-            <p className="mb-8 max-w-md text-base">Whether you're filing taxes, launching a business, or planning ahead -- we're here to help. Book your free consultation today and take the first step with clarity and confidence.</p>
+            <h1 className="font-bold text-4xl leading-tight mb-4 md:text-6xl md:mb-6">Let's Talk About Your Financial Goals!</h1>
+            <p className="mb-6 max-w-md text-sm md:text-base">Whether you're filing taxes, launching a business, or planning ahead -- we're here to help. Book your free consultation today and take the first step with clarity and confidence.</p>
             <div className="flex space-x-3 text-base">
               <span>Fb</span>
               <span>In</span>
@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
               <span>Ln</span>
             </div>
           </div>
-          <div className="md:col-span-1 grid grid-cols-1 sm:grid-cols-3 gap-12">
+          <div className="md:col-span-1 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 md:gap-12">
             <div>
               <h4 className="font-bold text-lg mb-4">Navigation</h4>
               <ul className="space-y-2">
