@@ -14,8 +14,8 @@ const HomePage: React.FC = () => {
       {/* Navbar */}
       <nav className="flex items-center justify-between px-4 py-3 shadow-md bg-white sticky top-0 z-50 md:px-10">
         <div className="flex items-center">
-          <img src="/Web Assets/Logo Design/E537C7B6-C30C-48F9-A4EC-C69A8C5C07B1.png" alt="AALI Consulting Logo" className="h-16 w-auto mr-3 md:h-20" />
-          <div className="text-lg font-bold text-blue-700 md:text-xl">AALI CONSULTING & ASSOCIATES</div>
+          <img src="/Web Assets/Logo Design/E537C7B6-C30C-48F9-A4EC-C69A8C5C07B1.png" alt="AALI Consulting Logo" className="h-24" />
+          
         </div>
 
         {/* Hamburger menu for mobile */}
