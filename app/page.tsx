@@ -20,7 +20,7 @@ const HomePage: React.FC = () => {
     {
       title: 'Bookkeeping & Accounting',
       text: 'We offer precise and dependable accounting and bookkeeping services that keep your business financially organized and audit-ready. From daily transaction tracking to monthly financial reporting, our solutions help you stay compliant and make informed business decisions.',
-      img1: '/accountandbookkeeping.jpeg',
+      img1: '/Web Assets/NEW/Accounting & Bookkeeping/premium_photo-1679496829715-364b4a17e087.jpeg',
       reverse: false,
     },
     {
@@ -59,19 +59,11 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Full-screen video */}
-      <section className="relative w-full h-[500px] overflow-hidden">
-        <video
-          className="absolute top-0 left-0 w-full h-full object-cover"
-          src="/main_page.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-        />
-        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-30"></div> {/* Optional: Overlay for text readability */}
-        <div className="relative z-10 flex items-center justify-center h-full text-white text-2xl">
-          {/* Any content to overlay on the video can go here */}
-        </div>
+      <section className="w-full h-[500px] overflow-hidden">
+        <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
+          <source src="/main_page.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </section>
 
       {/* What We Do */}
@@ -115,26 +107,23 @@ const HomePage: React.FC = () => {
       {detailedSections.map((section, index) => (
         <section
           key={index}
-          className={`grid md:grid-cols-2 gap-8 items-center px-10 py-16 ${index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}`}
+          className={`flex flex-col md:flex-row gap-8 items-center px-10 py-16 ${index % 2 === 0 ? 'bg-gray-100' : 'bg-white'} ${section.reverse ? 'md:flex-row-reverse' : ''}`}
         >
-          {!section.reverse && (
-            <div>
-              <h3 className="text-2xl font-semibold mb-4">{section.title}</h3>
-              <p className="mb-6 text-gray-700">{section.text}</p>
-              <a href='/P&C' className="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 inline-block">View more</a>
-            </div>
-          )}
-          <div>
+          <div className="md:w-1/2">
+            <h3 className="text-2xl font-semibold mb-4">{section.title}</h3>
+            <p className="mb-6 text-gray-700">{section.text}</p>
+            <a href={
+              section.title === 'Personal & Corporate Tax' ? '/P&C' :
+              section.title === 'Strategic Financial Planning' ? '/SFP' :
+              section.title === 'Bookkeeping & Accounting' ? '/B&A' :
+              section.title === 'Systems Implementation' ? '/SSBR' :
+              '#'
+            } className="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 inline-block">View more</a>
+          </div>
+          <div className="md:w-1/2">
             <img src={section.img1} alt={section.title} className="rounded-lg shadow mb-4" />
             {section.img2 && <img src={section.img2} alt={section.title + ' alt'} className="rounded-lg shadow" />}
           </div>
-          {section.reverse && (
-            <div>
-              <h3 className="text-2xl font-semibold mb-4">{section.title}</h3>
-              <p className="mb-6 text-gray-700">{section.text}</p>
-              <a href='/SFP' className="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 inline-block">View more</a>
-            </div>
-          )}
         </section>
       ))}
 
@@ -145,15 +134,11 @@ const HomePage: React.FC = () => {
           {resources.map((title, i) => (
             <div key={i} className="bg-white shadow rounded overflow-hidden">
               <img src={
-                i === 0
-                  ? "/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg"
-                  : i === 1
-                  ? "/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg"
-                  : i === 2
-                  ? "/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg"
-                  : i === 3
-                  ? "/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg"
-                  : `/resource${i + 1}.jpg`
+                i === 0 ? '/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg' :
+                i === 1 ? '/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg' :
+                i === 2 ? '/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg' :
+                i === 3 ? '/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg' :
+                `/resource${i + 1}.jpg`
               } alt={title} className="w-full h-40 object-cover" />
               <div className="p-4">
                 <h4 className="font-medium text-gray-900">{title}</h4>
