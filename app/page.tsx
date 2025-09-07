@@ -26,7 +26,7 @@ const HomePage: React.FC = () => {
     {
       title: 'Systems Implementation',
       text: 'We implement cloud-based accounting systems and automation tools that streamline your financial operations and improve accuracy. Our end-to-end service includes system selection, setup, integration, training, and ongoing support.',
-      img1: '/image3.jpg',
+      img1: '/Web Assets/NEW/Systems Implementation/11.jpg.webp',
       reverse: true,
     },
   ];
@@ -58,9 +58,20 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Full-screen image placeholder */}
-      <section className="w-full h-[500px] bg-gray-200 flex items-center justify-center text-gray-500 text-2xl">
-        [Full-screen image goes here]
+      {/* Full-screen video */}
+      <section className="relative w-full h-[500px] overflow-hidden">
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover"
+          src="/main_page.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-30"></div> {/* Optional: Overlay for text readability */}
+        <div className="relative z-10 flex items-center justify-center h-full text-white text-2xl">
+          {/* Any content to overlay on the video can go here */}
+        </div>
       </section>
 
       {/* What We Do */}
@@ -133,7 +144,17 @@ const HomePage: React.FC = () => {
         <div className="grid md:grid-cols-4 gap-6">
           {resources.map((title, i) => (
             <div key={i} className="bg-white shadow rounded overflow-hidden">
-              <img src={`/resource${i + 1}.jpg`} alt={title} className="w-full h-40 object-cover" />
+              <img src={
+                i === 0
+                  ? "/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg"
+                  : i === 1
+                  ? "/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg"
+                  : i === 2
+                  ? "/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg"
+                  : i === 3
+                  ? "/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg"
+                  : `/resource${i + 1}.jpg`
+              } alt={title} className="w-full h-40 object-cover" />
               <div className="p-4">
                 <h4 className="font-medium text-gray-900">{title}</h4>
                 <a href="#" className="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 inline-block">Learn more</a>
