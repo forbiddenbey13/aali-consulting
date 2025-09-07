@@ -31,7 +31,10 @@ const AboutUsPage: React.FC = () => {
       title: "Transparent Communication",
       text: "No jargon, no surprises—just clear, honest advice you can rely on every step of the way.",
       icon: (
-        <img src="Assets/About Me Section/8747255.png" alt="Communication Icon" className="w-12 h-12 text-blue-600" />
+        // Inline SVG for the transparent communication icon.
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-12 h-12 text-blue-600">
+          <path d="M7.875 14.25a.75.75 0 0 1-.75.75H4.5a.75.75 0 0 1-.75-.75v-1.5a.75.75 0 0 1 .75-.75h2.625a.75.75 0 0 1 .75.75v1.5ZM7.5 17.25a.75.75 0 0 1-.75.75H4.5a.75.75 0 0 1-.75-.75v-1.5a.75.75 0 0 1 .75-.75h2.625a.75.75 0 0 1 .75.75v1.5ZM7.875 10.5a.75.75 0 0 1-.75.75H4.5a.75.75 0 0 1-.75-.75v-1.5a.75.75 0 0 1 .75-.75h2.625a.75.75 0 0 1 .75.75v1.5ZM19.5 7.5a.75.75 0 0 1-.75.75H13.5a.75.75 0 0 1-.75-.75v-1.5a.75.75 0 0 1 .75-.75h5.25a.75.75 0 0 1 .75.75v1.5ZM19.5 10.5a.75.75 0 0 1-.75.75H13.5a.75.75 0 0 1-.75-.75v-1.5a.75.75 0 0 1 .75-.75h5.25a.75.75 0 0 1 .75.75v1.5ZM19.5 13.5a.75.75 0 0 1-.75.75H13.5a.75.75 0 0 1-.75-.75v-1.5a.75.75 0 0 1 .75-.75h5.25a.75.75 0 0 1 .75.75v1.5ZM19.5 16.5a.75.75 0 0 1-.75.75H13.5a.75.75 0 0 1-.75-.75v-1.5a.75.75 0 0 1 .75-.75h5.25a.75.75 0 0 1 .75.75v1.5ZM12.75 3a.75.75 0 0 0-1.5 0v.195a4.78 4.78 0 0 0-1.745.867.75.75 0 0 0-.256.787l.385.925A1.5 1.5 0 0 1 9.407 7.5H4.5A2.25 2.25 0 0 0 2.25 9.75v5.25c0 1.242.827 2.25 1.875 2.25H7.5a.75.75 0 0 0 .75.75h-.375a.75.75 0 0 0 0 1.5h.375c.621 0 1.125.504 1.125 1.125v.375a.75.75 0 0 0 1.5 0v-.375c0-.621.504-1.125 1.125-1.125h.375a.75.75 0 0 0 0-1.5h-.375a.75.75 0 0 0 .75-.75h2.25A2.25 2.25 0 0 0 21.75 15V9.75A2.25 2.25 0 0 0 19.5 7.5h-4.907a1.5 1.5 0 0 1-1.319-1.897l.385-.925a.75.75 0 0 0-.256-.787 4.78 4.78 0 0 0-1.745-.867V3Z" />
+        </svg>
       ),
     },
     {
@@ -63,7 +66,7 @@ const AboutUsPage: React.FC = () => {
             <p className="text-gray-700 max-w-lg mx-auto md:mx-0">
               Take a look inside our team and view our mission and vision.
             </p>
-            <button className="mt-6 bg-blue-700 text-white px-6 py-2 rounded-xl shadow-lg hover:bg-blue-800 transition duration-300">
+            <button className="mt-6 bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200">
               Learn More
             </button>
           </div>
@@ -71,6 +74,7 @@ const AboutUsPage: React.FC = () => {
           {/* Right-side image and logo */}
           <div className="order-1 md:order-2 flex justify-center md:justify-end">
             <img
+
               src="Assets/About Me Section/EBB3C615-EC6A-4F05-9BF8-B40625DDCCD0.png"
               alt="AALI Consulting & Associates"
               className="w-full max-w-sm rounded-lg"
@@ -103,9 +107,8 @@ const AboutUsPage: React.FC = () => {
           {/* Right-side image */}
           <div>
             <img
-              src="Assets/About Me Section/4fb9470d3ba843112713dd9bf7f545a3b783165f48580493b0a59509455ee656.png"
-              alt="Our Team"
-              className="w-full rounded-lg shadow-md"
+              src="/Web Assets/NEW/About Us/a-group-of-business-people-standing-together-free-png.png"
+              alt="A group of business people standing together"
             />
           </div>
         </div>

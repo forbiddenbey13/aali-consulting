@@ -75,7 +75,7 @@ export default function Example() {
           <div>
             <button
               type="submit"
-              className="flex w-full justify-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="flex w-full justify-center bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 text-sm font-semibold"
             >
               Sign in
             </button>
@@ -85,7 +85,7 @@ export default function Example() {
         {/* Sign up link */}
         <p className="mt-6 text-center text-sm text-gray-600">
           Don’t have an account?{' '}
-          <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+          <a href="/signup" className="font-semibold text-indigo-600 hover:text-indigo-500">
             Sign Up →
           </a>
         </p>

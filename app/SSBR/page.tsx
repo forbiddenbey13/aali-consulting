@@ -1,5 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { CheckCircle } from 'lucide-react';
 
 // The main BookkeepingPage component.
 // It displays a landing page for bookkeeping and accounting services.
@@ -64,7 +66,7 @@ const BookkeepingPage: React.FC = () => {
         <p className="mt-4 md:mt-6 max-w-2xl text-base md:text-lg text-gray-700">
           Stay organized, stay compliant. Let us handle your books so you can focus on growth.
         </p>
-        <button className="mt-6 md:mt-8 bg-blue-700 text-white px-6 md:px-8 py-2 md:py-3 rounded-xl shadow-lg hover:bg-blue-800 transition duration-300">
+        <button className="mt-6 md:mt-8 bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 inline-block">
           Start Bookkeeping
         </button>
       </section>
@@ -84,30 +86,28 @@ const BookkeepingPage: React.FC = () => {
       </section>
 
       {/* Services section */}
-      <section className="px-4 md:px-10 py-16 md:py-24 bg-gray-50">
-        <h2 className="text-3xl font-bold text-center mb-8 md:mb-12">What We Offer</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto">
+      <section className="px-10 py-24 bg-blue-50">
+        <h2 className="text-3xl font-bold text-center mb-12">What We Offer</h2>
+        <div className="grid md:grid-cols-2 divide-x divide-gray-300 max-w-6xl mx-auto">
           {/* Bookkeeping services list */}
-          <div>
-            <h3 className="text-xl font-semibold text-blue-800 mb-4">Bookkeeping Services</h3>
+          <div className="px-8">
+            <h3 className="text-xl font-semibold text-blue-800 mb-4 text-center">Bookkeeping Services</h3>
             <ul className="space-y-3 text-gray-700">
               {bookkeepingServices.map((service, i) => (
-                <li key={i} className="flex items-center">
-                  <span className="text-blue-600 mr-2 text-xl">✓</span>
-                  {service}
+                <li key={i} className="flex items-start">
+                  <CheckCircle className="text-blue-600 mr-2 w-5 h-5" /> {service}
                 </li>
               ))}
             </ul>
           </div>
           
           {/* Accounting services list */}
-          <div>
-            <h3 className="text-xl font-semibold text-blue-800 mb-4">Accounting Services</h3>
+          <div className="px-8">
+            <h3 className="text-xl font-semibold text-blue-800 mb-4 text-center">Accounting Services</h3>
             <ul className="space-y-3 text-gray-700">
               {accountingServices.map((service, i) => (
-                <li key={i} className="flex items-center">
-                  <span className="text-blue-600 mr-2 text-xl">✓</span>
-                  {service}
+                <li key={i} className="flex items-start">
+                  <CheckCircle className="text-blue-600 mr-2 w-5 h-5" /> {service}
                 </li>
               ))}
             </ul>
@@ -116,71 +116,32 @@ const BookkeepingPage: React.FC = () => {
       </section>
 
       {/* Why Choose Us section */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center px-4 md:px-10 py-16 md:py-24 bg-white max-w-6xl mx-auto">
-        {/* Image on the left */}
+      <section className="grid md:grid-cols-2 gap-12 items-center px-10 py-24 bg-blue-50">
         <div>
-          <img
-            src="https://placehold.co/600x400/C4D7F2/0E1C36?text=Why+Choose+Us"
-            alt="Why Choose Us"
-            className="rounded-lg shadow-lg w-full h-auto"
-          />
-        </div>
-        
-        {/* Text content on the right */}
-        <div>
-          <h2 className="text-3xl font-bold mb-4 md:mb-6">Why Choose Us?</h2>
+          <h2 className="text-3xl font-bold mb-6">Why Choose Us?</h2>
           <p className="text-gray-700 leading-relaxed">
-            At AALIConsulting, we believe clean books lead to smart decisions. Our bookkeeping
-            and accounting services go beyond data entry—we deliver accurate, up-to-date
-            financial records that keep you compliant and in control. Whether you’re a
-            freelancer, startup, or small business, we tailor our services to your needs,
-            ensuring clarity in your cash flow, financial statements, and year-end reporting.
-            With us, you gain a reliable financial partner who helps you build a solid foundation for growth.
+            AALIConsulting makes system implementation simple, strategic, and stress-free. We help businesses transition
+            to modern accounting and accuracy from day one. From selecting the right software (like QuickBooks, Xero, or Wave) to full setup, data migration, and team training, we guide you through each step
+            Our hands-on approach ensures your systems are aligned with your business goals - saving you time and reducing costly errors in the long run.
           </p>
         </div>
       </section>
 
       {/* FAQs section */}
-      <section className="px-4 md:px-10 py-16 md:py-24 bg-gray-50">
-        <h2 className="text-3xl font-bold text-center mb-8 md:mb-12">Frequently Asked Questions</h2>
+      <section className="px-10 py-24 bg-gray-50">
+        <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
         <div className="max-w-3xl mx-auto space-y-4">
           {faqs.map((faq, i) => (
-            <details key={i} className="bg-white shadow-md rounded-lg p-4 transition-all duration-300 hover:shadow-lg">
-              <summary className="cursor-pointer font-medium text-black">
-                {faq}
-              </summary>
-              <p className="mt-2 text-gray-600 pt-2 border-t border-gray-200">
-                Answer coming soon...
-              </p>
+            <details key={i} className="bg-white shadow rounded-lg p-4">
+              <summary className="cursor-pointer font-medium">{faq}</summary>
+              <p className="mt-2 text-gray-600">Answer coming soon...</p>
             </details>
           ))}
         </div>
       </section>
 
        {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16 px-10">
-        <div className="grid md:grid-cols-4 gap-8 text-sm">
-          <div>
-            <h4 className="font-semibold mb-3">Connect with us</h4>
-            <p className="mb-4">Follow us on social media or subscribe to our newsletter.</p>
-            <div className="flex space-x-4 text-lg">
-              <a href="#">Fb</a><a href="#">In</a><a href="#">Tw</a><a href="#">Ln</a>
-            </div>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">About</h4>
-            <ul><li>Team</li><li>Mission</li><li>Careers</li><li>Blog</li></ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Services</h4>
-            <ul><li>Tax Consulting</li><li>Planning</li><li>Accounting</li><li>Systems</li></ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Contact</h4>
-            <ul><li>Email</li><li>Phone</li><li>Support</li><li>Live Chat</li></ul>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

@@ -114,8 +114,8 @@ const ConsultationPage: React.FC = () => {
             
             {/* Submit button */}
             <button 
-              type="submit" 
-              className="w-full bg-blue-700 text-white px-6 py-3 rounded-md shadow-lg hover:bg-blue-800 transition duration-300"
+              type="submit"
+              className="w-full bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200"
             >
               Submit
             </button>

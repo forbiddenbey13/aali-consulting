@@ -6,15 +6,15 @@ const HomePage: React.FC = () => {
   const detailedSections = [
     {
       title: 'Personal & Corporate Tax',
-      text: 'We provide tailored tax strategies that help individuals and businesses minimize liabilities, maximize deductions, and stay fully compliant with CRA regulations. From annual returns and corporate filings to complex tax planning, we ensure your tax responsibilities are handled accurately and on time, every time.',
-      img1: '/image1.jpg',
-      img2: '/image2.jpg',
+      text: `We provide tailored tax strategies that help individuals and businesses minimize liabilities, maximize deductions, and stay fully compliant with CRA regulations.From annual returns and corporate filings to complex tax planning, we ensure your tax responsibilities are handled accurately and on time, every time.`,
+      img1: '/Web Assets/NEW/Personal & Corporate Tax/istockphoto-1485471985-612x612.jpg',
+      img2: '/Web Assets/NEW/Personal & Corporate Tax/istockphoto-1685996049-612x612.jpg',
       reverse: false,
     },
     {
       title: 'Strategic Financial Planning',
-      text: 'Our strategic financial planning services are designed to help you achieve your life and business goals with clarity and confidence. Whether you’re saving for the future, managing risk, or planning for retirement, we deliver actionable insights and custom strategies.',
-      img1: '/image3.jpg',
+      text: `Our strategic financial planning services are designed to help you achieve your life and business goals with clarity and confidence.<br/>Whether you’re saving for the future, managing risk, or planning for retirement, we deliver actionable insights and custom strategies.`,
+      img1: '/Web Assets/NEW/Strategic Financial Planning/istockphoto-1313070791-612x612.jpg',
       reverse: true,
     },
     {
@@ -43,54 +43,57 @@ const HomePage: React.FC = () => {
       <Header />
 
       {/* Hero */}
-      <section className="flex flex-col md:flex-row items-center justify-between px-10 py-24 bg-blue-50 relative overflow-hidden">
-        <div className="max-w-xl z-10">
-          <h1 className="text-5xl font-extrabold leading-tight text-blue-900">
-            Smart Tax &<br />Financial Solutions
+      <section className="flex flex-col items-center justify-center text-center px-10 py-24 bg-blue-100 relative overflow-hidden" style={{ backgroundImage: 'url(/maple-leaf-pattern.svg)', backgroundSize: 'cover' }}>
+        <div className="max-w-3xl z-10">
+          <h1 className="text-5xl font-extrabold leading-tight text-gray-900">
+            All Things <span className="font-bold">Tax</span>, <span className="font-bold">Finance</span> & <span className="font-bold">Business</span> — Simplified
           </h1>
           <p className="mt-6 text-lg text-gray-700">
             Helping individuals and businesses thrive with trusted financial guidance.
           </p>
           <div className="mt-8 space-x-4">
-            <a href="/Consult"className="bg-blue-700 text-white px-6 py-3 rounded-xl shadow hover:bg-blue-800 inline-block">Book Now</a>
-            <a href="/AboutUs" className="border border-blue-700 text-blue-700 px-6 py-3 rounded-xl hover:bg-blue-100">Learn More</a>
+            <a href="/Consult" className="bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 inline-block">Book Now</a>
+            <a href="/AboutUs" className="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 inline-block">Learn More</a>
           </div>
-        </div>
-        <div className="mt-12 md:mt-0 md:ml-10">
-          <img src="/illustration-placeholder.png" alt="Illustration" className="w-[28rem] drop-shadow-xl" />
         </div>
       </section>
 
+      {/* Full-screen image placeholder */}
+      <section className="w-full h-[500px] bg-gray-200 flex items-center justify-center text-gray-500 text-2xl">
+        [Full-screen image goes here]
+      </section>
+
       {/* What We Do */}
-      <section className="px-10 py-24 bg-white">
+      <section id="what-we-do" className="px-10 py-24 bg-white">
         <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">What We Do</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {/* Card 1 */}
-          <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-            <h3 className="font-semibold text-lg mb-3 text-blue-800">Personal & Corporate Tax</h3>
-            <p className="text-gray-600 text-sm mb-4">Expert guidance tailored to your financial needs.</p>
-            <a href="/P&C" className="text-blue-600 hover:underline font-medium">Learn more</a>
+          <div className="bg-gray-100 p-6 rounded-2xl shadow transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col justify-between">
+            <h3 className="font-semibold text-lg mb-5 text-gray-800">Personal & Corporate Tax</h3>
+            <p className="text-gray-600 text-sm mb-7 flex-grow">Expert tax solutions tailored to optimize returns and ensure compliance for both individuals and businesses.</p>
+            <a href="/P&C" className="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 inline-block mt-auto">Learn More</a>
+
           </div>
 
       {/* Card 2 */}
-      <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-        <h3 className="font-semibold text-lg mb-3 text-blue-800">Strategic Financial Planning</h3>
-        <p className="text-gray-600 text-sm mb-4">Expert guidance tailored to your financial needs.</p>
-        <a href="/SFP" className="text-blue-600 hover:underline font-medium">Learn more</a>
+     <div className="bg-gray-100 p-6 rounded-2xl shadow transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col justify-between">
+        <h3 className="font-semibold text-lg mb-5 text-gray-900">Strategic Financial Planning</h3>
+        <p className="text-gray-600 text-sm mb-7 flex-grow">Customized strategies to help you grow, protect and manage your wealth with confidence.</p>
+        <a href="/SFP" className="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 inline-block mt-auto">Learn More</a>
       </div>
 
       {/* Card 3 */}
-      <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-        <h3 className="font-semibold text-lg mb-3 text-blue-800">Bookkeeping & Accounting</h3>
-        <p className="text-gray-600 text-sm mb-4">Expert guidance tailored to your financial needs.</p>
-        <a href="/B&A" className="text-blue-600 hover:underline font-medium">Learn more</a>
+      <div className="bg-gray-100 p-6 rounded-2xl shadow transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col justify-between">
+        <h3 className="font-semibold text-lg mb-5 text-gray-800">Bookkeeping & Accounting</h3>
+        <p className="text-gray-600 text-sm mb-7 flex-grow">Accurate, reliable and financial reporting to keep your business organized and audit-ready.</p>
+        <a href="/B&A" className="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 inline-block mt-auto">Learn More</a>
       </div>
 
       {/* Card 4 */}
-      <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-        <h3 className="font-semibold text-lg mb-3 text-blue-800">Systems Implementation</h3>
-        <p className="text-gray-600 text-sm mb-4">Expert guidance tailored to your financial needs.</p>
-        <a href="#" className="text-blue-600 hover:underline font-medium">Learn more</a>
+      <div className="bg-gray-100 p-6 rounded-2xl shadow transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col justify-between">
+        <h3 className="font-semibold text-lg mb-5 text-gray-800">Systems Implementation</h3>
+        <p className="text-gray-600 text-sm mb-7 flex-grow">Seamless setup and integration of accounting systems to streamline operations and improve financial efficiency.</p>
+        <a href="/SSBR" className="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 inline-block mt-auto">Learn More</a>
         </div>
 
     </div>
@@ -107,7 +110,7 @@ const HomePage: React.FC = () => {
             <div>
               <h3 className="text-2xl font-semibold mb-4">{section.title}</h3>
               <p className="mb-6 text-gray-700">{section.text}</p>
-              <a href='/P&C' className="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">View more</a>
+              <a href='/P&C' className="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 inline-block">View more</a>
             </div>
           )}
           <div>
@@ -118,14 +121,14 @@ const HomePage: React.FC = () => {
             <div>
               <h3 className="text-2xl font-semibold mb-4">{section.title}</h3>
               <p className="mb-6 text-gray-700">{section.text}</p>
-              <a href='/SFP' className="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">View more</a>
+              <a href='/SFP' className="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 inline-block">View more</a>
             </div>
           )}
         </section>
       ))}
 
       {/* Resources */}
-      <section className="px-10 py-24 bg-gray-50">
+      <section id="resources" className="px-10 py-24 bg-gray-50">
         <h2 className="text-3xl font-bold mb-10 text-center">Resources</h2>
         <div className="grid md:grid-cols-4 gap-6">
           {resources.map((title, i) => (
@@ -133,7 +136,7 @@ const HomePage: React.FC = () => {
               <img src={`/resource${i + 1}.jpg`} alt={title} className="w-full h-40 object-cover" />
               <div className="p-4">
                 <h4 className="font-medium text-gray-900">{title}</h4>
-                <a href="#" className="text-blue-600 mt-2 inline-block hover:underline">Learn more</a>
+                <a href="#" className="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 inline-block">Learn more</a>
               </div>
             </div>
           ))}
@@ -144,7 +147,7 @@ const HomePage: React.FC = () => {
       <section className="text-center py-24 px-6 bg-white">
         <h2 className="text-3xl font-semibold text-gray-900 mb-4">Clarity. Confidence. Growth.</h2>
         <p className="text-gray-600 mb-8">Your financial future starts with one smart decision.</p>
-        <button className="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 shadow">Book Now</button>
+        <a href="/Consult" className="bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200">Book Now</a>
       </section>
 
       {/* Footer */}
