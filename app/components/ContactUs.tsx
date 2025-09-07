@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import emailjs from "@emailjs/browser";
 import "./contact-us.css";
 
@@ -27,94 +27,167 @@ const SERVICES = [
 
 const START_HOUR = 9, END_HOUR = 17, STEP_MIN = 60, DAYS_TO_SHOW = 30;
 const pad = (n:number)=>String(n).padStart(2,"0");
-const slots = Array.from({length:(END_HOUR-START_HOUR)*60/STEP_MIN+1},(_,i)=>{
-  const h=START_HOUR+Math.floor((i*STEP_MIN)/60), m=(i*STEP_MIN)%60;
-  return `${pad(h)}:${pad(m)}`;
-});
 
-type DayItem={iso:string; labelTop:string; labelBottom:string};
-const dayItems=(n:number)=>Array.from({length:n},(_,i)=>{
-  const d=new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate()+i);
-  return {
-    iso:`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`,
-    labelTop:d.toLocaleDateString(undefined,{weekday:"short"}),
-    labelBottom:pad(d.getDate()),
-  } as DayItem;
-});
+// 9:00 → 17:00 inclusive (every 60 mins)
+const slots = Array.from(
+  { length: (END_HOUR - START_HOUR) * 60 / STEP_MIN + 1 },
+  (_, i) => {
+    const h = START_HOUR + Math.floor((i * STEP_MIN) / 60);
+    const m = (i * STEP_MIN) % 60;
+    return `${pad(h)}:${pad(m)}`;
+  }
+);
+
+type DayItem = { iso: string; labelTop: string; labelBottom: string };
+const dayItems = (n:number) =>
+  Array.from({ length: n }, (_, i) => {
+    const d = new Date();
+    d.setHours(0, 0, 0, 0);
+    d.setDate(d.getDate() + i);
+    return {
+      iso: `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`,
+      labelTop: d.toLocaleDateString(undefined, { weekday: "short" }),
+      labelBottom: pad(d.getDate()),
+    } as DayItem;
+  });
 
 /** visible date pills by viewport */
-const useVisibleDayCount=()=>{
-  const [c,setC]=useState(5);
-  useEffect(()=>{
-    const f=()=>{ const w=window.innerWidth; setC(w>=1280?6:w>=768?5:4); };
-    f(); window.addEventListener("resize",f);
-    return ()=>window.removeEventListener("resize",f);
-  },[]);
+const useVisibleDayCount = () => {
+  const [c, setC] = useState(5);
+  useEffect(() => {
+    const f = () => {
+      const w = window.innerWidth;
+      setC(w >= 1280 ? 6 : w >= 768 ? 5 : 4);
+    };
+    f();
+    window.addEventListener("resize", f);
+    return () => window.removeEventListener("resize", f);
+  }, []);
   return c;
 };
 
 const BookingFlowEmail: React.FC = () => {
-  const [step,setStep]=useState<Step>(1);
-  const [sending,setSending]=useState(false);
-  const [data,setData]=useState<FormData>({
-    service:"", date:"", time:"", firstName:"", lastName:"", email:"", phone:""
+  const [step, setStep] = useState<Step>(1);
+  const [sending, setSending] = useState(false);
+  const [data, setData] = useState<FormData>({
+    service: "", date: "", time: "", firstName: "", lastName: "", email: "", phone: ""
   });
-  const [errors,setErrors]=useState<Partial<Record<keyof FormData,string>>>({});
-  const days=useMemo(()=>dayItems(DAYS_TO_SHOW),[]);
-  const todayStr=useMemo(()=>{const d=new Date();return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;},[]);
-  useEffect(()=>{ if(step===2 && !data.date) setData(d=>({...d,date:todayStr})); },[step,todayStr,data.date]);
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
 
-  const isToday=useMemo(()=>{
-    if(!data.date) return false;
-    const n=new Date(), s=new Date(`${data.date}T00:00`);
-    return s.getFullYear()===n.getFullYear() && s.getMonth()===n.getMonth() && s.getDate()===n.getDate();
-  },[data.date]);
+  const days = useMemo(() => dayItems(DAYS_TO_SHOW), []);
+  const todayStr = useMemo(() => {
+    const d = new Date();
+    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  }, []);
 
-  const visibleSlots=useMemo(()=>{
-    if(!isToday) return slots;
-    const n=new Date(), hh=n.getHours(), mm=n.getMinutes();
-    return slots.filter(t=>{const [H,M]=t.split(":").map(Number); return H>hh || (H===hh && M>=mm);});
-  },[isToday]);
+  // When entering step 2 the first time, preselect today if empty
+  useEffect(() => {
+    if (step === 2 && !data.date) {
+      setData(d => ({ ...d, date: todayStr }));
+    }
+  }, [step, todayStr, data.date]);
+
+  const isToday = useMemo(() => {
+    if (!data.date) return false;
+    const n = new Date(), s = new Date(`${data.date}T00:00`);
+    return (
+      s.getFullYear() === n.getFullYear() &&
+      s.getMonth() === n.getMonth() &&
+      s.getDate() === n.getDate()
+    );
+  }, [data.date]);
+
+  const visibleSlots = useMemo(() => {
+    if (!isToday) return slots;
+    const n = new Date(), hh = n.getHours(), mm = n.getMinutes();
+    return slots.filter(t => {
+      const [H, M] = t.split(":").map(Number);
+      return H > hh || (H === hh && M >= mm);
+    });
+  }, [isToday]);
 
   // date pagination
-  const visCount=useVisibleDayCount();
-  const [start,setStart]=useState(0);
-  const maxStart=Math.max(0,days.length-visCount);
-  const shownDays=days.slice(start,start+visCount);
-  useEffect(()=>{
-    if(!data.date) return;
-    const idx=days.findIndex(d=>d.iso===data.date);
-    if(idx<start) setStart(idx);
-    if(idx>=start+visCount) setStart(Math.min(idx,maxStart));
-  },[data.date,start,visCount,maxStart,days]);
+  const visCount = useVisibleDayCount();
+  const [start, setStart] = useState(0);
+  const maxStart = Math.max(0, days.length - visCount);
 
-  const nextFrom1=()=>{ const e:typeof errors={}; if(!data.service) e.service="Please select a service."; setErrors(e); if(!Object.keys(e).length) setStep(2); };
-  const nextFrom2=()=>{ const e:typeof errors={}; if(!data.date) e.date="Select a date."; if(!data.time) e.time="Select a time."; else if(!slots.includes(data.time)) e.time="Pick a time between 9 AM and 5 PM (EST)."; if(data.date&&data.time){ const c=new Date(`${data.date}T${data.time}`); if(c<new Date()) e.time="Please choose a future time."; } setErrors(e); if(!Object.keys(e).length) setStep(3); };
-  const back=()=>setStep(s=>((s-1) as Step));
+  // Pager handlers: move page AND move the selected date with it
+  const pagePrev = () => {
+    if (start === 0) return;
+    setStart(s => {
+      const newStart = Math.max(0, s - visCount);
+      setData(d => ({ ...d, date: days[newStart].iso }));
+      return newStart;
+    });
+  };
 
-  // EmailJS
-  const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
-  const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
-  const publicKey  = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
+  const pageNext = () => {
+    if (start >= maxStart) return;
+    setStart(s => {
+      const newStart = Math.min(maxStart, s + visCount);
+      setData(d => ({ ...d, date: days[newStart].iso }));
+      return newStart;
+    });
+  };
+
+  // If the user taps a pill, just set that date
+  const pickDate = (iso: string) => setData(prev => ({ ...prev, date: iso }));
+
+  const nextFrom1 = () => {
+    const e: typeof errors = {};
+    if (!data.service) e.service = "Please select a service.";
+    setErrors(e);
+    if (!Object.keys(e).length) setStep(2);
+  };
+
+  const nextFrom2 = () => {
+    const e: typeof errors = {};
+    if (!data.date) e.date = "Select a date.";
+    if (!data.time) e.time = "Select a time.";
+    else if (!slots.includes(data.time))
+      e.time = "Pick a time between 9 AM and 5 PM (EST).";
+    if (data.date && data.time) {
+      const c = new Date(`${data.date}T${data.time}`);
+      if (c < new Date()) e.time = "Please choose a future time.";
+    }
+    setErrors(e);
+    if (!Object.keys(e).length) setStep(3);
+  };
+
+  // EmailJS (init once)
+  const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+  const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+  const publicKey  = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
   useEffect(() => {
-  if (!publicKey) {
-    console.error("Missing NEXT_PUBLIC_EMAILJS_PUBLIC_KEY");
-  } else {
-    emailjs.init({ publicKey }); // optional but helps
-  }
-}, [publicKey]);
+    if (!publicKey) {
+      console.error("Missing NEXT_PUBLIC_EMAILJS_PUBLIC_KEY");
+      return;
+    }
+    try {
+      emailjs.init(publicKey); // init with key once
+    } catch (e) {
+      console.error("EmailJS init failed:", e);
+    }
+  }, [publicKey]);
 
-  const submit = async (e:React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const e2:typeof errors={};
-    if(!data.firstName.trim()) e2.firstName="First name is required.";
-    if(!data.lastName.trim())  e2.lastName ="Last name is required.";
-    if(!data.email.trim())     e2.email    ="Email is required.";
-    else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) e2.email="Enter a valid email.";
-    if(data.phone && !/^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/.test(data.phone)) e2.phone="Enter a valid phone (e.g. 123-456-7890).";
+    const e2: typeof errors = {};
+    if (!data.firstName.trim()) e2.firstName = "First name is required.";
+    if (!data.lastName.trim())  e2.lastName  = "Last name is required.";
+    if (!data.email.trim())     e2.email     = "Email is required.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) e2.email = "Enter a valid email.";
+    if (data.phone && !/^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/.test(data.phone))
+      e2.phone = "Enter a valid phone (e.g. 123-456-7890).";
     setErrors(e2);
-    if(Object.keys(e2).length) return;
+    if (Object.keys(e2).length) return;
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("EmailJS config missing:", { serviceId, templateId, hasKey: !!publicKey });
+      alert("Email service not configured. Please try again later.");
+      return;
+    }
 
     const params = {
       service: data.service,
@@ -130,13 +203,13 @@ const BookingFlowEmail: React.FC = () => {
 
     try {
       setSending(true);
-      await emailjs.send(serviceId, templateId, params, { publicKey });
+      // already initialized → 3-arg form
+      await emailjs.send(serviceId, templateId, params);
       alert("Thanks! Your booking request was sent.");
-      // optional: reset
       setStep(1);
-      setData({service:"",date:"",time:"",firstName:"",lastName:"",email:"",phone:""});
+      setData({ service: "", date: "", time: "", firstName: "", lastName: "", email: "", phone: "" });
     } catch (err) {
-      console.error(err);
+      console.error("EmailJS send failed:", err);
       alert("Email failed to send. Please try again later.");
     } finally {
       setSending(false);
@@ -177,23 +250,26 @@ const BookingFlowEmail: React.FC = () => {
           </div>
         )}
 
-        {/* Step 2 (date row above; time grid below) */}
+        {/* Step 2 */}
         {step===2 && (
           <div className="slot-section slot-section--stacked">
             <div className="date-grid-wrap">
               <label className="slot-label">Choose a date</label>
               <div className="date-grid-controls">
-                <button type="button" className={`date-nav-btn ${start===0?"disabled":""}`}
-                        onClick={()=>setStart(s=>Math.max(0,s-visCount))}
-                        disabled={start===0}>‹</button>
+                <button
+                  type="button"
+                  className={`date-nav-btn ${start===0?"disabled":""}`}
+                  onClick={pagePrev}
+                  disabled={start===0}
+                >‹</button>
 
                 <div className="date-grid" role="tablist" aria-label="Pick a date">
-                  {days.slice(start,start+visCount).map(d=>{
+                  {days.slice(start, start + visCount).map(d => {
                     const sel = data.date===d.iso || (!data.date && d.iso===todayStr);
                     return (
                       <button key={d.iso} type="button"
                         className={`date-pill ${sel?"selected":""}`}
-                        onClick={()=>setData(prev=>({...prev,date:d.iso}))}
+                        onClick={() => pickDate(d.iso)}
                         role="tab" aria-selected={sel}>
                         <span className="date-pill-top">{d.labelTop}</span>
                         <span className="date-pill-bottom">{d.labelBottom}</span>
@@ -202,10 +278,12 @@ const BookingFlowEmail: React.FC = () => {
                   })}
                 </div>
 
-                <button type="button"
+                <button
+                  type="button"
                   className={`date-nav-btn ${start>=maxStart?"disabled":""}`}
-                  onClick={()=>setStart(s=>Math.min(maxStart,s+visCount))}
-                  disabled={start>=maxStart}>›</button>
+                  onClick={pageNext}
+                  disabled={start>=maxStart}
+                >›</button>
               </div>
               {errors.date && <p className="cf-error">{errors.date}</p>}
             </div>
@@ -214,16 +292,16 @@ const BookingFlowEmail: React.FC = () => {
               <label className="slot-label">Choose a time (EST)</label>
               <div className="time-grid">
                 {slots.map(t=>{
-                  const disabled=isToday && !visibleSlots.includes(t);
-                  const selected=data.time===t;
-                  const [H,M]=t.split(":").map(Number);
-                  const h12=((H+11)%12)+1, ampm=H<12?"AM":"PM";
-                  const label=`${pad(h12)}:${pad(M)} ${ampm}`;
+                  const disabled = isToday && !visibleSlots.includes(t);
+                  const selected = data.time===t;
+                  const [H, M] = t.split(":").map(Number);
+                  const h12 = ((H + 11) % 12) + 1, ampm = H < 12 ? "AM" : "PM";
+                  const label = `${pad(h12)}:${pad(M)} ${ampm}`;
                   return (
                     <button key={t} type="button"
                       className={`slot-btn ${selected?"selected":""} ${disabled?"disabled":""}`}
                       disabled={disabled}
-                      onClick={()=>!disabled && setData(d=>({...d,time:t}))}
+                      onClick={() => !disabled && setData(d=>({...d, time: t}))}
                       aria-pressed={selected}>{label}</button>
                   );
                 })}
@@ -239,7 +317,7 @@ const BookingFlowEmail: React.FC = () => {
           </div>
         )}
 
-        {/* Step 3 (EmailJS submit) */}
+        {/* Step 3 */}
         {step===3 && (
           <form className="cf-form" onSubmit={submit} noValidate>
             <div className="cf-row cf-row--two">
