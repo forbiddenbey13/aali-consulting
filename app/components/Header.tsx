@@ -19,7 +19,7 @@ const HomePage: React.FC = () => {
             <li><a href="/AboutUs" className="px-4 py-2 rounded-full hover:bg-gray-100 transition-colors duration-200 shadow-sm">About Us</a></li>
             <li><a href="/ContactUs" className="px-4 py-2 rounded-full hover:bg-gray-100 transition-colors duration-200 shadow-sm">Contact Us</a></li>
           </ul>
-        </div>
+        </div>  
         <div className="w-auto"></div> {/* Empty div to balance the flex-grow of the center div */}
         {/* <div className="space-x-3 text-sm hidden md:block">
           <button className="text-gray-700 px-4 py-2 rounded-full hover:bg-gray-100 transition-colors duration-200">Sign Up</button>

@@ -4,24 +4,23 @@ import emailjs from "@emailjs/browser";
 import "./contact-us.css";
 
 import { db } from "@/firebase";
-import {
-  addDoc,
-  collection,
-  serverTimestamp,
-  onSnapshot,
-  query,
-  where,
-  runTransaction,
-  doc,
-  deleteDoc,
-} from "firebase/firestore";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
+
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements, PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
+
+// Publishable key (support either env name)
+const pk =
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ??
+  process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY;
+const stripePromise = typeof window !== "undefined" && pk ? loadStripe(pk) : null;
 
 /** ---------- Types ---------- */
 type Step = 1 | 2 | 3;
 type FormData = {
   service: string;
-  date: string;   // YYYY-MM-DD
-  time: string;   // HH:mm
+  date: string;
+  time: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -29,310 +28,147 @@ type FormData = {
 };
 
 /** ---------- Config ---------- */
-const SERVICES = [
-  "Personal tax",
-  "Corporate tax",
-  "Strategic Financial Planning",
-  "Accounting",
-  "Bookkeeping",
-  "System Implementation",
-];
-
+const SERVICES = ["Personal tax","Corporate tax","Strategic Financial Planning","Accounting","Bookkeeping","System Implementation"];
 const START_HOUR = 9, END_HOUR = 17, STEP_MIN = 60, DAYS_TO_SHOW = 30;
 const pad = (n:number)=>String(n).padStart(2,"0");
-
-// 9:00 → 17:00 inclusive (every 60 mins)
-const slots = Array.from(
-  { length: (END_HOUR - START_HOUR) * 60 / STEP_MIN + 1 },
-  (_, i) => {
-    const h = START_HOUR + Math.floor((i * STEP_MIN) / 60);
-    const m = (i * STEP_MIN) % 60;
-    return `${pad(h)}:${pad(m)}`;
-  }
-);
-
+const slots = Array.from({ length: (END_HOUR-START_HOUR)*60/STEP_MIN + 1 }, (_,i)=>{
+  const h = START_HOUR + Math.floor((i*STEP_MIN)/60), m=(i*STEP_MIN)%60;
+  return `${pad(h)}:${pad(m)}`;
+});
 type DayItem = { iso: string; labelTop: string; labelBottom: string };
-const dayItems = (n:number) =>
-  Array.from({ length: n }, (_, i) => {
-    const d = new Date();
-    d.setHours(0, 0, 0, 0);
-    d.setDate(d.getDate() + i);
-    return {
-      iso: `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`,
-      labelTop: d.toLocaleDateString(undefined, { weekday: "short" }),
-      labelBottom: pad(d.getDate()),
-    } as DayItem;
-  });
-
-/** visible date pills by viewport */
-const useVisibleDayCount = () => {
-  const [c, setC] = useState(5);
-  useEffect(() => {
-    const f = () => {
-      const w = window.innerWidth;
-      setC(w >= 1280 ? 6 : w >= 768 ? 5 : 4);
-    };
-    f();
-    window.addEventListener("resize", f);
-    return () => window.removeEventListener("resize", f);
-  }, []);
+const dayItems = (n:number)=>Array.from({length:n},(_,i)=>{
+  const d=new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate()+i);
+  return {
+    iso:`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`,
+    labelTop:d.toLocaleDateString(undefined,{weekday:"short"}),
+    labelBottom:pad(d.getDate()),
+  } as DayItem;
+});
+const useVisibleDayCount=()=>{
+  const [c,setC]=useState(5);
+  useEffect(()=>{
+    const f=()=>{ const w=window.innerWidth; setC(w>=1280?6:w>=768?5:4); };
+    f(); window.addEventListener("resize",f);
+    return ()=>window.removeEventListener("resize",f);
+  },[]);
   return c;
 };
 
 const BookingFlowEmail: React.FC = () => {
-  const [step, setStep] = useState<Step>(1);
-  const [sending, setSending] = useState(false);
-  const [data, setData] = useState<FormData>({
-    service: "", date: "", time: "", firstName: "", lastName: "", email: "", phone: ""
-  });
-  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+  const [step,setStep]=useState<Step>(1);
+  const [sending,setSending]=useState(false);
+  const [data,setData]=useState<FormData>({service:"",date:"",time:"",firstName:"",lastName:"",email:"",phone:""});
+  const [errors,setErrors]=useState<Partial<Record<keyof FormData,string>>>({});
+  const [clientSecret, setClientSecret] = useState<string | null>(null);
 
-  const days = useMemo(() => dayItems(DAYS_TO_SHOW), []);
-  const todayStr = useMemo(() => {
-    const d = new Date();
-    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-  }, []);
+  const days=useMemo(()=>dayItems(DAYS_TO_SHOW),[]);
+  const todayStr=useMemo(()=>{const d=new Date();return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;},[]);
+  useEffect(()=>{ if(step===2 && !data.date) setData(d=>({...d,date:todayStr})); },[step,todayStr,data.date]);
 
-  // Preselect today when entering Step 2
-  useEffect(() => {
-    if (step === 2 && !data.date) {
-      setData(d => ({ ...d, date: todayStr }));
-    }
-  }, [step, todayStr, data.date]);
-
-  const isToday = useMemo(() => {
-    if (!data.date) return false;
-    const n = new Date(), s = new Date(`${data.date}T00:00`);
-    return (
-      s.getFullYear() === n.getFullYear() &&
-      s.getMonth() === n.getMonth() &&
-      s.getDate() === n.getDate()
-    );
-  }, [data.date]);
-
-  const visibleSlotsTodayFiltered = useMemo(() => {
-    if (!isToday) return slots;
-    const n = new Date(), hh = n.getHours(), mm = n.getMinutes();
-    return slots.filter(t => {
-      const [H, M] = t.split(":").map(Number);
-      return H > hh || (H === hh && M >= mm);
-    });
-  }, [isToday]);
-
-  // date pagination
-  const visCount = useVisibleDayCount();
-  const [start, setStart] = useState(0);
-  const maxStart = Math.max(0, days.length - visCount);
-
-  const pagePrev = () => {
-    if (start === 0) return;
-    setStart(s => {
-      const newStart = Math.max(0, s - visCount);
-      setData(d => ({ ...d, date: days[newStart].iso }));
-      return newStart;
-    });
-  };
-
-  const pageNext = () => {
-    if (start >= maxStart) return;
-    setStart(s => {
-      const newStart = Math.min(maxStart, s + visCount);
-      setData(d => ({ ...d, date: days[newStart].iso }));
-      return newStart;
-    });
-  };
-
-  const pickDate = (iso: string) => setData(prev => ({ ...prev, date: iso, time: "" }));
-
-  /** ---------------- Real-time bookings map for visible dates ----------------
-   * We keep a map: dateISO -> Set of booked "HH:mm".
-   * We listen only to the currently visible date pills (<= 6 items).
-   * ------------------------------------------------------------------------- */
+  // Listen to CONFIRMED slots only
+  const visCount=useVisibleDayCount();
+  const [start,setStart]=useState(0);
+  const maxStart=Math.max(0,days.length-visCount);
+  const visibleDateIsos = useMemo(()=>days.slice(start,start+visCount).map(d=>d.iso),[days,start,visCount]);
   const [bookedByDate, setBookedByDate] = useState<Record<string, Set<string>>>({});
-
-  // Compute the currently visible date isos
-  const visibleDateIsos = useMemo(
-    () => days.slice(start, start + visCount).map(d => d.iso),
-    [days, start, visCount]
-  );
-
-  useEffect(() => {
-    if (visibleDateIsos.length === 0) return;
-
-    // Firestore supports 'in' with up to 10 values — we have <= 6
+  useEffect(()=>{
+    if (!visibleDateIsos.length) return;
     const qy = query(
-      collection(db, "bookingSlots"),
-      where("date", "in", visibleDateIsos)
+      collection(db,"bookingSlots"),
+      where("date","in",visibleDateIsos),
+      where("status","==","confirmed")
     );
-
-    const unsub = onSnapshot(qy, (snap) => {
+    const unsub = onSnapshot(qy, snap=>{
       const map: Record<string, Set<string>> = {};
-      for (const iso of visibleDateIsos) map[iso] = new Set();
-
-      snap.forEach(doc => {
-        const d = doc.data() as { date?: string; time?: string };
-        if (d?.date && d?.time) {
-          if (!map[d.date]) map[d.date] = new Set();
-          map[d.date].add(d.time);
-        }
+      visibleDateIsos.forEach(iso => (map[iso] = new Set()));
+      snap.forEach(docSnap=>{
+        const d = docSnap.data() as any;
+        if (d?.date && d?.time) (map[d.date] ??= new Set()).add(d.time);
       });
-
       setBookedByDate(map);
     });
-
     return unsub;
-  }, [visibleDateIsos]);
-
-  // Convenience getters for selected date
+  },[visibleDateIsos]);
   const bookedTimes = bookedByDate[data.date] ?? new Set<string>();
-  const isDateFull = (iso: string) => (bookedByDate[iso]?.size ?? 0) >= slots.length;
+  const isDateFull = (iso:string)=> (bookedByDate[iso]?.size ?? 0) >= slots.length;
 
-  const nextFrom1 = () => {
-    const e: typeof errors = {};
-    if (!data.service) e.service = "Please select a service.";
-    setErrors(e);
-    if (!Object.keys(e).length) setStep(2);
-  };
+  const isToday=useMemo(()=>{
+    if(!data.date) return false;
+    const n=new Date(), s=new Date(`${data.date}T00:00`);
+    return s.getFullYear()===n.getFullYear() && s.getMonth()===n.getMonth() && s.getDate()===n.getDate();
+  },[data.date]);
+  const visibleSlots=useMemo(()=>{
+    if(!isToday) return slots;
+    const n=new Date(), hh=n.getHours(), mm=n.getMinutes();
+    return slots.filter(t=>{const [H,M]=t.split(":").map(Number); return H>hh || (H===hh && M>=mm);});
+  },[isToday]);
 
-  const nextFrom2 = () => {
-    const e: typeof errors = {};
-    if (!data.date) e.date = "Select a date.";
-    if (!data.time) e.time = "Select a time.";
-    else if (!slots.includes(data.time))
-      e.time = "Pick a time between 9 AM and 5 PM (EST).";
-    if (data.date && data.time) {
-      const c = new Date(`${data.date}T${data.time}`);
-      if (c < new Date()) e.time = "Please choose a future time.";
-      if (bookedTimes.has(data.time)) e.time = "That time was just taken. Pick another.";
+  const nextFrom1=()=>{ const e:typeof errors={}; if(!data.service) e.service="Please select a service."; setErrors(e); if(!Object.keys(e).length) setStep(2); };
+  const nextFrom2=()=>{ 
+    const e:typeof errors={};
+    if(!data.date) e.date="Select a date.";
+    if(!data.time) e.time="Select a time.";
+    else if(!slots.includes(data.time)) e.time="Pick a time between 9 AM and 5 PM (EST).";
+    if(data.date&&data.time){
+      const c=new Date(`${data.date}T${data.time}`);
+      if(c<new Date()) e.time="Please choose a future time.";
+      if(bookedTimes.has(data.time)) e.time="That time is already confirmed.";
     }
     setErrors(e);
-    if (!Object.keys(e).length) setStep(3);
+    if(!Object.keys(e).length) setStep(3);
   };
 
   // EmailJS init
-  const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-  const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-  const publicKey  = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+  const ejService = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+  const ejTemplate = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+  const ejPublic  = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+  useEffect(()=>{ if(ejPublic){ try{ emailjs.init(ejPublic); }catch{} }},[ejPublic]);
 
-  useEffect(() => {
-    if (!publicKey) {
-      console.error("Missing NEXT_PUBLIC_EMAILJS_PUBLIC_KEY");
-      return;
-    }
-    try { emailjs.init(publicKey); } catch (e) { console.error("EmailJS init failed:", e); }
-  }, [publicKey]);
-
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const e2: typeof errors = {};
-    if (!data.firstName.trim()) e2.firstName = "First name is required.";
-    if (!data.lastName.trim())  e2.lastName  = "Last name is required.";
-    if (!data.email.trim())     e2.email     = "Email is required.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) e2.email = "Enter a valid email.";
-    if (data.phone && !/^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/.test(data.phone))
-      e2.phone = "Enter a valid phone (e.g. 123-456-7890).";
-    if (!data.date) e2.date = "Select a date.";
-    if (!data.time) e2.time = "Select a time.";
-    if (data.time && bookedTimes.has(data.time)) e2.time = "That time is already booked.";
-
+  // Start payment: just create PI (no DB writes)
+  const beginPayment = async () => {
+    const e2:typeof errors={};
+    if(!data.firstName.trim()) e2.firstName="First name is required.";
+    if(!data.lastName.trim())  e2.lastName ="Last name is required.";
+    if(!data.email.trim())     e2.email    ="Email is required.";
+    else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) e2.email="Enter a valid email.";
+    if(data.phone && !/^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/.test(data.phone)) e2.phone="Enter a valid phone (e.g. 123-456-7890).";
     setErrors(e2);
-    if (Object.keys(e2).length) return;
+    if(Object.keys(e2).length) return;
 
-    if (!serviceId || !templateId || !publicKey) {
-      console.error("EmailJS config missing:", { serviceId, templateId, hasKey: !!publicKey });
-      alert("Email service not configured. Please try again later.");
-      return;
-    }
+    if (!pk) { alert("Stripe publishable key missing."); return; }
 
-    const params = {
-      service: data.service,
-      date: data.date,
-      time: data.time,
-      datetime: `${data.date}T${data.time}`,
-      timezone: "EST",
-      firstName: data.firstName,
-      lastName: data.lastName,
-      email: data.email,
-      phone: data.phone,
-    };
-
-    const slotId = `${data.date}T${data.time}`;
-    const slotRef = doc(db, "bookingSlots", slotId);
-    const bookingRef = doc(collection(db, "bookings"));
-
-    try {
-      setSending(true);
-
-      // --- ATOMIC RESERVATION ---
-      await runTransaction(db, async (tx) => {
-        const existing = await tx.get(slotRef);
-        if (existing.exists()) {
-          throw new Error("SLOT_TAKEN");
-        }
-        tx.set(slotRef, {
-          date: data.date,
-          time: data.time,
-          service: data.service,
-          createdAt: serverTimestamp(),
-          bookingRef: bookingRef.path,
-        });
-        tx.set(bookingRef, {
-          ...params,
-          status: "requested",
-          createdAt: serverTimestamp(),
-          slotId,
-        });
+    setSending(true);
+    try{
+      const res = await fetch("/api/create-payment-intent", {
+        method:"POST",
+        headers:{ "Content-Type":"application/json" },
+        body: JSON.stringify({ ...data, timezone: "EST" }),
       });
-
-      // --- EMAIL ---
-      try {
-        await emailjs.send(serviceId, templateId, params);
-      } catch (mailErr) {
-        await deleteDoc(slotRef);
-        await deleteDoc(bookingRef);
-        console.error("Email send failed, reservation rolled back:", mailErr);
-        alert("Email failed to send. Please try again later.");
-        return;
-      }
-
-      alert("Thanks! Your booking request was sent.");
-      setStep(1);
-      setData({ service: "", date: "", time: "", firstName: "", lastName: "", email: "", phone: "" });
-    } catch (err: any) {
-      if (err?.message === "SLOT_TAKEN") {
-        alert("Sorry, someone just booked that time. Please choose another.");
-      } else {
-        console.error("Submit failed:", err);
-        alert("Something went wrong. Please try again.");
-      }
-    } finally {
-      setSending(false);
-    }
+      const j = await res.json().catch(()=>({}));
+      if(!res.ok){ alert(j.error || "Unable to start payment."); return; }
+      setClientSecret(j.clientSecret);
+    } finally { setSending(false); }
   };
 
   return (
     <div className="cf-bg">
       <div className="cf-wrap">
         <h1 className="cf-title">Book Your Free Consultation</h1>
-        <p className="cf-subtitle">
-          Select a service, choose a time, then enter your details. All appointment times are in <strong>EST</strong>.
-        </p>
+        <p className="cf-subtitle">Each meeting is <strong>$30 CAD</strong>. All times in <strong>EST</strong>.</p>
 
-        {/* Steps */}
         <div className="steps">
           <div className={`step ${step>=1?"active":""}`}>1. Service</div>
           <div className={`step ${step>=2?"active":""}`}>2. Time</div>
-          <div className={`step ${step>=3?"active":""}`}>3. Details</div>
+          <div className={`step ${step>=3?"active":""}`}>3. Details & Payment</div>
         </div>
 
-        {/* Step 1 */}
         {step===1 && (
           <div className="svc-list">
             {SERVICES.map(s=>(
               <button key={s} type="button"
                 className={`svc-card ${data.service===s?"selected":""}`}
                 onClick={()=>setData(d=>({...d,service:s}))}
-                aria-pressed={data.service===s}>
+              >
                 <div className="svc-title">{s}</div>
                 <div className="svc-minutes">45 minutes</div>
               </button>
@@ -344,24 +180,21 @@ const BookingFlowEmail: React.FC = () => {
           </div>
         )}
 
-        {/* Step 2 */}
         {step===2 && (
           <div className="slot-section slot-section--stacked">
             <div className="date-grid-wrap">
               <label className="slot-label">Choose a date</label>
               <div className="date-grid-controls">
-                <button type="button" className={`date-nav-btn ${start===0?"disabled":""}`} onClick={pagePrev} disabled={start===0}>‹</button>
-
+                <button type="button" className={`date-nav-btn ${start===0?"disabled":""}`} onClick={()=>setStart(s=>Math.max(0,s-visCount))} disabled={start===0}>‹</button>
                 <div className="date-grid" role="tablist" aria-label="Pick a date">
-                  {days.slice(start, start + visCount).map(d => {
+                  {days.slice(start,start+visCount).map(d=>{
                     const sel = data.date===d.iso || (!data.date && d.iso===todayStr);
-                    const full = isDateFull(d.iso);
+                    const full = (bookedByDate[d.iso]?.size ?? 0) >= slots.length;
                     return (
                       <button key={d.iso} type="button"
                         className={`date-pill ${sel?"selected":""} ${full?"full":""}`}
-                        onClick={() => !full && pickDate(d.iso)}
-                        role="tab" aria-selected={sel}
-                        aria-disabled={full}>
+                        onClick={()=>!full && setData(p=>({...p,date:d.iso, time:""}))}
+                        aria-selected={sel} aria-disabled={full}>
                         <span className="date-pill-top">{d.labelTop}</span>
                         <span className="date-pill-bottom">{d.labelBottom}</span>
                         {full && <span aria-hidden="true"> (Full)</span>}
@@ -369,8 +202,7 @@ const BookingFlowEmail: React.FC = () => {
                     );
                   })}
                 </div>
-
-                <button type="button" className={`date-nav-btn ${start>=maxStart?"disabled":""}`} onClick={pageNext} disabled={start>=maxStart}>›</button>
+                <button type="button" className={`date-nav-btn ${start>=maxStart?"disabled":""}`} onClick={()=>setStart(s=>Math.min(maxStart,s+visCount))} disabled={start>=maxStart}>›</button>
               </div>
               {errors.date && <p className="cf-error">{errors.date}</p>}
             </div>
@@ -379,28 +211,27 @@ const BookingFlowEmail: React.FC = () => {
               <label className="slot-label">Choose a time (EST)</label>
               <div className="time-grid">
                 {slots.map(t=>{
-                  const pastDisabled = isToday && !visibleSlotsTodayFiltered.includes(t);
-                  const taken = bookedTimes.has(t);
+                  const isToday = data.date === todayStr;
+                  const now = new Date();
+                  const pastDisabled = isToday && (()=>{const [H,M]=t.split(":").map(Number); const cmp=new Date(); cmp.setHours(H,M,0,0); return cmp < now;})();
+                  const taken = (bookedByDate[data.date]?.has(t)) ?? false; // confirmed only
                   const disabled = pastDisabled || taken;
                   const selected = data.time===t;
-                  const [H, M] = t.split(":").map(Number);
-                  const h12 = ((H + 11) % 12) + 1, ampm = H < 12 ? "AM" : "PM";
-                  const label = `${pad(h12)}:${pad(M)} ${ampm}`;
+                  const [H,M]=t.split(":").map(Number);
+                  const h12=((H+11)%12)+1, ampm=H<12?"AM":"PM";
+                  const label=`${pad(h12)}:${pad(M)} ${ampm}`;
                   return (
                     <button key={t} type="button"
                       className={`slot-btn ${selected?"selected":""} ${disabled?"disabled":""} ${taken?"booked":""}`}
                       disabled={disabled}
-                      onClick={() => !disabled && setData(d=>({...d, time: t}))}
-                      aria-pressed={selected}
-                      aria-disabled={disabled}>
-                      {label}{taken ? " (Booked)" : ""}
+                      onClick={()=>!disabled && setData(d=>({...d,time:t}))}
+                      aria-pressed={selected}>
+                      {label}{taken?" (Booked)":""}
                     </button>
                   );
                 })}
               </div>
               {errors.time && <p className="cf-error">{errors.time}</p>}
-              <p className="cf-hint">All appointment times are in <strong>EST</strong>.</p>
-
               <div className="steps-nav">
                 <button className="cf-btn cf-btn-secondary" onClick={()=>setStep(1)} type="button">Back</button>
                 <button className="cf-btn" onClick={nextFrom2} type="button" disabled={!data.date||!data.time}>Continue</button>
@@ -409,9 +240,8 @@ const BookingFlowEmail: React.FC = () => {
           </div>
         )}
 
-        {/* Step 3 */}
         {step===3 && (
-          <form className="cf-form" onSubmit={submit} noValidate>
+          <div className="cf-form" role="form" aria-label="Details and payment">
             <div className="cf-row cf-row--two">
               <div>
                 <input className="cf-input" type="text" placeholder="First name"
@@ -435,13 +265,34 @@ const BookingFlowEmail: React.FC = () => {
               {errors.phone && <p className="cf-error">{errors.phone}</p>}
             </div>
 
-            <div className="steps-nav">
-              <button className="cf-btn cf-btn-secondary" onClick={()=>setStep(2)} type="button">Back</button>
-              <button className="cf-btn" type="submit" disabled={sending}>
-                {sending ? "Sending..." : "Submit"}
-              </button>
-            </div>
-          </form>
+            {!clientSecret ? (
+              <>
+                {!pk && (
+                  <p className="cf-error" role="alert" style={{marginTop:8}}>
+                    Missing Stripe publishable key.
+                  </p>
+                )}
+                <div className="steps-nav">
+                  <button className="cf-btn cf-btn-secondary" onClick={()=>setStep(2)} type="button">Back</button>
+                  <button className="cf-btn" onClick={beginPayment} disabled={sending || !pk}>
+                    {sending ? "Preparing..." : "Pay $30"}
+                  </button>
+                </div>
+              </>
+            ) : stripePromise ? (
+              <Elements stripe={stripePromise} options={{ clientSecret }} key={clientSecret}>
+                <CheckoutForm data={data} onDone={()=>{
+                  setStep(1);
+                  setData({service:"",date:"",time:"",firstName:"",lastName:"",email:"",phone:""});
+                  setClientSecret(null);
+                }}/>
+              </Elements>
+            ) : (
+              <p className="cf-error" role="alert" style={{marginTop:8}}>
+                Stripe could not be initialized in the browser.
+              </p>
+            )}
+          </div>
         )}
       </div>
     </div>
@@ -449,3 +300,104 @@ const BookingFlowEmail: React.FC = () => {
 };
 
 export default BookingFlowEmail;
+
+/** ---------------- Payment subcomponent ---------------- */
+function CheckoutForm(props:{ data: FormData; onDone: ()=>void; }) {
+  const { data, onDone } = props;
+  const stripe = useStripe();
+  const elements = useElements();
+  const [paying, setPaying] = useState(false);
+  const [errMsg, setErrMsg] = useState<string | null>(null);
+
+  const ejService = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+  const ejTemplate = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+  const ejPublic  = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
+
+  const sendEmail = async () => {
+    const params = {
+      service: data.service,
+      date: data.date,
+      time: data.time,
+      datetime: `${data.date}T${data.time}`,
+      timezone: "EST",
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      phone: data.phone,
+    };
+    await emailjs.send(ejService, ejTemplate, params);
+  };
+
+  const pay = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrMsg(null);
+    if (!stripe || !elements) return;
+    setPaying(true);
+
+    try {
+      const { error, paymentIntent } = await stripe.confirmPayment({
+        elements,
+        redirect: "if_required",
+      });
+
+      if (error) {
+        setErrMsg(error.message || "Payment failed.");
+        return;
+      }
+
+      if (paymentIntent?.status === "succeeded") {
+        // Push to DB *after* success
+        const finalize = await fetch("/api/finalize-booking", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            paymentIntentId: paymentIntent.id,
+            slotId: `${data.date}T${data.time}`,
+            booking: {
+              service: data.service,
+              date: data.date,
+              time: data.time,
+              timezone: "EST",
+              firstName: data.firstName,
+              lastName: data.lastName,
+              email: data.email,
+              phone: data.phone,
+            },
+          }),
+        });
+        const j = await finalize.json().catch(()=>({}));
+        if (!finalize.ok) {
+          setErrMsg(j.error || "Could not finalize booking.");
+          return;
+        }
+
+        // Email confirmation (best-effort)
+        try { await sendEmail(); } catch (mailErr) { console.error("Email failed:", mailErr); }
+
+        alert("Payment successful! Your booking is confirmed.");
+        onDone();
+      } else {
+        setErrMsg("Payment not completed.");
+      }
+    } catch (err:any) {
+      console.error(err);
+      setErrMsg("Something went wrong while processing your payment.");
+    } finally {
+      setPaying(false);
+    }
+  };
+
+  return (
+    <form onSubmit={pay} className="stripe-form">
+      <PaymentElement />
+      {errMsg && <p className="cf-error" role="alert">{errMsg}</p>}
+      <div className="steps-nav" style={{ marginTop: 16 }}>
+        <button className="cf-btn cf-btn-secondary" type="button" onClick={()=>history.back()} disabled={paying}>Back</button>
+        <button className="cf-btn" type="submit" disabled={!stripe || !elements || paying}>
+          {paying ? "Processing..." : "Pay $30"}
+        </button>
+      </div>
+      <p className="cf-hint">Your card will be charged <strong>$30 CAD</strong>.</p>
+    </form>
+  );
+}
