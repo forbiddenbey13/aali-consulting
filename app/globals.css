@@ -1,23 +1,63 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary: #3B82F6; /* A modern, slightly brighter blue (Tailwind blue-500) */
+  --color-secondary: #D1D5DB; /* A neutral light gray (Tailwind gray-300) */
+  --color-accent: #10B981; /* A subtle green for highlights (Tailwind emerald-500) */
+  --color-text-dark: #1F2937; /* Darker text for headings (Tailwind gray-900) */
+  --color-text-medium: #4B5563; /* Medium text for paragraphs (Tailwind gray-700) */
+  --color-text-light: #6B7280; /* Lighter text for secondary info (Tailwind gray-500) */
+  --color-background-light: #F9FAFB; /* Off-white for sections (Tailwind gray-50) */
+  --color-background-white: #FFFFFF; /* Pure white */
+  --color-white: #FFFFFF; /* Explicit white color variable */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-
-
-body {
-  background-image: ('/Assets/Background/9F34924A-6267-4F18-AF97-0964203F50DD.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+html, body {
+  font-family: 'Inter', sans-serif; /* Using a modern sans-serif font */
+  color: var(--color-text-medium);
+  background-color: var(--color-background-white);
   min-height: 100vh;
+  line-height: 1.6; /* Improved readability */
+}
+
+h1 {
+  @apply text-4xl md:text-5xl font-extrabold leading-tight;
+  color: var(--color-text-dark);
+}
+
+h2 {
+  @apply text-3xl md:text-4xl font-bold;
+  color: var(--color-text-dark);
+}
+
+h3 {
+  @apply text-xl md:text-2xl font-semibold;
+  color: var(--color-text-dark);
+}
+
+h4 {
+  @apply text-lg font-medium;
+  color: var(--color-text-dark);
+}
+
+p {
+  @apply text-base leading-relaxed;
+  color: var(--color-text-medium);
+}
+
+/* Custom utility classes for consistent styling */
+.btn-primary {
+  @apply bg-[var(--color-primary)] text-[var(--color-white)] px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 hover:-translate-y-1 transition-all duration-200;
+}
+
+.btn-secondary {
+  @apply bg-[var(--color-background-white)] border border-[var(--color-secondary)] text-[var(--color-text-medium)] px-8 py-3 rounded-full shadow-lg hover:bg-[var(--color-background-light)] hover:-translate-y-1 transition-all duration-200;
+}
+
+.btn-accent {
+  @apply bg-[var(--color-accent)] text-[var(--color-white)] px-8 py-3 rounded-full shadow-lg hover:bg-emerald-600 hover:-translate-y-1 transition-all duration-200;
+}
+
+.card-modern {
+  @apply bg-[var(--color-background-white)] p-8 rounded-xl shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
 }
