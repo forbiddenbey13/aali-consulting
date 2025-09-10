@@ -68,9 +68,9 @@ const BookkeepingPage: React.FC = () => {
         <p className="mt-4 md:mt-6 max-w-2xl text-base md:text-lg text-gray-700">
           We implement powerful accounting and financial software solutions to streamline your workflow and reduce stress.
         </p>
-        <button className="mt-6 md:mt-8 bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 inline-block">
+        <a href="/ContactUs"><button className="mt-8 bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 inline-block">
           Start My Setup
-        </button>
+        </button></a>
       </section>
 
       {/* 3-Step Process section */}

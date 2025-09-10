@@ -62,9 +62,8 @@ const BookkeepingPage: React.FC = () => {
         <p className="mt-6 max-w-2xl text-lg text-gray-700">
           Stay organized, stay compliant. Let us handle your books so you can focus on growth.
         </p>
-        <button className="mt-8 bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 inline-block">
-          Start Bookkeeping
-        </button>
+       <a href="/ContactUs"><button className="mt-8 bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 inline-block">Start Bookkeeping
+        </button></a>
       </section>
 
       {/* 3-Step Process */}

@@ -63,9 +63,11 @@ const TaxPage: React.FC = () => {
         <p className="mt-6 max-w-2xl text-lg text-gray-700">
           We help individuals and businesses reduce tax liabilities while staying compliant with Canadian tax laws.
         </p>
-        <button className="mt-8 bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 inline-block">
+        <a href="/ContactUs"><button className="mt-8 bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 inline-block">
           Get Started
-        </button>
+        </button></a>
+        
+        
       </section>
 
       {/* 3-Step Process */}

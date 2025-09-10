@@ -84,9 +84,9 @@ const FinancialPlanningPage: React.FC = () => {
         <p className="mt-6 max-w-2xl text-lg text-gray-700">
           Whether you’re scaling your business or planning personally, we create smart financial strategies that guide success.
         </p>
-        <button className="mt-8 bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 inline-block">
+        <a href="/ContactUs"><button className="mt-8 bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 inline-block">
           Book a Planning Session
-        </button>
+        </button></a>
       </section>
 
       {/* 3-Step Process */}
