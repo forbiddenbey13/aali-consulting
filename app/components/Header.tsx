@@ -55,7 +55,7 @@ const HomePage: React.FC = () => {
           {/* CTA Button */}
           <div className="hidden md:flex items-center ml-6">
             <a
-              href="/Consult"
+              href="/ContactUs"
               className="bg-blue-600 text-white font-bold px-6 py-2 rounded-full shadow hover:bg-blue-700 transition-all duration-200 border border-blue-600"
             >
               Book Now

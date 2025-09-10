@@ -88,7 +88,7 @@ const HomePage: React.FC = () => {
             Helping individuals and businesses thrive with trusted financial guidance.
           </p>
           <div className="mt-8 space-x-4">
-            <a href="/Consult" className="bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 inline-block">Book Now</a>
+            <a href="/ContactUs" className="bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 inline-block">Book Now</a>
             <a href="/AboutUs" className="bg-white/80 border border-gray-300 text-gray-800 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 inline-block">Learn More</a>
           </div>
         </div>
@@ -188,7 +188,7 @@ const HomePage: React.FC = () => {
       <section className="text-center py-24 px-6 bg-white">
         <h2 className="text-3xl font-semibold text-gray-900 mb-6">Clarity. Confidence. Growth.</h2>
         <p className="text-gray-600 mb-10 text-lg">Your financial future starts with one smart decision.</p>
-        <a href="/Consult" className="btn-primary">Book Now</a>
+        <a href="/ContactUs" className="btn-primary">Book Now</a>
       </section>
 
       {/* Footer */}
