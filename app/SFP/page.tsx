@@ -1,48 +1,75 @@
 import React from "react";
 import { CheckCircle } from "lucide-react";
-import Head from "next/head";
+// import Head from "next/head"; // (Unused; safe to remove if you like)
 import Header from "../components/Header";
-import Footer from '../components/Footer'
-import MapleLeafLogo from '../components/MapleLeafLogo';
+import Footer from "../components/Footer";
+import MapleLeafLogo from "../components/MapleLeafLogo";
 
 const FinancialPlanningPage: React.FC = () => {
   const steps = [
-    {
-      number: "1",
-      title: "Strategize & Set Goals",
-      text: "We meet to define your short- & long-term objectives."
-    },
-    {
-      number: "2",
-      title: "Build the Plan",
-      text: "We model forecasts, risks, and budget allocations."
-    },
-    {
-      number: "3",
-      title: "Monitor & Adjust",
-      text: "Monthly or quarterly check-ins to keep you on track."
-    }
+    { number: "1", title: "Strategize & Set Goals", text: "We meet to define your short- & long-term objectives." },
+    { number: "2", title: "Build the Plan", text: "We model forecasts, risks, and budget allocations." },
+    { number: "3", title: "Monitor & Adjust", text: "Monthly or quarterly check-ins to keep you on track." }
   ];
 
   const personalServices = [
     "Personal Budgeting & Forecasting",
     "Retirement & Tax Optimization",
     "Investment Strategy Planning",
-    "Debt Repayment Planning"
+    "Debt Repayment Planning",
   ];
 
   const businessServices = [
     "Cash Flow & Budget Planning",
     "Break-even Analysis",
     "Strategic Growth & Scaling Roadmaps",
-    "Scenario Modeling & Performance Reviews"
+    "Scenario Modeling & Performance Reviews",
   ];
 
-  const faqs = [
-    "Who is this service for?",
-    "What’s included in a financial plan?",
-    "How often should I review my plan?",
-    "Do I need a high income or big business to benefit?"
+  // ✅ FAQs with your provided answers
+  const faqs: { q: string; a: React.ReactNode }[] = [
+    {
+      q: "Who is this service for?",
+      a: (
+        <>
+          We work with both individuals and businesses. Whether you’re planning retirement,
+          managing debt, or budgeting for expansion, we tailor our advice to your needs.
+        </>
+      ),
+    },
+    {
+      q: "What’s included in a financial plan?",
+      a: (
+        <>
+          Plans may include:
+          <ul className="list-disc ml-6 mt-2 space-y-1">
+            <li>Cash flow projections & budgeting</li>
+            <li>Debt reduction strategies</li>
+            <li>Tax planning opportunities</li>
+            <li>Investment considerations</li>
+            <li>Milestone-based goal tracking</li>
+          </ul>
+        </>
+      ),
+    },
+    {
+      q: "How often should I review my plan?",
+      a: (
+        <>
+          We recommend quarterly or semi-annual reviews to adjust for life changes,
+          market shifts, or new business developments.
+        </>
+      ),
+    },
+    {
+      q: "Do I need a high income or big business to benefit?",
+      a: (
+        <>
+          Not at all. Our planning services are accessible to anyone who wants to better
+          understand, manage, and grow their finances.
+        </>
+      ),
+    },
   ];
 
   return (
@@ -105,16 +132,18 @@ const FinancialPlanningPage: React.FC = () => {
 
       {/* Why Choose Us */}
       <section className="grid md:grid-cols-2 gap-12 items-center px-10 py-24 bg-blue-50">
-        {/* <div className="flex justify-center">
+        <div className="flex justify-center">
           <MapleLeafLogo />
-        </div> */}
+        </div>
         <div>
           <h2 className="text-3xl font-bold mb-6">Why Choose Us?</h2>
           <p className="text-gray-700 leading-relaxed">
-            At AALIConsulting, we help you see the bigger picture behind your number. Our strategic financial planning serevices, combine expert insight with real world
-            data to guide tour personal or business goals. Whethere you're bdgeting for a major purchase, planning for retirement or preparing your business for expansion,
-            we craft your business actionalble strategies tailored to your situation. With regular reviews and forecasting tools, we keep your financial plans adaptable, measurable,
-            and built for long-term success. </p>
+            At AALIConsulting, we help you see the bigger picture behind your numbers. Our strategic financial planning
+            services combine expert insight with real-world data to guide your personal or business goals. Whether you're
+            budgeting for a major purchase, planning for retirement, or preparing your business for expansion, we craft
+            actionable strategies tailored to your situation. With regular reviews and forecasting tools, we keep your
+            financial plans adaptable, measurable, and built for long-term success.
+          </p>
         </div>
       </section>
 
@@ -122,16 +151,15 @@ const FinancialPlanningPage: React.FC = () => {
       <section className="px-10 py-24 bg-white">
         <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
         <div className="max-w-3xl mx-auto space-y-4">
-          {faqs.map((faq, i) => (
+          {faqs.map((item, i) => (
             <details key={i} className="bg-gray-50 shadow rounded-lg p-4">
-              <summary className="cursor-pointer font-medium">{faq}</summary>
-              <p className="mt-2 text-gray-600">Answer coming soon...</p>
+              <summary className="cursor-pointer font-medium">{item.q}</summary>
+              <div className="mt-2 text-gray-600">{item.a}</div>
             </details>
           ))}
         </div>
       </section>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

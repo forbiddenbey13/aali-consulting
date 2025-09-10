@@ -37,12 +37,17 @@ const BookkeepingPage: React.FC = () => {
     "Budgeting & Forecasting"
   ];
 
-  const faqs = [
-    "What's the difference between bookkeeping and accounting?",
-    "Can you work with my existing accounting software?",
-    "How often do you provide reports?",
-    "What if my books are a mess or behind?"
-  ];
+  // FAQs as a hashmap (question -> answer)
+  const faqs: Record<string, string> = {
+    "What's the difference between bookkeeping and accounting?":
+      "Bookkeeping involves recording daily financial transactions, while accounting uses those records to generate reports, analyze performance, and guide decisions.",
+    "Can you work with my existing accounting software?":
+      "Yes — we work with platforms like QuickBooks, Xero, Wave, and others. If needed, we can also help you switch or set up a better system.",
+    "How often do you provide reports?":
+      "We typically offer monthly reporting, but we can adjust the frequency (weekly, quarterly, etc.) based on your business needs.",
+    "What if my books are a mess or behind?":
+      "No problem. We specialize in cleanup services and can get your books back in order—no matter how disorganized they may be."
+  };
 
   return (
     <div className="font-sans text-gray-800">
@@ -125,11 +130,11 @@ const BookkeepingPage: React.FC = () => {
       <section className="px-10 py-24 bg-gray-50">
         <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
         <div className="max-w-3xl mx-auto space-y-4">
-          {faqs.map((faq, i) => (
+          {Object.entries(faqs).map(([question, answer], i) => (
             <details key={i} className="bg-white shadow rounded-lg p-4">
-              <summary className="cursor-pointer font-medium">{faq}</summary>
+              <summary className="cursor-pointer font-medium">{question}</summary>
               <p className="mt-2 text-gray-600">
-                Answer coming soon...
+                {answer}
               </p>
             </details>
           ))}

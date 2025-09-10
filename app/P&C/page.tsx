@@ -38,12 +38,17 @@ const TaxPage: React.FC = () => {
     "Dividends, Salaries, and Shareholder Tax"
   ];
 
-  const faqs = [
-    "What documents do I need to file my personal taxes?",
-    "Do you file both federal and provincial taxes?",
-    "Can you help with back taxes or CRA audits?",
-    "What’s the deadline for filing corporate taxes?"
-  ];
+   const faqs: Record<string, string> = {
+    "What documents do I need to file my personal taxes?":
+      "You’ll need T4 slips, receipts for deductions (like medical expenses or tuition), investment income slips, and any RRSP contribution records. We’ll provide a full checklist during onboarding.",
+    "Do you file both federal and provincial taxes?":
+      "Yes, we can help with both back taxes and CRA audits. Whether you’ve missed past tax filings or are facing a review or audit by the CRA, we’ll assess your situation, organize your documents, and communicate with the CRA on your behalf. Our goal is to minimize penalties, bring your filings up to date, and ensure full compliance — giving you peace of mind and a clear path forward.",
+    "Can you help with back taxes or CRA audits?":
+      "Yes, we can help with filing for the Disability Tax Credit (DTC). The DTC is a non-refundable tax credit offered by the CRA to support individuals with severe and prolonged impairments, or their caregivers. To apply, you must complete Form T2201, which includes a section for a qualified medical practitioner to certify your condition. Once approved by the CRA, the credit can reduce your taxes and may also be transferred to a supporting family member. We’ll guide you through the process to ensure everything is completed accurately.",
+    "What’s the deadline for filing corporate taxes?":
+      "Corporate taxes are due six months after your fiscal year-end. We’ll make sure you meet all CRA deadlines and avoid late filing penalties."
+  };
+
 
   return (
     <div className="font-sans text-gray-800">
@@ -106,9 +111,9 @@ const TaxPage: React.FC = () => {
 
       {/* Why Choose Us */}
       <section className="grid md:grid-cols-2 gap-12 items-center px-10 py-24 bg-blue-50">
-        {/* <div className="flex justify-center">
-          <logo>
-        </div> */}
+        <div className="flex justify-center">
+          <MapleLeafLogo />
+        </div>
         <div>
           <h2 className="text-3xl font-bold mb-6">Why Choose Us?</h2>
           <p className="text-gray-700 leading-relaxed">
@@ -125,14 +130,17 @@ const TaxPage: React.FC = () => {
       <section className="px-10 py-24 bg-gray-50">
         <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
         <div className="max-w-3xl mx-auto space-y-4">
-          {faqs.map((faq, i) => (
+          {/* FAQs */}
+          {Object.entries(faqs).map(([question, answer], i) => (
             <details key={i} className="bg-white shadow rounded-lg p-4">
-              <summary className="cursor-pointer font-medium">{faq}</summary>
-              <p className="mt-2 text-gray-600">Answer coming soon...</p>
+              <summary className="cursor-pointer font-medium">{question}</summary>
+              <p className="mt-2 text-gray-600">{answer}</p>
             </details>
           ))}
         </div>
       </section>
+
+
 
       {/* Footer */}
       <Footer />
