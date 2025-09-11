@@ -15,7 +15,7 @@ import {
 } from "@stripe/react-stripe-js";
 
 // ---------- Stripe Price Config ----------
-const PRICE_CENTS = 1000; // $10.00 CAD
+const PRICE_CENTS = 100; // $10.00 CAD
 const CURRENCY = "cad";
 const PRICE_TEXT = `$${(PRICE_CENTS / 100).toFixed(0)} CAD`;
 
