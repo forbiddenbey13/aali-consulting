@@ -15,7 +15,7 @@ import {
 } from "@stripe/react-stripe-js";
 
 // ---------- Stripe Price Config ----------
-const PRICE_CENTS = 100; // $10.00 CAD
+const PRICE_CENTS = 100; // $1.00 CAD (adjust as needed)
 const CURRENCY = "cad";
 const PRICE_TEXT = `$${(PRICE_CENTS / 100).toFixed(0)} CAD`;
 
@@ -55,7 +55,7 @@ const START_HOUR = 9,
 
 const pad = (n: number) => String(n).padStart(2, "0");
 const slots = Array.from(
-  { length: (END_HOUR - START_HOUR) * 60 / STEP_MIN + 1 },
+  { length: ((END_HOUR - START_HOUR) * 60) / STEP_MIN + 1 },
   (_, i) => {
     const h = START_HOUR + Math.floor((i * STEP_MIN) / 60);
     const m = (i * STEP_MIN) % 60;
@@ -107,6 +107,18 @@ const BookingFlowEmail: React.FC = () => {
     {}
   );
   const [clientSecret, setClientSecret] = useState<string | null>(null);
+
+  // ✅ Initialize EmailJS once (so sending works later)
+  useEffect(() => {
+    const pk = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    if (pk) {
+      try {
+        emailjs.init({ publicKey: pk });
+      } catch (e) {
+        console.error("EmailJS init failed:", e);
+      }
+    }
+  }, []);
 
   const days = useMemo(() => dayItems(DAYS_TO_SHOW), []);
   const todayStr = useMemo(() => {
@@ -468,10 +480,61 @@ function CheckoutForm(props: { data: FormData }) {
   const elements = useElements();
   const [paying, setPaying] = useState(false);
   const [errMsg, setErrMsg] = useState<string | null>(null);
+  const [infoMsg, setInfoMsg] = useState<string | null>(null); // non-blocking info (e.g., email failed)
+
+  const sendEmail = async () => {
+    const ejService = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+    const ejTemplate = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+    const ejPublic = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
+
+    const params = {
+      service: data.service,
+      date: data.date,
+      time: data.time,
+      datetime: `${data.date}T${data.time}`,
+      timezone: "EST",
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      phone: data.phone,
+      notes: data.notes,
+    };
+
+    // If init in parent failed, passing publicKey here is a safe fallback.
+    await emailjs.send(ejService, ejTemplate, params, { publicKey: ejPublic });
+  };
+
+  const finalizeBooking = async (paymentIntentId: string) => {
+    const resp = await fetch("/api/finalize-booking", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        paymentIntentId,
+        slotId: `${data.date}T${data.time}`,
+        booking: {
+          service: data.service,
+          date: data.date,
+          time: data.time,
+          timezone: "EST",
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          phone: data.phone,
+          notes: data.notes,
+        },
+      }),
+    });
+    const j = await resp.json().catch(() => ({}));
+    if (!resp.ok) {
+      throw new Error(j.error || "Could not finalize booking in the database.");
+    }
+    return j as { ok: boolean; bookingId?: string };
+  };
 
   const pay = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrMsg(null);
+    setInfoMsg(null);
     if (!stripe || !elements) return;
     setPaying(true);
 
@@ -481,12 +544,35 @@ function CheckoutForm(props: { data: FormData }) {
         redirect: "if_required",
       });
 
-        if (error) {
+      if (error) {
         setErrMsg(error.message || "Payment failed.");
         return;
       }
 
       if (paymentIntent?.status === "succeeded") {
+        // 1) Save booking to DB
+        try {
+          await finalizeBooking(paymentIntent.id);
+        } catch (dbErr: any) {
+          // DB write failed — show a clear error
+          setErrMsg(
+            dbErr?.message ||
+              "Payment captured, but we could not save your booking. Please contact support."
+          );
+          return; // stop here; we won't try to email if DB failed
+        }
+
+        // 2) Send email (best effort)
+        try {
+          await sendEmail();
+        } catch (mailErr: any) {
+          // Email failed — inform, but the booking is saved
+          setInfoMsg(
+            "Your booking is saved, but the confirmation email could not be sent. Please check spam or contact us."
+          );
+          console.error("Email send failed:", mailErr);
+        }
+
         alert("Payment successful! Your booking is confirmed.");
       } else {
         setErrMsg("Payment not completed.");
@@ -502,7 +588,16 @@ function CheckoutForm(props: { data: FormData }) {
   return (
     <form onSubmit={pay} className="stripe-form">
       <PaymentElement />
-      {errMsg && <p className="cf-error">{errMsg}</p>}
+      {errMsg && (
+        <p className="cf-error" role="alert" style={{ marginTop: 8 }}>
+          {errMsg}
+        </p>
+      )}
+      {infoMsg && (
+        <p className="cf-hint" style={{ marginTop: 8 }}>
+          {infoMsg}
+        </p>
+      )}
       <div className="steps-nav" style={{ marginTop: 16 }}>
         <button
           className="cf-btn cf-btn-secondary"

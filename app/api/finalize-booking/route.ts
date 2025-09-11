@@ -6,16 +6,24 @@ import {
 } from "firebase/firestore";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2025-08-27.basil",
+  apiVersion: "2025-08-27.basil", // ✅ unchanged
 });
+
 export async function POST(req: Request) {
   try {
     const { paymentIntentId, slotId, booking } = (await req.json()) as {
       paymentIntentId: string;
       slotId: string;
       booking: {
-        service: string; date: string; time: string; timezone?: string;
-        firstName: string; lastName: string; email: string; phone?: string;
+        service: string;
+        date: string;
+        time: string;
+        timezone?: string;
+        firstName: string;
+        lastName: string;
+        email: string;
+        phone?: string;
+        notes?: string; // <-- allow notes (optional)
       };
     };
 
@@ -28,7 +36,12 @@ export async function POST(req: Request) {
     if (pi.status !== "succeeded") {
       return NextResponse.json({ error: "Payment not completed" }, { status: 400 });
     }
-    if (pi.amount !== 3000 || pi.currency.toLowerCase() !== "cad") {
+
+    // Expecting $1.00 CAD (100 cents). Adjust here if you change price.
+    const EXPECTED_AMOUNT = 100; // <-- keep in sync with create-payment-intent and UI
+    const EXPECTED_CURRENCY = "cad";
+
+    if (pi.amount !== EXPECTED_AMOUNT || pi.currency.toLowerCase() !== EXPECTED_CURRENCY) {
       return NextResponse.json({ error: "Invalid payment amount/currency" }, { status: 400 });
     }
 
@@ -54,8 +67,8 @@ export async function POST(req: Request) {
       tx.set(bookingRef, {
         ...booking,
         datetime: `${booking.date}T${booking.time}`,
-        amount: 3000,
-        currency: "cad",
+        amount: pi.amount,                // <-- store actual paid amount
+        currency: pi.currency.toLowerCase(), // <-- store actual currency
         status: "paid",
         paidAt: serverTimestamp(),
         paymentIntentId,
@@ -70,7 +83,10 @@ export async function POST(req: Request) {
       } catch (e) {
         console.error("Refund failed:", e);
       }
-      return NextResponse.json({ error: "Slot just got booked by someone else. We refunded your payment." }, { status: 409 });
+      return NextResponse.json(
+        { error: "Slot just got booked by someone else. We refunded your payment." },
+        { status: 409 }
+      );
     }
 
     return NextResponse.json({ ok: true, bookingId: bookingRef.id });
