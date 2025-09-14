@@ -54,10 +54,26 @@ const HomePage: React.FC = () => {
   ];
 
   const resources = [
-    'Stay Informed: 2025 Tax Filing Updates from the CRA',
-    'Wealth Planning Strategies for Canadians, 2025',
-    'Bookkeeping 101: Keeping Your Finances in Order',
-    'Top 5 Accounting Software Solutions for Canadian SMBs'
+    {
+      title: 'Stay Informed: 2025 Tax Filing Updates from the CRA',
+      img: '/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg',
+      link: 'https://www.canada.ca/en/revenue-agency/news/newsroom/tax-tips/tax-tips-2025/what-you-need-to-know-for-2025-tax-filing-season.html'
+    },
+    {
+      title: 'Financial Tools & Calculator',
+      img: '/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg',
+      link: 'https://www.canada.ca/en/services/finance/tools.html'
+    },
+    {
+      title: 'CRA Important Tax Dates – Individuals',
+      img: '/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg',
+      link: 'https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/important-dates-individuals.html?utm_source=chatgpt.com'
+    },
+    {
+      title: 'Checklist for Small Businesses & Self‑Employed',
+      img: '/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg',
+      link: 'https://www.canada.ca/en/revenue-agency/services/tax/businesses/small-businesses-self-employed-income/checklist-small-businesses.html?utm_source=chatgpt.com'
+    }
   ];
 
   return (
@@ -166,18 +182,23 @@ const HomePage: React.FC = () => {
       <section id="resources" className="px-6 md:px-10 py-24 bg-gray-50">
         <h2 className="text-3xl font-bold mb-12 text-center">Resources</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {resources.map((title, i) => (
+          {resources.map((resource, i) => (
             <div key={i} className="card-modern p-0 flex flex-col h-full">
-              <img src={
-                i === 0 ? '/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg' :
-                i === 1 ? '/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg' :
-                i === 2 ? '/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg' :
-                i === 3 ? '/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg' :
-                `/resource${i + 1}.jpg`
-              } alt={title} className="w-full h-40 object-cover rounded-t-xl" />
+              <img
+                src={resource.img}
+                alt={resource.title}
+                className="w-full h-40 object-cover rounded-t-xl"
+              />
               <div className="p-6 flex flex-col flex-grow">
-                <h4 className="font-medium text-gray-900 mb-4">{title}</h4>
-                <a href="#" className="btn-secondary mt-auto">Learn more</a>
+                <h4 className="font-medium text-gray-900 mb-4">{resource.title}</h4>
+                <a
+                  href={resource.link}
+                  className="btn-secondary mt-auto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Learn more
+                </a>
               </div>
             </div>
           ))}
