@@ -1,3 +1,4 @@
+"use client";
 import Head from 'next/head';
 import React from 'react';
 import Header from '../components/Header';
@@ -55,32 +56,43 @@ const AboutUsPage: React.FC = () => {
       <Header />
 
       {/* Hero section with a background gradient */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-100 to-white px-4 md:px-10 py-16 md:py-24">
-        {/* Grid for two-column layout on medium screens and up */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center max-w-6xl mx-auto">
-          {/* Left-side text content */}
-          <div className="order-2 md:order-1 text-center md:text-left">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-blue-900 leading-tight mb-4">
-              Learn More About Us!
-            </h1>
-            <p className="text-gray-700 max-w-lg mx-auto md:mx-0">
-              Take a look inside our team and view our mission and vision.
-            </p>
-            <button className="mt-6 bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200">
-              Learn More
-            </button>
-          </div>
-          
-          {/* Right-side image and logo */}
-          <div className="order-1 md:order-2 flex justify-center md:justify-end">
-            <img
-
-              src="Assets/About Me Section/EBB3C615-EC6A-4F05-9BF8-B40625DDCCD0.png"
-              alt="AALI Consulting & Associates"
-              className="w-full max-w-sm rounded-lg"
-            />
-          </div>
+      <section className="relative overflow-hidden px-4 md:px-10 py-10 md:py-16 flex items-center justify-center min-h-[300px]">
+        {/* Dynamic background (animated overlay) */}
+        <div className="absolute inset-0 w-full h-full z-0">
+          <img
+            src="/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png"
+            alt="Dynamic background"
+            className="w-full h-full object-cover absolute inset-0 opacity-70 animate-fadein"
+            style={{ animation: 'fadein 8s infinite alternate' }}
+          />
+          <div className="absolute inset-0 bg-blue-900/40" />
         </div>
+        {/* Centered content */}
+        <div className="relative z-10 flex flex-col items-center justify-center text-center w-full">
+          <img
+            src="/Web Assets/Logo Design/aali-transparent-logo.png"
+            className="mx-auto mb-2 w-64 md:w-80 h-auto object-contain"
+            style={{ display: 'block' }}
+          />
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-2xl mb-2 tracking-tight">
+            <span className="font-black">Learn More About Us!</span>
+          </h1>
+          <p className="text-lg text-white/90 max-w-2xl mx-auto mb-6 drop-shadow-lg font-bold">
+            Take a look inside our team and view our mission and vision.
+          </p>
+          <a
+            href="#vision-mission"
+            className="mt-2 bg-white/90 border border-gray-300 text-blue-900 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 font-bold inline-block"
+          >
+            Learn More
+          </a>
+        </div>
+        <style jsx>{`
+          @keyframes fadein {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
+          }
+        `}</style>
       </section>
 
       {/* Who We Are section */}
@@ -88,10 +100,11 @@ const AboutUsPage: React.FC = () => {
         <h2 className="text-3xl font-bold text-center mb-8 md:mb-12">Who We Are</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center max-w-6xl mx-auto">
           {/* Left-side text block */}
-          <div className="text-gray-700 space-y-4">
+          <div className="text-gray-700 space-y-3">
             <p>
               AALI Consulting & Associates was founded to make financial guidance
-              accessible and understandable for individuals and small businesses across
+              accessible and understandable for individuals and 
+              small businesses across
               Canada.
             </p>
             <p>
@@ -115,20 +128,28 @@ const AboutUsPage: React.FC = () => {
       </section>
 
       {/* Vision and Mission section */}
-      <section className="px-4 md:px-10 py-16 md:py-24 bg-gray-50">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
-          {/* Our Vision */}
-          <div className="text-center">
-            <h3 className="text-xl md:text-2xl font-semibold text-blue-800 mb-4">Our Vision</h3>
-            <p className="text-gray-700 max-w-sm mx-auto">
-              To be the trusted partner individuals and businesses turn to for clear, expert financial and strategic guidance across Canada.
+      <section
+        id="vision-mission"
+        className="px-2 md:px-10 py-8 md:py-12 flex justify-center items-center bg-transparent"
+      >
+        <div className="w-full max-w-5xl flex flex-col md:flex-row gap-4 md:gap-0">
+          {/* Vision Card */}
+          <div className="flex-1 bg-blue-100 rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none md:rounded-br-none rounded-b-none md:rounded-b-3xl p-8 flex flex-col items-center border border-gray-300">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 text-center">Our Vision</h3>
+            <p className="text-gray-700 text-lg text-center">
+              To be the trusted partner individuals and businesses turn to<br />
+              for clear, expert financial and strategic guidance<br />
+              across Canada.
             </p>
           </div>
-          {/* Our Mission */}
-          <div className="text-center">
-            <h3 className="text-xl md:text-2xl font-semibold text-blue-800 mb-4">Our Mission</h3>
-            <p className="text-gray-700 max-w-sm mx-auto">
-              To simplify complex financial and business challenges through personalized, transparent, and results-driven consulting services.
+          {/* Divider */}
+          <div className="hidden md:block w-px bg-gray-300 mx-0" />
+          {/* Mission Card */}
+          <div className="flex-1 bg-blue-100 rounded-b-3xl md:rounded-r-3xl md:rounded-tl-none md:rounded-bl-none rounded-t-none md:rounded-t-3xl p-8 flex flex-col items-center border border-gray-300">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 text-center">Our Mission</h3>
+            <p className="text-gray-700 text-lg text-center">
+              To simplify complex financial and business challenges through personalized, transparent,<br />
+              and results-driven consulting services.
             </p>
           </div>
         </div>
