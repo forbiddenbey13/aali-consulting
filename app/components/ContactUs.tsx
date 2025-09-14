@@ -19,6 +19,7 @@ const PRICE_CENTS = 100; // $1.00 CAD (adjust as needed)
 const CURRENCY = "cad";
 const PRICE_TEXT = `$${(PRICE_CENTS / 100).toFixed(0)} CAD`;
 
+
 // Publishable key
 const pk =
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ??
@@ -221,6 +222,7 @@ const BookingFlowEmail: React.FC = () => {
       setSending(false);
     }
   };
+  
 
   return (
     <div className="cf-bg">
@@ -479,6 +481,8 @@ function CheckoutForm(props: { data: FormData }) {
   const stripe = useStripe();
   const elements = useElements();
   const [paying, setPaying] = useState(false);
+  const [successPopup, setSuccessPopup] = useState(false);
+  const [toastMsg, setToastMsg] = useState<string | null>(null);
   const [errMsg, setErrMsg] = useState<string | null>(null);
   const [infoMsg, setInfoMsg] = useState<string | null>(null); // non-blocking info (e.g., email failed)
 
@@ -573,7 +577,8 @@ function CheckoutForm(props: { data: FormData }) {
           console.error("Email send failed:", mailErr);
         }
 
-        alert("Payment successful! Your booking is confirmed.");
+        setSuccessPopup(true);
+        setToastMsg("Payment successful! Booking confirmed.");
       } else {
         setErrMsg("Payment not completed.");
       }
@@ -618,6 +623,15 @@ function CheckoutForm(props: { data: FormData }) {
       <p className="cf-hint">
         Your card will be charged <strong>{PRICE_TEXT}</strong>.
       </p>
+       {/* ✅ Popup overlay */}
+      {successPopup && (
+        <div className="toast-center">
+          <div className="toast-box">
+            <p>{toastMsg}</p>
+          </div>
+        </div>
+      )}
     </form>
+    
   );
 }

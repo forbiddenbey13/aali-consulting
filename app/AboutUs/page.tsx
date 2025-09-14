@@ -71,13 +71,13 @@ const AboutUsPage: React.FC = () => {
         <div className="relative z-10 flex flex-col items-center justify-center text-center w-full">
           <img
             src="/Web Assets/Logo Design/aali-transparent-logo.png"
-            className="mx-auto mb-2 w-64 md:w-80 h-auto object-contain"
+            className="mx-auto w-64 md:w-80 h-auto object-contain"
             style={{ display: 'block' }}
           />
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-2xl mb-2 tracking-tight">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white! drop-shadow-2xl mb-2 tracking-tight">
             <span className="font-black">Learn More About Us!</span>
           </h1>
-          <p className="text-lg text-white/90 max-w-2xl mx-auto mb-6 drop-shadow-lg font-bold">
+          <p className="text-lg !text-white/90 max-w-2xl mx-auto mb-6 drop-shadow-lg font-bold">
             Take a look inside our team and view our mission and vision.
           </p>
           <a
