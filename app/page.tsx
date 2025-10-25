@@ -15,207 +15,292 @@ const heroImages = [
   '/Web Assets/NEW/Hero Section/TPC-exterior-building-b.jpg',
 ];
 
+
+
 const HomePage: React.FC = () => {
   const [slide, setSlide] = useState(0);
-
   useEffect(() => {
     const interval = setInterval(() => {
       setSlide((prev) => (prev + 1) % heroImages.length);
-    }, 3500);
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
-  const detailedSections = [
+  const services = [
     {
-      title: 'Personal & Corporate Tax',
-      text: `We provide tailored tax strategies that help individuals and businesses minimize liabilities, maximize deductions, and stay fully compliant with CRA regulations. From annual returns and corporate filings to complex tax planning, we ensure your tax responsibilities are handled accurately and on time, every time.`,
-      img1: '/Web Assets/NEW/Personal & Corporate Tax/istockphoto-1485471985-612x612.jpg',
-      img2: '/Web Assets/NEW/Personal & Corporate Tax/istockphoto-1685996049-612x612.jpg',
-      reverse: false,
+      title: "Tax Services (Personal & Corporate)",
+      text: "Stress-free, CRA-ready tax done right—whether it’s your first T1 or a complex T2 with cross-border twists. We handle proactive planning, RRSP/TFSA, dividends, installments, plain-English guidance, and audit-readiness.",
+      img1: "/Web Assets/NEW/Personal & Corporate Tax/tax-flag.jpg",
     },
     {
-      title: 'Strategic Financial Planning',
-      text: `Our strategic financial planning services are designed to help you achieve your life and business goals with clarity and confidence. Whether you’re saving for the future, managing risk, or planning for retirement, we deliver actionable insights and custom strategies.`,
-      img1: '/Web Assets/NEW/Strategic Financial Planning/istockphoto-1313070791-612x612.jpg',
-      reverse: true,
+      title: "Accounting & Bookkeeping",
+      text: "Know your numbers at a glance. We deliver on-schedule reconciliations (banks, AR/AP, GST/HST), payroll, slips, Shopify/Amazon mapping, and NFP fund accounting—CRA-ready and decision-ready.",
+      img1: "/Web Assets/NEW/Accounting & Bookkeeping/accounting.jpg",
     },
     {
-      title: 'Bookkeeping & Accounting',
-      text: 'We offer precise and dependable accounting and bookkeeping services that keep your business financially organized and audit-ready. From daily transaction tracking to monthly financial reporting, our solutions help you stay compliant and make informed business decisions.',
-      img1: '/Web Assets/NEW/Accounting & Bookkeeping/premium_photo-1679496829715-364b4a17e087.jpeg',
-      reverse: false,
+      title: "Strategic Financial Planning",
+      text: "From student basics to retirement and legacy, we help you plan tax-smart saving and investing—TFSA/RRSP, RESP, CPP/OAS timing, and debt strategy—so every decision compounds toward your goals.",
+      img1: "/Web Assets/NEW/Strategic Financial Planning/finance.jpg",
     },
     {
-      title: 'Systems Implementation',
-      text: 'We implement cloud-based accounting systems and automation tools that streamline your financial operations and improve accuracy. Our end-to-end service includes system selection, setup, integration, training, and ongoing support.',
-      img1: '/Web Assets/NEW/Systems Implementation/11.jpg.webp',
-      reverse: true,
+      title: "Systems & Technology Implementation",
+      text: "We integrate QuickBooks, Xero, FreshBooks, POS, ERP (NetSuite, Sage, Intacct), and automate reporting with APIs, Dropbox, Tableau—training your team for long-term success.",
+      img1: "/Web Assets/NEW/Systems Implementation/tech.jpg",
+    },
+    {
+      title: "CFO Advisory & Governance",
+      text: "We install monthly close discipline, FP&A, forecasting, board packs, multi-entity consolidation, and Canada–US tax governance—so leadership decides fast and sleeps well.",
+      img1: "/Web Assets/NEW/CFO/cfo.jpg",
+    },
+    {
+      title: "Disability & Life Planning",
+      text: "Compassionate help for DTC/COSP approvals, job loss, separation, disability, and family loss. We handle forms, RDSPs, CPP survivor benefits, and probate while you focus on stability.",
+      img1: "/Web Assets/NEW/Disability/disability.jpg",
     },
   ];
 
   const resources = [
     {
-      title: 'Stay Informed: 2025 Tax Filing Updates from the CRA',
-      img: '/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg',
-      link: 'https://www.canada.ca/en/revenue-agency/news/newsroom/tax-tips/tax-tips-2025/what-you-need-to-know-for-2025-tax-filing-season.html'
+      title: "Stay Informed: 2025 Tax Filing Updates from the CRA",
+      img: "/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg",
+      link: "https://www.canada.ca/en/revenue-agency/news/newsroom/tax-tips/tax-tips-2025/what-you-need-to-know-for-2025-tax-filing-season.html",
     },
     {
-      title: 'Financial Tools & Calculator',
-      img: '/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg',
-      link: 'https://www.canada.ca/en/services/finance/tools.html'
+      title: "Financial Tools & Calculator",
+      img: "/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg",
+      link: "https://www.canada.ca/en/services/finance/tools.html",
     },
     {
-      title: 'CRA Important Tax Dates – Individuals',
-      img: '/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg',
-      link: 'https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/important-dates-individuals.html?utm_source=chatgpt.com'
+      title: "CRA Important Tax Dates – Individuals",
+      img: "/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg",
+      link: "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/important-dates-individuals.html",
     },
     {
-      title: 'Checklist for Small Businesses & Self‑Employed',
-      img: '/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg',
-      link: 'https://www.canada.ca/en/revenue-agency/services/tax/businesses/small-businesses-self-employed-income/checklist-small-businesses.html?utm_source=chatgpt.com'
-    }
+      title: "Checklist for Small Businesses & Self-Employed",
+      img: "/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg",
+      link: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/small-businesses-self-employed-income/checklist-small-businesses.html",
+    },
   ];
 
   return (
-    <div className="font-sans text-gray-800 bg-[var(--color-background-light)]">
+    <div className="font-sans text-gray-800 bg-white">
       <Header />
 
-      {/* Hero */}
+      {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center text-center px-10 py-24 overflow-hidden" style={{ minHeight: 400 }}>
-        {/* Slideshow background */}
-        <div className="absolute inset-0 w-full h-full z-0">
-          {heroImages.map((img, idx) => (
-            <img
-              key={img}
-              src={img}
-              alt={`Hero Slide ${idx + 1}`}
-              className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ${slide === idx ? 'opacity-100' : 'opacity-0'}`}
-              style={{ transitionProperty: 'opacity' }}
-            />
-          ))}
-          <div className="absolute inset-0 bg-blue-900/40" />
-        </div>
-        {/* Hero content */}
-        <div className="max-w-3xl z-10 relative flex flex-col items-center">
-          <h1 className="text-5xl font-extrabold leading-tight !text-white drop-shadow-2xl">
-            All Things <span className="font-bold !text-white drop-shadow-2xl">Tax</span>, <span className="font-bold !text-white drop-shadow-2xl">Finance</span> & <span className="font-bold !text-white drop-shadow-2xl">Business</span> — Simplified
+        {heroImages.map((img, idx) => (
+          <img
+            key={idx}
+            src={img}
+            alt={`Slide ${idx}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              slide === idx ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
+        <div className="absolute inset-0 bg-blue-900/40" />
+        <div className="relative z-10 max-w-3xl">
+          <h1 className="text-5xl font-extrabold !text-white drop-shadow-xl">
+            All Things Tax, Finance & Business Simplified
           </h1>
-          <p className="mt-6 text-lg !text-white drop-shadow-2xl">
+          <p className="mt-6 text-lg !text-white drop-shadow-xl">
             Helping individuals and businesses thrive with trusted financial guidance.
           </p>
-          <div className="mt-8 space-x-4">
-            <a href="/ContactUs" className="bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 inline-block">Book Now</a>
-            <a href="/AboutUs" className="bg-white/80 border border-gray-300 text-gray-800 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 inline-block">Learn More</a>
+          <div className="mt-8 flex justify-center gap-4">
+            <a href="/ContactUs" className="bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition">Book Now</a>
+            <a href="/AboutUs" className="bg-white/80 border border-gray-300 text-gray-800 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition">Learn More</a>
           </div>
         </div>
       </section>
-
 
       {/* What We Do */}
-      <section id="what-we-do" className="px-6 md:px-10 py-24 bg-white">
-        <h2 className="text-3xl font-bold mb-14 text-center text-gray-900">What We Do</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {/* Card 1 */}
-          <div className="card-modern flex flex-col justify-between h-full">
-            <h3 className="mb-5">Personal & Corporate Tax</h3>
-            <p className="text-gray-600 text-base mb-7 flex-grow">Expert tax solutions tailored to optimize returns and ensure compliance for both individuals and businesses.</p>
-            <a href="/P&C" className="btn-secondary mt-auto">Learn More</a>
+      {/* What We Do Section */}
+<section id="what-we-do" className="px-6 md:px-10 py-24 bg-white">
+  <h2 className="text-3xl font-bold mb-14 text-center text-gray-900">What We Do</h2>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+
+    {/* Card 1 */}
+    <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
+      <h3 className="text-lg font-semibold mb-4 text-gray-900">Tax Services (Personal & Corporate)</h3>
+      <p className="text-gray-600 text-sm mb-8">
+        Stress-free, CRA-ready tax: from first T1 to complex corporate and cross-border strategies. Proactive planning ensures accuracy, savings, and zero surprises.
+      </p>
+      <a href="/P&C" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
+        Learn more
+      </a>
+    </div>
+
+    {/* Card 2 */}
+    <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
+      <h3 className="text-lg font-semibold mb-4 text-gray-900">Accounting & Bookkeeping</h3>
+      <p className="text-gray-600 text-sm mb-8">
+        Stress-free, CRA-ready tax: from first T1 to complex corporate and cross-border strategies. Proactive planning ensures accuracy, savings, and zero surprises.
+      </p>
+      <a href="/B&A" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
+        Learn more
+      </a>
+    </div>
+
+    {/* Card 3 */}
+    <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
+      <h3 className="text-lg font-semibold mb-4 text-gray-900">Strategic Financial Planning</h3>
+      <p className="text-gray-600 text-sm mb-8">
+        Stage-of-life financial planning that optimizes saving, taxes, benefits, debt, housing, investing, and retirement timing—turning decisions into confident, compounding progress.
+      </p>
+      <a href="/SFP" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
+        Learn more
+      </a>
+    </div>
+
+    {/* Card 4 */}
+    <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
+      <h3 className="text-lg font-semibold mb-4 text-gray-900">Technology Solutions</h3>
+      <p className="text-gray-600 text-sm mb-8">
+        Turn chaos into a connected back office with the right tools, clean integrations, automation and training—so systems talk, teams move faster, decisions improve.
+      </p>
+      <a href="/TS" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
+        Learn more
+      </a>
+    </div>
+
+    {/* Card 5 */}
+    <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
+      <h3 className="text-lg font-semibold mb-4 text-gray-900">CFO Advisory & Governance</h3>
+      <p className="text-gray-600 text-sm mb-8">
+        Clean, board-ready finance—on-time closes, clear forecasts, owner structure and succession, multi-entity reporting, NFP support, and Canada-US setups—for safer, faster decisions.
+      </p>
+      <a href="/CFO" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
+        Learn more
+      </a>
+    </div>
+
+    {/* Card 6 (Special) */}
+   <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
+  {/* Ribbon */}
+  <div className="special-ribbon">
+    <span>★ SPECIAL ★</span>
+  </div>
+
+  <h3 className="text-lg font-semibold mb-4 text-gray-900">
+    Disability & Life Planning
+  </h3>
+  <p className="text-gray-600 text-sm mb-8">
+    Compassionate, simple help for DTC/COSP, disability, accidents, job loss,
+    separation, and bereavement—benefits, paperwork, and tax-smart steps handled.
+  </p>
+  <a
+    href="#"
+    className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition"
+  >
+    Learn more
+  </a>
+</div>
+
+
+  </div>
+</section>
+
+      {/* Who We Serve */}
+      <section className="bg-white px-6 md:px-10 py-24">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 items-center">
+          <div>
+            <h2 className="text-3xl font-bold mb-4">Who We Serve</h2>
+            <p className="text-gray-700">From newcomers and families to business owners and global enterprises, our services are tailored to your unique needs.</p>
           </div>
-          {/* Card 2 */}
-          <div className="card-modern flex flex-col justify-between h-full">
-            <h3 className="mb-5">Strategic Financial Planning</h3>
-            <p className="text-gray-600 text-base mb-7 flex-grow">Customized strategies to help you grow, protect and manage your wealth with confidence.</p>
-            <a href="/SFP" className="btn-secondary mt-auto">Learn More</a>
-          </div>
-          {/* Card 3 */}
-          <div className="card-modern flex flex-col justify-between h-full">
-            <h3 className="mb-5">Bookkeeping & Accounting</h3>
-            <p className="text-gray-600 text-base mb-7 flex-grow">Accurate, reliable and financial reporting to keep your business organized and audit-ready.</p>
-            <a href="/B&A" className="btn-secondary mt-auto">Learn More</a>
-          </div>
-          {/* Card 4 */}
-          <div className="card-modern flex flex-col justify-between h-full">
-            <h3 className="mb-5">Systems Implementation</h3>
-            <p className="text-gray-600 text-base mb-7 flex-grow">Seamless setup and integration of accounting systems to streamline operations and improve financial efficiency.</p>
-            <a href="/SSBR" className="btn-secondary mt-auto">Learn More</a>
+          <div className="md:col-span-2 grid grid-cols-3 gap-6">
+            {[
+              "Professionals & Contractors",
+              "SMEs",
+              "Systems & Technology",
+              "Newcomers to Canada",
+              "Students & Young Professionals",
+              "Faith-Based & NFP",
+              "Cross-Border Clients",
+              "Seniors & Retirees",
+              "Families & Disabilities",
+            ].map((group, i) => (
+              <div key={i} className="bg-white rounded-xl shadow-md p-4 text-center text-sm font-medium">
+                {group}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Detailed Sections */}
-      {detailedSections.map((section, index) => (
-        <section
-          key={index}
-          className={`flex flex-col md:flex-row gap-12 items-center px-6 md:px-10 py-20 ${index % 2 === 0 ? 'bg-gray-100' : 'bg-white'} ${section.reverse ? 'md:flex-row-reverse' : ''}`}
-        >
-          <div className="md:w-1/2">
-            <div className="max-w-lg mx-auto text-center md:text-left">
-              <h3 className="text-2xl md:text-3xl font-semibold mb-6">{section.title}</h3>
-              <p className="mb-8 text-gray-700 text-lg">{section.text}</p>
-              <a href={
-                section.title === 'Personal & Corporate Tax' ? '/P&C' :
-                section.title === 'Strategic Financial Planning' ? '/SFP' :
-                section.title === 'Bookkeeping & Accounting' ? '/B&A' :
-                section.title === 'Systems Implementation' ? '/SSBR' :
-                '#'
-              } className="btn-primary">View more</a>
-            </div>
-          </div>
-          <div className="md:w-1/2 flex flex-col items-center">
-            <img
-              src={section.img1}
-              alt={section.title}
-              className="rounded-xl shadow-lg mb-4 w-full max-w-md h-96 aspect-[4/3] object-cover mx-auto"
-            />
-            {section.img2 && (
-              <img
-                src={section.img2}
-                alt={section.title + ' alt'}
-                className="rounded-xl shadow-lg w-full max-w-md h-96 aspect-[4/3] object-cover mx-auto"
-              />
-            )}
-          </div>
-        </section>
-      ))}
+      {/* Service Detail Sections */}
+      {services.map((s, i) => (
+  <section
+    key={i}
+    className={`flex flex-col md:flex-row ${
+      i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
+    } items-center gap-10 px-6 md:px-10 py-20 transition`}
+  >
+    <div className="md:w-1/2 space-y-6">
+      <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>
+      <p className="text-gray-700">{s.text}</p>
+      <a href="#" className="btn-primary">Learn More</a>
+    </div>
+
+    <div className="md:w-1/2 flex flex-col gap-4">
+      <img
+        src={s.img1}
+        alt={s.title}
+        className="rounded-xl shadow-md w-full object-cover"
+      />
+    </div>
+  </section>
+))}
 
       {/* Resources */}
-      <section id="resources" className="px-6 md:px-10 py-24 bg-gray-50">
-        <h2 className="text-3xl font-bold mb-12 text-center">Resources</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {resources.map((resource, i) => (
-            <div key={i} className="card-modern p-0 flex flex-col h-full">
-              <img
-                src={resource.img}
-                alt={resource.title}
-                className="w-full h-40 object-cover rounded-t-xl"
-              />
-              <div className="p-6 flex flex-col flex-grow">
-                <h4 className="font-medium text-gray-900 mb-4">{resource.title}</h4>
-                <a
-                  href={resource.link}
-                  className="btn-secondary mt-auto"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Learn more
-                </a>
-              </div>
-            </div>
-          ))}
+<section className="px-6 md:px-10 py-24 bg-white">
+  <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Resources</h2>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+    {resources.map((r, i) => (
+      <div
+        key={i}
+        className="bg-white rounded-2xl shadow-lg overflow-hidden transition hover:shadow-xl flex flex-col"
+      >
+        {/* Image */}
+        <img
+          src={r.img}
+          alt={r.title}
+          className="w-full h-44 object-cover"
+        />
+
+        {/* Content */}
+        <div className="p-6 flex flex-col items-center text-center flex-grow">
+          <h4 className="font-semibold text-gray-900 text-base mb-4">
+            {r.title}
+          </h4>
+          <a
+            href={r.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-auto bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium px-6 py-2 rounded-full shadow-sm transition"
+          >
+            Learn More
+          </a>
         </div>
-      </section>
+      </div>
+    ))}
+  </div>
+</section>
+
+
 
       {/* CTA */}
-      <section className="text-center py-24 px-6 bg-white">
-        <h2 className="text-3xl font-semibold text-gray-900 mb-6">Clarity. Confidence. Growth.</h2>
-        <p className="text-gray-600 mb-10 text-lg">Your financial future starts with one smart decision.</p>
+      <section className="text-center py-20 bg-gray-50">
+        <h2 className="text-3xl font-semibold mb-4">Clarity. Confidence. Growth.</h2>
+        <p className="text-gray-600 mb-8">Your financial future starts with one smart decision.</p>
         <a href="/ContactUs" className="btn-primary">Book Now</a>
       </section>
 
-      {/* Footer */}
       <Footer />
     </div>
   );
 };
+
 
 export default HomePage;
