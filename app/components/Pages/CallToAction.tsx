@@ -6,6 +6,7 @@ interface CallToActionProps {
   subheading: string;
   buttonText: string;
   buttonLink: string;
+  backgroundImage?: string | null; // optional background image
 }
 
 const CallToAction: React.FC<CallToActionProps> = ({
@@ -13,17 +14,45 @@ const CallToAction: React.FC<CallToActionProps> = ({
   subheading,
   buttonText,
   buttonLink,
+  backgroundImage = null,
 }) => {
   return (
-    <section className="bg-gray-50 py-20 text-center border-t border-gray-200">
-      <div className="max-w-3xl mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-3">
+    <section
+      className={`py-20 text-center border-t border-gray-200 ${
+        backgroundImage ? "bg-cover bg-center bg-no-repeat text-white" : "bg-gray-50"
+      }`}
+      style={
+        backgroundImage
+          ? { backgroundImage: `url(${backgroundImage})` }
+          : undefined
+      }
+    >
+      <div
+        className={`max-w-3xl mx-auto px-6 ${
+          backgroundImage ? "bg-black/40 p-10 rounded-lg" : ""
+        }`}
+      >
+        <h2
+          className={`text-3xl md:text-4xl font-semibold mb-3 ${
+            backgroundImage ? "text-white" : "text-gray-900"
+          }`}
+        >
           {heading}
         </h2>
-        <p className="text-gray-600 mb-8 text-base md:text-lg">{subheading}</p>
+        <p
+          className={`mb-8 text-base md:text-lg ${
+            backgroundImage ? "text-gray-200" : "text-gray-600"
+          }`}
+        >
+          {subheading}
+        </p>
         <a
           href={buttonLink}
-          className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-medium px-8 py-3 rounded-full shadow-md transition"
+          className={`inline-block font-medium px-8 py-3 rounded-full shadow-md transition ${
+            backgroundImage
+              ? "bg-blue-500 hover:bg-blue-600 text-white"
+              : "bg-blue-500 hover:bg-blue-600 text-white"
+          }`}
         >
           {buttonText}
         </a>
