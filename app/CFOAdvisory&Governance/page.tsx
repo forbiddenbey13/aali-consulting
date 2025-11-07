@@ -224,7 +224,33 @@ Confident, compliant, and transparent financial operations — giving your faith
   },
   {
     title: "Cross-Border & International Planning",
-    description: `Cross-Border & International Planning`,
+    description: `Seamless tax, structure, and compliance strategies for organizations and owners operating across borders.
+
+Whether you’re expanding into the U.S., managing global subsidiaries, or navigating dual-residency issues, cross-border complexity demands clarity. Our Cross-Border & International Planning service aligns corporate structure, cashflow, payroll, and tax obligations across jurisdictions — reducing double taxation, managing risk, and keeping every entity compliant on both sides of the border.
+
+
+Our approach integrates tax intelligence with operational efficiency:
+Residency & Treaty Analysis – Determine corporate and individual tax residency, apply treaty tie-breaker rules, and document positions for CRA and IRS readiness.
+Entity Structuring – Design cross-border ownership models (OpCo/HoldCo, branch, subsidiary) that minimize tax leakage and simplify reporting.
+Double-Tax Relief & Credits – Coordinate foreign tax credits, exemptions, and withholding elections so income is taxed once — and only once.
+Payroll & Social Security Alignment – Manage CPP/EI vs. U.S. Social Security/Medicare coordination through totalization certificates and compliant payroll workflows.
+Transfer Pricing & Intercompany Flows – Establish transparent, defensible pricing models and documentation for intercompany transactions and cost-sharing.
+
+
+
+We make international operations easier to manage and monitor:
+Two-Country Filing Calendar – Consolidated view of corporate, personal, and payroll deadlines across Canada, the U.S., and other regions.
+Banking & FX Strategy – Streamline cross-currency transfers, hedging, and intercompany settlements.
+Compliance Documentation – Prepare T1134/T1135, 5471/8865, and other required forms in coordination with your U.S. or global advisors.
+Systems Integration – Configure accounting and ERP systems for multi-currency, multi-entity consolidation and real-time dashboards.
+
+
+
+The Result:
+A cross-border structure that’s tax-efficient, compliant, and strategically aligned — giving owners and CFOs the confidence to operate internationally without uncertainty or surprise.
+
+
+`,
   },
   {
     title: "Automation & Data Workflows",

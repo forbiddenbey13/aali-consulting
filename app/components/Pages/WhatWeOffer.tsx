@@ -4,8 +4,8 @@ import React from "react";
 interface OfferCard {
   title: string;
   description: string;
-  link: string;
-  special?: boolean; // optional — for "★ SPECIAL ★" ribbon
+  link?: string; // make optional
+  special?: boolean;
 }
 
 interface WhatWeOfferProps {
@@ -26,7 +26,6 @@ const WhatWeOffer: React.FC<WhatWeOfferProps> = ({ heading, cards }) => {
             key={i}
             className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition"
           >
-            {/* Optional special ribbon */}
             {card.special && (
               <div className="absolute top-4 right-4 bg-yellow-400 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
                 ★ SPECIAL ★
@@ -37,12 +36,16 @@ const WhatWeOffer: React.FC<WhatWeOfferProps> = ({ heading, cards }) => {
               {card.title}
             </h3>
             <p className="text-gray-600 text-sm mb-8">{card.description}</p>
-            <a
-              href={card.link}
-              className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition"
-            >
-              Learn more
-            </a>
+
+            {/* Only show button if link exists */}
+            {card.link && (
+              <a
+                href={card.link}
+                className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition"
+              >
+                Learn more
+              </a>
+            )}
           </div>
         ))}
       </div>
