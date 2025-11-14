@@ -24,6 +24,48 @@ h1 {
   @apply text-4xl md:text-5xl font-extrabold leading-tight;
   color: var(--color-text-dark);
 }
+.special-ribbon {
+  position: absolute;
+  top: 40px;
+  right: -22px;
+  width: 140px;
+  height: 26px;
+  background: #ef4444; /* Tailwind red-500 */
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 26px;
+  transform: rotate(45deg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.special-ribbon span {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.special-ribbon::before,
+.special-ribbon::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+}
+
+.special-ribbon::before {
+  left: -13px;
+  border-right: 13px solid #ef4444;
+}
+
+.special-ribbon::after {
+  right: -13px;
+  border-left: 13px solid #ef4444;
+}
+
 
 h2 {
   @apply text-3xl md:text-4xl font-bold;
