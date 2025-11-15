@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
 import emailjs from "@emailjs/browser";
-import "./contact-us.css";
+// import "./contact-us.css";
 
 import { db } from "@/firebase";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
