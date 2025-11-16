@@ -1,49 +1,60 @@
-export async function sendBookingEmail(templateParams: any) {
+import { access } from "fs";
+
+export async function sendBookingEmailToBusiness(templateParams: any) {
+  return sendEmail({
+    ...templateParams,
+    to_email: process.env.NEXT_PUBLIC_BUSINESS_EMAIL,  // send to you
+  });
+}
+
+export async function sendBookingEmailToClient(templateParams: any) {
+  return sendEmail({
+    ...templateParams,
+    to_email: templateParams.clientEmail, // send to client
+  });
+}
+
+async function sendEmail(templateParams: any) {
   try {
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
     const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const publicKey  = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;   // REQUIRED
-    const privateKey = process.env.EMAILJS_PRIVATE_KEY;  // OPTIONAL (strict mode)
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    const privateKey = process.env.EMAILJS_PRIVATE_KEY;
 
-    if (!serviceId || !templateId || !publicKey) {
-      console.error("Missing EmailJS environment variables:", {
+    if (!serviceId || !templateId || !publicKey || !privateKey) {
+      console.error("Missing EmailJS variables:", {
         serviceId,
         templateId,
         publicKey,
-        privateKey
+        privateKey,
       });
       throw new Error("EmailJS configuration error");
-    }
-
-    const body: any = {
-      service_id: serviceId,
-      template_id: templateId,
-      user_id: publicKey,         // REQUIRED ALWAYS
-      template_params: templateParams,
-    };
-
-    if (privateKey) {
-      body.accessToken = privateKey;  // If exists, EmailJS uses strict mode
     }
 
     const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${privateKey}`, // REQUIRED FOR STRICT MODE
       },
-      body: JSON.stringify(body)
+      body: JSON.stringify({
+        service_id: serviceId,
+        template_id: templateId,
+        user_id: publicKey,
+        accessToken: privateKey,
+        template_params: templateParams,
+      }),
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error("EmailJS error:", errorText);
-      throw new Error("Failed to send confirmation email");
+      const err = await response.text();
+      console.error("EmailJS error:", err);
+      throw new Error("Failed to send email");
     }
 
     return true;
-
-  } catch (error) {
-    console.error("Email sending failed:", error);
+  } catch (err) {
+    console.error("Email sending failed:", err);
     return false;
   }
 }

@@ -1,98 +1,45 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { checkSlotAvailability, createBooking } from '@/lib/googleCalendar';
-import { addDoc, collection } from 'firebase/firestore';
-import { db } from '@/firebase';
-import { sendBookingEmail } from '@/lib/sendEmail';
+import {
+  sendBookingEmailToBusiness,
+  sendBookingEmailToClient,
+} from "@/lib/sendEmail";
 
-export async function POST(request: NextRequest) {
+export async function POST(req: Request) {
   try {
-    const body = await request.json();
+    const data = await req.json();
+
     const {
-      date = "",
-      time = "",
-      firstName = "",
-      lastName = "",
-      email = "",
-      phone = "",
-      service = "",
-      notes = "",
-    } = body;
-
-    // Validate required fields
-    if (!date || !time || !firstName || !lastName || !email || !service) {
-      return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 }
-      );
-    }
-
-    // Check calendar availability
-    const isAvailable = await checkSlotAvailability({
-      date,
-      time,
-      duration: 60,
-    });
-
-    if (!isAvailable) {
-      return NextResponse.json(
-        { error: "This time slot is no longer available" },
-        { status: 409 }
-      );
-    }
-
-    // Create event
-    const { eventId } = await createBooking(
-      { date, time, duration: 60 },
-      { firstName, lastName, email, phone, service, notes }
-    );
-
-    // Save to Firestore
-    const bookingData = {
-      eventId,
-      date,
-      time,
-      service,
       firstName,
       lastName,
       email,
       phone,
-      notes,
-      status: "confirmed",
-      createdAt: new Date().toISOString(),
-    };
-
-    const docRef = await addDoc(collection(db, "bookingSlots"), bookingData);
-
-    // -----------------------------
-    // 📧 SEND EMAIL USING EMAILJS
-    // -----------------------------
-    const emailSuccess = await sendBookingEmail({
-      firstName,
-      lastName,
-      email,
-      phone: phone || "",
       service,
       date,
       time,
+      notes,
+    } = data;
+
+    const templateParams = {
+      firstName: firstName || "",
+      lastName: lastName || "",
+      service: service || "",
+      date: date || "",
+      time: time || "",
       notes: notes || "",
-    });
+      email: email || "",
+      phone: phone || "",
+      clientEmail: email || "", // actual target
+    };
 
-    if (!emailSuccess) {
-      console.warn("Booking created, but email failed to send.");
-    }
+    // Send to business first
+    await sendBookingEmailToBusiness(templateParams);
 
-    return NextResponse.json({
-      success: true,
-      bookingId: docRef.id,
-      eventId,
-      emailSent: emailSuccess,
-    });
+    // Send to client
+    await sendBookingEmailToClient(templateParams);
 
-  } catch (error: any) {
-    console.error("Error creating booking:", error);
-    return NextResponse.json(
-      { error: error.message || "Failed to create booking" },
-      { status: 500 }
-    );
+    return Response.json({ success: true });
+
+  } catch (error) {
+    console.error("Booking creation failed:", error);
+    return Response.json({ success: false }, { status: 500 });
   }
 }
