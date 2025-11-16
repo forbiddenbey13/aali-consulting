@@ -55,7 +55,7 @@ const Header: React.FC = () => {
                   </li>
                   <li>
                     <Link
-                      href="/B&A"
+                      href="/Bookkeeping&Accounting"
                       className="block px-4 py-2 hover:bg-gray-100"
                       onClick={() => setOpenMenu(null)}
                     >
@@ -98,7 +98,7 @@ const Header: React.FC = () => {
                 <ul className="py-2 text-sm text-gray-700">
                   <li>
                     <Link
-                      href="/Newcomers-Work"
+                      href="/NCW&E"
                       className="block px-4 py-2 hover:bg-gray-100"
                       onClick={() => setOpenMenu(null)}
                     >
@@ -107,7 +107,7 @@ const Header: React.FC = () => {
                   </li>
                   <li>
                     <Link
-                      href="/Newcomers-Money"
+                      href="/NMB&LF"
                       className="block px-4 py-2 hover:bg-gray-100"
                       onClick={() => setOpenMenu(null)}
                     >
