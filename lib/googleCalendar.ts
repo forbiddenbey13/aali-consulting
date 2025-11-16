@@ -1,205 +1,111 @@
-import { google } from 'googleapis';
+import { google } from "googleapis";
 
-const SCOPES = ['https://www.googleapis.com/auth/calendar'];
-const CALENDAR_ID = process.env.GOOGLE_CALENDAR_ID;
+// Parse service account JSON from env
+const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY || "{}");
 
-// -----------------------
-// AUTH
-// -----------------------
-const getServiceAccountAuth = () => {
+if (!serviceAccount.client_email || !serviceAccount.private_key) {
+  throw new Error("❌ Missing GOOGLE_SERVICE_ACCOUNT_KEY env variable");
+}
+
+// Create JWT auth client
+const auth = new google.auth.JWT({
+  email: serviceAccount.client_email,
+  key: serviceAccount.private_key,
+  scopes: ["https://www.googleapis.com/auth/calendar"],
+});
+
+// Calendar instance
+const calendar = google.calendar({ version: "v3", auth });
+
+/* ---------------------------------------------
+   Format date + time to RFC3339
+---------------------------------------------- */
+function buildDateTime(date: string, time: string) {
+  return new Date(`${date}T${time}:00`).toISOString();
+}
+
+/* ---------------------------------------------
+   GET BOOKED SLOTS
+---------------------------------------------- */
+export async function getBookedSlots(startDate: string, endDate: string) {
   try {
-    const keyString = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
-    
-    if (!keyString) {
-      throw new Error('GOOGLE_SERVICE_ACCOUNT_KEY environment variable is not set');
-    }
-
-    const credentials = JSON.parse(keyString);
-
-    if (!credentials.private_key || !credentials.client_email) {
-      throw new Error('Invalid service account credentials format');
-    }
-
-    return new google.auth.GoogleAuth({
-      credentials,
-      scopes: SCOPES,
+    const events = await calendar.events.list({
+      calendarId: process.env.GOOGLE_CALENDAR_ID!,
+      timeMin: new Date(startDate).toISOString(),
+      timeMax: new Date(endDate).toISOString(),
+      singleEvents: true,
+      orderBy: "startTime",
     });
-  } catch (error: any) {
-    console.error('Error parsing service account credentials:', error.message);
-    throw new Error(`Invalid Google service account credentials: ${error.message}`);
+
+    return events.data.items || [];
+  } catch (err: any) {
+    console.error("❌ Error fetching booked slots:", err.message);
+    throw new Error("Failed to fetch booked slots");
   }
-};
+}
 
-export const getCalendarClient = async () => {
-  if (!CALENDAR_ID) {
-    throw new Error('GOOGLE_CALENDAR_ID environment variable is not set');
-  }
-
-  const auth = getServiceAccountAuth();
-  const authClient = await auth.getClient();
-  
-  return google.calendar({ version: 'v3', auth: authClient });
-};
-
-// -----------------------
-// TYPES
-// -----------------------
-export interface BookingSlot {
+/* ---------------------------------------------
+   CHECK SLOT AVAILABILITY
+---------------------------------------------- */
+export async function checkSlotAvailability({
+  date,
+  time,
+  duration,
+}: {
   date: string;
   time: string;
-  duration?: number;
+  duration: number;
+}) {
+  const start = buildDateTime(date, time);
+  const end = new Date(new Date(start).getTime() + duration * 60000).toISOString();
+
+  const events = await getBookedSlots(start, end);
+
+  return events.length === 0; // no conflicts
 }
 
-export interface BookingDetails {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone?: string;
-  service: string;
-  notes?: string;
-}
-
-// -----------------------
-// CHECK SLOT AVAILABILITY
-// -----------------------
-export const checkSlotAvailability = async (slot: BookingSlot): Promise<boolean> => {
-  try {
-    const calendar = await getCalendarClient();
-    
-    const startDateTime = new Date(`${slot.date}T${slot.time}:00`);
-    const endDateTime = new Date(startDateTime.getTime() + (slot.duration || 60) * 60000);
-
-    const response = await calendar.events.list({
-      calendarId: CALENDAR_ID!,
-      timeMin: startDateTime.toISOString(),
-      timeMax: endDateTime.toISOString(),
-      singleEvents: true,
-    });
-
-    return (response.data.items?.length || 0) === 0;
-  } catch (error: any) {
-    console.error('Error checking slot availability:', error.message);
-    if (error.code === 404) {
-      throw new Error('Calendar not found. Check GOOGLE_CALENDAR_ID and sharing settings.');
-    }
-    throw error;
+/* ---------------------------------------------
+   CREATE BOOKING EVENT
+---------------------------------------------- */
+export async function createBooking(
+  { date, time, duration }: { date: string; time: string; duration: number },
+  customer: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone?: string;
+    service: string;
+    notes?: string;
   }
-};
+) {
+  const start = buildDateTime(date, time);
+  const end = new Date(new Date(start).getTime() + duration * 60000).toISOString();
 
-// -----------------------
-// GET BOOKED SLOTS
-// -----------------------
-export const getBookedSlots = async (
-  startDate: string,
-  endDate: string
-): Promise<BookingSlot[]> => {
+  const event = {
+    summary: `${customer.service} - ${customer.firstName} ${customer.lastName}`,
+    description: `
+Service: ${customer.service}
+Name: ${customer.firstName} ${customer.lastName}
+Email: ${customer.email}
+Phone: ${customer.phone || "N/A"}
+Notes: ${customer.notes || "None"}
+    `.trim(),
+
+    start: { dateTime: start, timeZone: "America/Toronto" },
+    end: { dateTime: end, timeZone: "America/Toronto" },
+  };
+
   try {
-    const calendar = await getCalendarClient();
-
-    const response = await calendar.events.list({
-      calendarId: CALENDAR_ID!,
-      timeMin: new Date(`${startDate}T00:00:00`).toISOString(),
-      timeMax: new Date(`${endDate}T23:59:59`).toISOString(),
-      singleEvents: true,
-      orderBy: 'startTime',
-    });
-
-    const bookedSlots: BookingSlot[] = [];
-    
-    response.data.items?.forEach((event) => {
-      if (event.start?.dateTime) {
-        const startDate = new Date(event.start.dateTime);
-        const endDate = new Date(event.end?.dateTime || event.start.dateTime);
-        const duration = (endDate.getTime() - startDate.getTime()) / 60000;
-
-        bookedSlots.push({
-          date: startDate.toISOString().split('T')[0],
-          time: `${String(startDate.getHours()).padStart(2, '0')}:${String(startDate.getMinutes()).padStart(2, '0')}`,
-          duration,
-        });
-      }
-    });
-
-    return bookedSlots;
-  } catch (error: any) {
-    console.error('Error getting booked slots:', error.message);
-    if (error.code === 404) {
-      throw new Error('Calendar not found. Check GOOGLE_CALENDAR_ID and sharing settings.');
-    }
-    throw error;
-  }
-};
-
-// -----------------------
-// CREATE BOOKING (NO ATTENDEES, NO MEET LINK)
-// -----------------------
-export const createBooking = async (
-  slot: BookingSlot,
-  details: BookingDetails
-): Promise<{ eventId: string }> => {
-  try {
-    const calendar = await getCalendarClient();
-    
-    const startDateTime = new Date(`${slot.date}T${slot.time}:00`);
-    const endDateTime = new Date(startDateTime.getTime() + (slot.duration || 60) * 60000);
-
-    const event = {
-      summary: `${details.service} - ${details.firstName} ${details.lastName}`,
-      description: `
-Consultation Booking
-
-Client: ${details.firstName} ${details.lastName}
-Email: ${details.email}
-Phone: ${details.phone || 'N/A'}
-Service: ${details.service}
-
-Notes: ${details.notes || 'None'}
-      `.trim(),
-      start: {
-        dateTime: startDateTime.toISOString(),
-        timeZone: 'America/Toronto',
-      },
-      end: {
-        dateTime: endDateTime.toISOString(),
-        timeZone: 'America/Toronto',
-      },
-      reminders: {
-        useDefault: false,
-        overrides: [
-          { method: 'popup', minutes: 60 },
-          { method: 'popup', minutes: 1440 }, // 24 hrs
-        ],
-      },
-      colorId: '9',
-    };
-
     const response = await calendar.events.insert({
-      calendarId: CALENDAR_ID!,
-      requestBody: event,
+      calendarId: process.env.GOOGLE_CALENDAR_ID!,
+      requestBody: event, // <-- IMPORTANT
     });
 
     return {
-      eventId: response.data.id || '',
+      eventId: response.data.id,
     };
-  } catch (error: any) {
-    console.error('Error creating booking:', error.message);
-    throw error;
+  } catch (err: any) {
+    console.error("❌ Error creating event:", err.message);
+    throw new Error("Failed to create booking");
   }
-};
-
-// -----------------------
-// CANCEL BOOKING
-// -----------------------
-export const cancelBooking = async (eventId: string): Promise<void> => {
-  try {
-    const calendar = await getCalendarClient();
-    
-    await calendar.events.delete({
-      calendarId: CALENDAR_ID!,
-      eventId,
-    });
-  } catch (error: any) {
-    console.error('Error canceling booking:', error.message);
-    throw error;
-  }
-};
+}
