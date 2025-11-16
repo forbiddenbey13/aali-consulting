@@ -1,23 +1,83 @@
+import { NextRequest, NextResponse } from "next/server";
+import { checkSlotAvailability, createBooking } from "@/lib/googleCalendar";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "@/firebase";
+
 import {
   sendBookingEmailToBusiness,
   sendBookingEmailToClient,
 } from "@/lib/sendEmail";
 
-export async function POST(req: Request) {
+export async function POST(request: NextRequest) {
   try {
-    const data = await req.json();
-
+    const body = await request.json();
     const {
+      date = "",
+      time = "",
+      firstName = "",
+      lastName = "",
+      email = "",
+      phone = "",
+      service = "",
+      notes = "",
+    } = body;
+
+    // -----------------------------
+    // VALIDATION
+    // -----------------------------
+    if (!date || !time || !firstName || !lastName || !email || !service) {
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 }
+      );
+    }
+
+    // -----------------------------
+    // CHECK CALENDAR SLOT
+    // -----------------------------
+    const isAvailable = await checkSlotAvailability({
+      date,
+      time,
+      duration: 60,
+    });
+
+    if (!isAvailable) {
+      return NextResponse.json(
+        { error: "This time slot is no longer available" },
+        { status: 409 }
+      );
+    }
+
+    // -----------------------------
+    // CREATE GOOGLE CALENDAR EVENT
+    // -----------------------------
+    const { eventId } = await createBooking(
+      { date, time, duration: 60 },
+      { firstName, lastName, email, phone, service, notes }
+    );
+
+    // -----------------------------
+    // SAVE TO FIRESTORE
+    // -----------------------------
+    const bookingData = {
+      eventId,
+      date,
+      time,
+      service,
       firstName,
       lastName,
       email,
       phone,
-      service,
-      date,
-      time,
       notes,
-    } = data;
+      status: "confirmed",
+      createdAt: new Date().toISOString(),
+    };
 
+    const docRef = await addDoc(collection(db, "bookingSlots"), bookingData);
+
+    // -----------------------------
+    // EMAIL TEMPLATE PARAMETERS
+    // -----------------------------
     const templateParams = {
       firstName: firstName || "",
       lastName: lastName || "",
@@ -25,21 +85,29 @@ export async function POST(req: Request) {
       date: date || "",
       time: time || "",
       notes: notes || "",
-      email: email || "",
+      email: email || "", // shows in template
       phone: phone || "",
-      clientEmail: email || "", // actual target
+      clientEmail: email || "", // used only for sending
     };
 
-    // Send to business first
-    await sendBookingEmailToBusiness(templateParams);
+    // -----------------------------
+    // SEND EMAILS
+    // -----------------------------
+    const businessEmailSent = await sendBookingEmailToBusiness(templateParams);
+    const clientEmailSent = await sendBookingEmailToClient(templateParams);
 
-    // Send to client
-    await sendBookingEmailToClient(templateParams);
-
-    return Response.json({ success: true });
-
-  } catch (error) {
-    console.error("Booking creation failed:", error);
-    return Response.json({ success: false }, { status: 500 });
+    return NextResponse.json({
+      success: true,
+      bookingId: docRef.id,
+      eventId,
+      businessEmailSent,
+      clientEmailSent,
+    });
+  } catch (error: any) {
+    console.error("Error creating booking:", error);
+    return NextResponse.json(
+      { error: error.message || "Failed to create booking" },
+      { status: 500 }
+    );
   }
 }
