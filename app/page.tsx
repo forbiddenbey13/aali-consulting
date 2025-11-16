@@ -30,32 +30,33 @@ const HomePage: React.FC = () => {
     {
       title: "Tax Services (Personal & Corporate)",
       text: "Stress-free, CRA-ready tax done right—whether it’s your first T1 or a complex T2 with cross-border twists. We handle proactive planning, RRSP/TFSA, dividends, installments, plain-English guidance, and audit-readiness.",
-      img1: "/Web Assets/NEW/Personal & Corporate Tax/tax-flag.jpg",
+      img1: "/Web Assets/NEW/Personal & Corporate Tax/istockphoto-1485471985-612x612.jpg",
+      img2: "/Web Assets/Images/NEW/Homepage/1. Personal & Corporate Tax/istockphoto-1685996049-612x612.jpg",
     },
     {
       title: "Accounting & Bookkeeping",
       text: "Know your numbers at a glance. We deliver on-schedule reconciliations (banks, AR/AP, GST/HST), payroll, slips, Shopify/Amazon mapping, and NFP fund accounting—CRA-ready and decision-ready.",
-      img1: "/Web Assets/NEW/Accounting & Bookkeeping/accounting.jpg",
+      img1: "/Web Assets/Images/NEW/Homepage/2. Accounting & Bookkeeping/premium_photo-1679496829715-364b4a17e087.jpeg",
     },
     {
       title: "Strategic Financial Planning",
       text: "From student basics to retirement and legacy, we help you plan tax-smart saving and investing—TFSA/RRSP, RESP, CPP/OAS timing, and debt strategy—so every decision compounds toward your goals.",
-      img1: "/Web Assets/NEW/Strategic Financial Planning/finance.jpg",
+      img1: "/Web Assets/Images/NEW/Homepage/3. Strategic Financial Planning/istockphoto-1313070791-612x612.jpg",
     },
     {
       title: "Systems & Technology Implementation",
       text: "We integrate QuickBooks, Xero, FreshBooks, POS, ERP (NetSuite, Sage, Intacct), and automate reporting with APIs, Dropbox, Tableau—training your team for long-term success.",
-      img1: "/Web Assets/NEW/Systems Implementation/tech.jpg",
+      img1: "/Web Assets/Images/NEW/Homepage/4. Systems Implementation/11.jpg.webp",
     },
     {
       title: "CFO Advisory & Governance",
       text: "We install monthly close discipline, FP&A, forecasting, board packs, multi-entity consolidation, and Canada–US tax governance—so leadership decides fast and sleeps well.",
-      img1: "/Web Assets/NEW/CFO/cfo.jpg",
+      img1: "/Web Assets/Images/NEW/Homepage/5. CFO Advisory & Governance/CFO Advisory.jpeg",
     },
     {
       title: "Disability & Life Planning",
       text: "Compassionate help for DTC/COSP approvals, job loss, separation, disability, and family loss. We handle forms, RDSPs, CPP survivor benefits, and probate while you focus on stability.",
-      img1: "/Web Assets/NEW/Disability/disability.jpg",
+      img1: "/Web Assets/Images/NEW/Homepage/6. Specialized Programs/job loss.jpeg",
     },
   ];
 
@@ -137,7 +138,7 @@ const HomePage: React.FC = () => {
       <p className="text-gray-600 text-sm mb-8">
         Stress-free, CRA-ready tax: from first T1 to complex corporate and cross-border strategies. Proactive planning ensures accuracy, savings, and zero surprises.
       </p>
-      <a href="/B&A" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
+      <a href="/Bookkeeping&Accounting" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
         Learn more
       </a>
     </div>
@@ -159,7 +160,7 @@ const HomePage: React.FC = () => {
       <p className="text-gray-600 text-sm mb-8">
         Turn chaos into a connected back office with the right tools, clean integrations, automation and training—so systems talk, teams move faster, decisions improve.
       </p>
-      <a href="/TS" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
+      <a href="/Systems&TechnologyImplementation" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
         Learn more
       </a>
     </div>
@@ -170,7 +171,7 @@ const HomePage: React.FC = () => {
       <p className="text-gray-600 text-sm mb-8">
         Clean, board-ready finance—on-time closes, clear forecasts, owner structure and succession, multi-entity reporting, NFP support, and Canada-US setups—for safer, faster decisions.
       </p>
-      <a href="/CFO" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
+      <a href="/CFOAdvisory&Governance" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
         Learn more
       </a>
     </div>
@@ -190,7 +191,7 @@ const HomePage: React.FC = () => {
     separation, and bereavement—benefits, paperwork, and tax-smart steps handled.
   </p>
   <a
-    href="#"
+    href="/Disability&LifePlanning"
     className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition"
   >
     Learn more
@@ -203,25 +204,38 @@ const HomePage: React.FC = () => {
 
       {/* Who We Serve */}
       <section className="bg-white px-6 md:px-10 py-24">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 items-center">
-          <div>
-            <h2 className="text-3xl font-bold mb-4">Who We Serve</h2>
-            <p className="text-gray-700">From newcomers and families to business owners and global enterprises, our services are tailored to your unique needs.</p>
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 items-center">
+          {/* Left column: Heading and description, vertically centered */}
+          <div className="flex flex-col justify-center h-full md:col-span-1">
+            <h2 className="text-4xl font-bold mb-4">Who<br />We Serve</h2>
+            <p className="text-gray-700 text-lg max-w-xs">
+              From newcomers and families to business owners and global enterprises, our services are tailored to your unique needs.
+            </p>
           </div>
-          <div className="md:col-span-2 grid grid-cols-3 gap-6">
+          {/* Right: 3x3 grid of images, some with rotation */}
+          <div className="md:col-span-2 grid grid-cols-3 gap-8 justify-items-center">
             {[
-              "Professionals & Contractors",
-              "SMEs",
-              "Systems & Technology",
-              "Newcomers to Canada",
-              "Students & Young Professionals",
-              "Faith-Based & NFP",
-              "Cross-Border Clients",
-              "Seniors & Retirees",
-              "Families & Disabilities",
+              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Professionals & Contractors.png", rotate: "-rotate-6" },
+              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/SMEs.png", rotate: "" },
+              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Systems & Technology.png", rotate: "rotate-6" },
+              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Newcomers to Canada.png", rotate: "" },
+              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Students & Young Professionals.png", rotate: "" },
+              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Faith-Based & NFP.png", rotate: "" },
+              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Canada-US Cross-Border.png", rotate: "-rotate-6" },
+              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Seniors & Retirees.png", rotate: "" },
+              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Families & Disabilites.png", rotate: "rotate-6" },
             ].map((group, i) => (
-              <div key={i} className="bg-white rounded-xl shadow-md p-4 text-center text-sm font-medium">
-                {group}
+              <div
+                key={i}
+                className={`bg-gray-100 rounded-2xl shadow-lg flex items-center justify-center w-[180px] h-[180px] md:w-[200px] md:h-[200px] ${group.rotate}`}
+                style={{ overflow: "hidden" }}
+              >
+                <img
+                  src={group.img}
+                  alt=""
+                  className="object-contain w-[140px] h-[140px] md:w-[160px] md:h-[160px]"
+                  draggable={false}
+                />
               </div>
             ))}
           </div>
@@ -229,28 +243,82 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Service Detail Sections */}
-      {services.map((s, i) => (
-  <section
-    key={i}
-    className={`flex flex-col md:flex-row ${
-      i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
-    } items-center gap-10 px-6 md:px-10 py-20 transition`}
-  >
-    <div className="md:w-1/2 space-y-6">
-      <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>
-      <p className="text-gray-700">{s.text}</p>
-      <a href="#" className="btn-primary">Learn More</a>
-    </div>
-
-    <div className="md:w-1/2 flex flex-col gap-4">
-      <img
-        src={s.img1}
-        alt={s.title}
-        className="rounded-xl shadow-md w-full object-cover"
-      />
-    </div>
-  </section>
-))}
+      {services.map((s, i) => {
+        // Custom layouts for the first two sections
+        if (s.title === "Accounting & Bookkeeping") {
+          return (
+            <section
+              key={i}
+              className="flex flex-col md:flex-row bg-white items-center justify-center gap-10 px-6 md:px-10 py-20 transition"
+            >
+              <div className="md:w-1/2 flex justify-center">
+                <img
+                  src={s.img1}
+                  alt={s.title}
+                  className="rounded-xl shadow-md w-[480px] h-[480px] object-cover"
+                  style={{ minWidth: 340, minHeight: 340, maxWidth: 520, maxHeight: 520 }}
+                />
+              </div>
+              <div className="md:w-1/2 flex flex-col justify-center items-start">
+                <h3 className="text-4xl font-semibold text-gray-900 mb-4">{s.title}</h3>
+                <p className="text-gray-700 text-lg mb-8">{s.text}</p>
+                <a href="#" className="btn-primary">Learn more</a>
+              </div>
+            </section>
+          );
+        }
+        if (s.title === "Tax Services (Personal & Corporate)" && s.img2) {
+          return (
+            <section
+              key={i}
+              className="flex flex-col md:flex-row bg-gray-50 items-center justify-center gap-10 px-6 md:px-10 py-20 transition"
+            >
+              <div className="md:w-1/2 flex flex-col justify-center items-start">
+                <h3 className="text-4xl font-semibold text-gray-900 mb-4">{s.title}</h3>
+                <p className="text-gray-700 text-lg mb-8">{s.text}</p>
+                <a href="#" className="btn-primary">Learn more</a>
+              </div>
+              <div className="md:w-1/2 flex flex-col gap-6 justify-center items-center">
+                <img
+                  src={s.img1}
+                  alt={s.title + ' 1'}
+                  className="rounded-xl shadow-md w-[480px] h-[240px] object-cover"
+                  style={{ minWidth: 340, minHeight: 180, maxWidth: 520, maxHeight: 280 }}
+                />
+                <img
+                  src={s.img2}
+                  alt={s.title + ' 2'}
+                  className="rounded-xl shadow-md w-[480px] h-[240px] object-cover"
+                  style={{ minWidth: 340, minHeight: 180, maxWidth: 520, maxHeight: 280 }}
+                />
+              </div>
+            </section>
+          );
+        }
+        // Default layout for other services
+        return (
+          <section
+            key={i}
+            className={`flex flex-col md:flex-row ${
+              i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
+            } items-center gap-10 px-6 md:px-10 py-20 transition`}
+          >
+            <div className="md:w-1/2 space-y-6">
+              <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>
+              <p className="text-gray-700">{s.text}</p>
+              <a href="#" className="btn-primary">Learn More</a>
+            </div>
+            <div className="md:w-1/2 flex flex-col gap-4">
+              <img
+                src={s.img1}
+                alt={s.title}
+                className="rounded-xl shadow-md w-[560px] h-[320px] object-cover mx-auto"
+                style={{ minWidth: 400, minHeight: 220, maxWidth: 640, maxHeight: 360 }}
+              />
+            </div>
+          </section>
+        );
+      })}
 
       {/* Resources */}
 <section className="px-6 md:px-10 py-24 bg-white">

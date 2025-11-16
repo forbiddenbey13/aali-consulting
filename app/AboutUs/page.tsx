@@ -1,180 +1,276 @@
 "use client";
-import Head from 'next/head';
-import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import React from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
-// The main AboutUsPage component.
-// It displays information about the company, including its vision, mission, and values.
-const AboutUsPage: React.FC = () => {
+const CORE_VALUES = [
+  {
+    title: "Clarity",
+    desc: "No jargon, just transparent and honest guidance.",
+    number: "1",
+  },
+  {
+    title: "Efficiency",
+    desc: "Smart systems and automation that save time and reduce stress.",
+    number: "2",
+  },
+  {
+    title: "Impact",
+    desc: "Tailored solutions that help clients grow, comply, and plan confidently.",
+    number: "3",
+  },
+];
 
-  // Data for the "Why Choose AALI?" section.
-  const reasons = [
-    {
-      title: "Personalized Attention",
-      text: "We take the time to understand your unique situation and goals.",
-      icon: (
-        // Inline SVG for the personalized attention icon.
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-12 h-12 text-blue-600">
-          <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0a4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.73 0-5.385-.68-7.798-1.996a.75.75 0 0 1-.437-.695Z" clipRule="evenodd" />
-        </svg>
-      ),
-    },
-    {
-      title: "Strategic Insights",
-      text: "With deep expertise in tax, accounting, and business strategy, we help you make informed decisions that support sustainable growth.",
-      icon: (
-        // Inline SVG for the strategic insights icon.
-        <img src="Assets/About Me Section/10789361.png" alt="Insights Icon" className="w-12 h-12 text-blue-600" />
-      ),
-    },
-    {
-      title: "Transparent Communication",
-      text: "No jargon, no surprises—just clear, honest advice you can rely on every step of the way.",
-      icon: (
-        // Inline SVG for the transparent communication icon.
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-12 h-12 text-blue-600">
-          <path d="M7.875 14.25a.75.75 0 0 1-.75.75H4.5a.75.75 0 0 1-.75-.75v-1.5a.75.75 0 0 1 .75-.75h2.625a.75.75 0 0 1 .75.75v1.5ZM7.5 17.25a.75.75 0 0 1-.75.75H4.5a.75.75 0 0 1-.75-.75v-1.5a.75.75 0 0 1 .75-.75h2.625a.75.75 0 0 1 .75.75v1.5ZM7.875 10.5a.75.75 0 0 1-.75.75H4.5a.75.75 0 0 1-.75-.75v-1.5a.75.75 0 0 1 .75-.75h2.625a.75.75 0 0 1 .75.75v1.5ZM19.5 7.5a.75.75 0 0 1-.75.75H13.5a.75.75 0 0 1-.75-.75v-1.5a.75.75 0 0 1 .75-.75h5.25a.75.75 0 0 1 .75.75v1.5ZM19.5 10.5a.75.75 0 0 1-.75.75H13.5a.75.75 0 0 1-.75-.75v-1.5a.75.75 0 0 1 .75-.75h5.25a.75.75 0 0 1 .75.75v1.5ZM19.5 13.5a.75.75 0 0 1-.75.75H13.5a.75.75 0 0 1-.75-.75v-1.5a.75.75 0 0 1 .75-.75h5.25a.75.75 0 0 1 .75.75v1.5ZM19.5 16.5a.75.75 0 0 1-.75.75H13.5a.75.75 0 0 1-.75-.75v-1.5a.75.75 0 0 1 .75-.75h5.25a.75.75 0 0 1 .75.75v1.5ZM12.75 3a.75.75 0 0 0-1.5 0v.195a4.78 4.78 0 0 0-1.745.867.75.75 0 0 0-.256.787l.385.925A1.5 1.5 0 0 1 9.407 7.5H4.5A2.25 2.25 0 0 0 2.25 9.75v5.25c0 1.242.827 2.25 1.875 2.25H7.5a.75.75 0 0 0 .75.75h-.375a.75.75 0 0 0 0 1.5h.375c.621 0 1.125.504 1.125 1.125v.375a.75.75 0 0 0 1.5 0v-.375c0-.621.504-1.125 1.125-1.125h.375a.75.75 0 0 0 0-1.5h-.375a.75.75 0 0 0 .75-.75h2.25A2.25 2.25 0 0 0 21.75 15V9.75A2.25 2.25 0 0 0 19.5 7.5h-4.907a1.5 1.5 0 0 1-1.319-1.897l.385-.925a.75.75 0 0 0-.256-.787 4.78 4.78 0 0 0-1.745-.867V3Z" />
-        </svg>
-      ),
-    },
-    {
-      title: "Locally Rooted, Nationally Aware",
-      text: "Proudly based in Canada, we bring a local understanding with awareness of broader trends and regulations that affect you.",
-      icon: (
-        // Inline SVG for the map icon.
-        <img src="Assets/About Me Section/north-america-silhouette-2993fc-md.png" alt="Map Icon" className="w-12 h-12 text-blue-600" />
-      ),
-    },
-  ];
+const WHO_WE_HELP = [
+  {
+    title: "Individuals & Families",
+    desc: "Personalized tax, planning, and financial guidance that simplifies money management, supports major life changes, and builds long-term stability.",
+  },
+  {
+    title: "Businesses & Entrepreneurs",
+    desc: "Comprehensive accounting, tax, and system solutions that streamline operations, improve profitability, and drive sustainable business growth.",
+  },
+  {
+    title: "Newcomers & Expats",
+    desc: "Step-by-step programs for banking, taxes, housing, and employment to help newcomers and expats confidently build their life in Canada.",
+  },
+  {
+    title: "Faith-Based & Nonprofits",
+    desc: "Modern governance, reporting, and compliance solutions that strengthen transparency, community trust, and long-term financial sustainability.",
+  },
+];
+
+const WHY_CHOOSE = [
+  {
+    icon: (
+      <svg className="w-12 h-12 mx-auto text-blue-600" fill="none" viewBox="0 0 48 48"><path d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Z" fill="#E3F0FF"/><path d="M24 34c-5.523 0-10-4.477-10-10S18.477 14 24 14s10 4.477 10 10-4.477 10-10 10Zm0-18a8 8 0 100 16 8 8 0 000-16Z" fill="#2563EB"/></svg>
+    ),
+    title: "Personalized Attention",
+    desc: "We take the time to understand your unique situation and goals.",
+  },
+  {
+    icon: (
+      <svg className="w-12 h-12 mx-auto text-blue-600" fill="none" viewBox="0 0 48 48"><path d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Z" fill="#E3F0FF"/><path d="M32 24a8 8 0 11-16 0 8 8 0 0116 0Z" fill="#2563EB"/></svg>
+    ),
+    title: "Locally Rooted, Nationally Aware",
+    desc: "Proudly based in Canada, we bring a local understanding with awareness of broader trends and regulations that affect you.",
+  },
+  {
+    icon: (
+      <svg className="w-12 h-12 mx-auto text-blue-600" fill="none" viewBox="0 0 48 48"><path d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Z" fill="#E3F0FF"/><path d="M24 14v20M14 24h20" stroke="#2563EB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+    ),
+    title: "Strategic Insights",
+    desc: "With deep expertise in tax, accounting, and business strategy, we help you make informed decisions that support sustainable growth.",
+  },
+  {
+    icon: (
+      <svg className="w-12 h-12 mx-auto text-blue-600" fill="none" viewBox="0 0 48 48"><path d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Z" fill="#E3F0FF"/><path d="M16 24h16M24 16v16" stroke="#2563EB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+    ),
+    title: "Transparent Communication",
+    desc: "No jargon, no surprises—just clear, honest advice you can rely on every step of the way.",
+  },
+];
+
+const FAQS = [
+  {
+    q: "What makes AALI Consulting different from other firms?",
+    a: "AALI Consulting combines personalized attention, local expertise, and strategic insights to deliver clear, actionable solutions for every client.",
+  },
+  {
+    q: "Who do you work with?",
+    a: "We work with individuals, families, entrepreneurs, newcomers, expats, and nonprofits across Canada and the United States.",
+  },
+  {
+    q: "How do your consulting services work?",
+    a: "We start with a consultation to understand your needs, then tailor our services to help you achieve your goals with clarity and confidence.",
+  },
+  {
+    q: "Where are your services available?",
+    a: "Our services are available across Canada and the United States, both in-person and virtually.",
+  },
+];
+
+export default function AboutUsPage() {
+  const [openFaq, setOpenFaq] = React.useState<number | null>(null);
 
   return (
-    // Main container with a modern font and a light gray background.
     <div className="font-sans text-gray-800 bg-white min-h-screen">
-      
-      {/* Navbar section */}
       <Header />
 
-      {/* Hero section with a background gradient */}
-      <section className="relative overflow-hidden px-4 md:px-10 py-10 md:py-16 flex items-center justify-center min-h-[300px]">
-        {/* Dynamic background (animated overlay) */}
-        <div className="absolute inset-0 w-full h-full z-0">
-          <img
-            src="/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png"
-            alt="Dynamic background"
-            className="w-full h-full object-cover absolute inset-0 opacity-70 animate-fadein"
-            style={{ animation: 'fadein 8s infinite alternate' }}
-          />
-          <div className="absolute inset-0 bg-blue-900/40" />
-        </div>
-        {/* Centered content */}
-        <div className="relative z-10 flex flex-col items-center justify-center text-center w-full">
-          <img
-            src="/Web Assets/Logo Design/aali-transparent-logo.png"
-            className="mx-auto w-64 md:w-80 h-auto object-contain"
-            style={{ display: 'block' }}
-          />
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white! drop-shadow-2xl mb-2 tracking-tight">
-            <span className="font-black">Learn More About Us!</span>
-          </h1>
-          <p className="text-lg !text-white/90 max-w-2xl mx-auto mb-6 drop-shadow-lg font-bold">
-            Take a look inside our team and view our mission and vision.
-          </p>
-          <a
-            href="#vision-mission"
-            className="mt-2 bg-white/90 border border-gray-300 text-blue-900 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 font-bold inline-block"
-          >
-            Learn More
-          </a>
-        </div>
-        <style jsx>{`
-          @keyframes fadein {
-            0% { opacity: 0.7; }
-            100% { opacity: 1; }
-          }
-        `}</style>
-      </section>
-
-      {/* Who We Are section */}
-      <section className="px-4 md:px-10 py-16 md:py-24 bg-white">
-        <h2 className="text-3xl font-bold text-center mb-8 md:mb-12">Who We Are</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center max-w-6xl mx-auto">
-          {/* Left-side text block */}
-          <div className="text-gray-700 space-y-3">
-            <p>
-              AALI Consulting & Associates was founded to make financial guidance
-              accessible and understandable for individuals and 
-              small businesses across
-              Canada.
-            </p>
-            <p>
-              We believe everyone—regardless of background or business size—deserves
-              clear, professional support when navigating taxes, bookkeeping, and
-              financial planning. Our team is built on integrity, simplicity, and strategic
-              support, empowering clients to make confident financial decisions with
-              confidence. Whether you’re an entrepreneur, or growing your own
-              company, we’re here to help you thrive financially—every step of the way.
-            </p>
-          </div>
-          
-          {/* Right-side image */}
-          <div>
-            <img
-              src="/Web Assets/NEW/About Us/a-group-of-business-people-standing-together-free-png.png"
-              alt="A group of business people standing together"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Vision and Mission section */}
+      {/* Hero Section */}
       <section
-        id="vision-mission"
-        className="px-2 md:px-10 py-8 md:py-12 flex justify-center items-center bg-transparent"
+        className="relative text-center overflow-hidden"
+        style={{ backgroundColor: "#eaf6ff" }}
       >
-        <div className="w-full max-w-5xl flex flex-col md:flex-row gap-4 md:gap-0">
-          {/* Vision Card */}
-          <div className="flex-1 bg-blue-100 rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none md:rounded-br-none rounded-b-none md:rounded-b-3xl p-8 flex flex-col items-center border border-gray-300">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 text-center">Our Vision</h3>
-            <p className="text-gray-700 text-lg text-center">
-              To be the trusted partner individuals and businesses turn to<br />
-              for clear, expert financial and strategic guidance<br />
-              across Canada.
-            </p>
+        {/* Maple leaf background */}
+        <div
+          className="absolute inset-0 z-0 pointer-events-none select-none"
+          style={{
+            backgroundImage: "url('/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png')",
+            backgroundRepeat: "repeat",
+            backgroundSize: "300px",
+            opacity: 0.35,
+          }}
+        />
+        <div className="relative z-10 max-w-3xl mx-auto pt-16 md:pt-24 pb-16 md:pb-24">
+          <h1 className="text-3xl md:text-5xl font-black mb-4 leading-tight text-gray-900">
+            Empowering Businesses and<br className="hidden md:block" />
+            Individuals to Work Smarter, Not Harder
+          </h1>
+          <p className="mb-8 text-lg md:text-xl text-gray-700 font-medium">
+            AALI Consulting helps organizations and professionals streamline operations, enhance efficiency, and achieve growth through smart systems, strategy, and structure.
+          </p>
+          <div className="flex justify-center gap-4 mb-4">
+            <a
+              href="/ContactUs"
+              className="px-8 py-2.5 rounded-md font-semibold text-white shadow-md"
+              style={{
+                background: "linear-gradient(90deg, #3b82f6 0%, #2563eb 100%)",
+                boxShadow: "0 2px 8px 0 rgba(59,130,246,0.15)",
+                border: "none",
+              }}
+            >
+              Book Now
+            </a>
+            <a
+              href="#what-we-stand-for"
+              className="px-8 py-2.5 rounded-md font-semibold bg-white border border-black shadow-md text-gray-900 hover:bg-gray-100 transition"
+              style={{
+                boxShadow: "0 2px 8px 0 rgba(0,0,0,0.10)",
+              }}
+            >
+              Learn More
+            </a>
           </div>
-          {/* Divider */}
-          <div className="hidden md:block w-px bg-gray-300 mx-0" />
-          {/* Mission Card */}
-          <div className="flex-1 bg-blue-100 rounded-b-3xl md:rounded-r-3xl md:rounded-tl-none md:rounded-bl-none rounded-t-none md:rounded-t-3xl p-8 flex flex-col items-center border border-gray-300">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 text-center">Our Mission</h3>
-            <p className="text-gray-700 text-lg text-center">
-              To simplify complex financial and business challenges through personalized, transparent,<br />
-              and results-driven consulting services.
-            </p>
-          </div>
+        </div>
+        {/* SVG Wave */}
+        <div className="absolute left-0 right-0 bottom-0 w-full overflow-hidden leading-none z-20">
+          <svg
+            viewBox="0 0 1440 120"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="block w-full h-24 md:h-32"
+            preserveAspectRatio="none"
+            width="100%"
+            height="100%"
+          >
+            <path
+              d="M0,32 C360,120 1080,0 1440,96 L1440,120 L0,120 Z"
+              fill="#fff"
+            />
+          </svg>
         </div>
       </section>
 
-      {/* Why Choose AALI? section */}
-      <section className="px-4 md:px-10 py-16 md:py-24 bg-white">
-        <h2 className="text-3xl font-bold text-center mb-8 md:mb-12">Why Choose AALI?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 max-w-6xl mx-auto">
-          {reasons.map((reason, i) => (
-            <div key={i} className="flex flex-col items-center text-center p-6 bg-gray-50 rounded-xl shadow-md">
-              <div className="mb-4">
-                {reason.icon}
-              </div>
-              <h3 className="font-semibold text-lg mb-2">{reason.title}</h3>
-              <p className="text-sm text-gray-600">{reason.text}</p>
+      {/* What We Stand For */}
+      <section id="what-we-stand-for" className="bg-white py-16 px-4">
+        <h2 className="text-3xl font-bold text-center mb-4">What We Stand For</h2>
+        <p className="text-center max-w-2xl mx-auto mb-10 text-lg">
+          We believe good consulting is more than advice — it’s about giving people tools that work. That’s why every service we offer is built on three core principles:
+        </p>
+        {/* Three Step Process */}
+        {(() => {
+          const steps = [
+            {
+              number: "1",
+              title: "Clarity",
+              text: "No jargon, just transparent and honest guidance.",
+            },
+            {
+              number: "2",
+              title: "Efficiency",
+              text: "Smart systems and automation that save time and reduce stress.",
+            },
+            {
+              number: "3",
+              title: "Impact",
+              text: "Tailored solutions that help clients grow, comply, and plan confidently.",
+            },
+          ];
+          const ThreeStepProcess = require("../components/Pages/ThreeStep").default;
+          return <ThreeStepProcess heading="" steps={steps} />;
+        })()}
+      </section>
+
+      {/* Who We Help */}
+      <section className="bg-white py-16 px-4">
+        <h2 className="text-3xl font-bold text-center mb-4">Who We Help</h2>
+        <p className="text-center max-w-2xl mx-auto mb-10 text-lg">
+          From Students to CEOs — We’re Built for Every Stage of Growth. Proudly Supporting Clients Across Canada and the United States.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          {WHO_WE_HELP.map((w) => (
+            <div key={w.title} className="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-center">
+              <div className="font-semibold text-lg mb-2 text-center">{w.title}</div>
+              <div className="text-gray-600 text-center text-sm">{w.desc}</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Footer from user's request */}
+      {/* Why Choose AALI Consulting */}
+      <section className="bg-white py-16 px-4">
+        <h2 className="text-3xl font-bold text-center mb-4">Why Choose AALI Consulting</h2>
+        <p className="text-center max-w-2xl mx-auto mb-10 text-lg">
+          At AALI Consulting, you're not just getting accountants or planners — you're gaining partners who understand your goals, culture, and community.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {WHY_CHOOSE.map((item, i) => (
+            <div
+              key={item.title}
+              className="flex flex-col items-center text-center p-10 bg-white border border-gray-300 rounded-2xl"
+              style={{ minHeight: 320, boxShadow: "0 0 0 0 transparent" }}
+            >
+              <div className="mb-6">
+                {item.icon}
+              </div>
+              <div className="font-bold text-xl mb-2 text-gray-900">{item.title}</div>
+              <div className="text-gray-700 text-base">{item.desc}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="relative py-16 px-4 text-center bg-gray-100">
+        <div className="absolute inset-0">
+          <img src="/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp" alt="" className="w-full h-full object-cover opacity-30" />
+        </div>
+        <div className="relative z-10">
+          <h2 className="text-3xl font-bold mb-4 text-gray-900">Let’s Talk About Your Goals</h2>
+          <div className="flex justify-center gap-4 mb-8">
+            <a href="/ContactUs" className="bg-blue-600 text-white px-8 py-3 rounded shadow hover:bg-blue-700 font-semibold transition">Book A Consultation</a>
+            <a href="/ContactUs" className="bg-white border border-gray-400 px-8 py-3 rounded shadow font-semibold hover:bg-gray-100 transition">Contact Us</a>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      {/* FAQ Section - uses shared FAQSection component */}
+      {(() => {
+        const FAQSection = require("../components/Pages/FAQ").default;
+        const faqs = [
+          {
+            question: "What makes AALI Consulting different from other firms?",
+            answer: "AALI Consulting combines personalized attention, local expertise, and strategic insights to deliver clear, actionable solutions for every client.",
+          },
+          {
+            question: "Who do you work with?",
+            answer: "We work with individuals, families, entrepreneurs, newcomers, expats, and nonprofits across Canada and the United States.",
+          },
+          {
+            question: "How do your consulting services work?",
+            answer: "We start with a consultation to understand your needs, then tailor our services to help you achieve your goals with clarity and confidence.",
+          },
+          {
+            question: "Where are your services available?",
+            answer: "Our services are available across Canada and the United States, both in-person and virtually.",
+          },
+        ];
+        return <FAQSection heading="Frequently Asked Questions" faqs={faqs} />;
+      })()}
+
       <Footer />
     </div>
   );
-};
-
-export default AboutUsPage;
+}
