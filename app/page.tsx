@@ -204,25 +204,38 @@ const HomePage: React.FC = () => {
 
       {/* Who We Serve */}
       <section className="bg-white px-6 md:px-10 py-24">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 items-center">
-          <div>
-            <h2 className="text-3xl font-bold mb-4">Who We Serve</h2>
-            <p className="text-gray-700">From newcomers and families to business owners and global enterprises, our services are tailored to your unique needs.</p>
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 items-center">
+          {/* Left column: Heading and description, vertically centered */}
+          <div className="flex flex-col justify-center h-full md:col-span-1">
+            <h2 className="text-4xl font-bold mb-4">Who<br />We Serve</h2>
+            <p className="text-gray-700 text-lg max-w-xs">
+              From newcomers and families to business owners and global enterprises, our services are tailored to your unique needs.
+            </p>
           </div>
-          <div className="md:col-span-2 grid grid-cols-3 gap-6">
+          {/* Right: 3x3 grid of images, some with rotation */}
+          <div className="md:col-span-2 grid grid-cols-3 gap-8 justify-items-center">
             {[
-              "Professionals & Contractors",
-              "SMEs",
-              "Systems & Technology",
-              "Newcomers to Canada",
-              "Students & Young Professionals",
-              "Faith-Based & NFP",
-              "Cross-Border Clients",
-              "Seniors & Retirees",
-              "Families & Disabilities",
+              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Professionals & Contractors.png", rotate: "-rotate-6" },
+              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/SMEs.png", rotate: "" },
+              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Systems & Technology.png", rotate: "rotate-6" },
+              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Newcomers to Canada.png", rotate: "" },
+              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Students & Young Professionals.png", rotate: "" },
+              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Faith-Based & NFP.png", rotate: "" },
+              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Canada-US Cross-Border.png", rotate: "-rotate-6" },
+              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Seniors & Retirees.png", rotate: "" },
+              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Families & Disabilites.png", rotate: "rotate-6" },
             ].map((group, i) => (
-              <div key={i} className="bg-white rounded-xl shadow-md p-4 text-center text-sm font-medium">
-                {group}
+              <div
+                key={i}
+                className={`bg-gray-100 rounded-2xl shadow-lg flex items-center justify-center w-[180px] h-[180px] md:w-[200px] md:h-[200px] ${group.rotate}`}
+                style={{ overflow: "hidden" }}
+              >
+                <img
+                  src={group.img}
+                  alt=""
+                  className="object-contain w-[140px] h-[140px] md:w-[160px] md:h-[160px]"
+                  draggable={false}
+                />
               </div>
             ))}
           </div>
@@ -242,8 +255,8 @@ const HomePage: React.FC = () => {
                 <img
                   src={s.img1}
                   alt={s.title}
-                  className="rounded-xl shadow-md w-[380px] h-[380px] object-cover"
-                  style={{ minWidth: 280, minHeight: 280, maxWidth: 420, maxHeight: 420 }}
+                  className="rounded-xl shadow-md w-[480px] h-[480px] object-cover"
+                  style={{ minWidth: 340, minHeight: 340, maxWidth: 520, maxHeight: 520 }}
                 />
               </div>
               <div className="md:w-1/2 flex flex-col justify-center items-start">
@@ -269,14 +282,14 @@ const HomePage: React.FC = () => {
                 <img
                   src={s.img1}
                   alt={s.title + ' 1'}
-                  className="rounded-xl shadow-md w-[380px] h-[180px] object-cover"
-                  style={{ minWidth: 280, minHeight: 140, maxWidth: 420, maxHeight: 220 }}
+                  className="rounded-xl shadow-md w-[480px] h-[240px] object-cover"
+                  style={{ minWidth: 340, minHeight: 180, maxWidth: 520, maxHeight: 280 }}
                 />
                 <img
                   src={s.img2}
                   alt={s.title + ' 2'}
-                  className="rounded-xl shadow-md w-[380px] h-[180px] object-cover"
-                  style={{ minWidth: 280, minHeight: 140, maxWidth: 420, maxHeight: 220 }}
+                  className="rounded-xl shadow-md w-[480px] h-[240px] object-cover"
+                  style={{ minWidth: 340, minHeight: 180, maxWidth: 520, maxHeight: 280 }}
                 />
               </div>
             </section>
@@ -299,7 +312,8 @@ const HomePage: React.FC = () => {
               <img
                 src={s.img1}
                 alt={s.title}
-                className="rounded-xl shadow-md max-w-[350px] max-h-[220px] w-full h-auto object-cover mx-auto"
+                className="rounded-xl shadow-md w-[560px] h-[320px] object-cover mx-auto"
+                style={{ minWidth: 400, minHeight: 220, maxWidth: 640, maxHeight: 360 }}
               />
             </div>
           </section>
