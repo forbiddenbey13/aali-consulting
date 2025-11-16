@@ -102,31 +102,141 @@ export default function AboutUsPage() {
         className="relative text-center overflow-hidden"
         style={{ backgroundColor: "#eaf6ff" }}
       >
-        {/* Maple leaf background */}
-        <div
-          className="absolute inset-0 z-0 pointer-events-none select-none"
-          style={{
-            backgroundImage: "url('/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png')",
-            backgroundRepeat: "repeat",
-            backgroundSize: "300px",
-            opacity: 0.35,
-          }}
-        />
-        <div className="relative z-10 max-w-3xl mx-auto pt-16 md:pt-24 pb-16 md:pb-24">
-          <h1 className="text-3xl md:text-5xl font-black mb-4 leading-tight text-gray-900">
+        {/* Maple leaves background - grid layout for hero */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none">
+          <img
+            src="/Web Assets/NEW/4789ABC0-9773-40BD-A83B-9EFFAB17E947.png"
+            alt=""
+            className="absolute"
+            style={{
+              left: "5%",
+              top: "5%",
+              width: "320px",
+              opacity: 0.13,
+              transform: "rotate(-8deg)",
+            }}
+            draggable={false}
+          />
+          <img
+            src="/Web Assets/NEW/4789ABC0-9773-40BD-A83B-9EFFAB17E947.png"
+            alt=""
+            className="absolute"
+            style={{
+              left: "35%",
+              top: "0%",
+              width: "400px",
+              opacity: 0.12,
+              transform: "rotate(7deg)",
+            }}
+            draggable={false}
+          />
+          <img
+            src="/Web Assets/NEW/4789ABC0-9773-40BD-A83B-9EFFAB17E947.png"
+            alt=""
+            className="absolute"
+            style={{
+              left: "70%",
+              top: "5%",
+              width: "320px",
+              opacity: 0.13,
+              transform: "rotate(-10deg)",
+            }}
+            draggable={false}
+          />
+          <img
+            src="/Web Assets/NEW/4789ABC0-9773-40BD-A83B-9EFFAB17E947.png"
+            alt=""
+            className="absolute"
+            style={{
+              left: "15%",
+              top: "38%",
+              width: "400px",
+              opacity: 0.10,
+              transform: "rotate(4deg)",
+            }}
+            draggable={false}
+          />
+          <img
+            src="/Web Assets/NEW/4789ABC0-9773-40BD-A83B-9EFFAB17E947.png"
+            alt=""
+            className="absolute"
+            style={{
+              left: "48%",
+              top: "28%",
+              width: "600px",
+              opacity: 0.16,
+              transform: "rotate(0deg)",
+            }}
+            draggable={false}
+          />
+          <img
+            src="/Web Assets/NEW/4789ABC0-9773-40BD-A83B-9EFFAB17E947.png"
+            alt=""
+            className="absolute"
+            style={{
+              left: "75%",
+              top: "38%",
+              width: "400px",
+              opacity: 0.10,
+              transform: "rotate(8deg)",
+            }}
+            draggable={false}
+          />
+          <img
+            src="/Web Assets/NEW/4789ABC0-9773-40BD-A83B-9EFFAB17E947.png"
+            alt=""
+            className="absolute"
+            style={{
+              left: "5%",
+              top: "70%",
+              width: "320px",
+              opacity: 0.13,
+              transform: "rotate(-8deg)",
+            }}
+            draggable={false}
+          />
+          <img
+            src="/Web Assets/NEW/4789ABC0-9773-40BD-A83B-9EFFAB17E947.png"
+            alt=""
+            className="absolute"
+            style={{
+              left: "35%",
+              top: "78%",
+              width: "400px",
+              opacity: 0.12,
+              transform: "rotate(7deg)",
+            }}
+            draggable={false}
+          />
+          <img
+            src="/Web Assets/NEW/4789ABC0-9773-40BD-A83B-9EFFAB17E947.png"
+            alt=""
+            className="absolute"
+            style={{
+              left: "70%",
+              top: "70%",
+              width: "320px",
+              opacity: 0.13,
+              transform: "rotate(-10deg)",
+            }}
+            draggable={false}
+          />
+        </div>
+        <div className="relative z-10 max-w-4xl mx-auto pt-20 md:pt-32 pb-20 md:pb-32 flex flex-col items-center">
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight text-gray-900 text-center">
             Empowering Businesses and<br className="hidden md:block" />
             Individuals to Work Smarter, Not Harder
           </h1>
-          <p className="mb-8 text-lg md:text-xl text-gray-700 font-medium">
+          <p className="mb-10 text-xl md:text-2xl text-gray-800 font-medium max-w-2xl mx-auto text-center">
             AALI Consulting helps organizations and professionals streamline operations, enhance efficiency, and achieve growth through smart systems, strategy, and structure.
           </p>
-          <div className="flex justify-center gap-4 mb-4">
+          <div className="flex flex-row justify-center gap-6 mb-4">
             <a
               href="/ContactUs"
-              className="px-8 py-2.5 rounded-md font-semibold text-white shadow-md"
+              className="px-10 py-3 rounded-md font-semibold text-white shadow-lg text-lg"
               style={{
                 background: "linear-gradient(90deg, #3b82f6 0%, #2563eb 100%)",
-                boxShadow: "0 2px 8px 0 rgba(59,130,246,0.15)",
+                boxShadow: "0 4px 16px 0 rgba(59,130,246,0.18)",
                 border: "none",
               }}
             >
@@ -134,9 +244,9 @@ export default function AboutUsPage() {
             </a>
             <a
               href="#what-we-stand-for"
-              className="px-8 py-2.5 rounded-md font-semibold bg-white border border-black shadow-md text-gray-900 hover:bg-gray-100 transition"
+              className="px-10 py-3 rounded-md font-semibold bg-white border border-gray-400 shadow-lg text-gray-900 hover:bg-gray-100 transition text-lg"
               style={{
-                boxShadow: "0 2px 8px 0 rgba(0,0,0,0.10)",
+                boxShadow: "0 4px 16px 0 rgba(0,0,0,0.10)",
               }}
             >
               Learn More
@@ -146,16 +256,16 @@ export default function AboutUsPage() {
         {/* SVG Wave */}
         <div className="absolute left-0 right-0 bottom-0 w-full overflow-hidden leading-none z-20">
           <svg
-            viewBox="0 0 1440 120"
+            viewBox="0 0 1440 180"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="block w-full h-24 md:h-32"
+            className="block w-full h-36 md:h-[180px]"
             preserveAspectRatio="none"
             width="100%"
             height="100%"
           >
             <path
-              d="M0,32 C360,120 1080,0 1440,96 L1440,120 L0,120 Z"
+              d="M0,100 Q360,180 720,120 Q1080,60 1440,140 L1440,180 L0,180 Z"
               fill="#fff"
             />
           </svg>
@@ -214,18 +324,18 @@ export default function AboutUsPage() {
         <p className="text-center max-w-2xl mx-auto mb-10 text-lg">
           At AALI Consulting, you're not just getting accountants or planners — you're gaining partners who understand your goals, culture, and community.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-3xl mx-auto">
           {WHY_CHOOSE.map((item, i) => (
             <div
               key={item.title}
-              className="flex flex-col items-center text-center p-10 bg-white border border-gray-300 rounded-2xl"
-              style={{ minHeight: 320, boxShadow: "0 0 0 0 transparent" }}
+              className="flex flex-col items-center text-center p-12 bg-white border border-gray-200 rounded-[32px] shadow-md"
+              style={{ minHeight: 340 }}
             >
-              <div className="mb-6">
-                {item.icon}
+              <div className="mb-8">
+                {React.cloneElement(item.icon, { className: "w-20 h-20 mx-auto text-blue-600" })}
               </div>
-              <div className="font-bold text-xl mb-2 text-gray-900">{item.title}</div>
-              <div className="text-gray-700 text-base">{item.desc}</div>
+              <div className="font-bold text-2xl mb-2 text-gray-900">{item.title}</div>
+              <div className="text-gray-700 text-lg">{item.desc}</div>
             </div>
           ))}
         </div>

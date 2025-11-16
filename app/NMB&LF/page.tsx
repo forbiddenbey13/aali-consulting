@@ -52,7 +52,7 @@ export default function NMBLFPage() {
       {/* Hero Section */}
       <section className="relative w-full h-[420px] md:h-[480px] flex items-center justify-center overflow-hidden">
         <img
-          src="/Web Assets/NEW/About Us/a-group-of-business-people-standing-together-free-png.png"
+          src="/Web Assets/Images/NEW/Newcomers & Expats/Money, Benefits & Life Setup/Canada-On-Track-To-Welcome-Well-Over-500000-New-Immigrants-In-2024.jpg"
           alt="Newcomers in Canada"
           className="absolute inset-0 w-full h-full object-cover object-center opacity-80"
         />
@@ -84,22 +84,28 @@ export default function NMBLFPage() {
             </p>
           </div>
           <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="flex flex-col items-center bg-white border border-gray-300 rounded-2xl p-6">
-              <img src="/Web Assets/NEW/Resources/work-study-icon.png" alt="Work/Study Permit Holders" className="w-20 h-20 mb-4" />
-              <div className="font-bold text-center">WORK/STUDY PERMIT HOLDERS</div>
-            </div>
-            <div className="flex flex-col items-center bg-white border border-gray-300 rounded-2xl p-6">
-              <img src="/Web Assets/NEW/Resources/permanent-resident-icon.png" alt="Permanent Residents" className="w-20 h-20 mb-4" />
-              <div className="font-bold text-center">PERMANENT RESIDENTS</div>
-            </div>
-            <div className="flex flex-col items-center bg-white border border-gray-300 rounded-2xl p-6">
-              <img src="/Web Assets/NEW/Resources/family-relocate-icon.png" alt="Families Relocating" className="w-20 h-20 mb-4" />
-              <div className="font-bold text-center">FAMILIES RELOCATING TO CANADA</div>
-            </div>
-            <div className="flex flex-col items-center bg-white border border-gray-300 rounded-2xl p-6">
-              <img src="/Web Assets/NEW/Resources/new-citizen-icon.png" alt="New Citizens" className="w-20 h-20 mb-4" />
-              <div className="font-bold text-center">NEW CITIZENS</div>
-            </div>
+            {[
+              {
+                src: "/Web Assets/Images/NEW/Newcomers & Expats/Money, Benefits & Life Setup/Who This Program Is For/3B1E6370-3C59-4C8E-B341-78E83250C917.png",
+                alt: "Program Option 1"
+              },
+              {
+                src: "/Web Assets/Images/NEW/Newcomers & Expats/Money, Benefits & Life Setup/Who This Program Is For/48AC8E86-285A-4D86-83D8-9FC59476F9E0.png",
+                alt: "Program Option 2"
+              },
+              {
+                src: "/Web Assets/Images/NEW/Newcomers & Expats/Money, Benefits & Life Setup/Who This Program Is For/42161780-6FCA-4DD5-88D9-B3CC606448D2.png",
+                alt: "Program Option 3"
+              },
+              {
+                src: "/Web Assets/Images/NEW/Newcomers & Expats/Money, Benefits & Life Setup/Who This Program Is For/B7744260-7B1E-43B9-9A84-CF7BBFC233D2.png",
+                alt: "Program Option 4"
+              }
+            ].map((img, i) => (
+              <div key={i} className="flex flex-col items-center bg-white border border-gray-300 rounded-2xl p-6">
+                <img src={img.src} alt={img.alt} className="w-32 h-32 mb-4 object-contain" />
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -112,35 +118,37 @@ export default function NMBLFPage() {
 
       {/* What You'll Learn */}
       <section className="py-20 px-4 bg-white">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">What You’ll learn</h2>
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-gray-50 rounded-xl p-6 text-center">
-            <div className="font-bold mb-2">First 30 Days</div>
-            <div className="text-gray-600 text-sm">Banking, credit, phone/internet, budgeting, fraud awareness.</div>
+        <h2 className="text-3xl font-bold text-center mb-10">What You’ll Learn</h2>
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="text-center p-6">
+            <div className="font-bold text-lg mb-2">First 30 Days</div>
+            <div className="text-gray-600 text-base">Banking, credit, phone/internet, budgeting, fraud awareness.</div>
           </div>
-          <div className="bg-gray-50 rounded-xl p-6 text-center">
-            <div className="font-bold mb-2">Benefits & Health</div>
-            <div className="text-gray-600 text-sm">CRA My Account, GST/HST, CCB, OHIP coverage.</div>
+          <div className="text-center p-6">
+            <div className="font-bold text-lg mb-2">Benefits & Health</div>
+            <div className="text-gray-600 text-base">CRA My Account, GST/HST, CCB, OHIP coverage.</div>
           </div>
-          <div className="bg-gray-50 rounded-xl p-6 text-center">
-            <div className="font-bold mb-2">Taxes (Split-Year Basics)</div>
-            <div className="text-gray-600 text-sm">Residency start, first filing, foreign income, T1135 awareness.</div>
+          <div className="text-center p-6">
+            <div className="font-bold text-lg mb-2">Taxes (Split-Year Basics)</div>
+            <div className="text-gray-600 text-base">Residency start, first filing, foreign income, T1135 awareness.</div>
           </div>
-          <div className="bg-gray-50 rounded-xl p-6 text-center">
-            <div className="font-bold mb-2">Work & Freelance</div>
-            <div className="text-gray-600 text-sm">Invoicing, self-employment, HST registration, recordkeeping.</div>
+        </div>
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mt-8">
+          <div className="text-center p-6">
+            <div className="font-bold text-lg mb-2">Work & Freelance</div>
+            <div className="text-gray-600 text-base">Invoicing, self-employment, HST registration, recordkeeping.</div>
           </div>
-          <div className="bg-gray-50 rounded-xl p-6 text-center">
-            <div className="font-bold mb-2">Save & Invest (Start Right)</div>
-            <div className="text-gray-600 text-sm">TFSA, RRSP, FHSA, RESP — and how to start safely.</div>
+          <div className="text-center p-6">
+            <div className="font-bold text-lg mb-2">Save & Invest (Start Right)</div>
+            <div className="text-gray-600 text-base">TFSA, RRSP, FHSA, RESP — and how to start safely.</div>
           </div>
-          <div className="bg-gray-50 rounded-xl p-6 text-center">
-            <div className="font-bold mb-2">Housing & Vehicles</div>
-            <div className="text-gray-600 text-sm">Renting, lease rules, tenant rights, affordable housing, transit vs. owning a car.</div>
+          <div className="text-center p-6">
+            <div className="font-bold text-lg mb-2">Housing & Vehicles</div>
+            <div className="text-gray-600 text-base">Renting, lease rules, tenant rights, affordable housing, transit vs. owning a car.</div>
           </div>
-          <div className="bg-gray-50 rounded-xl p-6 text-center">
-            <div className="font-bold mb-2">School Admissions & Education</div>
-            <div className="text-gray-600 text-sm">K-12 registration, ESL/ELL, childcare, post-secondary, OSAP and scholarships.</div>
+          <div className="text-center p-6">
+            <div className="font-bold text-lg mb-2">School Admissions & Education</div>
+            <div className="text-gray-600 text-base">K-12 registration, ESL/ELL, childcare, post-secondary, OSAP and scholarships.</div>
           </div>
         </div>
       </section>
@@ -149,7 +157,7 @@ export default function NMBLFPage() {
       <section className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
           <img
-            src="/Web Assets/NEW/Resources/toolkit-photo-2.jpg"
+            src="/Web Assets/Images/NEW/Newcomers & Expats/Money, Benefits & Life Setup/Canada_528796674-scaled.jpeg"
             alt="Toolkit"
             className="rounded-xl shadow-lg object-cover w-full h-64 md:h-72"
           />
@@ -183,7 +191,7 @@ export default function NMBLFPage() {
             </ul>
           </div>
           <img
-            src="/Web Assets/NEW/Resources/progress-photo-2.jpg"
+            src="/Web Assets/Images/NEW/Newcomers & Expats/Money, Benefits & Life Setup/Childcare+support.jpg.webp"
             alt="Progress"
             className="rounded-xl shadow-lg object-cover w-full h-64 md:h-72"
           />
@@ -193,7 +201,7 @@ export default function NMBLFPage() {
       {/* Community CTA */}
       <section className="relative w-full h-[300px] flex items-center justify-center overflow-hidden">
         <img
-          src="/Web Assets/NEW/About Us/a-group-of-business-people-standing-together-free-png.png"
+          src="/Web Assets/Images/NEW/Newcomers & Expats/Money, Benefits & Life Setup/trca-newcomers-canada-nygep.jpg"
           alt="Community"
           className="absolute inset-0 w-full h-full object-cover object-center opacity-80"
         />
