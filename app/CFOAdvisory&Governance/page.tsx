@@ -118,12 +118,13 @@ Whether you’re presenting to investors, donors, or your board, we help you com
   ];
 
     const heroImages = [
-  '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-  '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-  '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
+  // '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
+  // '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
+  // '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
+  '/Web Assets/Images/NEW/CFO Advisory & Governance/auditing-financial-report-computer-screen.jpg.png'
   ];
     const whyChooseData = {
-    image: "/Assets/financial-planning.jpg",
+    image: "/Web Assets/Images/NEW/CFO Advisory & Governance/14-1-768x432.jpg",
     title: "Why Choose AALI Consulting",
     paragraphs: [
       `At AALI Consulting, we bridge the gap between financial operations and strategic leadership. Our CFO Advisory services are built for owners, executives, and boards who want clarity, discipline, and data-driven decision-making without the overhead of a full-time CFO. From cashflow forecasting and OpCo/HoldCo planning to board reporting and transfer pricing, we bring enterprise-level governance to organizations of every size — ensuring your numbers tell the right story, not just add up.`,

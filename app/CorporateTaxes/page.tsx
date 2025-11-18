@@ -115,7 +115,7 @@ Our team can help you navigate the registration process, ensure compliance, and 
   '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
   ];
     const whyChooseData = {
-    image: "/Assets/financial-planning.jpg",
+    image: "/Web Assets/Images/NEW/Tax Services Page/Corporate Tax Page/corporate-tax-scaled.jpg",
     title: "Why Choose AALI Consulting",
     paragraphs: [
       `At AALI Consulting, we go beyond compliance — we design corporate tax strategies that strengthen your business foundation. Whether you’re managing your first year-end as a new corporation or overseeing multi-entity operations with intercompany transactions, our team ensures your filings are not only accurate but strategically aligned. From T2 returns and GST/HST to salary vs. dividend planning and OpCo/HoldCo structuring, we deliver clarity, efficiency, and tax positions that stand up to CRA scrutiny.`,

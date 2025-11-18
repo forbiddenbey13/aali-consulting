@@ -21,6 +21,7 @@ const heroImages = [
   '/Web Assets/NEW/Hero Section/gettyimages-1488522537-640x640.jpg',
   '/Web Assets/NEW/Hero Section/premium_photo-1661761077411-d50cba031848.jpeg',
   '/Web Assets/NEW/Hero Section/TPC-exterior-building-b.jpg',
+  '/Web Assets/Images/NEW/Disability & Life Planning/CDB-HERO-1920x1080-1.webp'
 ];
 
 
@@ -123,7 +124,7 @@ Build plans that last through every stage of life`,
   '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
   ];
     const whyChooseData = {
-    image: "/Assets/financial-planning.jpg",
+    image: "/Web Assets/Images/NEW/Disability & Life Planning/Canada-Disability-Laws.jpeg",
     title: "Why work with us",
     paragraphs: [
       `At AALI Consulting, we understand that life’s biggest challenges don’t come with an instruction manual. Navigating disability benefits, ODSP, DTC applications, or major family transitions can feel overwhelming — especially when every form, doctor’s letter, and deadline matters. That’s why our approach is built on calm, step-by-step guidance. We coordinate benefits, complete paperwork, and ensure your financial plan aligns with your medical, family, and personal needs — so you can focus on recovery, stability, and peace of mind.`,
@@ -403,7 +404,7 @@ const resourcesData = [
         subheading="We simplify benefits, forms, and CRA compliance — so whether it’s disability, separation, or loss, you’ll have trusted guidance."
         buttonText="Book Now"
         buttonLink="/ContactUs"
-        backgroundImage="/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png"
+        backgroundImage="/Web Assets/Images/NEW/Disability & Life Planning/7fc47ae7-db85-43f3-ab85-d8e3a54eaf39-640w.jpg.png"
       />
 <WhyChooseUs
         image={whyChooseData.image}
