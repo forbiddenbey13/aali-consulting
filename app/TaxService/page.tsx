@@ -29,13 +29,13 @@ const offerCards = [
     title: "Personal Taxes (Individuals & Families)",
     description:
       "Simple, accurate personal tax filing that maximizes credits, deductions, and refunds—covering students, families, retirees, newcomers, and cross-border compliance confidently.",
-    link: "/ContactUs",
+    link: "/PersonalTax",
   },
   {
     title: "Corporate Taxes (SMEs & NFP & Charities)",
     description:
       "Comprehensive corporate tax strategies including T2 returns, GST/HST compliance, salary vs. dividends, OpCo/HoldCo planning, and full CRA audit readiness for businesses at every stage of growth.",
-    link: "/ContactUs",
+    link: "/CorporateTaxes",
   },
   
   
@@ -43,7 +43,7 @@ const offerCards = [
     title: "Life & Estate Tax Planning",
     description:
       "Expert guidance through separation, divorce, estates, non-resident filings, and final returns—simplifying complex transitions with clear, compassionate, compliant, and forward-looking tax strategies that protect your future.",
-    link: "/ContactUs",
+    link: "/Life&EstateTaxPlanning",
   },
 
 ];
