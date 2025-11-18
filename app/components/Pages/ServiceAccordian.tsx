@@ -23,7 +23,7 @@ const ServiceAccordion: React.FC<ServiceAccordionProps> = ({
   };
 
   return (
-    <section className="bg-white px-6 md:px-12 py-24">
+    <section id="services-detail" className="bg-white px-6 md:px-12 py-24">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-4xl font-bold text-gray-900 mb-12">{heading}</h2>
 

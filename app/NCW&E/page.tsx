@@ -5,6 +5,8 @@ import Footer from "../components/Footer";
 import ThreeStepProcess from "../components/Pages/ThreeStep";
 import FAQSection from "../components/Pages/FAQ";
 
+import ResourcesSection from "../components/Pages/Resources";
+
 export default function NCWEPage() {
   // Three step process data
   const steps = [
@@ -42,6 +44,29 @@ export default function NCWEPage() {
     {
       question: "How will I know if I’m making real progress?",
       answer: "You’ll see tangible milestones: employment secured, business registered, store launched, and more.",
+    },
+  ];
+
+  const resourcesData = [
+    {
+      img: "/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg",
+      title: "Disability tax credit (DTC)",
+      link: "https://www.canada.ca/en/revenue-agency/services/tax/individuals/segments/tax-credits-deductions-persons-disabilities/disability-tax-credit.html?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg",
+      title: "T2201 Disability Tax Credit Certificate (form & instruction)",
+      link: "https://www.canada.ca/en/revenue-agency/services/forms-publications/forms/t2201.html?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg",
+      title: "Estate Planning for Disabled Beneficiaries",
+      link: "https://ca.rbcwealthmanagement.com/documents/73602/1343743/Estate%2BPlanning%2Bfor%2BBenes%2Bwith%2BDisabilities.pdf/3233f6df-6c7f-4c9e-8b67-73b0e51c2260?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg",
+      title: "How Henson Trusts Can Help Canadians with Disabilities",
+      link: "https://www.ig.ca/en/insights/how-henson-trusts-can-help-canadians-with-disabilities?utm_source=chatgpt.com",
     },
   ];
 
@@ -174,7 +199,7 @@ export default function NCWEPage() {
       <section className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
           <img
-            src="/Web Assets/Images/NEW/Newcomers & Expats/Work, Business & E-Commerce/Employee%20Coaching.webp"
+            src="/Web Assets/Images/NEW/Newcomers & Expats/Work, Business & E-Commerce/abc.webp"
             alt="Toolkit"
             className="rounded-xl shadow-lg object-cover w-full h-64 md:h-72"
           />
@@ -204,23 +229,12 @@ export default function NCWEPage() {
               <li>↳ Filing calendar and bookkeeping system in place</li>
             </ul>
           </div>
-          <div className="relative rounded-xl shadow-lg overflow-hidden w-full h-64 md:h-72 flex items-center">
+          <div className="rounded-xl shadow-lg overflow-hidden w-full h-64 md:h-72 flex items-center">
             <img
               src="/Web Assets/Images/NEW/Newcomers & Expats/Work, Business & E-Commerce/MRK22109718_Hero_435-x-430_v1.0.0.jpg"
               alt="Progress"
-              className="absolute inset-0 w-full h-full object-cover object-center opacity-80"
+              className="w-full h-full object-cover object-center"
             />
-            <div className="relative z-10 w-full text-center flex flex-col items-center justify-center h-full">
-              <h3 className="text-2xl font-bold mb-4 text-white drop-shadow-lg">You’ll See Progress — Not Just Lessons</h3>
-              <ul className="space-y-2 text-white text-base font-semibold drop-shadow">
-                <li>↳ Employment secured or freelance income launched</li>
-                <li>↳ BN/GST/HST registered (if required)</li>
-                <li>↳ Store/Marketplace listings live with first orders fulfilled</li>
-                <li>↳ Pricing and margins validated</li>
-                <li>↳ Filing calendar and bookkeeping system in place</li>
-              </ul>
-            </div>
-            <div className="absolute inset-0 bg-black/40" />
           </div>
         </div>
       </section>
@@ -266,31 +280,7 @@ export default function NCWEPage() {
       </section>
 
       {/* Resources Section */}
-      <section className="py-20 px-4 bg-white">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">Resources</h2>
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="bg-white rounded-xl shadow p-4 flex flex-col items-center">
-            <img src="/Web Assets/NEW/Resources/resource-gst-hst.png" alt="GST/HST" className="w-full h-32 object-cover rounded mb-2" />
-            <div className="font-semibold mb-2 text-center">When to register for and charge GST/HST</div>
-            <a href="#" className="inline-block mt-auto bg-gray-100 border border-gray-300 px-4 py-2 rounded shadow hover:bg-gray-200 transition">Learn More</a>
-          </div>
-          <div className="bg-white rounded-xl shadow p-4 flex flex-col items-center">
-            <img src="/Web Assets/NEW/Resources/resource-gst-info.png" alt="GST/HST Info" className="w-full h-32 object-cover rounded mb-2" />
-            <div className="font-semibold mb-2 text-center">General Information for GST/HST Registrants</div>
-            <a href="#" className="inline-block mt-auto bg-gray-100 border border-gray-300 px-4 py-2 rounded shadow hover:bg-gray-200 transition">Learn More</a>
-          </div>
-          <div className="bg-white rounded-xl shadow p-4 flex flex-col items-center">
-            <img src="/Web Assets/NEW/Resources/resource-business-guide.png" alt="Business Guide" className="w-full h-32 object-cover rounded mb-2" />
-            <div className="font-semibold mb-2 text-center">Starting a business in Canada: The ultimate guide</div>
-            <a href="#" className="inline-block mt-auto bg-gray-100 border border-gray-300 px-4 py-2 rounded shadow hover:bg-gray-200 transition">Learn More</a>
-          </div>
-          <div className="bg-white rounded-xl shadow p-4 flex flex-col items-center">
-            <img src="/Web Assets/NEW/Resources/resource-nonresident.png" alt="Non-resident GST/HST" className="w-full h-32 object-cover rounded mb-2" />
-            <div className="font-semibold mb-2 text-center">Doing Business in Canada — GST/HST Information for Non-residents</div>
-            <a href="#" className="inline-block mt-auto bg-gray-100 border border-gray-300 px-4 py-2 rounded shadow hover:bg-gray-200 transition">Learn More</a>
-          </div>
-        </div>
-      </section>
+      <ResourcesSection heading="Resources" resources={resourcesData} />
 
       {/* FAQ Section */}
       <FAQSection heading="Frequently Asked Questions" faqs={faqs} />

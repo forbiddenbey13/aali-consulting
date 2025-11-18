@@ -5,6 +5,8 @@ import Footer from "../components/Footer";
 import ThreeStepProcess from "../components/Pages/ThreeStep";
 import FAQSection from "../components/Pages/FAQ";
 
+import ResourcesSection from "../components/Pages/Resources";
+
 export default function NMBLFPage() {
   // Three step process data
   const steps = [
@@ -42,6 +44,29 @@ export default function NMBLFPage() {
     {
       question: "I don’t know anyone here. Is this program for people like me?",
       answer: "Yes, our supportive community and group sessions are designed for newcomers just like you.",
+    },
+  ];
+
+  const resourcesData = [
+    {
+      img: "/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg",
+      title: "Disability tax credit (DTC)",
+      link: "https://www.canada.ca/en/revenue-agency/services/tax/individuals/segments/tax-credits-deductions-persons-disabilities/disability-tax-credit.html?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg",
+      title: "T2201 Disability Tax Credit Certificate (form & instruction)",
+      link: "https://www.canada.ca/en/revenue-agency/services/forms-publications/forms/t2201.html?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg",
+      title: "Estate Planning for Disabled Beneficiaries",
+      link: "https://ca.rbcwealthmanagement.com/documents/73602/1343743/Estate%2BPlanning%2Bfor%2BBenes%2Bwith%2BDisabilities.pdf/3233f6df-6c7f-4c9e-8b67-73b0e51c2260?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg",
+      title: "How Henson Trusts Can Help Canadians with Disabilities",
+      link: "https://www.ig.ca/en/insights/how-henson-trusts-can-help-canadians-with-disabilities?utm_source=chatgpt.com",
     },
   ];
 
@@ -220,31 +245,7 @@ export default function NMBLFPage() {
       </section>
 
       {/* Resources Section */}
-      <section className="py-20 px-4 bg-white">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">Resources</h2>
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="bg-white rounded-xl shadow p-4 flex flex-col items-center">
-            <img src="/Web Assets/NEW/Resources/resource-cra.png" alt="CRA" className="w-full h-32 object-cover rounded mb-2" />
-            <div className="font-semibold mb-2 text-center">Newcomers to Canada and the CRA</div>
-            <a href="#" className="inline-block mt-auto bg-gray-100 border border-gray-300 px-4 py-2 rounded shadow hover:bg-gray-200 transition">Learn More</a>
-          </div>
-          <div className="bg-white rounded-xl shadow p-4 flex flex-col items-center">
-            <img src="/Web Assets/NEW/Resources/resource-tax-return.png" alt="Tax Return" className="w-full h-32 object-cover rounded mb-2" />
-            <div className="font-semibold mb-2 text-center">Completing your return for newcomers</div>
-            <a href="#" className="inline-block mt-auto bg-gray-100 border border-gray-300 px-4 py-2 rounded shadow hover:bg-gray-200 transition">Learn More</a>
-          </div>
-          <div className="bg-white rounded-xl shadow p-4 flex flex-col items-center">
-            <img src="/Web Assets/NEW/Resources/resource-cra-money.png" alt="CRA Money" className="w-full h-32 object-cover rounded mb-2" />
-            <div className="font-semibold mb-2 text-center">Newcomers to Canada and the CRA</div>
-            <a href="#" className="inline-block mt-auto bg-gray-100 border border-gray-300 px-4 py-2 rounded shadow hover:bg-gray-200 transition">Learn More</a>
-          </div>
-          <div className="bg-white rounded-xl shadow p-4 flex flex-col items-center">
-            <img src="/Web Assets/NEW/Resources/resource-housing.png" alt="Housing" className="w-full h-32 object-cover rounded mb-2" />
-            <div className="font-semibold mb-2 text-center">Newcomers: Housing in Canada – Renting a Home</div>
-            <a href="#" className="inline-block mt-auto bg-gray-100 border border-gray-300 px-4 py-2 rounded shadow hover:bg-gray-200 transition">Learn More</a>
-          </div>
-        </div>
-      </section>
+      <ResourcesSection heading="Resources" resources={resourcesData} />
 
       {/* FAQ Section */}
       <FAQSection heading="Frequently Asked Questions" faqs={faqs} />
