@@ -127,7 +127,7 @@ const HomePage: React.FC = () => {
             <p className="text-gray-600 text-sm mb-8">
               Stress-free, CRA-ready tax: from first T1 to complex corporate and cross-border strategies. Proactive planning ensures accuracy, savings, and zero surprises.
             </p>
-            <a href="/TaxServices" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
+            <a href="/TaxService" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
               Learn more
             </a>
           </div>
