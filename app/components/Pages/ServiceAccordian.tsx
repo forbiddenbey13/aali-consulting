@@ -10,11 +10,13 @@ interface ServiceItem {
 interface ServiceAccordionProps {
   heading: string;
   services: ServiceItem[];
+  id?: string;
 }
 
 const ServiceAccordion: React.FC<ServiceAccordionProps> = ({
   heading,
   services,
+  id,
 }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -23,7 +25,7 @@ const ServiceAccordion: React.FC<ServiceAccordionProps> = ({
   };
 
   return (
-    <section className="bg-white px-6 md:px-12 py-24">
+    <section className="bg-white px-6 md:px-12 py-24" id={id}>
       <div className="max-w-5xl mx-auto">
         <h2 className="text-4xl font-bold text-gray-900 mb-12">{heading}</h2>
 

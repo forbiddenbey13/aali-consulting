@@ -39,7 +39,7 @@ const offerCards = [
     title: "Disability Support (DTC & ODSP)",
     description:
       "Help with eligibility, applications, appeals, and safe budgeting strategies, including RDSP setup for long-term security.",
-    link: "/P&C",
+    link: "#explore-services",
   },
   {
     title: "Family Disability Planning",
@@ -413,6 +413,7 @@ const resourcesData = [
 
 
  <ServiceAccordion
+        id="explore-services"
         heading="Explore Our Services in Detail"
         services={servicesList}
       />
