@@ -116,91 +116,91 @@ const HomePage: React.FC = () => {
 
       {/* What We Do */}
       {/* What We Do Section */}
-<section id="what-we-do" className="px-6 md:px-10 py-24 bg-white">
-  <h2 className="text-3xl font-bold mb-14 text-center text-gray-900">What We Do</h2>
+      <section id="what-we-do" className="px-6 md:px-10 py-24 bg-white">
+        <h2 className="text-3xl font-bold mb-14 text-center text-gray-900">What We Do</h2>
 
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
 
-    {/* Card 1 */}
-    <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
-      <h3 className="text-lg font-semibold mb-4 text-gray-900">Tax Services (Personal & Corporate)</h3>
-      <p className="text-gray-600 text-sm mb-8">
-        Stress-free, CRA-ready tax: from first T1 to complex corporate and cross-border strategies. Proactive planning ensures accuracy, savings, and zero surprises.
-      </p>
-      <a href="/P&C" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
-        Learn more
-      </a>
-    </div>
+          {/* Card 1 */}
+          <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
+            <h3 className="text-lg font-semibold mb-4 text-gray-900">Tax Services (Personal & Corporate)</h3>
+            <p className="text-gray-600 text-sm mb-8">
+              Stress-free, CRA-ready tax: from first T1 to complex corporate and cross-border strategies. Proactive planning ensures accuracy, savings, and zero surprises.
+            </p>
+            <a href="/TaxService" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
+              Learn more
+            </a>
+          </div>
 
-    {/* Card 2 */}
-    <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
-      <h3 className="text-lg font-semibold mb-4 text-gray-900">Accounting & Bookkeeping</h3>
-      <p className="text-gray-600 text-sm mb-8">
-        Stress-free, CRA-ready tax: from first T1 to complex corporate and cross-border strategies. Proactive planning ensures accuracy, savings, and zero surprises.
-      </p>
-      <a href="/Bookkeeping&Accounting" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
-        Learn more
-      </a>
-    </div>
+          {/* Card 2 */}
+          <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
+            <h3 className="text-lg font-semibold mb-4 text-gray-900">Accounting & Bookkeeping</h3>
+            <p className="text-gray-600 text-sm mb-8">
+              Stress-free, CRA-ready tax: from first T1 to complex corporate and cross-border strategies. Proactive planning ensures accuracy, savings, and zero surprises.
+            </p>
+            <a href="/Bookkeeping&Accounting" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
+              Learn more
+            </a>
+          </div>
 
-    {/* Card 3 */}
-    <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
-      <h3 className="text-lg font-semibold mb-4 text-gray-900">Strategic Financial Planning</h3>
-      <p className="text-gray-600 text-sm mb-8">
-        Stage-of-life financial planning that optimizes saving, taxes, benefits, debt, housing, investing, and retirement timing—turning decisions into confident, compounding progress.
-      </p>
-      <a href="/SFP" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
-        Learn more
-      </a>
-    </div>
+          {/* Card 3 */}
+          <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
+            <h3 className="text-lg font-semibold mb-4 text-gray-900">Strategic Financial Planning</h3>
+            <p className="text-gray-600 text-sm mb-8">
+              Stage-of-life financial planning that optimizes saving, taxes, benefits, debt, housing, investing, and retirement timing—turning decisions into confident, compounding progress.
+            </p>
+            <a href="/StrategicPlanning" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
+              Learn more
+            </a>
+          </div>
 
-    {/* Card 4 */}
-    <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
-      <h3 className="text-lg font-semibold mb-4 text-gray-900">Technology Solutions</h3>
-      <p className="text-gray-600 text-sm mb-8">
-        Turn chaos into a connected back office with the right tools, clean integrations, automation and training—so systems talk, teams move faster, decisions improve.
-      </p>
-      <a href="/Systems&TechnologyImplementation" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
-        Learn more
-      </a>
-    </div>
+          {/* Card 4 */}
+          <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
+            <h3 className="text-lg font-semibold mb-4 text-gray-900">Technology Solutions</h3>
+            <p className="text-gray-600 text-sm mb-8">
+              Turn chaos into a connected back office with the right tools, clean integrations, automation and training—so systems talk, teams move faster, decisions improve.
+            </p>
+            <a href="/Systems&TechnologyImplementation" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
+              Learn more
+            </a>
+          </div>
 
-    {/* Card 5 */}
-    <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
-      <h3 className="text-lg font-semibold mb-4 text-gray-900">CFO Advisory & Governance</h3>
-      <p className="text-gray-600 text-sm mb-8">
-        Clean, board-ready finance—on-time closes, clear forecasts, owner structure and succession, multi-entity reporting, NFP support, and Canada-US setups—for safer, faster decisions.
-      </p>
-      <a href="/CFOAdvisory&Governance" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
-        Learn more
-      </a>
-    </div>
+          {/* Card 5 */}
+          <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
+            <h3 className="text-lg font-semibold mb-4 text-gray-900">CFO Advisory & Governance</h3>
+            <p className="text-gray-600 text-sm mb-8">
+              Clean, board-ready finance—on-time closes, clear forecasts, owner structure and succession, multi-entity reporting, NFP support, and Canada-US setups—for safer, faster decisions.
+            </p>
+            <a href="/CFOAdvisory&Governance" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
+              Learn more
+            </a>
+          </div>
 
-    {/* Card 6 (Special) */}
-   <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
-  {/* Ribbon */}
-  <div className="special-ribbon">
-    <span>★ SPECIAL ★</span>
-  </div>
+          {/* Card 6 (Special) */}
+         <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
+        {/* Ribbon */}
+        <div className="special-ribbon">
+          <span>★ SPECIAL ★</span>
+        </div>
 
-  <h3 className="text-lg font-semibold mb-4 text-gray-900">
-    Disability & Life Planning
-  </h3>
-  <p className="text-gray-600 text-sm mb-8">
-    Compassionate, simple help for DTC/COSP, disability, accidents, job loss,
-    separation, and bereavement—benefits, paperwork, and tax-smart steps handled.
-  </p>
-  <a
-    href="/Disability&LifePlanning"
-    className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition"
-  >
-    Learn more
-  </a>
-</div>
+        <h3 className="text-lg font-semibold mb-4 text-gray-900">
+          Disability & Life Planning
+        </h3>
+        <p className="text-gray-600 text-sm mb-8">
+          Compassionate, simple help for DTC/COSP, disability, accidents, job loss,
+          separation, and bereavement—benefits, paperwork, and tax-smart steps handled.
+        </p>
+        <a
+          href="/Disability&LifePlanning"
+          className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition"
+        >
+          Learn more
+        </a>
+      </div>
 
 
-  </div>
-</section>
+        </div>
+      </section>
 
       {/* Who We Serve */}
       <section className="bg-white px-6 md:px-10 py-24">
@@ -262,7 +262,7 @@ const HomePage: React.FC = () => {
               <div className="md:w-1/2 flex flex-col justify-center items-start">
                 <h3 className="text-4xl font-semibold text-gray-900 mb-4">{s.title}</h3>
                 <p className="text-gray-700 text-lg mb-8">{s.text}</p>
-                <a href="#" className="btn-primary">Learn more</a>
+                <a href="/Bookkeeping&Accounting" className="btn-primary">Learn more</a>
               </div>
             </section>
           );
@@ -276,7 +276,7 @@ const HomePage: React.FC = () => {
               <div className="md:w-1/2 flex flex-col justify-center items-start">
                 <h3 className="text-4xl font-semibold text-gray-900 mb-4">{s.title}</h3>
                 <p className="text-gray-700 text-lg mb-8">{s.text}</p>
-                <a href="#" className="btn-primary">Learn more</a>
+                <a href="/TaxServices" className="btn-primary">Learn more</a>
               </div>
               <div className="md:w-1/2 flex flex-col gap-6 justify-center items-center">
                 <img
@@ -296,65 +296,142 @@ const HomePage: React.FC = () => {
           );
         }
         // Default layout for other services
-        return (
-          <section
-            key={i}
-            className={`flex flex-col md:flex-row ${
-              i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
-            } items-center gap-10 px-6 md:px-10 py-20 transition`}
-          >
-            <div className="md:w-1/2 space-y-6">
-              <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>
-              <p className="text-gray-700">{s.text}</p>
-              <a href="#" className="btn-primary">Learn More</a>
-            </div>
-            <div className="md:w-1/2 flex flex-col gap-4">
-              <img
-                src={s.img1}
-                alt={s.title}
-                className="rounded-xl shadow-md w-[560px] h-[320px] object-cover mx-auto"
-                style={{ minWidth: 400, minHeight: 220, maxWidth: 640, maxHeight: 360 }}
-              />
-            </div>
-          </section>
-        );
+        // Explicitly set href for each service
+        if (s.title === "Strategic Financial Planning") {
+          return (
+            <section
+              key={i}
+              className={`flex flex-col md:flex-row ${
+                i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
+              } items-center gap-10 px-6 md:px-10 py-20 transition`}
+            >
+              <div className="md:w-1/2 space-y-6">
+                <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>
+                <p className="text-gray-700">{s.text}</p>
+                <a href="/StrategicPlanning" className="btn-primary">Learn More</a>
+              </div>
+              <div className="md:w-1/2 flex flex-col gap-4">
+                <img
+                  src={s.img1}
+                  alt={s.title}
+                  className="rounded-xl shadow-md w-[560px] h-[320px] object-cover mx-auto"
+                  style={{ minWidth: 400, minHeight: 220, maxWidth: 640, maxHeight: 360 }}
+                />
+              </div>
+            </section>
+          );
+        }
+        if (s.title === "Systems & Technology Implementation") {
+          return (
+            <section
+              key={i}
+              className={`flex flex-col md:flex-row ${
+                i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
+              } items-center gap-10 px-6 md:px-10 py-20 transition`}
+            >
+              <div className="md:w-1/2 space-y-6">
+                <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>
+                <p className="text-gray-700">{s.text}</p>
+                <a href="/Systems&TechnologyImplementation" className="btn-primary">Learn More</a>
+              </div>
+              <div className="md:w-1/2 flex flex-col gap-4">
+                <img
+                  src={s.img1}
+                  alt={s.title}
+                  className="rounded-xl shadow-md w-[560px] h-[320px] object-cover mx-auto"
+                  style={{ minWidth: 400, minHeight: 220, maxWidth: 640, maxHeight: 360 }}
+                />
+              </div>
+            </section>
+          );
+        }
+        if (s.title === "CFO Advisory & Governance") {
+          return (
+            <section
+              key={i}
+              className={`flex flex-col md:flex-row ${
+                i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
+              } items-center gap-10 px-6 md:px-10 py-20 transition`}
+            >
+              <div className="md:w-1/2 space-y-6">
+                <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>
+                <p className="text-gray-700">{s.text}</p>
+                <a href="/CFOAdvisory&Governance" className="btn-primary">Learn More</a>
+              </div>
+              <div className="md:w-1/2 flex flex-col gap-4">
+                <img
+                  src={s.img1}
+                  alt={s.title}
+                  className="rounded-xl shadow-md w-[560px] h-[320px] object-cover mx-auto"
+                  style={{ minWidth: 400, minHeight: 220, maxWidth: 640, maxHeight: 360 }}
+                />
+              </div>
+            </section>
+          );
+        }
+        if (s.title === "Disability & Life Planning") {
+          return (
+            <section
+              key={i}
+              className={`flex flex-col md:flex-row ${
+                i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
+              } items-center gap-10 px-6 md:px-10 py-20 transition`}
+            >
+              <div className="md:w-1/2 space-y-6">
+                <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>
+                <p className="text-gray-700">{s.text}</p>
+                <a href="/Disability&LifePlanning" className="btn-primary">Learn More</a>
+              </div>
+              <div className="md:w-1/2 flex flex-col gap-4">
+                <img
+                  src={s.img1}
+                  alt={s.title}
+                  className="rounded-xl shadow-md w-[560px] h-[320px] object-cover mx-auto"
+                  style={{ minWidth: 400, minHeight: 220, maxWidth: 640, maxHeight: 360 }}
+                />
+              </div>
+            </section>
+          );
+        }
+        // fallback (should not be hit)
+        return null;
       })}
 
       {/* Resources */}
-<section className="px-6 md:px-10 py-24 bg-white">
-  <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Resources</h2>
+      <section className="px-6 md:px-10 py-24 bg-white">
+        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Resources</h2>
 
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
-    {resources.map((r, i) => (
-      <div
-        key={i}
-        className="bg-white rounded-2xl shadow-lg overflow-hidden transition hover:shadow-xl flex flex-col"
-      >
-        {/* Image */}
-        <img
-          src={r.img}
-          alt={r.title}
-          className="w-full h-44 object-cover"
-        />
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+          {resources.map((r, i) => (
+            <div
+              key={i}
+              className="bg-white rounded-2xl shadow-lg overflow-hidden transition hover:shadow-xl flex flex-col"
+            >
+              {/* Image */}
+              <img
+                src={r.img}
+                alt={r.title}
+                className="w-full h-44 object-cover"
+              />
 
-        {/* Content */}
-        <div className="p-6 flex flex-col items-center text-center flex-grow">
-          <h4 className="font-semibold text-gray-900 text-base mb-4">
-            {r.title}
-          </h4>
-          <a
-            href={r.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-auto bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium px-6 py-2 rounded-full shadow-sm transition"
-          >
-            Learn More
-          </a>
+              {/* Content */}
+              <div className="p-6 flex flex-col items-center text-center flex-grow">
+                <h4 className="font-semibold text-gray-900 text-base mb-4">
+                  {r.title}
+                </h4>
+                <a
+                  href={r.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium px-6 py-2 rounded-full shadow-sm transition"
+                >
+                  Learn More
+                </a>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-    ))}
-  </div>
-</section>
+      </section>
 
 
 

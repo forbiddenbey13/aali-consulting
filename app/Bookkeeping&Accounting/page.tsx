@@ -112,14 +112,14 @@ More importantly, we tailor each stack to your business size and industry — fr
   '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
   ];
     const whyChooseData = {
-    image: "/Assets/financial-planning.jpg",
+    image: "/Web Assets/Images/NEW/Bookkeeping & Accounting Page/7-differences-between-book-keeping-and-accounting-1.jpeg",
     title: "What Makes Us Different",
     paragraphs: [
       `At AALI Consulting, bookkeeping isn’t just data entry — it’s decision support. We build systems that give you clarity, not clutter. Every reconciliation, payroll run, and dashboard is designed to keep your books tax-ready and your strategy focused on growth. Whether you’re a small business, nonprofit, or multi-entity operation, our approach blends precision accounting with modern automation — so you see your real financial picture in real time.`,
     ],
   };
    const FactData = {
-    image: "/Assets/financial-planning.jpg",
+    image: "/Web Assets/Images/NEW/Bookkeeping & Accounting Page/images.jpeg",
     title: "Stay on Top of Your Numbers — Without the Stress",
     paragraphs: [
       `Managing your finances shouldn’t feel overwhelming. With automated reconciliations, payroll scheduling, and visual dashboards, we handle the numbers so you can focus on building your business. From compliance to cashflow, every detail stays organized, accurate, and up to date — giving you peace of mind and the confidence to plan ahead.`,

@@ -135,7 +135,7 @@ Our clients often work with us on a quarterly or semi-annual cadence, where we r
   '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
   ];
     const whyChooseData = {
-    image: "/Assets/financial-planning.jpg",
+    image: "/Web Assets/Images/NEW/Strategic Financial Planning/Image-empty-state.jpg.png",
     title: "Why Choose AALI Consulting For Financial Planning",
     paragraphs: [
       `At AALI Consulting, financial planning isn’t just about numbers — it’s about direction. We help you understand how every financial decision connects to your bigger goals: saving for a first home, balancing family priorities, funding education, planning retirement, or leaving a legacy. Our advisors look at the complete picture — tax, cashflow, debt, benefits, and investment strategy — so your plan works in real life, not just on paper.`,
@@ -395,11 +395,12 @@ const resourcesData = [
 
   return (
     <div className="font-sans text-gray-800 bg-white">
-      <Header />
+      <Header /> 
 
       <HeroSection
         images={heroImages}
-        title="Plan Smarter, Live Stronger"
+        title="Plan Smarter, Live Stronger —
+        At Every Stage of Life"
         subtitle="We help you make confident, tax-smart financial decisions at every stage of life."
         buttonText="Get Started"
         buttonLink="/ContactUs"

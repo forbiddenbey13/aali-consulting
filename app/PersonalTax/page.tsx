@@ -98,7 +98,7 @@ We use encrypted portals for document uploads, cross-check every entry against C
   '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
   ];
     const whyChooseData = {
-    image: "/Assets/financial-planning.jpg",
+    image: "/Web Assets/Images/NEW/Tax Services Page/Main Tax Page/istockphoto-915633582-612x612.jpg",
     title: "Why Choose AALI Consulting",
     paragraphs: [
       `Taxes shouldn’t feel stressful or confusing — and with AALI Consulting, they don’t have to be. Our team takes the time to understand your full financial picture, not just your slips and forms. Whether you’re a student filing your first return, a newcomer navigating cross-border reporting, or a retiree managing investments and benefits, we handle every detail with accuracy and care. From optimizing deductions to planning for future tax years, we make sure your filing does more than meet deadlines — it moves you forward.`,

@@ -122,12 +122,13 @@ Our approach ensures your systems don’t just get implemented — they evolve w
   ];
 
     const heroImages = [
-  '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-  '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-  '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
+  // '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
+  // '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
+  // '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
+  '/Web Assets/Images/NEW/Systems & Technology Implementation/913779463-1024x683.jpg'
   ];
     const whyChooseData = {
-    image: "/Assets/financial-planning.jpg",
+    image: "/Web Assets/Images/NEW/Systems & Technology Implementation/what-is-system-integration.jpeg.webp",
     title: "Implementation That Fits Your Business, Not the Other Way Around",
     paragraphs: [
       `Technology should simplify your operations — not force you to adapt to it. At AALI Consulting, every system we implement begins with understanding your workflow, goals, and team structure. Whether it’s setting up accounting platforms like QuickBooks or Xero, integrating e-commerce and ERP systems, or automating data flow between departments, we design solutions that mirror how your business actually runs. The result is an ecosystem that’s intuitive, reliable, and built to evolve as you grow.`,
