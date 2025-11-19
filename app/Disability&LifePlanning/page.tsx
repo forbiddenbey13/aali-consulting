@@ -13,18 +13,6 @@ import ResourcesSection from '../components/Pages/Resources';
 import CallToAction from '../components/Pages/CallToAction';
 import FAQSection from '../components/Pages/FAQ';
 
-const heroImages = [
-  '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-  '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-  '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
-  '/Web Assets/NEW/Hero Section/f0065b10-07c3-47d4-bf72-adaf37d2c25a-scaled.jpeg-1.webp',
-  '/Web Assets/NEW/Hero Section/gettyimages-1488522537-640x640.jpg',
-  '/Web Assets/NEW/Hero Section/premium_photo-1661761077411-d50cba031848.jpeg',
-  '/Web Assets/NEW/Hero Section/TPC-exterior-building-b.jpg',
-  '/Web Assets/Images/NEW/Disability & Life Planning/CDB-HERO-1920x1080-1.webp'
-];
-
-
 
 const HomePage: React.FC = () => {
   const [slide, setSlide] = useState(0);
