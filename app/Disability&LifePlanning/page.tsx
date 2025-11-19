@@ -40,37 +40,37 @@ const offerCards = [
     title: "Disability Support (DTC & ODSP)",
     description:
       "Help with eligibility, applications, appeals, and safe budgeting strategies, including RDSP setup for long-term security.",
-    link: "#explore-services",
+    link: "#services-detail",
   },
   {
     title: "Family Disability Planning",
     description:
       "Guidance for children, young adults, and families, including Henson Trusts and transitions at age 18.",
-    link: "/B&A",
+    link: "#services-detail",
   },
   {
     title: "Job Loss Strategy",
     description:
       "Support for severance, EI, cashflow, and your transition to re-employment, freelancing, or business ownership.",
-    link: "/SFP",
+    link: "#services-detail",
   },
   {
     title: "Separation & Divorce",
     description:
       "Financial clarity for property division, RRSP/TFSA transfers, CPP credits, and support tax planning.",
-    link: "/TS",
+    link: "#services-detail",
   },
   {
     title: "Loss of a Loved One",
     description:
       "Estate tax returns, CPP survivor benefits, probate support, and CRA clearance so families don’t miss critical steps.",
-    link: "#",
+    link: "#services-detail",
   },
   {
     title: "Accident Recovery",
     description:
       "Navigation of EI, WSIB, LTD, and insurer forms, plus return-to-work planning and disability tax credits.",
-    link: "/TS",
+    link: "#services-detail",
   }
 ];
  const faqs = [

@@ -39,31 +39,37 @@ const offerCards = [
     title: "T1 General Filing",
     description:
       "Straightforward annual return preparation for individuals, students, families, retirees, and newcomers.",
+    link: "#explore-services",
   },
   {
     title: "Tax Planning & Deductions & Credits",
     description:
       "Optimize deductions, claim tuition/medical/family benefits, and ensure you maximize DTC, CCB, and other credits.",
+    link: "#explore-services",
   },
   {
     title: "Registered Plans",
     description:
       "RRSP, TFSA, FHSA, and RESP planning, contributions, and reporting for short-term goals and long-term savings.",
+    link: "#explore-services",
   },
   {
     title: "Investments & Rental Income",
     description:
       "Reporting for real estate, self-employment, stocks, ETFs, crypto, and slips (T3, T5, T5008).",
+    link: "#explore-services",
   },
   {
     title: "Cross-Border & Newcomers",
     description:
       "Residency compliance, split-year filings, U.S. reporting, and tailored guidance for newcomers and non-residents.",
+    link: "#explore-services",
   },
   {
     title: "Life Events & Estates",
     description:
       "Specialized filings for disability, final/estate returns, inheritance planning, or separation/divorce adjustments.",
+    link: "#explore-services",
   }
 ];
  const faqs = [
@@ -354,10 +360,12 @@ const resourcesData = [
         paragraphs={whyChooseData.paragraphs}
       />
 
- <ServiceAccordion
-        heading="Explore Our Services in Detail"
-        services={servicesList}
-      />
+<div id="explore-services">
+  <ServiceAccordion
+    heading="Explore Our Services in Detail"
+    services={servicesList}
+  />
+</div>
 
           {/* Resources */}
 <ResourcesSection heading="Resources" resources={resourcesData} />

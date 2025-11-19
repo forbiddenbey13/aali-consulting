@@ -84,7 +84,7 @@ h4 {
 
 p {
   @apply text-base leading-relaxed;
-  color: var(--color-text-medium);
+  /* color: var(--color-text-medium); */
 }
 
 /* Custom utility classes for consistent styling */

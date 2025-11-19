@@ -39,51 +39,61 @@ const offerCards = [
     title: "Corporate Tax Filing",
     description:
       "T2 corporate returns (federal & provincial), annual compliance, and industry-specific adjustments.",
+    link: "#explore-services",
   },
   {
     title: "Sales Tax Compliance",
     description:
       "GST/HST/PST/QST registration, filings, audits, and place-of-supply guidance across provinces.",
+    link: "#explore-services",
   },
   {
     title: "Owner Compensation Planning",
     description:
       "Salary vs. dividend optimization, OpCo/HoldCo structuring, and shareholder tax efficiency.",
+    link: "#explore-services",
   },
   {
     title: "CRA Audit & Risk Management",
     description:
       "Audit readiness, controversy support, documentation policies, and proactive CRA response strategies.",
+    link: "#explore-services",
   },
   {
     title: "Intercompany & Transfer Pricing",
     description:
       "Intercompany allocations, provision-to-return alignment, and transfer pricing for larger enterprises.",
+    link: "#explore-services",
   },
   {
     title: "Corporate Transactions & M&A",
     description:
       "Tax structuring for mergers, acquisitions, reorganizations, and succession/exit planning.",
+    link: "#explore-services",
   },
   {
     title: "Tax Provisioning",
     description:
       "Audit readiness, controversy support, documentation policies, and proactive CRA response strategies.",
+    link: "#explore-services",
   },
   {
     title: "Cross-Border Planning",
     description:
       "Audit readiness, controversy support, documentation policies, and proactive CRA response strategies.",
+    link: "#explore-services",
   },
   {
     title: "SR&ED (Tax Credits)",
     description:
       "Intercompany allocations, provision-to-return alignment, and transfer pricing for larger enterprises.",
+    link: "#explore-services",
   },
   {
     title: "Tax Process Optimization & Automation",
     description:
       "Streamlining tax workflows, implementing technology solutions, and enhancing data accuracy for efficient tax processes.",
+    link: "#explore-services",
   }
 ];
  const faqs = [
@@ -484,10 +494,14 @@ const resourcesData = [
         paragraphs={whyChooseData.paragraphs}
       />
 
- <ServiceAccordion
-        heading="Explore Our Services in Detail"
-        services={servicesList}
-      />
+ <div id="explore-services">
+   <div id="explore-services">
+     <ServiceAccordion
+       heading="Explore Our Services in Detail"
+       services={servicesList}
+     />
+   </div>
+ </div>
 
           {/* Resources */}
 <ResourcesSection heading="Resources" resources={resourcesData} />
