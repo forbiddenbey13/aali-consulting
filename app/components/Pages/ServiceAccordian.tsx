@@ -10,11 +10,13 @@ interface ServiceItem {
 interface ServiceAccordionProps {
   heading: string;
   services: ServiceItem[];
+  id?: string;
 }
 
 const ServiceAccordion: React.FC<ServiceAccordionProps> = ({
   heading,
   services,
+  id,
 }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 

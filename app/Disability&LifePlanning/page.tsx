@@ -414,6 +414,7 @@ const resourcesData = [
 
 
  <ServiceAccordion
+        id="explore-services"
         heading="Explore Our Services in Detail"
         services={servicesList}
       />
