@@ -115,7 +115,7 @@ export default function CheckoutForm({
           <label className="block text-sm font-medium mb-1">Full name</label>
           <input
             type="text"
-            className="w-full border rounded px-3 py-2"
+            className="w-full border rounded-md px-3 py-2"
             placeholder="Jane Doe"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
@@ -127,7 +127,7 @@ export default function CheckoutForm({
           <label className="block text-sm font-medium mb-1">Email</label>
           <input
             type="email"
-            className="w-full border rounded px-3 py-2"
+            className="w-full border rounded-md px-3 py-2"
             placeholder="jane@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -141,7 +141,7 @@ export default function CheckoutForm({
           </label>
           <input
             type="tel"
-            className="w-full border rounded px-3 py-2"
+            className="w-full border rounded-md px-3 py-2"
             placeholder="(123) 456-7890"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
@@ -162,7 +162,7 @@ export default function CheckoutForm({
       <button
         type="submit"
         disabled={!stripe || loading}
-        className="w-full mt-4 bg-black text-white py-3 rounded font-semibold disabled:opacity-50"
+        className="w-full mt-4 bg-black text-white py-3 rounded-full font-semibold disabled:opacity-50"
       >
         {loading ? 'Processing...' : `Pay $${amount.toFixed(2)}`}
       </button>

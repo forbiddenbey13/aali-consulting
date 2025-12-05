@@ -43,28 +43,28 @@ const WHO_WE_HELP = [
 const WHY_CHOOSE = [
   {
     icon: (
-      <svg className="w-12 h-12 mx-auto text-blue-600" fill="none" viewBox="0 0 48 48"><path d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Z" fill="#E3F0FF"/><path d="M24 34c-5.523 0-10-4.477-10-10S18.477 14 24 14s10 4.477 10 10-4.477 10-10 10Zm0-18a8 8 0 100 16 8 8 0 000-16Z" fill="#2563EB"/></svg>
+      <svg className="w-12 h-12 mx-auto text-blue-600" fill="none" viewBox="0 0 48 48"><path d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Z" fill="#E3F0FF" /><path d="M24 34c-5.523 0-10-4.477-10-10S18.477 14 24 14s10 4.477 10 10-4.477 10-10 10Zm0-18a8 8 0 100 16 8 8 0 000-16Z" fill="#2563EB" /></svg>
     ),
     title: "Personalized Attention",
     desc: "We take the time to understand your unique situation and goals.",
   },
   {
     icon: (
-      <svg className="w-12 h-12 mx-auto text-blue-600" fill="none" viewBox="0 0 48 48"><path d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Z" fill="#E3F0FF"/><path d="M32 24a8 8 0 11-16 0 8 8 0 0116 0Z" fill="#2563EB"/></svg>
+      <svg className="w-12 h-12 mx-auto text-blue-600" fill="none" viewBox="0 0 48 48"><path d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Z" fill="#E3F0FF" /><path d="M32 24a8 8 0 11-16 0 8 8 0 0116 0Z" fill="#2563EB" /></svg>
     ),
     title: "Locally Rooted, Nationally Aware",
     desc: "Proudly based in Canada, we bring a local understanding with awareness of broader trends and regulations that affect you.",
   },
   {
     icon: (
-      <svg className="w-12 h-12 mx-auto text-blue-600" fill="none" viewBox="0 0 48 48"><path d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Z" fill="#E3F0FF"/><path d="M24 14v20M14 24h20" stroke="#2563EB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+      <svg className="w-12 h-12 mx-auto text-blue-600" fill="none" viewBox="0 0 48 48"><path d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Z" fill="#E3F0FF" /><path d="M24 14v20M14 24h20" stroke="#2563EB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
     ),
     title: "Strategic Insights",
     desc: "With deep expertise in tax, accounting, and business strategy, we help you make informed decisions that support sustainable growth.",
   },
   {
     icon: (
-      <svg className="w-12 h-12 mx-auto text-blue-600" fill="none" viewBox="0 0 48 48"><path d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Z" fill="#E3F0FF"/><path d="M16 24h16M24 16v16" stroke="#2563EB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+      <svg className="w-12 h-12 mx-auto text-blue-600" fill="none" viewBox="0 0 48 48"><path d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Z" fill="#E3F0FF" /><path d="M16 24h16M24 16v16" stroke="#2563EB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
     ),
     title: "Transparent Communication",
     desc: "No jargon, no surprises—just clear, honest advice you can rely on every step of the way.",
@@ -233,7 +233,7 @@ export default function AboutUsPage() {
           <div className="flex flex-row justify-center gap-6 mb-4">
             <a
               href="/ContactUs"
-              className="px-10 py-3 rounded-md font-semibold text-white shadow-lg text-lg"
+              className="px-10 py-3 rounded-full font-semibold text-white shadow-lg text-lg"
               style={{
                 background: "linear-gradient(90deg, #3b82f6 0%, #2563eb 100%)",
                 boxShadow: "0 4px 16px 0 rgba(59,130,246,0.18)",
@@ -244,7 +244,7 @@ export default function AboutUsPage() {
             </a>
             <a
               href="#what-we-stand-for"
-              className="px-10 py-3 rounded-md font-semibold bg-white border border-gray-400 shadow-lg text-gray-900 hover:bg-gray-100 transition text-lg"
+              className="px-10 py-3 rounded-full font-semibold bg-white border border-gray-400 shadow-lg text-gray-900 hover:bg-gray-100 transition text-lg"
               style={{
                 boxShadow: "0 4px 16px 0 rgba(0,0,0,0.10)",
               }}
@@ -349,8 +349,8 @@ export default function AboutUsPage() {
         <div className="relative z-10">
           <h2 className="text-3xl font-bold mb-4 text-gray-900">Let’s Talk About Your Goals</h2>
           <div className="flex justify-center gap-4 mb-8">
-            <a href="/ContactUs" className="bg-blue-600 text-white px-8 py-3 rounded shadow hover:bg-blue-700 font-semibold transition">Book A Consultation</a>
-            <a href="/ContactUs" className="bg-white border border-gray-400 px-8 py-3 rounded shadow font-semibold hover:bg-gray-100 transition">Contact Us</a>
+            <a href="/ContactUs" className="bg-blue-600 text-white px-8 py-3 rounded-full shadow hover:bg-blue-700 font-semibold transition">Book A Consultation</a>
+            <a href="/ContactUs" className="bg-white border border-gray-400 px-8 py-3 rounded-full shadow font-semibold hover:bg-gray-100 transition">Contact Us</a>
           </div>
         </div>
       </section>
