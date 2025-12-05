@@ -94,9 +94,8 @@ const HomePage: React.FC = () => {
             key={idx}
             src={img}
             alt={`Slide ${idx}`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-              slide === idx ? "opacity-100" : "opacity-0"
-            }`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${slide === idx ? "opacity-100" : "opacity-0"
+              }`}
           />
         ))}
         <div className="absolute inset-0 bg-blue-900/40" />
@@ -177,26 +176,26 @@ const HomePage: React.FC = () => {
           </div>
 
           {/* Card 6 (Special) */}
-         <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
-        {/* Ribbon */}
-        <div className="special-ribbon">
-          <span>★ SPECIAL ★</span>
-        </div>
+          <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition overflow-hidden">
+            {/* Ribbon */}
+            <div className="special-ribbon">
+              <span>★ SPECIAL ★</span>
+            </div>
 
-        <h3 className="text-lg font-semibold mb-4 text-gray-900">
-          Disability & Life Planning
-        </h3>
-        <p className="text-gray-600 text-sm mb-8">
-          Compassionate, simple help for DTC/COSP, disability, accidents, job loss,
-          separation, and bereavement—benefits, paperwork, and tax-smart steps handled.
-        </p>
-        <a
-          href="/Disability&LifePlanning"
-          className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition"
-        >
-          Learn more
-        </a>
-      </div>
+            <h3 className="text-lg font-semibold mb-4 text-gray-900">
+              Disability & Life Planning
+            </h3>
+            <p className="text-gray-600 text-sm mb-8">
+              Compassionate, simple help for DTC/COSP, disability, accidents, job loss,
+              separation, and bereavement—benefits, paperwork, and tax-smart steps handled.
+            </p>
+            <a
+              href="/Disability&LifePlanning"
+              className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition"
+            >
+              Learn more
+            </a>
+          </div>
 
 
         </div>
@@ -301,9 +300,8 @@ const HomePage: React.FC = () => {
           return (
             <section
               key={i}
-              className={`flex flex-col md:flex-row ${
-                i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
-              } items-center gap-10 px-6 md:px-10 py-20 transition`}
+              className={`flex flex-col md:flex-row ${i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
+                } items-center gap-10 px-6 md:px-10 py-20 transition`}
             >
               <div className="md:w-1/2 space-y-6">
                 <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>
@@ -325,9 +323,8 @@ const HomePage: React.FC = () => {
           return (
             <section
               key={i}
-              className={`flex flex-col md:flex-row ${
-                i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
-              } items-center gap-10 px-6 md:px-10 py-20 transition`}
+              className={`flex flex-col md:flex-row ${i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
+                } items-center gap-10 px-6 md:px-10 py-20 transition`}
             >
               <div className="md:w-1/2 space-y-6">
                 <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>
@@ -349,9 +346,8 @@ const HomePage: React.FC = () => {
           return (
             <section
               key={i}
-              className={`flex flex-col md:flex-row ${
-                i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
-              } items-center gap-10 px-6 md:px-10 py-20 transition`}
+              className={`flex flex-col md:flex-row ${i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
+                } items-center gap-10 px-6 md:px-10 py-20 transition`}
             >
               <div className="md:w-1/2 space-y-6">
                 <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>
@@ -373,9 +369,8 @@ const HomePage: React.FC = () => {
           return (
             <section
               key={i}
-              className={`flex flex-col md:flex-row ${
-                i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
-              } items-center gap-10 px-6 md:px-10 py-20 transition`}
+              className={`flex flex-col md:flex-row ${i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
+                } items-center gap-10 px-6 md:px-10 py-20 transition`}
             >
               <div className="md:w-1/2 space-y-6">
                 <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>
