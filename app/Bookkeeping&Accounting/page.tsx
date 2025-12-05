@@ -34,46 +34,46 @@ const HomePage: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-const offerCards = [
-  {
-    title: "Monthly Close & Reconciliations",
-    description:
-      "Banks, AR/AP, GST/HST and more—kept accurate and on time so you always have clean, reliable numbers.",
-    link: "/P&C",
-  },
-  {
-    title: "Payroll & Compliance",
-    description:
-      "End-to-end payroll support plus slips (T4, T5, T5018, WSIB) filed correctly and stress-free.",
-    link: "/B&A",
-  },
-  {
-    title: "Dashboards That Drive Decisions",
-    description:
-      "Clear views of cashflow, margins, and KPIs—so you know what’s working and where to act.",
-    link: "/SFP",
-  },
-  {
-    title: "E-Commerce Accounting",
-    description:
-      "Seamless mapping for Shopify, Amazon, and other platforms with landed-cost models for real margins.",
-    link: "/TS",
-  },
-  {
-    title: "Non-Profit & Charity Expertise",
-    description:
-      "Fund accounting, donation receipting, and T3010-ready reporting tailored to NFP requirements.",
-    link: "#",
-    special: true,
-  },
-  {
-    title: "Year-End Ready, Every Month",
-    description:
-      "Organized books and tidy workpapers that make tax filing and CRA reviews smooth, accurate, and stress-free.",
-    link: "/TS",
-  }
-];
- const faqs = [
+  const offerCards = [
+    {
+      title: "Monthly Close & Reconciliations",
+      description:
+        "Banks, AR/AP, GST/HST and more—kept accurate and on time so you always have clean, reliable numbers.",
+      link: "/TaxService",
+    },
+    {
+      title: "Payroll & Compliance",
+      description:
+        "End-to-end payroll support plus slips (T4, T5, T5018, WSIB) filed correctly and stress-free.",
+      link: "/Bookkeeping&Accounting",
+    },
+    {
+      title: "Dashboards That Drive Decisions",
+      description:
+        "Clear views of cashflow, margins, and KPIs—so you know what’s working and where to act.",
+      link: "/StrategicPlanning",
+    },
+    {
+      title: "E-Commerce Accounting",
+      description:
+        "Seamless mapping for Shopify, Amazon, and other platforms with landed-cost models for real margins.",
+      link: "/Systems&TechnologyImplementation",
+    },
+    {
+      title: "Non-Profit & Charity Expertise",
+      description:
+        "Fund accounting, donation receipting, and T3010-ready reporting tailored to NFP requirements.",
+      link: "#",
+      special: true,
+    },
+    {
+      title: "Year-End Ready, Every Month",
+      description:
+        "Organized books and tidy workpapers that make tax filing and CRA reviews smooth, accurate, and stress-free.",
+      link: "/TaxService",
+    }
+  ];
+  const faqs = [
     {
       question:
         "What’s the difference between bookkeeping and accounting?",
@@ -106,31 +106,31 @@ More importantly, we tailor each stack to your business size and industry — fr
     },
   ];
 
-    const heroImages = [
-  '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-  '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-  '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
+  const heroImages = [
+    '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
+    '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
+    '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
   ];
-    const whyChooseData = {
+  const whyChooseData = {
     image: "/Web Assets/Images/NEW/Bookkeeping & Accounting Page/7-differences-between-book-keeping-and-accounting-1.jpeg",
     title: "What Makes Us Different",
     paragraphs: [
       `At AALI Consulting, bookkeeping isn’t just data entry — it’s decision support. We build systems that give you clarity, not clutter. Every reconciliation, payroll run, and dashboard is designed to keep your books tax-ready and your strategy focused on growth. Whether you’re a small business, nonprofit, or multi-entity operation, our approach blends precision accounting with modern automation — so you see your real financial picture in real time.`,
     ],
   };
-   const FactData = {
+  const FactData = {
     image: "/Web Assets/Images/NEW/Bookkeeping & Accounting Page/images.jpeg",
     title: "Stay on Top of Your Numbers — Without the Stress",
     paragraphs: [
       `Managing your finances shouldn’t feel overwhelming. With automated reconciliations, payroll scheduling, and visual dashboards, we handle the numbers so you can focus on building your business. From compliance to cashflow, every detail stays organized, accurate, and up to date — giving you peace of mind and the confidence to plan ahead.`,
     ],
   };
-  
 
-const servicesList = [
-  {
-    title: "Monthly Close & Reconciliations",
-    description: `
+
+  const servicesList = [
+    {
+      title: "Monthly Close & Reconciliations",
+      description: `
 Our monthly close process keeps your books accurate, consistent, and ready for decision-making — so when year-end comes, everything is already reconciled and audit-ready. Every number ties out, every entry has documentation, and your reports reflect reality — not guesswork.
 
 
@@ -152,10 +152,10 @@ Continuity: Clean monthly closes allow for consistent, real-time decision-making
 The Result:
 Books that are always accurate, CRA-ready, and built for smarter financial planning — not just tax season.
     `,
-  },
-  {
-    title: "Payroll & Compliance",
-    description: `We handle your payroll and remittance obligations so you can focus on your team, not tax deadlines. From wage calculations to T-slip filings, every cycle is processed cleanly, on time, and in full compliance with CRA requirements.
+    },
+    {
+      title: "Payroll & Compliance",
+      description: `We handle your payroll and remittance obligations so you can focus on your team, not tax deadlines. From wage calculations to T-slip filings, every cycle is processed cleanly, on time, and in full compliance with CRA requirements.
 
 
 Each pay period, we manage the full process — ensuring every detail is documented, filed, and reconciled:
@@ -179,10 +179,10 @@ Payroll that’s seamless, compliant, and scalable — so your people get paid, 
 
 
 `,
-  },
-  {
-    title: "Dashboards That Drive Decisions",
-    description: `Turn your numbers into insight — not just reports.
+    },
+    {
+      title: "Dashboards That Drive Decisions",
+      description: `Turn your numbers into insight — not just reports.
 
 We design dashboards that give you real-time clarity into your cashflow, profitability, and performance — so you can make confident decisions without digging through spreadsheets. Every report is visual, actionable, and tailored to your business goals.
 
@@ -203,10 +203,10 @@ Confidence: Base every decision on clean, current data.
 
 The Result:
 No more guesswork — just clear, visual insights that transform your numbers into strategy.`,
-  },
-  {
-    title: "E-Commerce Accounting",
-    description: `Running an online store means juggling payments, fees, refunds, and platform integrations — we simplify it all. Our e-commerce accounting process ensures your sales, inventory, and expenses reconcile perfectly across Shopify, Amazon, and payment gateways, giving you accurate data you can actually use.
+    },
+    {
+      title: "E-Commerce Accounting",
+      description: `Running an online store means juggling payments, fees, refunds, and platform integrations — we simplify it all. Our e-commerce accounting process ensures your sales, inventory, and expenses reconcile perfectly across Shopify, Amazon, and payment gateways, giving you accurate data you can actually use.
 
 We handle the complexity behind every transaction so you can focus on growth:
 Platform Integration – Connect Shopify, Amazon, Etsy, or WooCommerce to your accounting system using A2X, Synder, or Bookkeep.
@@ -222,10 +222,10 @@ Accurate, CRA-ready reporting for seamless tax filings and year-end preparation.
 
 The Result:
 Clean, connected e-commerce books — so every sale, refund, and shipment tells a clear financial story that drives smarter decisions and growth.`,
-  },
-  {
-    title: "Non-Profit & Charity Expertise",
-    description: `Purpose-driven accounting that supports your mission.
+    },
+    {
+      title: "Non-Profit & Charity Expertise",
+      description: `Purpose-driven accounting that supports your mission.
 
 We help charities and non-profits stay compliant, transparent, and financially strong — so you can focus on impact, not paperwork. From donation receipting to fund accounting and T3010 filings, every process is designed to meet CRA standards while empowering your board with clarity and confidence.
 
@@ -244,10 +244,10 @@ Empowerment: Provide your board and donors with the insights they need to make c
 
 The Result:
 Financial systems that honor your mission — balancing compliance with clarity, and turning stewardship into sustainable impact.`,
-  },
-  {
-    title: "Year-End Ready, Every Month",
-    description: `No more scrambling at year-end — your books stay clean, compliant, and ready all year long.
+    },
+    {
+      title: "Year-End Ready, Every Month",
+      description: `No more scrambling at year-end — your books stay clean, compliant, and ready all year long.
 
 We close each month with the same precision accountants expect at year-end, so tax season becomes just another month — not a crisis. Every entry, reconciliation, and adjustment is reviewed systematically, building a complete audit trail and CRA-ready documentation as you go.
 
@@ -266,49 +266,49 @@ Gain clarity — accurate monthly reports make strategic planning easier.
 
 The Result:
 A smooth, stress-free year-end every year — because your books were already ready.`,
-  },
-];
+    },
+  ];
 
-const processSteps = [
-  {
-    number: "1",
-    title: "Set Up & Organize",
-    text: "Connect your accounts, software, and records.",
-  },
-  {
-    number: "2",
-    title: "Reconcile & Review",
-    text: "Ensure accuracy through monthly reconciliations.",
-  },
-  {
-    number: "3",
-    title: "Report & Advise",
-    text: "Deliver clear statements and data-driven guidance.",
-  },
-];
+  const processSteps = [
+    {
+      number: "1",
+      title: "Set Up & Organize",
+      text: "Connect your accounts, software, and records.",
+    },
+    {
+      number: "2",
+      title: "Reconcile & Review",
+      text: "Ensure accuracy through monthly reconciliations.",
+    },
+    {
+      number: "3",
+      title: "Report & Advise",
+      text: "Deliver clear statements and data-driven guidance.",
+    },
+  ];
 
-const resourcesData = [
-  {
-    img: "/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg",
-    title: "Keeping records",
-    link: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/keeping-records.html?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg",
-    title: "Record Retention & Destruction Rules",
-    link: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/keeping-records/where-keep-your-records-long-request-permission-destroy-them-early.html?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg",
-    title: "Bookkeeping Basics for Small Businesses",
-    link: "https://www.nerdwallet.com/article/small-business/small-business-bookkeeping?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg",
-    title: "How Bookkeeping Supports Business Growth",
-    link: "https://www.forbes.com/sites/melissahouston/2023/11/25/small-business-bookkeeping-and-how-it-supports-your-business-success/?utm_source=chatgpt.com",
-  },
-];
+  const resourcesData = [
+    {
+      img: "/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg",
+      title: "Keeping records",
+      link: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/keeping-records.html?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg",
+      title: "Record Retention & Destruction Rules",
+      link: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/keeping-records/where-keep-your-records-long-request-permission-destroy-them-early.html?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg",
+      title: "Bookkeeping Basics for Small Businesses",
+      link: "https://www.nerdwallet.com/article/small-business/small-business-bookkeeping?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg",
+      title: "How Bookkeeping Supports Business Growth",
+      link: "https://www.forbes.com/sites/melissahouston/2023/11/25/small-business-bookkeeping-and-how-it-supports-your-business-success/?utm_source=chatgpt.com",
+    },
+  ];
 
 
 
@@ -326,8 +326,8 @@ const resourcesData = [
 
       {/* What We Do */}
       {/* What We Do Section */}
-<WhatWeOffer heading="What We Offer" cards={offerCards} />
-<WhyChooseUs
+      <WhatWeOffer heading="What We Offer" cards={offerCards} />
+      <WhyChooseUs
         image={whyChooseData.image}
         title={whyChooseData.title}
         paragraphs={whyChooseData.paragraphs}
@@ -338,14 +338,14 @@ const resourcesData = [
         paragraphs={FactData.paragraphs}
         reverse={true}
       />
- <ServiceAccordion
+      <ServiceAccordion
         heading="Explore Our Services in Detail"
         services={servicesList}
       />
-<ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
-          {/* Resources */}
-<ResourcesSection heading="Resources" resources={resourcesData} />
- <CallToAction
+      <ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
+      {/* Resources */}
+      <ResourcesSection heading="Resources" resources={resourcesData} />
+      <CallToAction
         heading="Take Control of Your Books. Take Control of Your Business."
         subheading="Let’s Build Your Books Together"
         buttonText="Book Now"
@@ -355,8 +355,8 @@ const resourcesData = [
 
 
 
-{/* FAQs */}
-    {/* ✅ FAQs — Updated Design */}
+      {/* FAQs */}
+      {/* ✅ FAQs — Updated Design */}
       <FAQSection heading="Frequently Asked Questions" faqs={faqs} />
 
 

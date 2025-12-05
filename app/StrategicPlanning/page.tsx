@@ -34,64 +34,64 @@ const HomePage: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-const offerCards = [
-  {
-    title: "Students & Young Adults (17–25)",
-    description:
-      "Smart filing, tuition credits, starter TFSA, and simple budgets that set a strong financial foundation early on in your life or career.",
-    link: "/P&C",
-  },
-  {
-    title: "Young Families & Homebuyers (26–34)",
-    description:
-      "Plan childcare credits, use FHSA and RRSP Home Buyers’ Plan, balance family expenses, and build sustainable financial security.",
-    link: "/B&A",
-  },
-  {
-    title: "Mid-Career Professionals (35–50)",
-    description:
-      "Optimize taxes, maximize RESP savings, manage equity compensation, and create debt and housing strategies that protect growing family wealth.",
-    link: "/SFP",
-  },
-  {
-    title: "Pre-Retirement (50–64)",
-    description:
-      "Coordinate CPP/OAS timing, design smart RRIF/LIF withdrawals, protect estates, and position wealth for a smooth retirement transition.",
-    link: "/TS",
-  },
-  {
-    title: "Retirement & Estate (65+)",
-    description:
-      "Maximize income sustainability, minimize taxes, coordinate healthcare costs, and align estate planning with family goals and charitable intentions.",
-    link: "/CFO",
-  },
-  {
-    title: "Specialized Planning",
-    description:
-      "Support business transitions, family succession, and high-net-worth legacy planning that preserves wealth and purpose across generations.",
-    link: "#",
-    special: true,
-  },
-  {
-    title: "Cross-Border Financial Planning",
-    description:
-      "Integrated tax, investment, and residency planning between Canada and abroad — reducing double taxation and keeping your global finances compliant and clear.",
-    link: "/TS",
-  },
-  {
-    title: "SME Financial Planning",
-    description:
-      "Integrated cashflow, retirement, and tax strategies that align business profits with personal goals — helping owners build, protect, and grow long-term wealth.",
-    link: "/CFO",
-  },
-  {
-    title: "Strategic Wealth & Family Planning",
-    description:
-      "Comprehensive wealth management for high-net-worth families — covering investments, trusts, estate transfers, and tax-efficient succession to preserve legacy and security.",
-    link: "/CFO",
-  },
-];
- const faqs = [
+  const offerCards = [
+    {
+      title: "Students & Young Adults (17–25)",
+      description:
+        "Smart filing, tuition credits, starter TFSA, and simple budgets that set a strong financial foundation early on in your life or career.",
+      link: "/TaxService",
+    },
+    {
+      title: "Young Families & Homebuyers (26–34)",
+      description:
+        "Plan childcare credits, use FHSA and RRSP Home Buyers’ Plan, balance family expenses, and build sustainable financial security.",
+      link: "/Bookkeeping&Accounting",
+    },
+    {
+      title: "Mid-Career Professionals (35–50)",
+      description:
+        "Optimize taxes, maximize RESP savings, manage equity compensation, and create debt and housing strategies that protect growing family wealth.",
+      link: "/StrategicPlanning",
+    },
+    {
+      title: "Pre-Retirement (50–64)",
+      description:
+        "Coordinate CPP/OAS timing, design smart RRIF/LIF withdrawals, protect estates, and position wealth for a smooth retirement transition.",
+      link: "/TaxService",
+    },
+    {
+      title: "Retirement & Estate (65+)",
+      description:
+        "Maximize income sustainability, minimize taxes, coordinate healthcare costs, and align estate planning with family goals and charitable intentions.",
+      link: "/CFOAdvisory&Governance",
+    },
+    {
+      title: "Specialized Planning",
+      description:
+        "Support business transitions, family succession, and high-net-worth legacy planning that preserves wealth and purpose across generations.",
+      link: "#",
+      special: true,
+    },
+    {
+      title: "Cross-Border Financial Planning",
+      description:
+        "Integrated tax, investment, and residency planning between Canada and abroad — reducing double taxation and keeping your global finances compliant and clear.",
+      link: "/TaxService",
+    },
+    {
+      title: "SME Financial Planning",
+      description:
+        "Integrated cashflow, retirement, and tax strategies that align business profits with personal goals — helping owners build, protect, and grow long-term wealth.",
+      link: "/CFOAdvisory&Governance",
+    },
+    {
+      title: "Strategic Wealth & Family Planning",
+      description:
+        "Comprehensive wealth management for high-net-worth families — covering investments, trusts, estate transfers, and tax-efficient succession to preserve legacy and security.",
+      link: "/CFOAdvisory&Governance",
+    },
+  ];
+  const faqs = [
     {
       question:
         "What’s the difference between financial planning and strategic financial planning?",
@@ -129,12 +129,12 @@ Our clients often work with us on a quarterly or semi-annual cadence, where we r
     },
   ];
 
-    const heroImages = [
-  '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-  '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-  '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
+  const heroImages = [
+    '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
+    '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
+    '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
   ];
-    const whyChooseData = {
+  const whyChooseData = {
     image: "/Web Assets/Images/NEW/Strategic Financial Planning/Image-empty-state.jpg.png",
     title: "Why Choose AALI Consulting For Financial Planning",
     paragraphs: [
@@ -143,10 +143,10 @@ Our clients often work with us on a quarterly or semi-annual cadence, where we r
     ],
   };
 
-const servicesList = [
-  {
-    title: "Students & Young Adults (17–25)",
-    description: `
+  const servicesList = [
+    {
+      title: "Students & Young Adults (17–25)",
+      description: `
 Build smart financial habits early — and turn your first paycheques into lifelong momentum.
 
 We help students and young professionals understand how taxes, savings, and benefits actually work in real life — from filing your first return to opening your first TFSA. Whether you’re in school, starting a job, or freelancing on the side, we help you stay compliant, build savings, and form habits that compound over time.
@@ -167,10 +167,10 @@ Our guidance is built to meet you where you are — and grow with you:
 **The Result:**
 Financial confidence from the start — smart tax habits, a growing savings plan, and a clear understanding of how to build wealth from your very first dollar.
     `,
-  },
-  {
-    title: "Young Families & Homebuyers (26–34)",
-    description: `
+    },
+    {
+      title: "Young Families & Homebuyers (26–34)",
+      description: `
 Turn life’s biggest milestones into a coordinated financial plan that supports your family’s growth.
 
 This stage of life often comes with competing priorities — a first home, childcare costs, career growth, or even starting a small business. We help you balance these goals through integrated tax, savings, and credit strategies that build security today while keeping your long-term plans on track.
@@ -185,10 +185,10 @@ Our planning framework helps you make smarter financial moves through every tran
 **The Result:**
 A complete, realistic family financial plan that supports your first home, growing responsibilities, and long-term wealth — built step by step with clarity and care.
     `,
-  },
-  {
-    title: "Mid-Career Professionals (35–50)",
-    description: `
+    },
+    {
+      title: "Mid-Career Professionals (35–50)",
+      description: `
 Optimize your peak earning years with strategic tax planning, smart investing, and a clear roadmap toward long-term freedom.
 
 This is the stage where financial decisions have the biggest impact — income is higher, family demands grow, and your goals start to shift from building to preserving. We help you make confident, tax-efficient decisions that align your career, family, and investments into a single, forward-looking plan.
@@ -203,10 +203,10 @@ Our mid-career framework helps you refine, protect, and scale your wealth with p
 **The Result:**
 A focused, data-driven financial plan that turns your peak earning years into lasting wealth — so you can work by choice, not by necessity.
     `,
-  },
-  {
-    title: "Pre-Retirement (50–64)",
-    description: `
+    },
+    {
+      title: "Pre-Retirement (50–64)",
+      description: `
 Align your savings, taxes, and lifestyle goals for a smooth, confident transition into retirement.
 
 This is the decade when clarity matters most — as you turn career earnings into income streams and shift focus from growth to security. We design plans that minimize taxes, maximize income longevity, and ensure your next chapter is stress-free.
@@ -221,10 +221,10 @@ Our pre-retirement planning process includes:
 **The Result:**
 A clear, tax-smart pre-retirement strategy that transforms decades of savings into dependable income — giving you confidence to retire on your own terms.
     `,
-  },
-  {
-    title: "Retirement & Estate (65+)",
-    description: `
+    },
+    {
+      title: "Retirement & Estate (65+)",
+      description: `
 Turn your lifetime of savings into steady, tax-efficient income — while protecting your legacy and supporting the people you care about most.
 
 We help retirees and families create structured income, minimize taxes, and prepare a clear estate roadmap that honors their wishes.
@@ -239,10 +239,10 @@ Our framework focuses on stability, simplicity, and legacy clarity:
 **The Result:**
 A retirement that’s financially secure, emotionally peaceful, and purpose-driven — with a legacy that’s clear, intentional, and enduring.
     `,
-  },
-  {
-    title: "Specialized Planning",
-    description: `
+    },
+    {
+      title: "Specialized Planning",
+      description: `
 Tailored financial guidance for unique life situations — from business exits and inheritances to complex tax structures and family transitions.
 
 We bring clarity, strategy, and precision to complex financial landscapes.
@@ -257,10 +257,10 @@ Our specialized framework includes:
 **The Result:**
 A custom-built, forward-looking financial strategy that protects your assets, honors your values, and ensures every major transition happens on your terms.
     `,
-  },
-  {
-    title: "Cross-Border Financial Planning",
-    description: `
+    },
+    {
+      title: "Cross-Border Financial Planning",
+      description: `
 Coordinated, compliant, and stress-free planning for individuals and businesses across the Canada–U.S. border.
 
 We help structure finances to minimize double taxation and optimize treaty benefits.
@@ -275,10 +275,10 @@ Our services include:
 **The Result:**
 A cross-border financial plan that eliminates confusion, reduces double taxation, and aligns your global tax, investments, and retirement seamlessly.
     `,
-  },
-  {
-    title: "SME Financial Planning",
-    description: `
+    },
+    {
+      title: "SME Financial Planning",
+      description: `
 Integrated, proactive, and tax-efficient financial planning designed to help small and medium-sized business owners build, manage, and protect their wealth—inside and outside the company.
 
 For entrepreneurs and incorporated professionals, business and personal finances are deeply connected. At AALI Consulting, we bridge that gap. Our team aligns your corporate strategy, compensation structure, and long-term financial goals to ensure every dollar works harder—whether it’s funding growth, paying yourself, or planning for succession.
@@ -312,10 +312,10 @@ The Result:
 
 A fully integrated financial plan that connects your business success to your personal goals—reducing tax drag, increasing liquidity, and positioning you for sustainable growth, retirement, or succession on your own terms.
     `,
-  },
-  {
-    title: "Strategic Wealth & Family Planning",
-    description: `Comprehensive, coordinated, and forward-thinking financial planning designed to preserve family wealth, reduce tax burdens, and create a lasting legacy for future generations.
+    },
+    {
+      title: "Strategic Wealth & Family Planning",
+      description: `Comprehensive, coordinated, and forward-thinking financial planning designed to preserve family wealth, reduce tax burdens, and create a lasting legacy for future generations.
 
 At AALI Consulting, we help high-net-worth individuals and families align their investments, tax strategies, and estate plans into one cohesive roadmap. From managing trusts to optimizing withdrawals, every decision is structured to enhance after-tax growth while protecting your family’s financial future.
 
@@ -347,55 +347,55 @@ The Result:
 
 
 A clear, tax-smart strategy that turns complexity into control—preserving your wealth, protecting your family, and building a legacy that lasts for generations.`
-  }
-];
+    }
+  ];
 
-const processSteps = [
-  {
-    number: "1",
-    title: "Discovery & Understanding",
-    text: "We begin with a deep-dive session to understand your financial situation, goals, and priorities — ensuring we start with a clear vision of what matters most to you.",
-  },
-  {
-    number: "2",
-    title: "Customized Strategy & Planning",
-    text: "Our team builds a tailored financial roadmap integrating tax, savings, and investment strategies aligned with your stage of life and goals.",
-  },
-  {
-    number: "3",
-    title: "Implementation & Ongoing Guidance",
-    text: "We help you take actionable steps, stay compliant, and continuously adapt your plan through life’s changes — with regular reviews and transparent reporting.",
-  },
-];
+  const processSteps = [
+    {
+      number: "1",
+      title: "Discovery & Understanding",
+      text: "We begin with a deep-dive session to understand your financial situation, goals, and priorities — ensuring we start with a clear vision of what matters most to you.",
+    },
+    {
+      number: "2",
+      title: "Customized Strategy & Planning",
+      text: "Our team builds a tailored financial roadmap integrating tax, savings, and investment strategies aligned with your stage of life and goals.",
+    },
+    {
+      number: "3",
+      title: "Implementation & Ongoing Guidance",
+      text: "We help you take actionable steps, stay compliant, and continuously adapt your plan through life’s changes — with regular reviews and transparent reporting.",
+    },
+  ];
 
-const resourcesData = [
-  {
-    img: "/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg",
-    title: "Canadian Tax Guide 2025",
-    link: "https://www.canada.ca/en/financial-consumer-agency/services/savings-investments/choose-financial-advisor.html?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg",
-    title: "Investment Basics for Beginners",
-    link: "https://www.canada.ca/en/financial-consumer-agency/services/financial-basics.html?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg",
-    title: "Retirement Planning Checklist",
-    link: "https://www.rbcwealthmanagement.com/en-ca/insights/financial-planning-nine-key-areas-of-focus?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg",
-    title: "First-Time Homebuyer Programs",
-    link: "https://www.moneysense.ca/save/financial-planning/having-a-financial-plan-more-than-doubles-your-retirement-confidence/?utm_source=chatgpt.com",
-  },
-];
+  const resourcesData = [
+    {
+      img: "/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg",
+      title: "Canadian Tax Guide 2025",
+      link: "https://www.canada.ca/en/financial-consumer-agency/services/savings-investments/choose-financial-advisor.html?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg",
+      title: "Investment Basics for Beginners",
+      link: "https://www.canada.ca/en/financial-consumer-agency/services/financial-basics.html?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg",
+      title: "Retirement Planning Checklist",
+      link: "https://www.rbcwealthmanagement.com/en-ca/insights/financial-planning-nine-key-areas-of-focus?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg",
+      title: "First-Time Homebuyer Programs",
+      link: "https://www.moneysense.ca/save/financial-planning/having-a-financial-plan-more-than-doubles-your-retirement-confidence/?utm_source=chatgpt.com",
+    },
+  ];
 
 
 
   return (
     <div className="font-sans text-gray-800 bg-white">
-      <Header /> 
+      <Header />
 
       <HeroSection
         images={heroImages}
@@ -408,20 +408,20 @@ const resourcesData = [
 
       {/* What We Do */}
       {/* What We Do Section */}
-<WhatWeOffer heading="What We Offer" cards={offerCards} />
-<WhyChooseUs
+      <WhatWeOffer heading="What We Offer" cards={offerCards} />
+      <WhyChooseUs
         image={whyChooseData.image}
         title={whyChooseData.title}
         paragraphs={whyChooseData.paragraphs}
       />
- <ServiceAccordion
+      <ServiceAccordion
         heading="Explore Our Services in Detail"
         services={servicesList}
       />
-<ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
-          {/* Resources */}
-<ResourcesSection heading="Resources" resources={resourcesData} />
- <CallToAction
+      <ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
+      {/* Resources */}
+      <ResourcesSection heading="Resources" resources={resourcesData} />
+      <CallToAction
         heading="Plan Today, Thrive Tomorrow."
         subheading="Start Building Your Financial Roadmap"
         buttonText="Book Now"
@@ -431,8 +431,8 @@ const resourcesData = [
 
 
 
-{/* FAQs */}
-    {/* ✅ FAQs — Updated Design */}
+      {/* FAQs */}
+      {/* ✅ FAQs — Updated Design */}
       <FAQSection heading="Frequently Asked Questions" faqs={faqs} />
 
 

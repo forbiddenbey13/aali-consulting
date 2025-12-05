@@ -34,45 +34,45 @@ const HomePage: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-const offerCards = [
-  {
-    title: "Owner & CEO Guidance",
-    description:
-      "Monthly close discipline, cashflow forecasting, FP&A, and OpCo/HoldCo planning aligned with growth and succession goals.",
-    link: "/P&C",
-  },
-  {
-    title: "Enterprise-Grade Support",
-    description:
-      "Transfer pricing, multi-entity consolidation, and controversy/audit playbooks to keep large organizations compliant and board-ready.",
-    link: "/B&A",
-  },
-  {
-    title: "Faith-Based & NFP Finance",
-    description:
-      "Charity registration support, compliant donation receipting systems, guidance on related business rules, and customized board reporting that keeps stakeholders confident.",
-    link: "/SFP",
-  },
-  {
-    title: "Cross-Border & International Planning",
-    description:
-      "Canada←>US residency, treaty rules, payroll/social security, LLC/S-corp pitfalls, and arrival/departure returns.",
-    link: "/TS",
-  },
-  {
-    title: "Succession & Estate Alignment",
-    description:
-      "Estate freezes/refreezes, family trusts, and tax-smart transition strategies (with your lawyer/counsel).",
-    link: "#",
-  },
-  {
-    title: "Governance & Reporting Packs",
-    description:
-      "Clear board/executive dashboards, risk tracking, and financial playbooks that simplify decision-making.",
-    link: "/TS",
-  }
-];
- const faqs = [
+  const offerCards = [
+    {
+      title: "Owner & CEO Guidance",
+      description:
+        "Monthly close discipline, cashflow forecasting, FP&A, and OpCo/HoldCo planning aligned with growth and succession goals.",
+      link: "/TaxService",
+    },
+    {
+      title: "Enterprise-Grade Support",
+      description:
+        "Transfer pricing, multi-entity consolidation, and controversy/audit playbooks to keep large organizations compliant and board-ready.",
+      link: "/Bookkeeping&Accounting",
+    },
+    {
+      title: "Faith-Based & NFP Finance",
+      description:
+        "Charity registration support, compliant donation receipting systems, guidance on related business rules, and customized board reporting that keeps stakeholders confident.",
+      link: "/StrategicPlanning",
+    },
+    {
+      title: "Cross-Border & International Planning",
+      description:
+        "Canada←>US residency, treaty rules, payroll/social security, LLC/S-corp pitfalls, and arrival/departure returns.",
+      link: "/Systems&TechnologyImplementation",
+    },
+    {
+      title: "Succession & Estate Alignment",
+      description:
+        "Estate freezes/refreezes, family trusts, and tax-smart transition strategies (with your lawyer/counsel).",
+      link: "#",
+    },
+    {
+      title: "Governance & Reporting Packs",
+      description:
+        "Clear board/executive dashboards, risk tracking, and financial playbooks that simplify decision-making.",
+      link: "/Systems&TechnologyImplementation",
+    }
+  ];
+  const faqs = [
     {
       question:
         "What does a CFO advisory service actually include?",
@@ -117,13 +117,13 @@ Whether you’re presenting to investors, donors, or your board, we help you com
     },
   ];
 
-    const heroImages = [
-  // '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-  // '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-  // '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
-  '/Web Assets/Images/NEW/CFO Advisory & Governance/auditing-financial-report-computer-screen.jpg.png'
+  const heroImages = [
+    // '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
+    // '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
+    // '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
+    '/Web Assets/Images/NEW/CFO Advisory & Governance/auditing-financial-report-computer-screen.jpg.png'
   ];
-    const whyChooseData = {
+  const whyChooseData = {
     image: "/Web Assets/Images/NEW/CFO Advisory & Governance/14-1-768x432.jpg",
     title: "Why Choose AALI Consulting",
     paragraphs: [
@@ -135,12 +135,12 @@ Whether you’re presenting to investors, donors, or your board, we help you com
     ],
   };
 
-  
 
-const servicesList = [
-  {
-    title: "Owner & CEO Guidance",
-    description: `Turn your numbers into clarity, confidence, and control — with financial insight built for decision-makers, not just accountants.
+
+  const servicesList = [
+    {
+      title: "Owner & CEO Guidance",
+      description: `Turn your numbers into clarity, confidence, and control — with financial insight built for decision-makers, not just accountants.
 
 As a business owner or CEO, your role isn’t to chase spreadsheets — it’s to make informed decisions that drive growth, stability, and legacy. Our Owner & CEO Guidance service transforms your financial data into clear, actionable intelligence through disciplined monthly closes, forecasting, and planning frameworks tailored to your goals.
 
@@ -164,10 +164,10 @@ Governance-ready documentation for investors, lenders, and boards.
 
 The Result:
 Confident leadership backed by transparent numbers, clear direction, and a financial system that runs like clockwork — giving you more time to lead.`,
-  },
-  {
-    title: "Enterprise-Grade Support",
-    description: `Turn your numbers into clarity, confidence, and control — with financial insight built for decision-makers, not just accountants.
+    },
+    {
+      title: "Enterprise-Grade Support",
+      description: `Turn your numbers into clarity, confidence, and control — with financial insight built for decision-makers, not just accountants.
 
 As a business owner or CEO, your role isn’t to chase spreadsheets — it’s to make informed decisions that drive growth, stability, and legacy. Our Owner & CEO Guidance service transforms your financial data into clear, actionable intelligence through disciplined monthly closes, forecasting, and planning frameworks tailored to your goals.
 
@@ -192,10 +192,10 @@ Governance-ready documentation for investors, lenders, and boards.
 The Result:
 Confident leadership backed by transparent numbers, clear direction, and a financial system that runs like clockwork — giving you more time to lead.
 `,
-  },
-  {
-    title: "Faith-Based & NFP Finance",
-    description: `Transparent, values-driven financial management for charities, mosques, churches, and nonprofit organizations.
+    },
+    {
+      title: "Faith-Based & NFP Finance",
+      description: `Transparent, values-driven financial management for charities, mosques, churches, and nonprofit organizations.
 
 Faith-based and nonprofit organizations carry a unique responsibility — to uphold accountability, transparency, and impact while staying true to their mission. Our Faith-Based & NFP Finance service provides governance, compliance, and reporting frameworks that help boards, donors, and regulators trust every number. We combine practical accounting expertise with a deep understanding of CRA charity requirements and faith-aligned financial ethics.
 
@@ -222,10 +222,10 @@ Confident, compliant, and transparent financial operations — giving your faith
 
 
 `,
-  },
-  {
-    title: "Cross-Border & International Planning",
-    description: `Seamless tax, structure, and compliance strategies for organizations and owners operating across borders.
+    },
+    {
+      title: "Cross-Border & International Planning",
+      description: `Seamless tax, structure, and compliance strategies for organizations and owners operating across borders.
 
 Whether you’re expanding into the U.S., managing global subsidiaries, or navigating dual-residency issues, cross-border complexity demands clarity. Our Cross-Border & International Planning service aligns corporate structure, cashflow, payroll, and tax obligations across jurisdictions — reducing double taxation, managing risk, and keeping every entity compliant on both sides of the border.
 
@@ -252,10 +252,10 @@ A cross-border structure that’s tax-efficient, compliant, and strategically al
 
 
 `,
-  },
-  {
-    title: "Automation & Data Workflows",
-    description: `Free your team from repetitive tasks and manual data entry — with smart automations that connect your apps, accounting, and reporting in real time.
+    },
+    {
+      title: "Automation & Data Workflows",
+      description: `Free your team from repetitive tasks and manual data entry — with smart automations that connect your apps, accounting, and reporting in real time.
 
 Every business runs on data — but too often, that data is stuck in silos: spreadsheets, emails, or disconnected tools. We help you automate how information moves between your systems, so invoices post automatically, reports update in real time, and tasks trigger on their own — saving hours every week while improving accuracy and insight.
 
@@ -279,10 +279,10 @@ Continuous improvement loop to review, optimize, and expand automations as your 
 
 The Result:
 A connected ecosystem where data flows automatically, work happens faster, and your team focuses on strategy — not spreadsheets.`,
-  },
-  {
-    title: "Succession & Estate Alignment",
-    description: `
+    },
+    {
+      title: "Succession & Estate Alignment",
+      description: `
 Protect what you’ve built — and ensure a smooth, tax-efficient transition for the next generation.
 
 Succession isn’t just a financial event — it’s a legacy decision. Our Succession & Estate Alignment service helps owners, families, and executives plan structured transitions that balance business continuity, tax efficiency, and family harmony. We work alongside your legal and insurance advisors to design a roadmap that preserves both wealth and relationships.
@@ -308,10 +308,10 @@ Communication & Continuity – Facilitate clear documentation and meeting rhythm
 The Result:
 A tax-efficient, conflict-free transition that protects your wealth, your family, and your business — so your legacy continues with clarity and confidence.
 `,
-  },
+    },
     {
-    title: "Governance & Reporting Packs",
-    description: `
+      title: "Governance & Reporting Packs",
+      description: `
 Clarity, accountability, and insight — all in one board-ready package.
 
 Strong governance starts with clear reporting. Our Governance & Reporting Packs service transforms raw financial data into structured, actionable insights for boards, owners, and leadership teams. We go beyond spreadsheets — delivering concise dashboards, financial statements, and variance narratives that align with your goals, lenders, and governance obligations.
@@ -337,49 +337,49 @@ Strategic Insights Layer – Include trend lines, key ratios, and rolling foreca
 The Result:
 Reports that speak the language of leadership — concise, visual, and transparent. Your board and owners gain confidence, alignment, and the clarity needed to make informed, timely decisions.
 `,
-  },
-];
+    },
+  ];
 
-const processSteps = [
-  {
-    number: "1",
-    title: "Upload Your Documents",
-    text: "The interaction of multiple elements in a system to produce an effect greater than the sum of their individual effects.",
-  },
-  {
-    number: "2",
-    title: "We Prepare & Optimize",
-    text: "A fundamental change in approach or underlying assumptions that leads to a new way of thinking or operating.",
-  },
-  {
-    number: "3",
-    title: "You Review & File Confidently",
-    text: "A new technology, product, or service that emerges into the existing market and creates a new one.",
-  },
-];
+  const processSteps = [
+    {
+      number: "1",
+      title: "Upload Your Documents",
+      text: "The interaction of multiple elements in a system to produce an effect greater than the sum of their individual effects.",
+    },
+    {
+      number: "2",
+      title: "We Prepare & Optimize",
+      text: "A fundamental change in approach or underlying assumptions that leads to a new way of thinking or operating.",
+    },
+    {
+      number: "3",
+      title: "You Review & File Confidently",
+      text: "A new technology, product, or service that emerges into the existing market and creates a new one.",
+    },
+  ];
 
-const resourcesData = [
-  {
-    img: "/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg",
-    title: "The Modern CFO’s Guide To Navigating Volatility",
-    link: "https://www.cbh.com/insights/articles/cfo-change-management-5-strategies-for-financial-resilience/?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg",
-    title: "How to Rethink the Finance & Reporting Operating Model",
-    link: "https://www.ey.com/en_ca/insights/assurance/how-to-rethink-the-finance-and-reporting-operating-model-for-the-future?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg",
-    title: "The Ever-Changing Role of the CFO",
-    link: "https://www.bdo.ca/insights/the-ever-changing-role-of-the-cfo?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg",
-    title: "Corporate Governance in Canada",
-    link: "https://www.ecgi.global/publications/codes/countries/corporate-governance-in-canada?utm_source=chatgpt.com",
-  },
-];
+  const resourcesData = [
+    {
+      img: "/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg",
+      title: "The Modern CFO’s Guide To Navigating Volatility",
+      link: "https://www.cbh.com/insights/articles/cfo-change-management-5-strategies-for-financial-resilience/?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg",
+      title: "How to Rethink the Finance & Reporting Operating Model",
+      link: "https://www.ey.com/en_ca/insights/assurance/how-to-rethink-the-finance-and-reporting-operating-model-for-the-future?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg",
+      title: "The Ever-Changing Role of the CFO",
+      link: "https://www.bdo.ca/insights/the-ever-changing-role-of-the-cfo?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg",
+      title: "Corporate Governance in Canada",
+      link: "https://www.ecgi.global/publications/codes/countries/corporate-governance-in-canada?utm_source=chatgpt.com",
+    },
+  ];
 
 
 
@@ -397,21 +397,21 @@ const resourcesData = [
 
       {/* What We Do */}
       {/* What We Do Section */}
-<WhatWeOffer heading="What We Offer" cards={offerCards} />
-<WhyChooseUs
+      <WhatWeOffer heading="What We Offer" cards={offerCards} />
+      <WhyChooseUs
         image={whyChooseData.image}
         title={whyChooseData.title}
         paragraphs={whyChooseData.paragraphs}
       />
 
- <ServiceAccordion
+      <ServiceAccordion
         heading="Explore Our Services in Detail"
         services={servicesList}
       />
-<ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
-          {/* Resources */}
-<ResourcesSection heading="Resources" resources={resourcesData} />
- <CallToAction
+      <ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
+      {/* Resources */}
+      <ResourcesSection heading="Resources" resources={resourcesData} />
+      <CallToAction
         heading="Lead With Confidence, Govern With Clarity."
         subheading="Partner with us to strengthen controls, streamline reporting, and align tax, cashflow, and governance with your long-term vision."
         buttonText="Book Now"
@@ -421,8 +421,8 @@ const resourcesData = [
 
 
 
-{/* FAQs */}
-    {/* ✅ FAQs — Updated Design */}
+      {/* FAQs */}
+      {/* ✅ FAQs — Updated Design */}
       <FAQSection heading="Frequently Asked Questions" faqs={faqs} />
 
 

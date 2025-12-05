@@ -88,7 +88,7 @@ const HomePage: React.FC = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative flex flex-col items-center justify-center text-center px-10 py-24 overflow-hidden" style={{ minHeight: 400 }}>
+      <section className="relative flex flex-col items-center justify-center text-center px-6 py-16 md:px-10 md:py-24 overflow-hidden" style={{ minHeight: 400 }}>
         {heroImages.map((img, idx) => (
           <img
             key={idx}
@@ -115,7 +115,7 @@ const HomePage: React.FC = () => {
 
       {/* What We Do */}
       {/* What We Do Section */}
-      <section id="what-we-do" className="px-6 md:px-10 py-24 bg-white">
+      <section id="what-we-do" className="px-6 md:px-10 py-16 md:py-24 bg-white">
         <h2 className="text-3xl font-bold mb-14 text-center text-gray-900">What We Do</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
@@ -202,7 +202,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Who We Serve */}
-      <section className="bg-white px-6 md:px-10 py-24">
+      <section className="bg-white px-6 md:px-10 py-16 md:py-24">
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 items-center">
           {/* Left column: Heading and description, vertically centered */}
           <div className="flex flex-col justify-center h-full md:col-span-1">
@@ -212,7 +212,7 @@ const HomePage: React.FC = () => {
             </p>
           </div>
           {/* Right: 3x3 grid of images, some with rotation */}
-          <div className="md:col-span-2 grid grid-cols-3 gap-8 justify-items-center">
+          <div className="md:col-span-2 grid grid-cols-2 sm:grid-cols-3 gap-6 md:gap-8 justify-items-center">
             {[
               { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Professionals & Contractors.png", rotate: "-rotate-6" },
               { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/SMEs.png", rotate: "" },
@@ -248,7 +248,7 @@ const HomePage: React.FC = () => {
           return (
             <section
               key={i}
-              className="flex flex-col md:flex-row bg-white items-center justify-center gap-10 px-6 md:px-10 py-20 transition"
+              className="flex flex-col md:flex-row bg-white items-center justify-center gap-10 px-6 md:px-10 py-12 md:py-20 transition"
             >
               <div className="md:w-1/2 flex justify-center">
                 <img
@@ -270,12 +270,12 @@ const HomePage: React.FC = () => {
           return (
             <section
               key={i}
-              className="flex flex-col md:flex-row bg-gray-50 items-center justify-center gap-10 px-6 md:px-10 py-20 transition"
+              className="flex flex-col md:flex-row bg-gray-50 items-center justify-center gap-10 px-6 md:px-10 py-12 md:py-20 transition"
             >
               <div className="md:w-1/2 flex flex-col justify-center items-start">
                 <h3 className="text-4xl font-semibold text-gray-900 mb-4">{s.title}</h3>
                 <p className="text-gray-700 text-lg mb-8">{s.text}</p>
-                <a href="/TaxServices" className="btn-primary">Learn more</a>
+                <a href="/TaxService" className="btn-primary">Learn more</a>
               </div>
               <div className="md:w-1/2 flex flex-col gap-6 justify-center items-center">
                 <img
@@ -301,7 +301,7 @@ const HomePage: React.FC = () => {
             <section
               key={i}
               className={`flex flex-col md:flex-row ${i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
-                } items-center gap-10 px-6 md:px-10 py-20 transition`}
+                } items-center gap-10 px-6 md:px-10 py-12 md:py-20 transition`}
             >
               <div className="md:w-1/2 space-y-6">
                 <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>
@@ -324,7 +324,7 @@ const HomePage: React.FC = () => {
             <section
               key={i}
               className={`flex flex-col md:flex-row ${i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
-                } items-center gap-10 px-6 md:px-10 py-20 transition`}
+                } items-center gap-10 px-6 md:px-10 py-12 md:py-20 transition`}
             >
               <div className="md:w-1/2 space-y-6">
                 <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>
@@ -347,7 +347,7 @@ const HomePage: React.FC = () => {
             <section
               key={i}
               className={`flex flex-col md:flex-row ${i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
-                } items-center gap-10 px-6 md:px-10 py-20 transition`}
+                } items-center gap-10 px-6 md:px-10 py-12 md:py-20 transition`}
             >
               <div className="md:w-1/2 space-y-6">
                 <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>
@@ -370,7 +370,7 @@ const HomePage: React.FC = () => {
             <section
               key={i}
               className={`flex flex-col md:flex-row ${i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
-                } items-center gap-10 px-6 md:px-10 py-20 transition`}
+                } items-center gap-10 px-6 md:px-10 py-12 md:py-20 transition`}
             >
               <div className="md:w-1/2 space-y-6">
                 <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>

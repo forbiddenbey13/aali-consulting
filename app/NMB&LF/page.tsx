@@ -84,7 +84,7 @@ export default function NMBLFPage() {
         <div className="relative z-10 text-center max-w-2xl mx-auto px-4">
           <h1 className="text-3xl md:text-5xl font-black text-white mb-4 drop-shadow-lg">
             <span className="text-white">Start Strong in Canada —<br />
-            Financially, Confidently, and Connected</span>
+              Financially, Confidently, and Connected</span>
           </h1>
           <p className="text-white text-lg md:text-xl mb-6 drop-shadow font-semibold">
             A step-by-step program that helps newcomers set up their banking, taxes, benefits, housing, credit, and school admissions — with culturally aware, plain-language guidance every step of the way.
@@ -104,7 +104,7 @@ export default function NMBLFPage() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-12 items-center">
           <div className="flex-1">
             <h2 className="text-3xl font-bold mb-4 text-gray-900">Who This Program Is For</h2>
-            <p className="text-lg text-white mb-8">
+            <p className="text-lg text-gray-900 mb-8">
               If you’ve recently arrived in Canada or are planning to settle soon, this program helps you navigate everything that matters most in your first year — confidently, correctly, and without confusion.
             </p>
           </div>

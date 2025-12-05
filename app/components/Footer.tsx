@@ -61,12 +61,12 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="!text-white font-semibold text-lg mb-4">Services</h4>
             <ul className="space-y-2">
-              <li><Link href="/P&C" className="hover:text-blue-400 transition">Tax Services (Personal & Corporate)</Link></li>
-              <li><Link href="/B&A" className="hover:text-blue-400 transition">Accounting & Bookkeeping</Link></li>
-              <li><Link href="/SFP" className="hover:text-blue-400 transition">Strategic Financial Planning</Link></li>
-              <li><Link href="/SSBR" className="hover:text-blue-400 transition">Technology Solutions</Link></li>
-              <li><Link href="/CFO" className="hover:text-blue-400 transition">CFO Advisory & Governance</Link></li>
-              <li><Link href="/DLP" className="hover:text-blue-400 transition">Disability & Life Planning</Link></li>
+              <li><Link href="/TaxService" className="hover:text-blue-400 transition">Tax Services (Personal & Corporate)</Link></li>
+              <li><Link href="/Bookkeeping&Accounting" className="hover:text-blue-400 transition">Accounting & Bookkeeping</Link></li>
+              <li><Link href="/StrategicPlanning" className="hover:text-blue-400 transition">Strategic Financial Planning</Link></li>
+              <li><Link href="/Systems&TechnologyImplementation" className="hover:text-blue-400 transition">Technology Solutions</Link></li>
+              <li><Link href="/CFOAdvisory&Governance" className="hover:text-blue-400 transition">CFO Advisory & Governance</Link></li>
+              <li><Link href="/Disability&LifePlanning" className="hover:text-blue-400 transition">Disability & Life Planning</Link></li>
             </ul>
           </div>
 

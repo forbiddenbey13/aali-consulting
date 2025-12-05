@@ -34,45 +34,45 @@ const HomePage: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-const offerCards = [
-  {
-    title: "Accounting & Payroll Software Setup",
-    description:
-      "QuickBooks, Xero, Wave, FreshBooks, and payroll tools—configured to fit your business.",
-    link: "/P&C",
-  },
-  {
-    title: "E-Commerce & POS Integrations",
-    description:
-      "Seamlessly connect Shopify, Amazon, inventory, and point-of-sale systems for real-time financial clarity.",
-    link: "/B&A",
-  },
-  {
-    title: "ERP & Advanced Systems",
-    description:
-      "Set up or integrate with NetSuite, Sage Intacct, or Microsoft Dynamics 365 Business Central.",
-    link: "/SFP",
-  },
-  {
-    title: "Custom Implementation Process",
-    description:
-      "Needs assessment → Full setup & customization → Training and ongoing support.",
-    link: "/TS",
-  },
-  {
-    title: "Automation & Data Workflows",
-    description:
-      "Dropbox, Tableau dashboards, API connectors, and automated reporting that save hours of manual work.",
-    link: "#",
-  },
-  {
-    title: "Secure Migration & Scalability",
-    description:
-      "Data migration, system clean-up, and scalable frameworks so your tools grow with your business.",
-    link: "/TS",
-  }
-];
- const faqs = [
+  const offerCards = [
+    {
+      title: "Accounting & Payroll Software Setup",
+      description:
+        "QuickBooks, Xero, Wave, FreshBooks, and payroll tools—configured to fit your business.",
+      link: "/TaxService",
+    },
+    {
+      title: "E-Commerce & POS Integrations",
+      description:
+        "Seamlessly connect Shopify, Amazon, inventory, and point-of-sale systems for real-time financial clarity.",
+      link: "/Bookkeeping&Accounting",
+    },
+    {
+      title: "ERP & Advanced Systems",
+      description:
+        "Set up or integrate with NetSuite, Sage Intacct, or Microsoft Dynamics 365 Business Central.",
+      link: "/StrategicPlanning",
+    },
+    {
+      title: "Custom Implementation Process",
+      description:
+        "Needs assessment → Full setup & customization → Training and ongoing support.",
+      link: "/Systems&TechnologyImplementation",
+    },
+    {
+      title: "Automation & Data Workflows",
+      description:
+        "Dropbox, Tableau dashboards, API connectors, and automated reporting that save hours of manual work.",
+      link: "#",
+    },
+    {
+      title: "Secure Migration & Scalability",
+      description:
+        "Data migration, system clean-up, and scalable frameworks so your tools grow with your business.",
+      link: "/Systems&TechnologyImplementation",
+    }
+  ];
+  const faqs = [
     {
       question:
         "What exactly does “Systems & Technology Implementation” mean?",
@@ -121,13 +121,13 @@ Our approach ensures your systems don’t just get implemented — they evolve w
     },
   ];
 
-    const heroImages = [
-  // '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-  // '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-  // '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
-  '/Web Assets/Images/NEW/Systems & Technology Implementation/913779463-1024x683.jpg'
+  const heroImages = [
+    // '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
+    // '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
+    // '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
+    '/Web Assets/Images/NEW/Systems & Technology Implementation/913779463-1024x683.jpg'
   ];
-    const whyChooseData = {
+  const whyChooseData = {
     image: "/Web Assets/Images/NEW/Systems & Technology Implementation/what-is-system-integration.jpeg.webp",
     title: "Implementation That Fits Your Business, Not the Other Way Around",
     paragraphs: [
@@ -138,19 +138,19 @@ Our approach ensures your systems don’t just get implemented — they evolve w
       `,
     ],
   };
-   const FactData = {
+  const FactData = {
     image: "/Assets/financial-planning.jpg",
     title: "Stay on Top of Your Numbers — Without the Stress",
     paragraphs: [
       `Managing your finances shouldn’t feel overwhelming. With automated reconciliations, payroll scheduling, and visual dashboards, we handle the numbers so you can focus on building your business. From compliance to cashflow, every detail stays organized, accurate, and up to date — giving you peace of mind and the confidence to plan ahead.`,
     ],
   };
-  
 
-const servicesList = [
-  {
-    title: "Accounting & Payroll Software Setup",
-    description: `Set up your accounting and payroll systems the right way — accurate, secure, and ready to scale with your business.
+
+  const servicesList = [
+    {
+      title: "Accounting & Payroll Software Setup",
+      description: `Set up your accounting and payroll systems the right way — accurate, secure, and ready to scale with your business.
 
 The right software foundation saves hours of confusion and countless errors later. Whether you’re setting up QuickBooks, Xero, or an integrated payroll tool, we handle the full configuration so your books and pay runs are clean, automated, and compliant from day one.
 
@@ -174,10 +174,10 @@ Security setup including MFA, audit trails, and secure backups.
 
 The Result:
 A clean, connected, and compliant accounting ecosystem — built once, built right, and ready to support growth, payroll accuracy, and year-end peace of mind.`,
-  },
-  {
-    title: "E-Commerce & POS Integrations",
-    description: `Unify your online store, sales data, and accounting in one seamless flow — so every transaction tells the full financial story.
+    },
+    {
+      title: "E-Commerce & POS Integrations",
+      description: `Unify your online store, sales data, and accounting in one seamless flow — so every transaction tells the full financial story.
 
 Running an online business or retail operation often means juggling multiple systems: Shopify, Amazon, Stripe, Square, or in-store POS. We simplify the chaos by connecting your sales, inventory, and accounting platforms into a single, automated ecosystem — giving you real-time visibility and accurate books without manual data entry.
 
@@ -225,10 +225,10 @@ Payroll that’s seamless, compliant, and scalable — so your people get paid, 
 
 
 `,
-  },
-  {
-    title: "ERP & Advanced Systems",
-    description: `Bring structure, visibility, and scalability to your growing operations — with ERP systems that connect every part of your business.
+    },
+    {
+      title: "ERP & Advanced Systems",
+      description: `Bring structure, visibility, and scalability to your growing operations — with ERP systems that connect every part of your business.
 
 As your company expands, spreadsheets and siloed tools stop working. That’s where ERP (Enterprise Resource Planning) systems come in. We help you implement and integrate advanced platforms like NetSuite, Sage Intacct, or Microsoft Dynamics 365 Business Central — uniting finance, inventory, sales, and reporting under one reliable system.
 
@@ -252,10 +252,10 @@ Performance optimization to fine-tune workflows and eliminate bottlenecks.
 
 The Result:
 A single, integrated system that gives leadership a 360° view of the business — improving accuracy, accountability, and agility at every level.`,
-  },
-  {
-    title: "Custom Implementation Process",
-    description: `Every business is unique — your systems should be too. We design and implement customized setups that align perfectly with how you actually work.
+    },
+    {
+      title: "Custom Implementation Process",
+      description: `Every business is unique — your systems should be too. We design and implement customized setups that align perfectly with how you actually work.
 
 No two organizations run the same way. That’s why our implementation process begins with understanding your workflows, goals, and pain points — not just the software. From the first consultation to post-launch training, we build a fully tailored system that fits your operations, your people, and your growth strategy.
 
@@ -279,10 +279,10 @@ Clear KPIs to measure adoption, efficiency, and ROI.
 
 The Result:
 A fully integrated, purpose-built system that feels natural to your team, grows with your business, and reduces friction across every workflow.`,
-  },
-  {
-    title: "Automation & Data Workflows",
-    description: `Free your team from repetitive tasks and manual data entry — with smart automations that connect your apps, accounting, and reporting in real time.
+    },
+    {
+      title: "Automation & Data Workflows",
+      description: `Free your team from repetitive tasks and manual data entry — with smart automations that connect your apps, accounting, and reporting in real time.
 
 Every business runs on data — but too often, that data is stuck in silos: spreadsheets, emails, or disconnected tools. We help you automate how information moves between your systems, so invoices post automatically, reports update in real time, and tasks trigger on their own — saving hours every week while improving accuracy and insight.
 
@@ -306,10 +306,10 @@ Continuous improvement loop to review, optimize, and expand automations as your 
 
 The Result:
 A connected ecosystem where data flows automatically, work happens faster, and your team focuses on strategy — not spreadsheets.`,
-  },
-  {
-    title: "Secure Migration & Scalability",
-    description: `Move your data with confidence — and build systems that grow as your business does.
+    },
+    {
+      title: "Secure Migration & Scalability",
+      description: `Move your data with confidence — and build systems that grow as your business does.
 
 Switching platforms or modernizing your tech stack can feel risky, especially when your data holds years of history, compliance records, and client trust. Our Secure Migration & Scalability service ensures a smooth transition from legacy systems to modern platforms like SuiteDash, QuickBooks, Xero, or ERP solutions — while preserving data integrity, accuracy, and security every step of the way.
 
@@ -334,49 +334,49 @@ A clean, secure migration that minimizes downtime — and a flexible, scalable s
 
 
 `,
-  },
-];
+    },
+  ];
 
-const processSteps = [
-  {
-    number: "1",
-    title: "Upload Your Documents",
-    text: "The interaction of multiple elements in a system to produce an effect greater than the sum of their individual effects.",
-  },
-  {
-    number: "2",
-    title: "We Prepare & Optimize",
-    text: "A fundamental change in approach or underlying assumptions that leads to a new way of thinking or operating.",
-  },
-  {
-    number: "3",
-    title: "You Review & File Confidently",
-    text: "A new technology, product, or service that emerges into the existing market and creates a new one.",
-  },
-];
+  const processSteps = [
+    {
+      number: "1",
+      title: "Upload Your Documents",
+      text: "The interaction of multiple elements in a system to produce an effect greater than the sum of their individual effects.",
+    },
+    {
+      number: "2",
+      title: "We Prepare & Optimize",
+      text: "A fundamental change in approach or underlying assumptions that leads to a new way of thinking or operating.",
+    },
+    {
+      number: "3",
+      title: "You Review & File Confidently",
+      text: "A new technology, product, or service that emerges into the existing market and creates a new one.",
+    },
+  ];
 
-const resourcesData = [
-  {
-    img: "/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg",
-    title: "Keeping records",
-    link: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/keeping-records.html?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg",
-    title: "Record Retention & Destruction Rules",
-    link: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/keeping-records/where-keep-your-records-long-request-permission-destroy-them-early.html?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg",
-    title: "Bookkeeping Basics for Small Businesses",
-    link: "https://www.nerdwallet.com/article/small-business/small-business-bookkeeping?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg",
-    title: "How Bookkeeping Supports Business Growth",
-    link: "https://www.forbes.com/sites/melissahouston/2023/11/25/small-business-bookkeeping-and-how-it-supports-your-business-success/?utm_source=chatgpt.com",
-  },
-];
+  const resourcesData = [
+    {
+      img: "/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg",
+      title: "Keeping records",
+      link: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/keeping-records.html?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg",
+      title: "Record Retention & Destruction Rules",
+      link: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/keeping-records/where-keep-your-records-long-request-permission-destroy-them-early.html?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg",
+      title: "Bookkeeping Basics for Small Businesses",
+      link: "https://www.nerdwallet.com/article/small-business/small-business-bookkeeping?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg",
+      title: "How Bookkeeping Supports Business Growth",
+      link: "https://www.forbes.com/sites/melissahouston/2023/11/25/small-business-bookkeeping-and-how-it-supports-your-business-success/?utm_source=chatgpt.com",
+    },
+  ];
 
 
 
@@ -394,21 +394,21 @@ const resourcesData = [
 
       {/* What We Do */}
       {/* What We Do Section */}
-<WhatWeOffer heading="What We Offer" cards={offerCards} />
-<WhyChooseUs
+      <WhatWeOffer heading="What We Offer" cards={offerCards} />
+      <WhyChooseUs
         image={whyChooseData.image}
         title={whyChooseData.title}
         paragraphs={whyChooseData.paragraphs}
       />
 
- <ServiceAccordion
+      <ServiceAccordion
         heading="Explore Our Services in Detail"
         services={servicesList}
       />
-<ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
-          {/* Resources */}
-<ResourcesSection heading="Resources" resources={resourcesData} />
- <CallToAction
+      <ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
+      {/* Resources */}
+      <ResourcesSection heading="Resources" resources={resourcesData} />
+      <CallToAction
         heading="Work Smarter with the Right Systems."
         subheading="Start Building Your Streamlined Workflow Today"
         buttonText="Book Now"
@@ -418,8 +418,8 @@ const resourcesData = [
 
 
 
-{/* FAQs */}
-    {/* ✅ FAQs — Updated Design */}
+      {/* FAQs */}
+      {/* ✅ FAQs — Updated Design */}
       <FAQSection heading="Frequently Asked Questions" faqs={faqs} />
 
 
