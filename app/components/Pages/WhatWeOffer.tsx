@@ -24,10 +24,10 @@ const WhatWeOffer: React.FC<WhatWeOfferProps> = ({ heading, cards }) => {
         {cards.map((card, i) => (
           <div
             key={i}
-            className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition"
+            className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition overflow-hidden"
           >
             {card.special && (
-              <div className="absolute top-4 right-4 bg-yellow-400 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+              <div className="special-ribbon">
                 ★ SPECIAL ★
               </div>
             )}
