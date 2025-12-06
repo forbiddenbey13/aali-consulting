@@ -77,10 +77,10 @@ const Footer: React.FC = () => {
               <li>(647)-281-2406</li>
               <li>
                 <a
-                  href="mailto:info@aaliconsulting.com"
+                  href="mailto:info@aaliconsulting.ca"
                   className=" hover:underline"
                 >
-                  info@aaliconsulting.com
+                  info@aaliconsulting.ca
                 </a>
               </li>
               <li>Canada, Brampton, ON</li>

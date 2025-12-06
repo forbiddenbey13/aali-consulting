@@ -17,8 +17,8 @@ const ResourcesSection: React.FC<ResourcesSectionProps> = ({
   resources,
 }) => {
   return (
-    <section className="px-6 md:px-10 py-24 bg-white">
-      <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
+    <section className="px-6 md:px-10 py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+      <h2 className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
         {heading}
       </h2>
 
@@ -26,7 +26,7 @@ const ResourcesSection: React.FC<ResourcesSectionProps> = ({
         {resources.map((r, i) => (
           <div
             key={i}
-            className="bg-white rounded-2xl shadow-lg overflow-hidden transition hover:shadow-xl flex flex-col"
+            className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transition hover:shadow-xl flex flex-col border border-gray-100 dark:border-gray-700"
           >
             {/* Image */}
             <img
@@ -37,14 +37,14 @@ const ResourcesSection: React.FC<ResourcesSectionProps> = ({
 
             {/* Content */}
             <div className="p-6 flex flex-col items-center text-center flex-grow">
-              <h4 className="font-semibold text-gray-900 text-base mb-4">
+              <h4 className="font-semibold text-gray-900 dark:text-white text-base mb-4">
                 {r.title}
               </h4>
               <a
                 href={r.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-auto bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium px-6 py-2 rounded-full shadow-sm transition"
+                className="mt-auto bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-100 font-medium px-6 py-2 rounded-full shadow-sm transition"
               >
                 Learn More
               </a>

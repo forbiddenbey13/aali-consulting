@@ -384,7 +384,7 @@ Reports that speak the language of leadership — concise, visual, and transpare
 
 
   return (
-    <div className="font-sans text-gray-800 bg-white">
+    <div className="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 transition-colors duration-300">
       <Header />
 
       <HeroSection

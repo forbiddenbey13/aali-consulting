@@ -1,11 +1,19 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTheme } from "next-themes";
+import { Sun, Moon } from "lucide-react";
 
 const Header: React.FC = () => {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleMenu = (menu: string) => {
     setOpenMenu(openMenu === menu ? null : menu);
@@ -17,7 +25,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50 w-full">
+    <header className="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50 w-full transition-colors duration-300">
       <div className="flex items-center justify-between relative w-full px-6 py-4 md:px-10">
 
         {/* LEFT — Logo */}
@@ -30,17 +38,25 @@ const Header: React.FC = () => {
               height={50}
               className="object-contain md:w-[75px] md:h-[75px]"
             />
-            <span className="text-lg md:text-xl font-semibold text-gray-900">
+            <span className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white">
               AALI Consulting
             </span>
           </Link>
         </div>
 
         {/* MOBILE MENU TOGGLE */}
-        <div className="md:hidden z-50">
+        <div className="md:hidden z-50 flex items-center gap-4">
+          {mounted && (
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition text-gray-700 dark:text-gray-300"
+            >
+              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+          )}
           <button
             onClick={toggleMobileMenu}
-            className="text-gray-700 hover:text-blue-600 focus:outline-none"
+            className="text-gray-700 dark:text-white hover:text-blue-600 focus:outline-none"
           >
             {mobileMenuOpen ? (
               <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -55,23 +71,23 @@ const Header: React.FC = () => {
         </div>
 
         {/* CENTER — DESKTOP NAV */}
-        <nav className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center space-x-8 text-sm font-medium text-gray-700 z-50">
+        <nav className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center space-x-8 text-sm font-medium text-gray-700 dark:text-gray-300 z-50">
 
           {/* Services Dropdown */}
           <div className="relative group">
             <button
               onClick={() => toggleMenu("services")}
-              className="flex items-center gap-1 hover:text-blue-600 transition focus:outline-none"
+              className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition focus:outline-none"
             >
               Services <span>▾</span>
             </button>
             {openMenu === "services" && (
-              <div className="absolute left-0 mt-2 bg-white border border-gray-200 rounded-md shadow-lg w-56 z-[60]">
-                <ul className="py-2 text-sm text-gray-700">
-                  <li><Link href="/TaxService" className="block px-4 py-2 hover:bg-gray-100" onClick={() => setOpenMenu(null)}>Tax Services</Link></li>
-                  <li><Link href="/Bookkeeping&Accounting" className="block px-4 py-2 hover:bg-gray-100" onClick={() => setOpenMenu(null)}>Bookkeeping</Link></li>
-                  <li><Link href="/StrategicPlanning" className="block px-4 py-2 hover:bg-gray-100" onClick={() => setOpenMenu(null)}>Financial Planning</Link></li>
-                  <li><Link href="/Systems&TechnologyImplementation" className="block px-4 py-2 hover:bg-gray-100" onClick={() => setOpenMenu(null)}>Technology Solutions</Link></li>
+              <div className="absolute left-0 mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg w-56 z-[60]">
+                <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
+                  <li><Link href="/TaxService" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" onClick={() => setOpenMenu(null)}>Tax Services</Link></li>
+                  <li><Link href="/Bookkeeping&Accounting" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" onClick={() => setOpenMenu(null)}>Bookkeeping</Link></li>
+                  <li><Link href="/StrategicPlanning" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" onClick={() => setOpenMenu(null)}>Financial Planning</Link></li>
+                  <li><Link href="/Systems&TechnologyImplementation" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" onClick={() => setOpenMenu(null)}>Technology Solutions</Link></li>
                 </ul>
               </div>
             )}
@@ -81,40 +97,51 @@ const Header: React.FC = () => {
           <div className="relative group">
             <button
               onClick={() => toggleMenu("newcomers")}
-              className="flex items-center gap-1 hover:text-blue-600 transition focus:outline-none"
+              className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition focus:outline-none"
             >
               Newcomers & Expats <span>▾</span>
             </button>
             {openMenu === "newcomers" && (
-              <div className="absolute left-0 mt-2 bg-white border border-gray-200 rounded-md shadow-lg w-56 z-[60]">
-                <ul className="py-2 text-sm text-gray-700">
-                  <li><Link href="/NCW&E" className="block px-4 py-2 hover:bg-gray-100" onClick={() => setOpenMenu(null)}>Work & Business Setup</Link></li>
-                  <li><Link href="/NMB&LF" className="block px-4 py-2 hover:bg-gray-100" onClick={() => setOpenMenu(null)}>Money & Life Setup</Link></li>
+              <div className="absolute left-0 mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg w-56 z-[60]">
+                <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
+                  <li><Link href="/NCW&E" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" onClick={() => setOpenMenu(null)}>Work & Business Setup</Link></li>
+                  <li><Link href="/NMB&LF" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" onClick={() => setOpenMenu(null)}>Money & Life Setup</Link></li>
                 </ul>
               </div>
             )}
           </div>
 
-          <Link href="/AboutUs" className="hover:text-blue-600 transition">About</Link>
-          <Link href="/ContactUs" className="hover:text-blue-600 transition">Contact</Link>
+          <Link href="/AboutUs" className="hover:text-blue-600 dark:hover:text-blue-400 transition">About</Link>
+          <Link href="/ContactUs" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Contact</Link>
         </nav>
 
-        {/* RIGHT — spacer for balance (Desktop only) */}
-        <div className="hidden md:block w-[180px]" />
+        {/* RIGHT — Theme Toggle & Spacer */}
+        <div className="hidden md:flex items-center gap-4">
+          {mounted && (
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition text-gray-700 dark:text-gray-300"
+              aria-label="Toggle Theme"
+            >
+              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+          )}
+          <div className="w-[20px]" /> {/* Small spacer if needed */}
+        </div>
       </div>
 
       {/* MOBILE MENU OVERLAY */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 bg-white z-40 flex flex-col pt-24 px-6 md:hidden overflow-y-auto">
-          <nav className="flex flex-col space-y-6 text-lg font-medium text-gray-800">
+        <div className="fixed inset-0 bg-white dark:bg-gray-900 z-40 flex flex-col pt-24 px-6 md:hidden overflow-y-auto">
+          <nav className="flex flex-col space-y-6 text-lg font-medium text-gray-800 dark:text-gray-200">
 
             {/* Mobile Services */}
             <div>
-              <button onClick={() => toggleMenu("mobile-services")} className="flex items-center justify-between w-full border-b border-gray-100 pb-2">
+              <button onClick={() => toggleMenu("mobile-services")} className="flex items-center justify-between w-full border-b border-gray-100 dark:border-gray-800 pb-2">
                 Services <span>{openMenu === "mobile-services" ? "▴" : "▾"}</span>
               </button>
               {openMenu === "mobile-services" && (
-                <div className="flex flex-col space-y-3 mt-3 pl-4 text-base text-gray-600">
+                <div className="flex flex-col space-y-3 mt-3 pl-4 text-base text-gray-600 dark:text-gray-400">
                   <Link href="/TaxService" onClick={() => setMobileMenuOpen(false)}>Tax Services</Link>
                   <Link href="/Bookkeeping&Accounting" onClick={() => setMobileMenuOpen(false)}>Bookkeeping</Link>
                   <Link href="/StrategicPlanning" onClick={() => setMobileMenuOpen(false)}>Financial Planning</Link>
@@ -125,19 +152,19 @@ const Header: React.FC = () => {
 
             {/* Mobile Newcomers */}
             <div>
-              <button onClick={() => toggleMenu("mobile-newcomers")} className="flex items-center justify-between w-full border-b border-gray-100 pb-2">
+              <button onClick={() => toggleMenu("mobile-newcomers")} className="flex items-center justify-between w-full border-b border-gray-100 dark:border-gray-800 pb-2">
                 Newcomers & Expats <span>{openMenu === "mobile-newcomers" ? "▴" : "▾"}</span>
               </button>
               {openMenu === "mobile-newcomers" && (
-                <div className="flex flex-col space-y-3 mt-3 pl-4 text-base text-gray-600">
+                <div className="flex flex-col space-y-3 mt-3 pl-4 text-base text-gray-600 dark:text-gray-400">
                   <Link href="/NCW&E" onClick={() => setMobileMenuOpen(false)}>Work & Business Setup</Link>
                   <Link href="/NMB&LF" onClick={() => setMobileMenuOpen(false)}>Money & Life Setup</Link>
                 </div>
               )}
             </div>
 
-            <Link href="/AboutUs" className="border-b border-gray-100 pb-2" onClick={() => setMobileMenuOpen(false)}>About</Link>
-            <Link href="/ContactUs" className="border-b border-gray-100 pb-2" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
+            <Link href="/AboutUs" className="border-b border-gray-100 dark:border-gray-800 pb-2" onClick={() => setMobileMenuOpen(false)}>About</Link>
+            <Link href="/ContactUs" className="border-b border-gray-100 dark:border-gray-800 pb-2" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
 
             <div className="pt-4">
               <Link href="/ContactUs" className="block w-full text-center bg-blue-500 text-white px-6 py-3 rounded-full shadow-lg hover:bg-blue-600 transition" onClick={() => setMobileMenuOpen(false)}>

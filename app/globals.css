@@ -1,35 +1,71 @@
 @import "tailwindcss";
+@config "../tailwind.config.ts";
 
 :root {
-  --color-primary: #3B82F6; /* A modern, slightly brighter blue (Tailwind blue-500) */
-  --color-secondary: #D1D5DB; /* A neutral light gray (Tailwind gray-300) */
-  --color-accent: #10B981; /* A subtle green for highlights (Tailwind emerald-500) */
-  --color-text-dark: #1F2937; /* Darker text for headings (Tailwind gray-900) */
-  --color-text-medium: #4B5563; /* Medium text for paragraphs (Tailwind gray-700) */
-  --color-text-light: #6B7280; /* Lighter text for secondary info (Tailwind gray-500) */
-  --color-background-light: #F9FAFB; /* Off-white for sections (Tailwind gray-50) */
-  --color-background-white: #FFFFFF; /* Pure white */
-  --color-white: #FFFFFF; /* Explicit white color variable */
+  --color-primary: #3B82F6;
+  /* A modern, slightly brighter blue (Tailwind blue-500) */
+  --color-secondary: #D1D5DB;
+  /* A neutral light gray (Tailwind gray-300) */
+  --color-accent: #10B981;
+  /* A subtle green for highlights (Tailwind emerald-500) */
+  --color-text-dark: #1F2937;
+  /* Darker text for headings (Tailwind gray-900) */
+  --color-text-medium: #4B5563;
+  /* Medium text for paragraphs (Tailwind gray-700) */
+  --color-text-light: #6B7280;
+  /* Lighter text for secondary info (Tailwind gray-500) */
+  --color-background-light: #F9FAFB;
+  /* Off-white for sections (Tailwind gray-50) */
+  --color-background-white: #FFFFFF;
+  /* Pure white */
+  --color-white: #FFFFFF;
+  /* Explicit white color variable */
 }
 
-html, body {
-  font-family: 'Inter', sans-serif; /* Using a modern sans-serif font */
+.dark {
+  --color-primary: #60A5FA;
+  /* blue-400 */
+  --color-secondary: #4B5563;
+  /* gray-700 */
+  --color-accent: #34D399;
+  /* emerald-400 */
+  --color-text-dark: #F9FAFB;
+  /* gray-50 */
+  --color-text-medium: #D1D5DB;
+  /* gray-300 */
+  --color-text-light: #9CA3AF;
+  /* gray-400 */
+  --color-background-light: #1F2937;
+  /* gray-800 */
+  --color-background-white: #111827;
+  /* gray-900 */
+  --color-white: #FFFFFF;
+  /* explicit white stays white */
+}
+
+html,
+body {
+  font-family: 'Inter', sans-serif;
+  /* Using a modern sans-serif font */
   color: var(--color-text-medium);
   background-color: var(--color-background-white);
-  min-height: 100vh;
-  line-height: 1.6; /* Improved readability */
+  line-height: 1.6;
+  /* Improved readability */
+  overflow-x: hidden;
 }
 
 h1 {
   @apply text-4xl md:text-5xl font-extrabold leading-tight;
   color: var(--color-text-dark);
 }
+
 .special-ribbon {
   position: absolute;
   top: 32px;
   right: -42px;
   width: 160px;
-  background: #ef4444; /* Tailwind red-500 */
+  background: #ef4444;
+  /* Tailwind red-500 */
   color: #fff;
   font-size: 12px;
   font-weight: 800;

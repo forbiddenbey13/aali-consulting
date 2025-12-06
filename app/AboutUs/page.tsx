@@ -94,16 +94,16 @@ export default function AboutUsPage() {
   const [openFaq, setOpenFaq] = React.useState<number | null>(null);
 
   return (
-    <div className="font-sans text-gray-800 bg-white min-h-screen">
+    <div className="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 min-h-screen transition-colors duration-300">
       <Header />
 
       {/* Hero Section */}
       <section
-        className="relative text-center overflow-hidden"
-        style={{ backgroundColor: "#eaf6ff" }}
+        className="relative text-center overflow-hidden dark:bg-gray-900"
+        style={{ backgroundColor: "" }} // cleared, using class instead or inline style for light mode if specific
       >
         {/* Maple leaves background - grid layout for hero */}
-        <div className="absolute inset-0 z-0 pointer-events-none select-none">
+        <div className="absolute inset-0 z-0 pointer-events-none select-none bg-[#eaf6ff] dark:bg-gray-900">
           <img
             src="/Web Assets/NEW/4789ABC0-9773-40BD-A83B-9EFFAB17E947.png"
             alt=""
@@ -223,11 +223,11 @@ export default function AboutUsPage() {
           />
         </div>
         <div className="relative z-10 max-w-4xl mx-auto pt-20 md:pt-32 pb-20 md:pb-32 flex flex-col items-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight text-gray-900 text-center">
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight text-gray-900 dark:text-white text-center">
             Empowering Businesses and<br className="hidden md:block" />
             Individuals to Work Smarter, Not Harder
           </h1>
-          <p className="mb-10 text-xl md:text-2xl text-gray-800 font-medium max-w-2xl mx-auto text-center">
+          <p className="mb-10 text-xl md:text-2xl text-gray-800 dark:text-gray-200 font-medium max-w-2xl mx-auto text-center">
             AALI Consulting helps organizations and professionals streamline operations, enhance efficiency, and achieve growth through smart systems, strategy, and structure.
           </p>
           <div className="flex flex-row justify-center gap-6 mb-4">
@@ -244,7 +244,7 @@ export default function AboutUsPage() {
             </a>
             <a
               href="#what-we-stand-for"
-              className="px-10 py-3 rounded-full font-semibold bg-white border border-gray-400 shadow-lg text-gray-900 hover:bg-gray-100 transition text-lg"
+              className="px-10 py-3 rounded-full font-semibold bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-600 shadow-lg text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition text-lg"
               style={{
                 boxShadow: "0 4px 16px 0 rgba(0,0,0,0.10)",
               }}
@@ -266,15 +266,15 @@ export default function AboutUsPage() {
           >
             <path
               d="M0,100 Q360,180 720,120 Q1080,60 1440,140 L1440,180 L0,180 Z"
-              fill="#fff"
+              className="fill-white dark:fill-gray-900 transition-colors duration-300"
             />
           </svg>
         </div>
       </section>
 
       {/* What We Stand For */}
-      <section id="what-we-stand-for" className="bg-white py-16 px-4">
-        <h2 className="text-3xl font-bold text-center mb-4">What We Stand For</h2>
+      <section id="what-we-stand-for" className="bg-white dark:bg-gray-900 py-16 px-4 transition-colors duration-300">
+        <h2 className="text-3xl font-bold text-center mb-4 text-gray-900 dark:text-white">What We Stand For</h2>
         <p className="text-center max-w-2xl mx-auto mb-10 text-lg">
           We believe good consulting is more than advice — it’s about giving people tools that work. That’s why every service we offer is built on three core principles:
         </p>
@@ -303,24 +303,24 @@ export default function AboutUsPage() {
       </section>
 
       {/* Who We Help */}
-      <section className="bg-white py-16 px-4">
-        <h2 className="text-3xl font-bold text-center mb-4">Who We Help</h2>
+      <section className="bg-white dark:bg-gray-900 py-16 px-4 transition-colors duration-300">
+        <h2 className="text-3xl font-bold text-center mb-4 text-gray-900 dark:text-white">Who We Help</h2>
         <p className="text-center max-w-2xl mx-auto mb-10 text-lg">
           From Students to CEOs — We’re Built for Every Stage of Growth. Proudly Supporting Clients Across Canada and the United States.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
           {WHO_WE_HELP.map((w) => (
-            <div key={w.title} className="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-center">
-              <div className="font-semibold text-lg mb-2 text-center">{w.title}</div>
-              <div className="text-gray-600 text-center text-sm">{w.desc}</div>
+            <div key={w.title} className="bg-white dark:bg-gray-800 rounded-xl shadow p-6 flex flex-col items-center border border-gray-100 dark:border-gray-700">
+              <div className="font-semibold text-lg mb-2 text-center text-gray-900 dark:text-white">{w.title}</div>
+              <div className="text-gray-600 dark:text-gray-300 text-center text-sm">{w.desc}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* Why Choose AALI Consulting */}
-      <section className="bg-white py-16 px-4">
-        <h2 className="text-3xl font-bold text-center mb-4">Why Choose AALI Consulting</h2>
+      <section className="bg-white dark:bg-gray-900 py-16 px-4 transition-colors duration-300">
+        <h2 className="text-3xl font-bold text-center mb-4 text-gray-900 dark:text-white">Why Choose AALI Consulting</h2>
         <p className="text-center max-w-2xl mx-auto mb-10 text-lg">
           At AALI Consulting, you're not just getting accountants or planners — you're gaining partners who understand your goals, culture, and community.
         </p>
@@ -328,14 +328,14 @@ export default function AboutUsPage() {
           {WHY_CHOOSE.map((item, i) => (
             <div
               key={item.title}
-              className="flex flex-col items-center text-center p-12 bg-white border border-gray-200 rounded-[32px] shadow-md"
+              className="flex flex-col items-center text-center p-12 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-[32px] shadow-md transition-colors duration-300"
               style={{ minHeight: 340 }}
             >
               <div className="mb-8">
-                {React.cloneElement(item.icon, { className: "w-20 h-20 mx-auto text-blue-600" })}
+                {React.cloneElement(item.icon, { className: "w-20 h-20 mx-auto text-blue-600 dark:text-blue-400" })}
               </div>
-              <div className="font-bold text-2xl mb-2 text-gray-900">{item.title}</div>
-              <div className="text-gray-700 text-lg">{item.desc}</div>
+              <div className="font-bold text-2xl mb-2 text-gray-900 dark:text-white">{item.title}</div>
+              <div className="text-gray-700 dark:text-gray-300 text-lg">{item.desc}</div>
             </div>
           ))}
         </div>
@@ -347,10 +347,10 @@ export default function AboutUsPage() {
           <img src="/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp" alt="" className="w-full h-full object-cover opacity-30" />
         </div>
         <div className="relative z-10">
-          <h2 className="text-3xl font-bold mb-4 text-gray-900">Let’s Talk About Your Goals</h2>
+          <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Let’s Talk About Your Goals</h2>
           <div className="flex justify-center gap-4 mb-8">
             <a href="/ContactUs" className="bg-blue-600 text-white px-8 py-3 rounded-full shadow hover:bg-blue-700 font-semibold transition">Book A Consultation</a>
-            <a href="/ContactUs" className="bg-white border border-gray-400 px-8 py-3 rounded-full shadow font-semibold hover:bg-gray-100 transition">Contact Us</a>
+            <a href="/ContactUs" className="bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-600 px-8 py-3 rounded-full shadow font-semibold text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition">Contact Us</a>
           </div>
         </div>
       </section>

@@ -34,45 +34,45 @@ const HomePage: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-const offerCards = [
-  {
-    title: "T1 General Filing",
-    description:
-      "Straightforward annual return preparation for individuals, students, families, retirees, and newcomers.",
-    link: "#explore-services",
-  },
-  {
-    title: "Tax Planning & Deductions & Credits",
-    description:
-      "Optimize deductions, claim tuition/medical/family benefits, and ensure you maximize DTC, CCB, and other credits.",
-    link: "#explore-services",
-  },
-  {
-    title: "Registered Plans",
-    description:
-      "RRSP, TFSA, FHSA, and RESP planning, contributions, and reporting for short-term goals and long-term savings.",
-    link: "#explore-services",
-  },
-  {
-    title: "Investments & Rental Income",
-    description:
-      "Reporting for real estate, self-employment, stocks, ETFs, crypto, and slips (T3, T5, T5008).",
-    link: "#explore-services",
-  },
-  {
-    title: "Cross-Border & Newcomers",
-    description:
-      "Residency compliance, split-year filings, U.S. reporting, and tailored guidance for newcomers and non-residents.",
-    link: "#explore-services",
-  },
-  {
-    title: "Life Events & Estates",
-    description:
-      "Specialized filings for disability, final/estate returns, inheritance planning, or separation/divorce adjustments.",
-    link: "#explore-services",
-  }
-];
- const faqs = [
+  const offerCards = [
+    {
+      title: "T1 General Filing",
+      description:
+        "Straightforward annual return preparation for individuals, students, families, retirees, and newcomers.",
+      link: "#explore-services",
+    },
+    {
+      title: "Tax Planning & Deductions & Credits",
+      description:
+        "Optimize deductions, claim tuition/medical/family benefits, and ensure you maximize DTC, CCB, and other credits.",
+      link: "#explore-services",
+    },
+    {
+      title: "Registered Plans",
+      description:
+        "RRSP, TFSA, FHSA, and RESP planning, contributions, and reporting for short-term goals and long-term savings.",
+      link: "#explore-services",
+    },
+    {
+      title: "Investments & Rental Income",
+      description:
+        "Reporting for real estate, self-employment, stocks, ETFs, crypto, and slips (T3, T5, T5008).",
+      link: "#explore-services",
+    },
+    {
+      title: "Cross-Border & Newcomers",
+      description:
+        "Residency compliance, split-year filings, U.S. reporting, and tailored guidance for newcomers and non-residents.",
+      link: "#explore-services",
+    },
+    {
+      title: "Life Events & Estates",
+      description:
+        "Specialized filings for disability, final/estate returns, inheritance planning, or separation/divorce adjustments.",
+      link: "#explore-services",
+    }
+  ];
+  const faqs = [
     {
       question:
         "When should I file my personal tax return in Canada?",
@@ -98,12 +98,12 @@ We use encrypted portals for document uploads, cross-check every entry against C
     },
   ];
 
-    const heroImages = [
-  '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-  '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-  '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
+  const heroImages = [
+    '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
+    '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
+    '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
   ];
-    const whyChooseData = {
+  const whyChooseData = {
     image: "/Web Assets/Images/NEW/Tax Services Page/Main Tax Page/istockphoto-915633582-612x612.jpg",
     title: "Why Choose AALI Consulting",
     paragraphs: [
@@ -115,12 +115,12 @@ We use encrypted portals for document uploads, cross-check every entry against C
     ],
   };
 
-  
 
-const servicesList = [
-  {
-    title: "T1 General Filing",
-    description: `Accurate, compliant, and stress-free tax filing — tailored to your unique life, family, and income situation.
+
+  const servicesList = [
+    {
+      title: "T1 General Filing",
+      description: `Accurate, compliant, and stress-free tax filing — tailored to your unique life, family, and income situation.
 
 Your T1 General return is more than just a yearly form — it’s the foundation of your financial record with the CRA. We ensure every credit, deduction, and benefit is accurately claimed while keeping your filing compliant and audit-ready. Whether you’re a student, family, professional, or retiree, your return is prepared with precision and clarity.
 
@@ -144,10 +144,10 @@ Non-Resident & Cross-Border Filers – Manage dual reporting and treaty implicat
 
 The Result:
 A smooth, accurate, and stress-free tax filing experience — with the confidence that your return is fully optimized and CRA-ready. You’ll understand what’s being filed, why it matters, and how it positions you for the year ahead.`,
-  },
-  {
-    title: "Tax Planning & Deductions & Credits",
-    description: `Smart, year-round planning that turns everyday expenses into lasting tax savings — tailored to your lifestyle and goals.
+    },
+    {
+      title: "Tax Planning & Deductions & Credits",
+      description: `Smart, year-round planning that turns everyday expenses into lasting tax savings — tailored to your lifestyle and goals.
 
 Tax planning isn’t just for year-end — it’s about structuring your income, investments, and family expenses throughout the year to reduce your overall tax burden. Our approach helps you understand how to use Canada’s tax system to your advantage, ensuring no opportunity for savings is left unclaimed.
 
@@ -172,10 +172,10 @@ CRA-Friendly Documentation – Keep records organized and audit-ready with prope
 The Result:
 You don’t just file taxes — you build a personalized plan that minimizes taxes owed, boosts refunds, and grows long-term wealth. Every credit and deduction works together to serve your financial goals, not just your annual return.
 `,
-  },
-  {
-    title: "Registered Plans",
-    description: `Build wealth tax-efficiently with plans designed to grow, protect, and fund your life goals — the smart way.
+    },
+    {
+      title: "Registered Plans",
+      description: `Build wealth tax-efficiently with plans designed to grow, protect, and fund your life goals — the smart way.
 
 Registered plans like RRSPs, TFSAs, FHSAs, and RESPs are cornerstones of a sound financial strategy. Each one has unique tax advantages — but using them together strategically can mean thousands saved in taxes over your lifetime. We help you understand when to contribute, when to withdraw, and how to report them accurately on your return.
 
@@ -202,10 +202,10 @@ Your registered plans don’t just sit — they work together. You’ll save tax
 
 
 `,
-  },
-  {
-    title: "Investments & Rental Income",
-    description: `Smart, compliant reporting that keeps your portfolio and properties profitable — while minimizing unnecessary tax.
+    },
+    {
+      title: "Investments & Rental Income",
+      description: `Smart, compliant reporting that keeps your portfolio and properties profitable — while minimizing unnecessary tax.
 
 Investment and rental income can build wealth — but without proper reporting, they can also trigger penalties or overpaid taxes. We help you stay compliant while ensuring your investment returns and real estate earnings are structured to reduce taxes and maximize long-term growth. Whether you trade stocks, own rental units, or manage multiple income sources, your tax strategy deserves precision and foresight.
 
@@ -232,10 +232,10 @@ You’ll gain complete clarity on where your investment and rental income stands
 
 
 `,
-  },
-  {
-    title: "Life Events & Estates",
-    description: `Guidance through life’s biggest transitions — from marriage and separation to retirement and estate filings — with calm, compliant, and compassionate tax support.
+    },
+    {
+      title: "Life Events & Estates",
+      description: `Guidance through life’s biggest transitions — from marriage and separation to retirement and estate filings — with calm, compliant, and compassionate tax support.
 
 Major life changes bring emotional and financial complexity. Whether you’re celebrating milestones like marriage or home ownership, or managing difficult transitions such as separation, loss, or estate administration, we ensure your taxes reflect your new reality with precision and care. Every step is guided to protect your assets, secure your benefits, and simplify the process for you and your family.
 
@@ -262,10 +262,10 @@ Your financial story stays intact — no matter how life changes. From first hom
 
 
 `,
-  },
-  {
-    title: "Cross-Border & Newcomers",
-    description: `
+    },
+    {
+      title: "Cross-Border & Newcomers",
+      description: `
 Seamless, compliant tax guidance for newcomers, expats, and cross-border professionals — so you can settle, earn, and grow confidently across borders.
 
 Moving between countries or earning income internationally can create complex tax obligations. Whether you’ve just arrived in Canada, are a Canadian working in the U.S., or hold cross-border investments, we help you understand residency rules, avoid double taxation, and stay compliant with both CRA and IRS requirements. Our goal is simple — to give you clarity and confidence from day one.
@@ -291,55 +291,55 @@ Ongoing Support – Continue receiving bilingual, cross-border tax guidance year
 The Result:
 You’ll never feel lost between two systems. From your first Canadian tax return to long-term cross-border wealth management, we help you stay compliant, minimize taxes, and build financial stability on both sides of the border.
 `,
-  },
+    },
 
-];
+  ];
 
-const processSteps = [
-  {
-    number: "1",
-    title: "Upload & Share",
-    text: "Send slips and receipts securely through our secure client portal.",
-  },
-  {
-    number: "2",
-    title: "Review & Optimize",
-    text: "We prepare your return, maximize credits, and walk you through the draft.",
-  },
-  {
-    number: "3",
-    title: "File & Support",
-    text: "We e-file directly to CRA and handle any questions, adjustments, or notices.",
-  },
-];
+  const processSteps = [
+    {
+      number: "1",
+      title: "Upload & Share",
+      text: "Send slips and receipts securely through our secure client portal.",
+    },
+    {
+      number: "2",
+      title: "Review & Optimize",
+      text: "We prepare your return, maximize credits, and walk you through the draft.",
+    },
+    {
+      number: "3",
+      title: "File & Support",
+      text: "We e-file directly to CRA and handle any questions, adjustments, or notices.",
+    },
+  ];
 
-const resourcesData = [
-  {
-    img: "/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg",
-    title: "Personal Income Tax",
-    link: "https://www.canada.ca/en/services/taxes/income-tax/personal-income-tax.html?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg",
-    title: "Preparing to Do Your Taxes",
-    link: "https://www.canada.ca/en/revenue-agency/services/tax/individuals/educational-programs/preparing-your-taxes.html?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg",
-    title: "All Deductions, Credits & Expenses",
-    link: "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/about-your-tax-return/tax-return/completing-a-tax-return/deductions-credits-expenses/deductions-credits-expenses.html?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg",
-    title: "20 Popular Canadian Tax Deductions & Credits for 2024",
-    link: "https://turbotax.intuit.ca/tips/popular-canadian-tax-benefits-deductions-and-credits-in-2023-14180?srsltid=AfmBOoqNYGAkeul_dKIjNGZU_c2w8s0Eo1wKAGrqSfSv6H6PcVs6FxXx&utm_source=chatgpt.com",
-  },
-];
+  const resourcesData = [
+    {
+      img: "/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg",
+      title: "Personal Income Tax",
+      link: "https://www.canada.ca/en/services/taxes/income-tax/personal-income-tax.html?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg",
+      title: "Preparing to Do Your Taxes",
+      link: "https://www.canada.ca/en/revenue-agency/services/tax/individuals/educational-programs/preparing-your-taxes.html?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg",
+      title: "All Deductions, Credits & Expenses",
+      link: "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/about-your-tax-return/tax-return/completing-a-tax-return/deductions-credits-expenses/deductions-credits-expenses.html?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg",
+      title: "20 Popular Canadian Tax Deductions & Credits for 2024",
+      link: "https://turbotax.intuit.ca/tips/popular-canadian-tax-benefits-deductions-and-credits-in-2023-14180?srsltid=AfmBOoqNYGAkeul_dKIjNGZU_c2w8s0Eo1wKAGrqSfSv6H6PcVs6FxXx&utm_source=chatgpt.com",
+    },
+  ];
 
 
 
   return (
-    <div className="font-sans text-gray-800 bg-white">
+    <div className="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 transition-colors duration-300">
       <Header />
 
       <HeroSection
@@ -352,24 +352,24 @@ const resourcesData = [
 
       {/* What We Do */}
       {/* What We Do Section */}
-<WhatWeOffer heading="What We Offer" cards={offerCards} />
-<ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
-<WhyChooseUs
+      <WhatWeOffer heading="What We Offer" cards={offerCards} />
+      <ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
+      <WhyChooseUs
         image={whyChooseData.image}
         title={whyChooseData.title}
         paragraphs={whyChooseData.paragraphs}
       />
 
-<div id="explore-services">
-  <ServiceAccordion
-    heading="Explore Our Services in Detail"
-    services={servicesList}
-  />
-</div>
+      <div id="explore-services">
+        <ServiceAccordion
+          heading="Explore Our Services in Detail"
+          services={servicesList}
+        />
+      </div>
 
-          {/* Resources */}
-<ResourcesSection heading="Resources" resources={resourcesData} />
- <CallToAction
+      {/* Resources */}
+      <ResourcesSection heading="Resources" resources={resourcesData} />
+      <CallToAction
         heading="Lead With Confidence, Govern With Clarity."
         subheading="Partner with us to strengthen controls, streamline reporting, and align tax, cashflow, and governance with your long-term vision."
         buttonText="Book Now"
@@ -379,8 +379,8 @@ const resourcesData = [
 
 
 
-{/* FAQs */}
-    {/* ✅ FAQs — Updated Design */}
+      {/* FAQs */}
+      {/* ✅ FAQs — Updated Design */}
       <FAQSection heading="Frequently Asked Questions" faqs={faqs} />
 
 

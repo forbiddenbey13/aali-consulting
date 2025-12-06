@@ -23,45 +23,45 @@ const HomePage: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-const offerCards = [
-  {
-    title: "Disability Support (DTC & ODSP)",
-    description:
-      "Help with eligibility, applications, appeals, and safe budgeting strategies, including RDSP setup for long-term security.",
-    link: "#services-detail",
-  },
-  {
-    title: "Family Disability Planning",
-    description:
-      "Guidance for children, young adults, and families, including Henson Trusts and transitions at age 18.",
-    link: "#services-detail",
-  },
-  {
-    title: "Job Loss Strategy",
-    description:
-      "Support for severance, EI, cashflow, and your transition to re-employment, freelancing, or business ownership.",
-    link: "#services-detail",
-  },
-  {
-    title: "Separation & Divorce",
-    description:
-      "Financial clarity for property division, RRSP/TFSA transfers, CPP credits, and support tax planning.",
-    link: "#services-detail",
-  },
-  {
-    title: "Loss of a Loved One",
-    description:
-      "Estate tax returns, CPP survivor benefits, probate support, and CRA clearance so families don’t miss critical steps.",
-    link: "#services-detail",
-  },
-  {
-    title: "Accident Recovery",
-    description:
-      "Navigation of EI, WSIB, LTD, and insurer forms, plus return-to-work planning and disability tax credits.",
-    link: "#services-detail",
-  }
-];
- const faqs = [
+  const offerCards = [
+    {
+      title: "Disability Support (DTC & ODSP)",
+      description:
+        "Help with eligibility, applications, appeals, and safe budgeting strategies, including RDSP setup for long-term security.",
+      link: "#services-detail",
+    },
+    {
+      title: "Family Disability Planning",
+      description:
+        "Guidance for children, young adults, and families, including Henson Trusts and transitions at age 18.",
+      link: "#services-detail",
+    },
+    {
+      title: "Job Loss Strategy",
+      description:
+        "Support for severance, EI, cashflow, and your transition to re-employment, freelancing, or business ownership.",
+      link: "#services-detail",
+    },
+    {
+      title: "Separation & Divorce",
+      description:
+        "Financial clarity for property division, RRSP/TFSA transfers, CPP credits, and support tax planning.",
+      link: "#services-detail",
+    },
+    {
+      title: "Loss of a Loved One",
+      description:
+        "Estate tax returns, CPP survivor benefits, probate support, and CRA clearance so families don’t miss critical steps.",
+      link: "#services-detail",
+    },
+    {
+      title: "Accident Recovery",
+      description:
+        "Navigation of EI, WSIB, LTD, and insurer forms, plus return-to-work planning and disability tax credits.",
+      link: "#services-detail",
+    }
+  ];
+  const faqs = [
     {
       question:
         "What’s included in Disability & Life Planning?",
@@ -106,12 +106,12 @@ Build plans that last through every stage of life`,
     },
   ];
 
-    const heroImages = [
-  '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-  '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-  '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
+  const heroImages = [
+    '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
+    '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
+    '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
   ];
-    const whyChooseData = {
+  const whyChooseData = {
     image: "/Web Assets/Images/NEW/Disability & Life Planning/Canada-Disability-Laws.jpeg",
     title: "Why work with us",
     paragraphs: [
@@ -123,12 +123,12 @@ Build plans that last through every stage of life`,
     ],
   };
 
-  
 
-const servicesList = [
-  {
-    title: "Disability Support (DTC & ODSP)",
-    description: `Compassionate, compliant guidance for individuals and families navigating the Disability Tax Credit and Ontario Disability Support Program.
+
+  const servicesList = [
+    {
+      title: "Disability Support (DTC & ODSP)",
+      description: `Compassionate, compliant guidance for individuals and families navigating the Disability Tax Credit and Ontario Disability Support Program.
 
 Applying for disability benefits shouldn’t be overwhelming. Our Disability Support (DTC & ODSP) service helps you qualify, apply, and maximize every credit and program available — with clear communication, proper documentation, and respectful coordination with doctors, clinics, and agencies. We simplify the process, protect your eligibility, and turn approvals into lasting financial stability.
 
@@ -153,10 +153,10 @@ Family & Caregiver Guidance – Help parents and caregivers organize documents, 
 
 The Result:
 Confidence, clarity, and dignity — with a benefits plan that’s approved, optimized, and fully aligned to your financial goals. Whether you’re applying for the first time or building on existing supports, we make the system work for you, not against you.`,
-  },
-  {
-    title: "Family Disability Planning",
-    description: `Coordinated tax, benefit, and savings strategies for families caring for children or adults with disabilities.
+    },
+    {
+      title: "Family Disability Planning",
+      description: `Coordinated tax, benefit, and savings strategies for families caring for children or adults with disabilities.
 
 Supporting a loved one with a disability requires more than care — it takes organization, strategy, and long-term planning. Our Family Disability Planning service helps families integrate medical, financial, and government supports into one clear roadmap. We simplify complex systems, ensure full compliance with CRA and ODSP rules, and build a plan that balances stability today with security for tomorrow.
 
@@ -182,10 +182,10 @@ Holistic Coordination – Align your family’s financial plan, tax filings, and
 The Result:
 A calmer, clearer path for your family — with stable benefits, coordinated tax relief, and a long-term plan that protects both financial and emotional well-being. Every decision is designed to give your loved one dignity, independence, and lifelong security.
 `,
-  },
-  {
-    title: "Accident Recovery",
-    description: `Financial recovery that moves at your pace — from first claims to full stability.
+    },
+    {
+      title: "Accident Recovery",
+      description: `Financial recovery that moves at your pace — from first claims to full stability.
 
 An accident can instantly disrupt your income, benefits, and peace of mind. Our Accident Recovery & Financial Stability service helps individuals and families navigate the financial side of recovery — from insurance paperwork and benefit coordination to rebuilding budgets and long-term security. We simplify complex processes, ensure compliance, and make sure you’re supported at every step while you focus on healing.
 
@@ -211,10 +211,10 @@ Stress-Free Documentation Kits – Maintain all claim and tax records in one pla
 The Result:
 A recovery plan that restores more than just income — it restores confidence. You’ll know exactly what benefits you’re entitled to, how to claim them, and how to rebuild your financial footing step by step. We make sure that every form, deduction, and decision supports your full return to stability and independence.
 `,
-  },
-  {
-    title: "Job Loss Strategy",
-    description: `Turn job loss into a structured opportunity — with calm, clear, and financially sound next steps.
+    },
+    {
+      title: "Job Loss Strategy",
+      description: `Turn job loss into a structured opportunity — with calm, clear, and financially sound next steps.
 
 Losing a job is never easy, but it doesn’t have to lead to financial chaos. Our Job Loss Strategy service helps you stabilize your finances, understand your benefits, and chart your next move — whether it’s returning to work, starting a business, or pursuing freelancing. We bring structure, clarity, and forward planning to one of life’s most uncertain moments.
 
@@ -240,10 +240,10 @@ Tax Filing After Job Loss – Ensure all deductions (moving, job search, profess
 The Result:
 A clear, step-by-step roadmap for financial recovery and reinvention. You’ll know exactly where you stand, what to do next, and how to protect your finances while pursuing your next opportunity. We turn uncertainty into structure — and structure into stability.
 `,
-  },
-  {
-    title: "Automation & Data Workflows",
-    description: `Free your team from repetitive tasks and manual data entry — with smart automations that connect your apps, accounting, and reporting in real time.
+    },
+    {
+      title: "Automation & Data Workflows",
+      description: `Free your team from repetitive tasks and manual data entry — with smart automations that connect your apps, accounting, and reporting in real time.
 
 Every business runs on data — but too often, that data is stuck in silos: spreadsheets, emails, or disconnected tools. We help you automate how information moves between your systems, so invoices post automatically, reports update in real time, and tasks trigger on their own — saving hours every week while improving accuracy and insight.
 
@@ -267,10 +267,10 @@ Continuous improvement loop to review, optimize, and expand automations as your 
 
 The Result:
 A connected ecosystem where data flows automatically, work happens faster, and your team focuses on strategy — not spreadsheets.`,
-  },
-  {
-    title: "Separation & Divorce",
-    description: `Compassionate, tax-smart guidance for navigating one of life’s hardest transitions with clarity and confidence.
+    },
+    {
+      title: "Separation & Divorce",
+      description: `Compassionate, tax-smart guidance for navigating one of life’s hardest transitions with clarity and confidence.
 
 Separation or divorce can bring overwhelming emotional and financial stress. Our Separation & Divorce service helps you bring order to the financial side — ensuring property division, support payments, and tax implications are handled clearly, fairly, and in compliance with CRA requirements. We make sure every step is organized, documented, and optimized for your long-term stability.
 
@@ -296,10 +296,10 @@ Future Stability & Recovery – Prepare budgets, benefit applications, and savin
 The Result:
 A structured, supportive approach to financial recovery that minimizes stress and avoids costly mistakes. You’ll leave with clear documentation, efficient tax positioning, and a renewed sense of control — knowing your separation is handled with professionalism, empathy, and foresight.
 `,
-  },
+    },
     {
-    title: "Loss of a Loved One",
-    description: `
+      title: "Loss of a Loved One",
+      description: `
 Guiding families through every financial and administrative step after loss — with compassion, clarity, and care.
 
 Losing a loved one is one of life’s most difficult experiences — and managing the financial and tax responsibilities that follow can feel overwhelming. Our Loss of a Loved One & Estate Transition service helps you settle affairs, file final returns, and access benefits without confusion or added stress. We combine sensitivity with structure, ensuring every form, filing, and certificate is handled with precision.
@@ -326,54 +326,54 @@ Post-Transition Financial Planning – Support survivors with new budgets, benef
 The Result:
 A calm, guided path through the financial aftermath of loss. You’ll know what to file, when to file it, and how to close each chapter with dignity and accuracy. We ensure every step honors your loved one’s legacy — while protecting your peace of mind and financial future.
 `,
-  },
-];
+    },
+  ];
 
-const processSteps = [
-  {
-    number: "1",
-    title: "Share Your Situation",
-    text: "Book a consult and upload relevant documents.",
-  },
-  {
-    number: "2",
-    title: "We Map Your Benefits & Taxes",
-    text: "Clear plan with forms, credits, and obligations handled.",
-  },
-  {
-    number: "3",
-    title: "Confidently Move Forward",
-    text: "We file, support, and stand by you if CRA asks questions.",
-  },
-];
+  const processSteps = [
+    {
+      number: "1",
+      title: "Share Your Situation",
+      text: "Book a consult and upload relevant documents.",
+    },
+    {
+      number: "2",
+      title: "We Map Your Benefits & Taxes",
+      text: "Clear plan with forms, credits, and obligations handled.",
+    },
+    {
+      number: "3",
+      title: "Confidently Move Forward",
+      text: "We file, support, and stand by you if CRA asks questions.",
+    },
+  ];
 
-const resourcesData = [
-  {
-    img: "/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg",
-    title: "Disability tax credit (DTC)",
-    link: "https://www.canada.ca/en/revenue-agency/services/tax/individuals/segments/tax-credits-deductions-persons-disabilities/disability-tax-credit.html?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg",
-    title: "T2201 Disability Tax Credit Certificate (form & instruction)",
-    link: "https://www.canada.ca/en/revenue-agency/services/forms-publications/forms/t2201.html?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg",
-    title: "Estate Planning for Disabled Beneficiaries",
-    link: "https://ca.rbcwealthmanagement.com/documents/73602/1343743/Estate%2BPlanning%2Bfor%2BBenes%2Bwith%2BDisabilities.pdf/3233f6df-6c7f-4c9e-8b67-73b0e51c2260?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg",
-    title: "How Henson Trusts Can Help Canadians with Disabilities",
-    link: "https://www.ig.ca/en/insights/how-henson-trusts-can-help-canadians-with-disabilities?utm_source=chatgpt.com",
-  },
-];
+  const resourcesData = [
+    {
+      img: "/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg",
+      title: "Disability tax credit (DTC)",
+      link: "https://www.canada.ca/en/revenue-agency/services/tax/individuals/segments/tax-credits-deductions-persons-disabilities/disability-tax-credit.html?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg",
+      title: "T2201 Disability Tax Credit Certificate (form & instruction)",
+      link: "https://www.canada.ca/en/revenue-agency/services/forms-publications/forms/t2201.html?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg",
+      title: "Estate Planning for Disabled Beneficiaries",
+      link: "https://ca.rbcwealthmanagement.com/documents/73602/1343743/Estate%2BPlanning%2Bfor%2BBenes%2Bwith%2BDisabilities.pdf/3233f6df-6c7f-4c9e-8b67-73b0e51c2260?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg",
+      title: "How Henson Trusts Can Help Canadians with Disabilities",
+      link: "https://www.ig.ca/en/insights/how-henson-trusts-can-help-canadians-with-disabilities?utm_source=chatgpt.com",
+    },
+  ];
 
 
 
   return (
-    <div className="font-sans text-gray-800 bg-white">
+    <div className="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 transition-colors duration-300">
       <Header />
 
       <HeroSection
@@ -386,30 +386,30 @@ const resourcesData = [
 
       {/* What We Do */}
       {/* What We Do Section */}
-<WhatWeOffer heading="What We Offer" cards={offerCards} />
-       <CallToAction
+      <WhatWeOffer heading="What We Offer" cards={offerCards} />
+      <CallToAction
         heading="Difficult Transitions Don’t Have to Be Faced Alone."
         subheading="We simplify benefits, forms, and CRA compliance — so whether it’s disability, separation, or loss, you’ll have trusted guidance."
         buttonText="Book Now"
         buttonLink="/ContactUs"
         backgroundImage="/Web Assets/Images/NEW/Disability & Life Planning/7fc47ae7-db85-43f3-ab85-d8e3a54eaf39-640w.jpg.png"
       />
-<WhyChooseUs
+      <WhyChooseUs
         image={whyChooseData.image}
         title={whyChooseData.title}
         paragraphs={whyChooseData.paragraphs}
       />
 
 
- <ServiceAccordion
+      <ServiceAccordion
         id="explore-services"
         heading="Explore Our Services in Detail"
         services={servicesList}
       />
-<ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
-          {/* Resources */}
-<ResourcesSection heading="Resources" resources={resourcesData} />
- <CallToAction
+      <ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
+      {/* Resources */}
+      <ResourcesSection heading="Resources" resources={resourcesData} />
+      <CallToAction
         heading="Support When You Need It Most."
         subheading="Get clear, compassionate guidance through disability claims, job loss, family transitions, or estate matters."
         buttonText="Book Now"
@@ -419,8 +419,8 @@ const resourcesData = [
 
 
 
-{/* FAQs */}
-    {/* ✅ FAQs — Updated Design */}
+      {/* FAQs */}
+      {/* ✅ FAQs — Updated Design */}
       <FAQSection heading="Frequently Asked Questions" faqs={faqs} />
 
 

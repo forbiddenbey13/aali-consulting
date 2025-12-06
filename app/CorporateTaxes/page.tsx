@@ -34,69 +34,69 @@ const HomePage: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-const offerCards = [
-  {
-    title: "Corporate Tax Filing",
-    description:
-      "T2 corporate returns (federal & provincial), annual compliance, and industry-specific adjustments.",
-    link: "#explore-services",
-  },
-  {
-    title: "Sales Tax Compliance",
-    description:
-      "GST/HST/PST/QST registration, filings, audits, and place-of-supply guidance across provinces.",
-    link: "#explore-services",
-  },
-  {
-    title: "Owner Compensation Planning",
-    description:
-      "Salary vs. dividend optimization, OpCo/HoldCo structuring, and shareholder tax efficiency.",
-    link: "#explore-services",
-  },
-  {
-    title: "CRA Audit & Risk Management",
-    description:
-      "Audit readiness, controversy support, documentation policies, and proactive CRA response strategies.",
-    link: "#explore-services",
-  },
-  {
-    title: "Intercompany & Transfer Pricing",
-    description:
-      "Intercompany allocations, provision-to-return alignment, and transfer pricing for larger enterprises.",
-    link: "#explore-services",
-  },
-  {
-    title: "Corporate Transactions & M&A",
-    description:
-      "Tax structuring for mergers, acquisitions, reorganizations, and succession/exit planning.",
-    link: "#explore-services",
-  },
-  {
-    title: "Tax Provisioning",
-    description:
-      "Audit readiness, controversy support, documentation policies, and proactive CRA response strategies.",
-    link: "#explore-services",
-  },
-  {
-    title: "Cross-Border Planning",
-    description:
-      "Audit readiness, controversy support, documentation policies, and proactive CRA response strategies.",
-    link: "#explore-services",
-  },
-  {
-    title: "SR&ED (Tax Credits)",
-    description:
-      "Intercompany allocations, provision-to-return alignment, and transfer pricing for larger enterprises.",
-    link: "#explore-services",
-  },
-  {
-    title: "Tax Process Optimization & Automation",
-    description:
-      "Streamlining tax workflows, implementing technology solutions, and enhancing data accuracy for efficient tax processes.",
-    link: "#explore-services",
-  }
-];
- const faqs = [
+  const offerCards = [
+    {
+      title: "Corporate Tax Filing",
+      description:
+        "T2 corporate returns (federal & provincial), annual compliance, and industry-specific adjustments.",
+      link: "#explore-services",
+    },
+    {
+      title: "Sales Tax Compliance",
+      description:
+        "GST/HST/PST/QST registration, filings, audits, and place-of-supply guidance across provinces.",
+      link: "#explore-services",
+    },
+    {
+      title: "Owner Compensation Planning",
+      description:
+        "Salary vs. dividend optimization, OpCo/HoldCo structuring, and shareholder tax efficiency.",
+      link: "#explore-services",
+    },
+    {
+      title: "CRA Audit & Risk Management",
+      description:
+        "Audit readiness, controversy support, documentation policies, and proactive CRA response strategies.",
+      link: "#explore-services",
+    },
+    {
+      title: "Intercompany & Transfer Pricing",
+      description:
+        "Intercompany allocations, provision-to-return alignment, and transfer pricing for larger enterprises.",
+      link: "#explore-services",
+    },
+    {
+      title: "Corporate Transactions & M&A",
+      description:
+        "Tax structuring for mergers, acquisitions, reorganizations, and succession/exit planning.",
+      link: "#explore-services",
+    },
+    {
+      title: "Tax Provisioning",
+      description:
+        "Audit readiness, controversy support, documentation policies, and proactive CRA response strategies.",
+      link: "#explore-services",
+    },
+    {
+      title: "Cross-Border Planning",
+      description:
+        "Audit readiness, controversy support, documentation policies, and proactive CRA response strategies.",
+      link: "#explore-services",
+    },
+    {
+      title: "SR&ED (Tax Credits)",
+      description:
+        "Intercompany allocations, provision-to-return alignment, and transfer pricing for larger enterprises.",
+      link: "#explore-services",
+    },
+    {
+      title: "Tax Process Optimization & Automation",
+      description:
+        "Streamlining tax workflows, implementing technology solutions, and enhancing data accuracy for efficient tax processes.",
+      link: "#explore-services",
+    }
+  ];
+  const faqs = [
     {
       question:
         "When should my corporation file a T2 return?",
@@ -119,12 +119,12 @@ Our team can help you navigate the registration process, ensure compliance, and 
     },
   ];
 
-    const heroImages = [
-  '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-  '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-  '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
+  const heroImages = [
+    '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
+    '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
+    '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
   ];
-    const whyChooseData = {
+  const whyChooseData = {
     image: "/Web Assets/Images/NEW/Tax Services Page/Corporate Tax Page/corporate-tax-scaled.jpg",
     title: "Why Choose AALI Consulting",
     paragraphs: [
@@ -136,12 +136,12 @@ Our team can help you navigate the registration process, ensure compliance, and 
     ],
   };
 
-  
 
-const servicesList = [
-  {
-    title: "Corporate Tax Filing",
-    description: `Accurate, compliant, and strategic T2 filings that do more than meet CRA deadlines — they position your business for long-term financial strength.
+
+  const servicesList = [
+    {
+      title: "Corporate Tax Filing",
+      description: `Accurate, compliant, and strategic T2 filings that do more than meet CRA deadlines — they position your business for long-term financial strength.
 
 Corporate taxes aren’t just about compliance — they’re a key part of your financial story. Whether you’re running an incorporated startup, a growing SME, or managing multiple entities, we handle your T2 corporate returns with precision, ensuring every credit, deduction, and expense is maximized while keeping your filings audit-ready and on time.
 
@@ -165,10 +165,10 @@ Post-Filing Review – Assess your return’s performance and identify planning 
 
 The Result:
 A complete, compliant, and optimized corporate tax process that reduces risk, improves cash flow, and positions your company for smarter financial growth.`,
-  },
-  {
-    title: "Sales Tax Compliance",
-    description: `End-to-end GST/HST, PST, and QST management — ensuring every transaction, filing, and remittance stays accurate, compliant, and stress-free.
+    },
+    {
+      title: "Sales Tax Compliance",
+      description: `End-to-end GST/HST, PST, and QST management — ensuring every transaction, filing, and remittance stays accurate, compliant, and stress-free.
 
 Sales tax compliance can quickly become complex as your business grows across provinces or expands into e-commerce. We take the confusion out of multi-jurisdictional tax rules by managing every step — from registration to reporting — so you stay aligned with CRA and provincial requirements while freeing up valuable time to focus on operations.
 
@@ -193,10 +193,10 @@ Training & Oversight – We train your internal staff or bookkeepers on proper c
 The Result:
 Clean, compliant sales tax processes that protect your margins, reduce audit stress, and keep your business operating smoothly — from local invoices to cross-border transactions.
 `,
-  },
-  {
-    title: "Owner Compensation Planning",
-    description: `Smart, balanced strategies for paying yourself — combining salary, dividends, and benefits in a way that maximizes cash flow and minimizes tax.
+    },
+    {
+      title: "Owner Compensation Planning",
+      description: `Smart, balanced strategies for paying yourself — combining salary, dividends, and benefits in a way that maximizes cash flow and minimizes tax.
 
 How you pay yourself from your corporation can significantly affect your personal and business tax outcomes. We help you design a compensation structure that’s tax-efficient, compliant, and aligned with both your short-term income needs and long-term wealth goals. Whether you’re a solo owner, family-run business, or part of an OpCo/HoldCo setup, every dollar is planned with precision.
 
@@ -221,10 +221,10 @@ Annual Review – Adjust your compensation mix annually based on income, goals, 
 The Result:
 A simple, defensible, and tax-smart plan for paying yourself — one that keeps more earnings in your pocket while ensuring your business stays financially strong and CRA-compliant.
 `,
-  },
-  {
-    title: "CRA Audit & Risk Management",
-    description: `Proactive strategies and hands-on support that keep your business compliant, protected, and ready for anything the CRA sends your way.
+    },
+    {
+      title: "CRA Audit & Risk Management",
+      description: `Proactive strategies and hands-on support that keep your business compliant, protected, and ready for anything the CRA sends your way.
 
 CRA audits and reviews can be stressful — but with disciplined documentation, clear communication, and expert guidance, they don’t have to disrupt your operations. We help you identify potential risks early, organize your records properly, and respond confidently to CRA inquiries, ensuring your books, filings, and tax positions stand up to scrutiny.
 
@@ -249,10 +249,10 @@ Future Prevention – Implement policy updates, internal checks, and digital wor
 The Result:
 A calm, organized, and well-prepared audit experience — backed by documentation discipline, professional representation, and long-term protection from unnecessary CRA risk.
 `,
-  },
-  {
-    title: "Intercompany & Transfer Pricing",
-    description: `Clear, defensible structures for intercompany transactions, management fees, and cross-border pricing — built to satisfy CRA and global tax standards.
+    },
+    {
+      title: "Intercompany & Transfer Pricing",
+      description: `Clear, defensible structures for intercompany transactions, management fees, and cross-border pricing — built to satisfy CRA and global tax standards.
 
 As your business grows across entities or borders, intercompany transactions can quickly become complex. Whether you manage multiple corporations, family-owned entities, or international affiliates, we help you design a pricing, documentation, and compliance framework that keeps cash flowing efficiently while meeting CRA, IRS, and OECD requirements.
 
@@ -279,10 +279,10 @@ Transparent, audit-ready intercompany structures that support cash flow, reduce 
 
 
 `,
-  },
-  {
-    title: "Corporate Transactions & M&A",
-    description: `
+    },
+    {
+      title: "Corporate Transactions & M&A",
+      description: `
 Tax-smart structuring for mergers, acquisitions, and reorganizations—so every deal builds value, minimizes risk, and strengthens your long-term position.
 
 Mergers, acquisitions, and ownership changes come with complex financial, legal, and tax considerations. We guide you through every stage of the process—from due diligence to post-deal integration—ensuring your transaction is structured efficiently, compliant with CRA requirements, and aligned with your overall business strategy.
@@ -311,10 +311,10 @@ Transactions that create lasting value—not hidden tax headaches. With our guid
 
 
 `,
-  },
-  {
-    title: "Tax Provisioning",
-    description: `Accurate, compliant, and audit-ready tax provisions that give you financial clarity, reduce risk, and ensure your books always reflect reality.
+    },
+    {
+      title: "Tax Provisioning",
+      description: `Accurate, compliant, and audit-ready tax provisions that give you financial clarity, reduce risk, and ensure your books always reflect reality.
 
 Tax provisioning is where accounting meets tax compliance—ensuring your financial statements show the true tax impact of your business activities. We help your team calculate, document, and reconcile both current and deferred taxes so your corporate reports remain compliant, transparent, and ready for audit or investor review.
 
@@ -339,10 +339,10 @@ Training & Handover – Equip your finance or accounting staff with processes th
 The Result:
 Tax provisions that are timely, consistent, and defensible—reducing risk, enhancing transparency, and giving management full confidence in their tax position.
 `,
-  },
-  {
-    title: "Cross-Border Planning",
-    description: `Seamless, compliant tax strategies for businesses operating between Canada and the U.S.—so you stay efficient, protected, and audit-ready on both sides of the border.
+    },
+    {
+      title: "Cross-Border Planning",
+      description: `Seamless, compliant tax strategies for businesses operating between Canada and the U.S.—so you stay efficient, protected, and audit-ready on both sides of the border.
 
 Expanding across borders brings new opportunities—but also complex tax rules, treaty considerations, and reporting risks. We help you navigate these challenges with clear, compliant structures for cross-border operations, payroll, and ownership, ensuring you avoid double taxation and maintain the right residency and filing status for every entity and shareholder.
 
@@ -367,10 +367,10 @@ Cross-Border Cash Management – Align intercompany loans, dividends, and manage
 The Result:
 A coordinated cross-border tax strategy that minimizes exposure, avoids costly mistakes, and keeps your business growth seamless—whether you’re entering the U.S. market or managing operations on both sides.
 `,
-  },
-  {
-    title: "SR&ED (Tax Credits)",
-    description: `Turn your innovation into refundable tax credits—without the confusion, missed deadlines, or audit risk.
+    },
+    {
+      title: "SR&ED (Tax Credits)",
+      description: `Turn your innovation into refundable tax credits—without the confusion, missed deadlines, or audit risk.
 
 The Scientific Research & Experimental Development (SR&ED) program rewards Canadian businesses that innovate, experiment, or improve technology. We help you identify qualifying projects, document evidence properly, and prepare defensible claims that stand up to CRA review—so you can recover cash for the R&D you’re already doing.
 
@@ -395,10 +395,10 @@ Long-Term SR&ED Readiness – Implement ongoing documentation systems for repeat
 The Result:
 SR&ED claims that are accurate, defensible, and fully aligned with CRA’s expectations—so you can reclaim up to 35% of your R&D costs and reinvest in growth, confidently and ethically.
 `,
-  },
-  {
-    title: "Tax Process Optimization & Automation",
-    description: `
+    },
+    {
+      title: "Tax Process Optimization & Automation",
+      description: `
 Modernize your tax operations with smart workflows, integrated tools, and automation that save hours, reduce risk, and give leadership real-time visibility.
 
 Tax management shouldn’t feel like a scramble at year-end. We help you streamline data flow between accounting, tax, and reporting systems—building structured, repeatable processes that improve accuracy, speed, and collaboration across your finance function. The result is a calm, predictable tax cycle instead of last-minute stress.
@@ -424,56 +424,56 @@ Training & Change Management – Equip your staff to use automation tools confid
 The Result:
 A tax process that runs itself—accurate, documented, and audit-ready—freeing your team to focus on strategy instead of spreadsheets.
 `,
-  },
+    },
 
 
-];
+  ];
 
-const processSteps = [
-  {
-    number: "1",
-    title: "Assess & Plan",
-    text: "We take a deep look at your company structure, financials, and future goals to uncover risks, opportunities, and craft the most effective tax strategy.",
-  },
-  {
-    number: "2",
-    title: "File & Comply",
-    text: "We prepare and file T2 corporate returns, GST/HST/PST/QST, and ensure compliance with CRA deadlines and reporting standards.",
-  },
-  {
-    number: "3",
-    title: "Optimize & Protect",
-    text: "We implement tax-efficient owner compensation, intercompany strategies, and audit-ready documentation to minimize liability and support future growth.",
-  },
-];
+  const processSteps = [
+    {
+      number: "1",
+      title: "Assess & Plan",
+      text: "We take a deep look at your company structure, financials, and future goals to uncover risks, opportunities, and craft the most effective tax strategy.",
+    },
+    {
+      number: "2",
+      title: "File & Comply",
+      text: "We prepare and file T2 corporate returns, GST/HST/PST/QST, and ensure compliance with CRA deadlines and reporting standards.",
+    },
+    {
+      number: "3",
+      title: "Optimize & Protect",
+      text: "We implement tax-efficient owner compensation, intercompany strategies, and audit-ready documentation to minimize liability and support future growth.",
+    },
+  ];
 
-const resourcesData = [
-  {
-    img: "/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg",
-    title: "T4012 – T2 Corporation Income Tax Guide 2024",
-    link: "https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/t4012.html?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg",
-    title: "Corporation Income Tax Return",
-    link: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/corporations/corporation-income-tax-return.html?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg",
-    title: "Corporate Tax Rates",
-    link: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/corporations/corporation-tax-rates.html?utm_source=chatgpt.com",
-  },
-  {
-    img: "/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg",
-    title: "Income Tax Information for Non-Resident Corporations",
-    link: "https://www.canada.ca/en/revenue-agency/services/tax/international-non-residents/businesses-international-non-resident-taxes/income-tax-information-non-resident-corporations.html?utm_source=chatgpt.com",
-  },
-];
+  const resourcesData = [
+    {
+      img: "/Web Assets/NEW/Resources/360_F_330941253_b3Dor4GncjCMVPvw8QM4CsyUymtgvvMM.jpg",
+      title: "T4012 – T2 Corporation Income Tax Guide 2024",
+      link: "https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/t4012.html?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/Clearline-CPA-How-to-Sign-Up-for-CRA-My-Business-Account-scaled.jpg",
+      title: "Corporation Income Tax Return",
+      link: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/corporations/corporation-income-tax-return.html?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/istockphoto-1480239160-612x612.jpg",
+      title: "Corporate Tax Rates",
+      link: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/corporations/corporation-tax-rates.html?utm_source=chatgpt.com",
+    },
+    {
+      img: "/Web Assets/NEW/Resources/istockphoto-185066026-612x612.jpg",
+      title: "Income Tax Information for Non-Resident Corporations",
+      link: "https://www.canada.ca/en/revenue-agency/services/tax/international-non-residents/businesses-international-non-resident-taxes/income-tax-information-non-resident-corporations.html?utm_source=chatgpt.com",
+    },
+  ];
 
 
 
   return (
-    <div className="font-sans text-gray-800 bg-white">
+    <div className="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 transition-colors duration-300">
       <Header />
 
       <HeroSection
@@ -486,26 +486,26 @@ const resourcesData = [
 
       {/* What We Do */}
       {/* What We Do Section */}
-<WhatWeOffer heading="What We Offer" cards={offerCards} />
-<ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
-<WhyChooseUs
+      <WhatWeOffer heading="What We Offer" cards={offerCards} />
+      <ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
+      <WhyChooseUs
         image={whyChooseData.image}
         title={whyChooseData.title}
         paragraphs={whyChooseData.paragraphs}
       />
 
- <div id="explore-services">
-   <div id="explore-services">
-     <ServiceAccordion
-       heading="Explore Our Services in Detail"
-       services={servicesList}
-     />
-   </div>
- </div>
+      <div id="explore-services">
+        <div id="explore-services">
+          <ServiceAccordion
+            heading="Explore Our Services in Detail"
+            services={servicesList}
+          />
+        </div>
+      </div>
 
-          {/* Resources */}
-<ResourcesSection heading="Resources" resources={resourcesData} />
- <CallToAction
+      {/* Resources */}
+      <ResourcesSection heading="Resources" resources={resourcesData} />
+      <CallToAction
         heading="Smarter Corporate Taxes, Less Stress."
         subheading="Get expert planning, precise filings, and audit-ready compliance so your business stays efficient, tax-smart, and always one step ahead."
         buttonText="Book Now"
@@ -515,8 +515,8 @@ const resourcesData = [
 
 
 
-{/* FAQs */}
-    {/* ✅ FAQs — Updated Design */}
+      {/* FAQs */}
+      {/* ✅ FAQs — Updated Design */}
       <FAQSection heading="Frequently Asked Questions" faqs={faqs} />
 
 

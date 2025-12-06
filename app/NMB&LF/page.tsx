@@ -71,7 +71,7 @@ export default function NMBLFPage() {
   ];
 
   return (
-    <div className="font-sans text-gray-800 bg-white min-h-screen">
+    <div className="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 min-h-screen transition-colors duration-300">
       <Header />
 
       {/* Hero Section */}
@@ -100,11 +100,11 @@ export default function NMBLFPage() {
       </section>
 
       {/* Who This Program Is For */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-12 items-center">
           <div className="flex-1">
-            <h2 className="text-3xl font-bold mb-4 text-gray-900">Who This Program Is For</h2>
-            <p className="text-lg text-gray-900 mb-8">
+            <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Who This Program Is For</h2>
+            <p className="text-lg text-gray-900 dark:text-gray-300 mb-8">
               If you’ve recently arrived in Canada or are planning to settle soon, this program helps you navigate everything that matters most in your first year — confidently, correctly, and without confusion.
             </p>
           </div>
@@ -127,7 +127,7 @@ export default function NMBLFPage() {
                 alt: "Program Option 4"
               }
             ].map((img, i) => (
-              <div key={i} className="flex flex-col items-center bg-white border border-gray-300 rounded-2xl p-6">
+              <div key={i} className="flex flex-col items-center bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-2xl p-6">
                 <img src={img.src} alt={img.alt} className="w-32 h-32 mb-4 object-contain" />
               </div>
             ))}
@@ -142,44 +142,44 @@ export default function NMBLFPage() {
       />
 
       {/* What You'll Learn */}
-      <section className="py-20 px-4 bg-white">
-        <h2 className="text-3xl font-bold text-center mb-10">What You’ll Learn</h2>
+      <section className="py-20 px-4 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <h2 className="text-3xl font-bold text-center mb-10 text-gray-900 dark:text-white">What You’ll Learn</h2>
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center p-6">
-            <div className="font-bold text-lg mb-2">First 30 Days</div>
-            <div className="text-gray-600 text-base">Banking, credit, phone/internet, budgeting, fraud awareness.</div>
+          <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
+            <div className="font-bold text-lg mb-2 text-gray-900 dark:text-white">First 30 Days</div>
+            <div className="text-gray-600 dark:text-gray-300 text-base">Banking, credit, phone/internet, budgeting, fraud awareness.</div>
           </div>
-          <div className="text-center p-6">
-            <div className="font-bold text-lg mb-2">Benefits & Health</div>
-            <div className="text-gray-600 text-base">CRA My Account, GST/HST, CCB, OHIP coverage.</div>
+          <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
+            <div className="font-bold text-lg mb-2 text-gray-900 dark:text-white">Benefits & Health</div>
+            <div className="text-gray-600 dark:text-gray-300 text-base">CRA My Account, GST/HST, CCB, OHIP coverage.</div>
           </div>
-          <div className="text-center p-6">
-            <div className="font-bold text-lg mb-2">Taxes (Split-Year Basics)</div>
-            <div className="text-gray-600 text-base">Residency start, first filing, foreign income, T1135 awareness.</div>
+          <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
+            <div className="font-bold text-lg mb-2 text-gray-900 dark:text-white">Taxes (Split-Year Basics)</div>
+            <div className="text-gray-600 dark:text-gray-300 text-base">Residency start, first filing, foreign income, T1135 awareness.</div>
           </div>
         </div>
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mt-8">
-          <div className="text-center p-6">
-            <div className="font-bold text-lg mb-2">Work & Freelance</div>
-            <div className="text-gray-600 text-base">Invoicing, self-employment, HST registration, recordkeeping.</div>
+          <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
+            <div className="font-bold text-lg mb-2 text-gray-900 dark:text-white">Work & Freelance</div>
+            <div className="text-gray-600 dark:text-gray-300 text-base">Invoicing, self-employment, HST registration, recordkeeping.</div>
           </div>
-          <div className="text-center p-6">
-            <div className="font-bold text-lg mb-2">Save & Invest (Start Right)</div>
-            <div className="text-gray-600 text-base">TFSA, RRSP, FHSA, RESP — and how to start safely.</div>
+          <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
+            <div className="font-bold text-lg mb-2 text-gray-900 dark:text-white">Save & Invest (Start Right)</div>
+            <div className="text-gray-600 dark:text-gray-300 text-base">TFSA, RRSP, FHSA, RESP — and how to start safely.</div>
           </div>
-          <div className="text-center p-6">
-            <div className="font-bold text-lg mb-2">Housing & Vehicles</div>
-            <div className="text-gray-600 text-base">Renting, lease rules, tenant rights, affordable housing, transit vs. owning a car.</div>
+          <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
+            <div className="font-bold text-lg mb-2 text-gray-900 dark:text-white">Housing & Vehicles</div>
+            <div className="text-gray-600 dark:text-gray-300 text-base">Renting, lease rules, tenant rights, affordable housing, transit vs. owning a car.</div>
           </div>
-          <div className="text-center p-6">
-            <div className="font-bold text-lg mb-2">School Admissions & Education</div>
-            <div className="text-gray-600 text-base">K-12 registration, ESL/ELL, childcare, post-secondary, OSAP and scholarships.</div>
+          <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
+            <div className="font-bold text-lg mb-2 text-gray-900 dark:text-white">School Admissions & Education</div>
+            <div className="text-gray-600 dark:text-gray-300 text-base">K-12 registration, ESL/ELL, childcare, post-secondary, OSAP and scholarships.</div>
           </div>
         </div>
       </section>
 
       {/* Toolkits Section */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
           <img
             src="/Web Assets/Images/NEW/Newcomers & Expats/Money, Benefits & Life Setup/Canada_528796674-scaled.jpeg"
@@ -187,8 +187,8 @@ export default function NMBLFPage() {
             className="rounded-xl shadow-lg object-cover w-full h-64 md:h-72"
           />
           <div>
-            <h3 className="text-2xl font-bold mb-4">You’ll Leave With Practical Tools You Can Use Right Away</h3>
-            <ul className="space-y-2 text-gray-700 text-base">
+            <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">You’ll Leave With Practical Tools You Can Use Right Away</h3>
+            <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-base">
               <li>✅ Newcomer Money Checklist (First 90 Days)</li>
               <li>✅ Benefits Map (GST/HST Credit, CCB, etc.)</li>
               <li>✅ First-Year Tax Guide</li>
@@ -201,11 +201,11 @@ export default function NMBLFPage() {
       </section>
 
       {/* Progress Section */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
           <div>
-            <h3 className="text-2xl font-bold mb-4">We Track Real Progress — Not Just Lessons</h3>
-            <ul className="space-y-2 text-gray-700 text-base">
+            <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">We Track Real Progress — Not Just Lessons</h3>
+            <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-base">
               <li>↳ CRA/My Account & direct deposit set up</li>
               <li>↳ Credit file opened & on-time payments started</li>
               <li>↳ Benefits enrolled successfully</li>

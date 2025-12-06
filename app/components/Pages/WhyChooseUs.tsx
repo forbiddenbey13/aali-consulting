@@ -17,11 +17,10 @@ const WhyChooseUs: React.FC<WhyChooseUsProps> = ({
   reverse = false,
 }) => {
   return (
-    <section className="bg-white px-6 md:px-12 py-24">
+    <section className="bg-white dark:bg-gray-900 px-6 md:px-12 py-24 transition-colors duration-300">
       <div
-        className={`max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 ${
-          reverse ? "md:flex-row-reverse" : ""
-        }`}
+        className={`max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 ${reverse ? "md:flex-row-reverse" : ""
+          }`}
       >
         {/* LEFT — Image */}
         <div className="relative w-full md:w-1/2 h-[400px] md:h-[500px] rounded-lg overflow-hidden shadow-md">
@@ -33,16 +32,15 @@ const WhyChooseUs: React.FC<WhyChooseUsProps> = ({
         </div>
 
         {/* RIGHT — Text Block */}
-        <div className="bg-gray-50 p-8 rounded-lg shadow-md w-full md:w-1/2">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+        <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg shadow-md w-full md:w-1/2 border border-gray-100 dark:border-gray-700">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
             {title}
           </h2>
           {paragraphs.map((text, i) => (
             <p
               key={i}
-              className={`text-gray-700 leading-relaxed ${
-                i !== paragraphs.length - 1 ? "mb-6" : ""
-              }`}
+              className={`text-gray-700 dark:text-gray-300 leading-relaxed ${i !== paragraphs.length - 1 ? "mb-6" : ""
+                }`}
             >
               {text}
             </p>

@@ -84,7 +84,7 @@ const HomePage: React.FC = () => {
   ];
 
   return (
-    <div className="font-sans text-gray-800 bg-white">
+    <div className="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 transition-colors duration-300">
       <Header />
 
       {/* Hero Section */}
@@ -98,9 +98,9 @@ const HomePage: React.FC = () => {
               }`}
           />
         ))}
-        <div className="absolute inset-0 bg-blue-900/40" />
+        <div className="absolute inset-0 bg-blue-900/40 dark:bg-black/60" />
         <div className="relative z-10 max-w-3xl">
-          <h1 className="text-5xl font-extrabold !text-white drop-shadow-xl">
+          <h1 className="text-3xl md:text-5xl font-extrabold !text-white drop-shadow-xl">
             All Things Tax, Finance & Business Simplified
           </h1>
           <p className="mt-6 text-lg !text-white drop-shadow-xl">
@@ -108,90 +108,90 @@ const HomePage: React.FC = () => {
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <a href="/ContactUs" className="bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition">Book Now</a>
-            <a href="/AboutUs" className="bg-white/80 border border-gray-300 text-gray-800 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition">Learn More</a>
+            <a href="/AboutUs" className="bg-white/80 dark:bg-gray-800/80 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-white px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition">Learn More</a>
           </div>
         </div>
       </section>
 
       {/* What We Do */}
       {/* What We Do Section */}
-      <section id="what-we-do" className="px-6 md:px-10 py-16 md:py-24 bg-white">
-        <h2 className="text-3xl font-bold mb-14 text-center text-gray-900">What We Do</h2>
+      <section id="what-we-do" className="px-6 md:px-10 py-16 md:py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <h2 className="text-3xl font-bold mb-14 text-center text-gray-900 dark:text-white">What We Do</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
 
           {/* Card 1 */}
-          <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
-            <h3 className="text-lg font-semibold mb-4 text-gray-900">Tax Services (Personal & Corporate)</h3>
-            <p className="text-gray-600 text-sm mb-8">
+          <div className="relative bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
+            <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Tax Services (Personal & Corporate)</h3>
+            <p className="text-gray-600 dark:text-gray-300 text-sm mb-8">
               Stress-free, CRA-ready tax: from first T1 to complex corporate and cross-border strategies. Proactive planning ensures accuracy, savings, and zero surprises.
             </p>
-            <a href="/TaxService" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
+            <a href="/TaxService" className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition">
               Learn more
             </a>
           </div>
 
           {/* Card 2 */}
-          <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
-            <h3 className="text-lg font-semibold mb-4 text-gray-900">Accounting & Bookkeeping</h3>
-            <p className="text-gray-600 text-sm mb-8">
+          <div className="relative bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
+            <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Accounting & Bookkeeping</h3>
+            <p className="text-gray-600 dark:text-gray-300 text-sm mb-8">
               Stress-free, CRA-ready tax: from first T1 to complex corporate and cross-border strategies. Proactive planning ensures accuracy, savings, and zero surprises.
             </p>
-            <a href="/Bookkeeping&Accounting" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
+            <a href="/Bookkeeping&Accounting" className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition">
               Learn more
             </a>
           </div>
 
           {/* Card 3 */}
-          <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
-            <h3 className="text-lg font-semibold mb-4 text-gray-900">Strategic Financial Planning</h3>
-            <p className="text-gray-600 text-sm mb-8">
+          <div className="relative bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
+            <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Strategic Financial Planning</h3>
+            <p className="text-gray-600 dark:text-gray-300 text-sm mb-8">
               Stage-of-life financial planning that optimizes saving, taxes, benefits, debt, housing, investing, and retirement timing—turning decisions into confident, compounding progress.
             </p>
-            <a href="/StrategicPlanning" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
+            <a href="/StrategicPlanning" className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition">
               Learn more
             </a>
           </div>
 
           {/* Card 4 */}
-          <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
-            <h3 className="text-lg font-semibold mb-4 text-gray-900">Technology Solutions</h3>
-            <p className="text-gray-600 text-sm mb-8">
+          <div className="relative bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
+            <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Technology Solutions</h3>
+            <p className="text-gray-600 dark:text-gray-300 text-sm mb-8">
               Turn chaos into a connected back office with the right tools, clean integrations, automation and training—so systems talk, teams move faster, decisions improve.
             </p>
-            <a href="/Systems&TechnologyImplementation" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
+            <a href="/Systems&TechnologyImplementation" className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition">
               Learn more
             </a>
           </div>
 
           {/* Card 5 */}
-          <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
-            <h3 className="text-lg font-semibold mb-4 text-gray-900">CFO Advisory & Governance</h3>
-            <p className="text-gray-600 text-sm mb-8">
+          <div className="relative bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition">
+            <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">CFO Advisory & Governance</h3>
+            <p className="text-gray-600 dark:text-gray-300 text-sm mb-8">
               Clean, board-ready finance—on-time closes, clear forecasts, owner structure and succession, multi-entity reporting, NFP support, and Canada-US setups—for safer, faster decisions.
             </p>
-            <a href="/CFOAdvisory&Governance" className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition">
+            <a href="/CFOAdvisory&Governance" className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition">
               Learn more
             </a>
           </div>
 
           {/* Card 6 (Special) */}
-          <div className="relative bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition overflow-hidden">
+          <div className="relative bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md rounded-xl p-8 flex flex-col justify-between transition overflow-hidden">
             {/* Ribbon */}
             <div className="special-ribbon">
               <span>★ SPECIAL ★</span>
             </div>
 
-            <h3 className="text-lg font-semibold mb-4 text-gray-900">
+            <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
               Disability & Life Planning
             </h3>
-            <p className="text-gray-600 text-sm mb-8">
+            <p className="text-gray-600 dark:text-gray-300 text-sm mb-8">
               Compassionate, simple help for DTC/COSP, disability, accidents, job loss,
               separation, and bereavement—benefits, paperwork, and tax-smart steps handled.
             </p>
             <a
               href="/Disability&LifePlanning"
-              className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium px-5 py-2 rounded-full transition"
+              className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition"
             >
               Learn more
             </a>
@@ -202,12 +202,12 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Who We Serve */}
-      <section className="bg-white px-6 md:px-10 py-16 md:py-24">
+      <section className="bg-white dark:bg-gray-900 px-6 md:px-10 py-16 md:py-24 transition-colors duration-300">
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 items-center">
           {/* Left column: Heading and description, vertically centered */}
           <div className="flex flex-col justify-center h-full md:col-span-1">
-            <h2 className="text-4xl font-bold mb-4">Who<br />We Serve</h2>
-            <p className="text-gray-700 text-lg max-w-xs">
+            <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Who<br />We Serve</h2>
+            <p className="text-gray-700 dark:text-gray-300 text-lg max-w-xs">
               From newcomers and families to business owners and global enterprises, our services are tailored to your unique needs.
             </p>
           </div>
@@ -226,13 +226,13 @@ const HomePage: React.FC = () => {
             ].map((group, i) => (
               <div
                 key={i}
-                className={`bg-gray-100 rounded-2xl shadow-lg flex items-center justify-center w-[180px] h-[180px] md:w-[200px] md:h-[200px] ${group.rotate}`}
+                className={`bg-gray-100 dark:bg-gray-800 rounded-2xl shadow-lg flex items-center justify-center w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] md:w-[200px] md:h-[200px] ${group.rotate}`}
                 style={{ overflow: "hidden" }}
               >
                 <img
                   src={group.img}
                   alt=""
-                  className="object-contain w-[140px] h-[140px] md:w-[160px] md:h-[160px]"
+                  className="object-contain w-[100px] h-[100px] sm:w-[140px] sm:h-[140px] md:w-[160px] md:h-[160px]"
                   draggable={false}
                 />
               </div>
@@ -248,7 +248,7 @@ const HomePage: React.FC = () => {
           return (
             <section
               key={i}
-              className="flex flex-col md:flex-row bg-white items-center justify-center gap-10 px-6 md:px-10 py-12 md:py-20 transition"
+              className="flex flex-col md:flex-row bg-white dark:bg-gray-900 items-center justify-center gap-10 px-6 md:px-10 py-12 md:py-20 transition-colors duration-300"
             >
               <div className="md:w-1/2 flex justify-center">
                 <img
@@ -259,8 +259,8 @@ const HomePage: React.FC = () => {
                 />
               </div>
               <div className="md:w-1/2 flex flex-col justify-center items-start">
-                <h3 className="text-4xl font-semibold text-gray-900 mb-4">{s.title}</h3>
-                <p className="text-gray-700 text-lg mb-8">{s.text}</p>
+                <h3 className="text-4xl font-semibold text-gray-900 dark:text-white mb-4">{s.title}</h3>
+                <p className="text-gray-700 dark:text-gray-300 text-lg mb-8">{s.text}</p>
                 <a href="/Bookkeeping&Accounting" className="btn-primary">Learn more</a>
               </div>
             </section>
@@ -270,11 +270,11 @@ const HomePage: React.FC = () => {
           return (
             <section
               key={i}
-              className="flex flex-col md:flex-row bg-gray-50 items-center justify-center gap-10 px-6 md:px-10 py-12 md:py-20 transition"
+              className="flex flex-col md:flex-row bg-white dark:bg-gray-800 items-center justify-center gap-10 px-6 md:px-10 py-12 md:py-20 transition-colors duration-300"
             >
               <div className="md:w-1/2 flex flex-col justify-center items-start">
-                <h3 className="text-4xl font-semibold text-gray-900 mb-4">{s.title}</h3>
-                <p className="text-gray-700 text-lg mb-8">{s.text}</p>
+                <h3 className="text-4xl font-semibold text-gray-900 dark:text-white mb-4">{s.title}</h3>
+                <p className="text-gray-700 dark:text-gray-300 text-lg mb-8">{s.text}</p>
                 <a href="/TaxService" className="btn-primary">Learn more</a>
               </div>
               <div className="md:w-1/2 flex flex-col gap-6 justify-center items-center">
@@ -300,12 +300,12 @@ const HomePage: React.FC = () => {
           return (
             <section
               key={i}
-              className={`flex flex-col md:flex-row ${i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
-                } items-center gap-10 px-6 md:px-10 py-12 md:py-20 transition`}
+              className={`flex flex-col md:flex-row ${i % 2 ? "md:flex-row-reverse bg-white dark:bg-gray-900" : "bg-white dark:bg-gray-800"
+                } items-center gap-10 px-6 md:px-10 py-12 md:py-20 transition-colors duration-300`}
             >
               <div className="md:w-1/2 space-y-6">
-                <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>
-                <p className="text-gray-700">{s.text}</p>
+                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">{s.title}</h3>
+                <p className="text-gray-700 dark:text-gray-300">{s.text}</p>
                 <a href="/StrategicPlanning" className="btn-primary">Learn More</a>
               </div>
               <div className="md:w-1/2 flex flex-col gap-4">
@@ -323,12 +323,12 @@ const HomePage: React.FC = () => {
           return (
             <section
               key={i}
-              className={`flex flex-col md:flex-row ${i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
-                } items-center gap-10 px-6 md:px-10 py-12 md:py-20 transition`}
+              className={`flex flex-col md:flex-row ${i % 2 ? "md:flex-row-reverse bg-white dark:bg-gray-900" : "bg-white dark:bg-gray-800"
+                } items-center gap-10 px-6 md:px-10 py-12 md:py-20 transition-colors duration-300`}
             >
               <div className="md:w-1/2 space-y-6">
-                <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>
-                <p className="text-gray-700">{s.text}</p>
+                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">{s.title}</h3>
+                <p className="text-gray-700 dark:text-gray-300">{s.text}</p>
                 <a href="/Systems&TechnologyImplementation" className="btn-primary">Learn More</a>
               </div>
               <div className="md:w-1/2 flex flex-col gap-4">
@@ -346,12 +346,12 @@ const HomePage: React.FC = () => {
           return (
             <section
               key={i}
-              className={`flex flex-col md:flex-row ${i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
-                } items-center gap-10 px-6 md:px-10 py-12 md:py-20 transition`}
+              className={`flex flex-col md:flex-row ${i % 2 ? "md:flex-row-reverse bg-white dark:bg-gray-900" : "bg-white dark:bg-gray-800"
+                } items-center gap-10 px-6 md:px-10 py-12 md:py-20 transition-colors duration-300`}
             >
               <div className="md:w-1/2 space-y-6">
-                <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>
-                <p className="text-gray-700">{s.text}</p>
+                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">{s.title}</h3>
+                <p className="text-gray-700 dark:text-gray-300">{s.text}</p>
                 <a href="/CFOAdvisory&Governance" className="btn-primary">Learn More</a>
               </div>
               <div className="md:w-1/2 flex flex-col gap-4">
@@ -369,12 +369,12 @@ const HomePage: React.FC = () => {
           return (
             <section
               key={i}
-              className={`flex flex-col md:flex-row ${i % 2 ? "md:flex-row-reverse bg-white" : "bg-gray-50"
-                } items-center gap-10 px-6 md:px-10 py-12 md:py-20 transition`}
+              className={`flex flex-col md:flex-row ${i % 2 ? "md:flex-row-reverse bg-white dark:bg-gray-900" : "bg-white dark:bg-gray-800"
+                } items-center gap-10 px-6 md:px-10 py-12 md:py-20 transition-colors duration-300`}
             >
               <div className="md:w-1/2 space-y-6">
-                <h3 className="text-2xl font-semibold text-gray-900">{s.title}</h3>
-                <p className="text-gray-700">{s.text}</p>
+                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">{s.title}</h3>
+                <p className="text-gray-700 dark:text-gray-300">{s.text}</p>
                 <a href="/Disability&LifePlanning" className="btn-primary">Learn More</a>
               </div>
               <div className="md:w-1/2 flex flex-col gap-4">
@@ -393,14 +393,14 @@ const HomePage: React.FC = () => {
       })}
 
       {/* Resources */}
-      <section className="px-6 md:px-10 py-24 bg-white">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Resources</h2>
+      <section className="px-6 md:px-10 py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">Resources</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {resources.map((r, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden transition hover:shadow-xl flex flex-col"
+              className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transition hover:shadow-xl flex flex-col"
             >
               {/* Image */}
               <img
@@ -411,14 +411,14 @@ const HomePage: React.FC = () => {
 
               {/* Content */}
               <div className="p-6 flex flex-col items-center text-center flex-grow">
-                <h4 className="font-semibold text-gray-900 text-base mb-4">
+                <h4 className="font-semibold text-gray-900 dark:text-white text-base mb-4">
                   {r.title}
                 </h4>
                 <a
                   href={r.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-auto bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium px-6 py-2 rounded-full shadow-sm transition"
+                  className="mt-auto bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white font-medium px-6 py-2 rounded-full shadow-sm transition"
                 >
                   Learn More
                 </a>
@@ -431,9 +431,9 @@ const HomePage: React.FC = () => {
 
 
       {/* CTA */}
-      <section className="text-center py-20 bg-gray-50">
-        <h2 className="text-3xl font-semibold mb-4">Clarity. Confidence. Growth.</h2>
-        <p className="text-gray-600 mb-8">Your financial future starts with one smart decision.</p>
+      <section className="text-center py-20 bg-white dark:bg-gray-800 transition-colors duration-300">
+        <h2 className="text-3xl font-semibold mb-4 text-gray-900 dark:text-white">Clarity. Confidence. Growth.</h2>
+        <p className="text-gray-600 dark:text-gray-300 mb-8">Your financial future starts with one smart decision.</p>
         <a href="/ContactUs" className="btn-primary">Book Now</a>
       </section>
 
@@ -441,6 +441,5 @@ const HomePage: React.FC = () => {
     </div>
   );
 };
-
 
 export default HomePage;
