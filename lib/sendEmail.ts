@@ -8,18 +8,23 @@ export async function sendBookingEmailToBusiness(templateParams: any) {
 }
 
 export async function sendBookingEmailToClient(templateParams: any) {
+  const clientTemplateId = process.env.NEXT_PUBLIC_EMAILJS_CLIENT_TEMPLATE_ID;
+
   return sendEmail({
     ...templateParams,
     to_email: templateParams.clientEmail, // send to client
-  });
+  }, clientTemplateId); // Pass specific template ID if available
 }
 
-async function sendEmail(templateParams: any) {
+async function sendEmail(templateParams: any, templateIdOverride?: string) {
   try {
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const defaultTemplateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
     const privateKey = process.env.EMAILJS_PRIVATE_KEY;
+
+    // Use override if provided, otherwise default
+    const templateId = templateIdOverride || defaultTemplateId;
 
     if (!serviceId || !templateId || !publicKey || !privateKey) {
       console.error("Missing EmailJS variables:", {
