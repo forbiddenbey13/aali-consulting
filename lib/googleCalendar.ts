@@ -17,22 +17,42 @@ const auth = new google.auth.JWT({
 // Calendar instance
 const calendar = google.calendar({ version: "v3", auth });
 
+import { DateTime } from "luxon";
+
 /* ---------------------------------------------
-   Format date + time to RFC3339
+   Format date + time to RFC3339 in Toronto Time
 ---------------------------------------------- */
 function buildDateTime(date: string, time: string) {
-  return new Date(`${date}T${time}:00`).toISOString();
+  // date: "YYYY-MM-DD", time: "HH:mm"
+  // Create a DateTime in Toronto timezone
+  const dt = DateTime.fromISO(`${date}T${time}`, { zone: "America/Toronto" });
+  if (!dt.isValid) {
+    throw new Error(`Invalid date/time: ${date} ${time} - ${dt.invalidReason}`);
+  }
+  return dt.toISO(); // Returns 2025-12-25T09:00:00.000-05:00
 }
 
 /* ---------------------------------------------
    GET BOOKED SLOTS
 ---------------------------------------------- */
+/* ---------------------------------------------
+   GET BOOKED SLOTS
+---------------------------------------------- */
 export async function getBookedSlots(startDate: string, endDate: string) {
   try {
+    // Ensure we parse the input dates in Toronto time if they interpret to midnight
+    // or preserve the instant if they are already full ISO strings.
+    const start = DateTime.fromISO(startDate, { zone: 'America/Toronto' }).toISO();
+    const end = DateTime.fromISO(endDate, { zone: 'America/Toronto' }).toISO();
+
+    if (!start || !end) {
+      throw new Error("Invalid start/end date format");
+    }
+
     const events = await calendar.events.list({
       calendarId: process.env.GOOGLE_CALENDAR_ID!,
-      timeMin: new Date(startDate).toISOString(),
-      timeMax: new Date(endDate).toISOString(),
+      timeMin: start,
+      timeMax: end,
       singleEvents: true,
       orderBy: "startTime",
     });

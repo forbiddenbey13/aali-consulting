@@ -51,71 +51,44 @@ const ContactUs: React.FC = () => {
 
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [bookedSlots, setBookedSlots] = useState<Set<string>>(new Set());
+  // Replacing bookedSlots Set with availability map
+  const [availability, setAvailability] = useState<Record<string, boolean>>({});
+  const [checkingAvailability, setCheckingAvailability] = useState(false);
+
   const [submitting, setSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
   // ---------- Effects & Logic ----------
 
-  // Fetch booked slots
+  // Fetch availability when date changes
   useEffect(() => {
-    const fetchBookedSlots = async () => {
-      const startOfMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1);
-      const endOfMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0);
-      const startStr = formatDate(startOfMonth);
-      const endStr = formatDate(endOfMonth);
+    if (!selectedDate) return;
 
+    const checkAvailability = async () => {
+      setCheckingAvailability(true);
       try {
-        const response = await fetch('/api/check-availability', {
+        const response = await fetch('/api/available-slots', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ startDate: startStr, endDate: endStr }),
+          body: JSON.stringify({
+            date: selectedDate, // "YYYY-MM-DD"
+            timeSlots: TIME_SLOTS
+          }),
         });
 
         if (response.ok) {
-          const resData = await response.json();
-          const slots = new Set<string>();
-
-          resData.bookedSlots.forEach((event: any) => {
-            // Google Calendar events use 'start.dateTime' for timed events
-            const startDateTime = event.start?.dateTime || event.start?.date;
-            if (startDateTime) {
-              const dateObj = new Date(startDateTime);
-
-              // Force checking in Toronto Timezone (EST/EDT)
-              // This is crucial because the slots on the UI are "EST".
-              // If the user's browser is in PST, dateObj.getHours() would be wrong.
-              const torontoTime = new Intl.DateTimeFormat('en-US', {
-                timeZone: 'America/Toronto',
-                hour12: false,
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit'
-              }).format(dateObj); // "MM/DD/YYYY, HH:mm"
-
-              const [datePart, timePart] = torontoTime.split(', ');
-              const [month, day, year] = datePart.split('/');
-              const [hours, minutes] = timePart.split(':');
-
-              // Key format: YYYY-MM-DDTHH:mm
-              // Note: minutes usually 00 for these slots
-              const dateStr = `${year}-${month}-${day}`;
-              const timeStr = `${hours}:${minutes}`;
-
-              slots.add(`${dateStr}T${timeStr}`);
-            }
-          });
-          setBookedSlots(slots);
+          const data = await response.json();
+          setAvailability(data.availability || {});
         }
       } catch (error) {
-        console.error('Error fetching booked slots:', error);
+        console.error('Error checking availability:', error);
+      } finally {
+        setCheckingAvailability(false);
       }
     };
 
-    fetchBookedSlots();
-  }, [currentMonth]);
+    checkAvailability();
+  }, [selectedDate]);
 
   // Calendar Logic
   const calendarDays = useMemo(() => {
@@ -161,12 +134,16 @@ const ContactUs: React.FC = () => {
 
   const isTimeDisabled = (time: string) => {
     if (!selectedDate) return true;
-    const slotKey = `${selectedDate}T${time}`;
+    // Check local availability map
+    if (availability[time] === false) return true; // explicitly unavailable
+
+    // Also block past times
     const now = new Date();
     const [hours, minutes] = time.split(':').map(Number);
     const slotDate = new Date(selectedDate);
     slotDate.setHours(hours, minutes, 0, 0);
-    return slotDate < now || bookedSlots.has(slotKey);
+
+    return slotDate < now;
   };
 
   const nextMonth = () => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1));
