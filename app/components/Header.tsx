@@ -117,6 +117,14 @@ const Header: React.FC = () => {
 
         {/* RIGHT — Theme Toggle & Spacer */}
         <div className="hidden md:flex items-center gap-4">
+          <Link
+            href="https://portal.aaliconsulting.ca/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-5 py-2 rounded-full bg-blue-500 text-white font-medium hover:bg-blue-600 transition shadow-sm"
+          >
+            Client Portal
+          </Link>
           {mounted && (
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -166,7 +174,16 @@ const Header: React.FC = () => {
             <Link href="/AboutUs" className="border-b border-gray-100 dark:border-gray-800 pb-2" onClick={() => setMobileMenuOpen(false)}>About</Link>
             <Link href="/ContactUs" className="border-b border-gray-100 dark:border-gray-800 pb-2" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
 
-            <div className="pt-4">
+            <div className="pt-4 flex flex-col gap-3">
+              <Link
+                href="https://portal.aaliconsulting.ca/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center bg-blue-500 text-white px-6 py-3 rounded-full shadow-lg hover:bg-blue-600 transition"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Client Portal
+              </Link>
               <Link href="/ContactUs" className="block w-full text-center bg-blue-500 text-white px-6 py-3 rounded-full shadow-lg hover:bg-blue-600 transition" onClick={() => setMobileMenuOpen(false)}>
                 Book Now
               </Link>
