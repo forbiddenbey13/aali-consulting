@@ -75,8 +75,37 @@ const ContactUs: React.FC = () => {
         if (response.ok) {
           const resData = await response.json();
           const slots = new Set<string>();
-          resData.bookedSlots.forEach((slot: any) => {
-            slots.add(`${slot.date}T${slot.time}`);
+
+          resData.bookedSlots.forEach((event: any) => {
+            // Google Calendar events use 'start.dateTime' for timed events
+            const startDateTime = event.start?.dateTime || event.start?.date;
+            if (startDateTime) {
+              const dateObj = new Date(startDateTime);
+
+              // Force checking in Toronto Timezone (EST/EDT)
+              // This is crucial because the slots on the UI are "EST".
+              // If the user's browser is in PST, dateObj.getHours() would be wrong.
+              const torontoTime = new Intl.DateTimeFormat('en-US', {
+                timeZone: 'America/Toronto',
+                hour12: false,
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit'
+              }).format(dateObj); // "MM/DD/YYYY, HH:mm"
+
+              const [datePart, timePart] = torontoTime.split(', ');
+              const [month, day, year] = datePart.split('/');
+              const [hours, minutes] = timePart.split(':');
+
+              // Key format: YYYY-MM-DDTHH:mm
+              // Note: minutes usually 00 for these slots
+              const dateStr = `${year}-${month}-${day}`;
+              const timeStr = `${hours}:${minutes}`;
+
+              slots.add(`${dateStr}T${timeStr}`);
+            }
           });
           setBookedSlots(slots);
         }
@@ -229,7 +258,7 @@ const ContactUs: React.FC = () => {
           {isCompleted && step === 1 && <div className="text-sm text-indigo-600 dark:text-indigo-400 mt-1 font-medium">{selectedService}</div>}
           {isCompleted && step === 2 && selectedDate && selectedTime && (
             <div className="text-sm text-indigo-600 dark:text-indigo-400 mt-1 font-medium">
-              {new Date(selectedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}, {formatTime12h(selectedTime)}
+              {new Date(selectedDate + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}, {formatTime12h(selectedTime)}
             </div>
           )}
         </div>
@@ -246,7 +275,7 @@ const ContactUs: React.FC = () => {
           </div>
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Booking Confirmed!</h2>
           <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-            Thank you, {data.firstName}. Your consultation for <span className="font-semibold text-indigo-600 dark:text-indigo-400">{selectedService}</span> is scheduled for <span className="font-semibold">{formatDate(new Date(selectedDate))}</span> at <span className="font-semibold">{formatTime12h(selectedTime)}</span>.
+            Thank you, {data.firstName}. Your consultation for <span className="font-semibold text-indigo-600 dark:text-indigo-400">{selectedService}</span> is scheduled for <span className="font-semibold">{new Date(selectedDate + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'long', day: 'numeric' })}</span> at <span className="font-semibold">{formatTime12h(selectedTime)}</span>.
           </p>
           <p className="text-sm text-gray-500 dark:text-gray-400 mb-8">
             Check your email for the Google Meet link.
@@ -390,7 +419,7 @@ const ContactUs: React.FC = () => {
                   <div className="w-full xl:w-[280px] border-l border-gray-100 dark:border-gray-700 pl-0 xl:pl-10 pt-8 xl:pt-0">
                     <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
                       {selectedDate
-                        ? new Date(selectedDate).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })
+                        ? new Date(selectedDate + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })
                         : "Select a date first"}
                     </h3>
 
@@ -442,7 +471,7 @@ const ContactUs: React.FC = () => {
                       <div>
                         <p className="text-sm text-gray-500 dark:text-indigo-300 font-medium uppercase tracking-wide">Selected Slot</p>
                         <p className="font-bold text-gray-900 dark:text-white">
-                          {new Date(selectedDate).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })} • {formatTime12h(selectedTime)}
+                          {new Date(selectedDate + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })} • {formatTime12h(selectedTime)}
                         </p>
                       </div>
                     </div>
