@@ -51,9 +51,12 @@ const ContactUs: React.FC = () => {
 
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [currentMonth, setCurrentMonth] = useState(new Date());
-  // Replacing bookedSlots Set with availability map
-  const [availability, setAvailability] = useState<Record<string, boolean>>({});
-  const [checkingAvailability, setCheckingAvailability] = useState(false);
+  // Data for valid days check
+  const [monthlyBookedSlots, setMonthlyBookedSlots] = useState<Set<string>>(new Set());
+
+  // Precise availability for the selected day - REMOVED redundant state
+  // const [availability, setAvailability] = useState<Record<string, boolean>>({});
+  // const [checkingAvailability, setCheckingAvailability] = useState(false);
 
   const [submitting, setSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -62,33 +65,47 @@ const ContactUs: React.FC = () => {
 
   // Fetch availability when date changes
   useEffect(() => {
-    if (!selectedDate) return;
+    const startOfMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1);
+    // Fetch 2 months ahead to ensure "Next Available" (30 days lookahead) has data
+    const endOfMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 2, 1);
 
-    const checkAvailability = async () => {
-      setCheckingAvailability(true);
+    const fetchMonthlySlots = async () => {
+      // Use new strict backend logic
       try {
-        const response = await fetch('/api/available-slots', {
+        const response = await fetch('/api/monthly-availability', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            date: selectedDate, // "YYYY-MM-DD"
-            timeSlots: TIME_SLOTS
+            startDate: formatDate(startOfMonth),
+            endDate: formatDate(endOfMonth)
           }),
         });
 
         if (response.ok) {
-          const data = await response.json();
-          setAvailability(data.availability || {});
+          const { bookedMap } = await response.json();
+          // bookedMap: { "2025-12-25": ["09:00", "11:00"] or ["ALL"] }
+
+          const newSet = new Set<string>();
+          Object.entries(bookedMap as Record<string, string[]>).forEach(([dateStr, times]) => {
+            if (times.includes("ALL")) {
+              newSet.add(`${dateStr}TALL`);
+            } else {
+              times.forEach(t => newSet.add(`${dateStr}T${t}`));
+            }
+          });
+
+          setMonthlyBookedSlots(newSet);
         }
-      } catch (error) {
-        console.error('Error checking availability:', error);
-      } finally {
-        setCheckingAvailability(false);
+      } catch (e) {
+        console.error("Error fetching monthly slots:", e);
       }
     };
 
-    checkAvailability();
-  }, [selectedDate]);
+    fetchMonthlySlots();
+  }, [currentMonth]);
+
+  // Fetch availability when date changes - REMOVED (using monthly data now)
+  // useEffect(() => { ... }, [selectedDate]);
 
   // Calendar Logic
   const calendarDays = useMemo(() => {
@@ -122,28 +139,50 @@ const ContactUs: React.FC = () => {
     return `${h12}:${String(m).padStart(2, "0")} ${ampm}`;
   };
 
+  const isDayFull = (d: Date) => {
+    const dateStr = formatDate(d);
+    // 1. Explicit full day
+    if (monthlyBookedSlots.has(`${dateStr}TALL`)) return true;
+
+    // 2. All slots booked
+    return TIME_SLOTS.every(time => monthlyBookedSlots.has(`${dateStr}T${time}`));
+  };
+
   const isDateDisabled = (date: Date | null) => {
     if (!date) return true;
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     date.setHours(0, 0, 0, 0);
-    // Disable weekends? Assuming yes based on typical business hours, or keep open if previously open.
-    // Keeping logic simple: past dates disabled.
-    return date < today;
+
+    if (date < today) return true;
+
+    // Check if fully booked
+    return isDayFull(date);
   };
 
   const isTimeDisabled = (time: string) => {
     if (!selectedDate) return true;
-    // Check local availability map
-    if (availability[time] === false) return true; // explicitly unavailable
+
+    // Check local monthly cache
+    // 1. If day is fully blocked
+    if (monthlyBookedSlots.has(`${selectedDate}TALL`)) return true;
+    // 2. If specific slot is blocked
+    if (monthlyBookedSlots.has(`${selectedDate}T${time}`)) return true;
 
     // Also block past times
     const now = new Date();
     const [hours, minutes] = time.split(':').map(Number);
     const slotDate = new Date(selectedDate);
-    slotDate.setHours(hours, minutes, 0, 0);
+    // Explicitly handle "T00:00:00" parsing safety if needed, 
+    // but selectedDate is YYYY-MM-DD, so new Date(selectedDate) is usually UTC. 
+    // Ideally use: new Date(selectedDate + 'T00:00:00')
+    const localSlotDate = new Date(selectedDate + 'T' + time);
 
-    return slotDate < now;
+    // Simple check: create date object for comparison
+    const d = new Date(selectedDate);
+    d.setHours(hours, minutes, 0, 0);
+
+    return d < now;
   };
 
   const nextMonth = () => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1));
@@ -381,7 +420,7 @@ const ContactUs: React.FC = () => {
                             onClick={() => handleDateSelect(date)}
                             className={`aspect-square rounded-full flex items-center justify-center text-sm font-medium transition-all
                                 ${isSel ? 'bg-indigo-600 text-white shadow-lg scale-105' :
-                                disabled ? 'text-gray-300 dark:text-gray-600 cursor-not-allowed' :
+                                disabled ? 'bg-gray-100 dark:bg-gray-800 text-gray-300 dark:text-gray-600 cursor-not-allowed' :
                                   'text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700'}
                               `}
                           >
