@@ -88,6 +88,8 @@ const Header: React.FC = () => {
                   <li><Link href="/Bookkeeping&Accounting" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" onClick={() => setOpenMenu(null)}>Bookkeeping</Link></li>
                   <li><Link href="/StrategicPlanning" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" onClick={() => setOpenMenu(null)}>Financial Planning</Link></li>
                   <li><Link href="/Systems&TechnologyImplementation" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" onClick={() => setOpenMenu(null)}>Technology Solutions</Link></li>
+                  <li><Link href="/CFOAdvisory&Governance" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" onClick={() => setOpenMenu(null)}>CFO Advisory & Governance</Link></li>
+                  <li><Link href="/Disability&LifePlanning" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" onClick={() => setOpenMenu(null)}>Disability & Life Planning</Link></li>
                 </ul>
               </div>
             )}
@@ -154,6 +156,8 @@ const Header: React.FC = () => {
                   <Link href="/Bookkeeping&Accounting" onClick={() => setMobileMenuOpen(false)}>Bookkeeping</Link>
                   <Link href="/StrategicPlanning" onClick={() => setMobileMenuOpen(false)}>Financial Planning</Link>
                   <Link href="/Systems&TechnologyImplementation" onClick={() => setMobileMenuOpen(false)}>Technology Solutions</Link>
+                  <Link href="/CFOAdvisory&Governance" onClick={() => setMobileMenuOpen(false)}>CFO Advisory & Governance</Link>
+                  <Link href="/Disability&LifePlanning" onClick={() => setMobileMenuOpen(false)}>Disability & Life Planning</Link>
                 </div>
               )}
             </div>
