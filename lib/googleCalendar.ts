@@ -96,6 +96,8 @@ export async function createBooking(
     phone?: string;
     service: string;
     notes?: string;
+    whoAreYou?: string;
+    companyName?: string;
   }
 ) {
   const start = buildDateTime(date, time);
@@ -108,6 +110,8 @@ Service: ${customer.service}
 Name: ${customer.firstName} ${customer.lastName}
 Email: ${customer.email}
 Phone: ${customer.phone || "N/A"}
+Identity: ${customer.whoAreYou || "N/A"}
+Company: ${customer.companyName || "N/A"}
 Notes: ${customer.notes || "None"}
     `.trim(),
 

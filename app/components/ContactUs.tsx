@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
-import { ChevronLeft, ChevronRight, CheckCircle, Clock, Calendar, User, Briefcase, Check } from "lucide-react";
+import { ChevronLeft, ChevronRight, CheckCircle, Clock, Calendar, User, Briefcase, Check, ChevronDown } from "lucide-react";
 import Image from "next/image";
 
 // ---------- Config ----------
@@ -18,6 +18,15 @@ const TIME_SLOTS = [
   "13:00", "15:00", "16:00"
 ];
 
+const IDENTITY_OPTIONS = [
+  "Newcomers to Canada",
+  "Student & Young Professional",
+  "Family or Individual with Disability (DTC/ODSP/RDSP)",
+  "Small & Medium Business (SMEs & Self-Employed)",
+  "Large Enterprise / Corporation",
+  "Faith-Based & Non-Profit Organizations",
+];
+
 type FormData = {
   service: string;
   date: string;
@@ -27,7 +36,10 @@ type FormData = {
   email: string;
   phone: string;
   notes: string;
+  whoAreYou: string;
+  companyName: string;
 };
+
 
 type Step = 1 | 2 | 3;
 
@@ -47,7 +59,10 @@ const ContactUs: React.FC = () => {
     email: "",
     phone: "",
     notes: "",
+    whoAreYou: "",
+    companyName: "",
   });
+
 
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -60,6 +75,7 @@ const ContactUs: React.FC = () => {
 
   const [submitting, setSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [notRepresentingCompany, setNotRepresentingCompany] = useState(false);
 
   // ---------- Effects & Logic ----------
 
@@ -237,6 +253,8 @@ const ContactUs: React.FC = () => {
           email: data.email,
           phone: data.phone,
           notes: data.notes,
+          whoAreYou: data.whoAreYou,
+          companyName: notRepresentingCompany ? "" : data.companyName,
         }),
       });
 
@@ -308,7 +326,8 @@ const ContactUs: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 md:p-8 lg:p-12 font-sans flex items-center justify-center">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 md:p-8 lg:p-12 font-sans flex flex-col items-center justify-center">
+      <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center animate-fadeIn">Book a Free Consultation</h1>
       <div className="bg-white dark:bg-gray-800 w-full max-w-6xl rounded-[32px] shadow-2xl overflow-hidden flex flex-col lg:flex-row min-h-[700px]">
 
         {/* LEFT SIDEBAR */}
@@ -324,6 +343,7 @@ const ContactUs: React.FC = () => {
               />
               <span className="font-bold text-lg text-gray-900 dark:text-white tracking-tight">AALI Consulting</span>
             </div>
+
           </div>
 
           <div className="flex-1">
@@ -357,6 +377,7 @@ const ContactUs: React.FC = () => {
           )}
 
           <div className="max-w-3xl mx-auto pt-8">
+
 
             {/* STEP 1: SERVICE */}
             {currentStep === 1 && (
@@ -551,6 +572,59 @@ const ContactUs: React.FC = () => {
                       className="p-3.5 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
                       placeholder="Anything else we should know?"
                     />
+                  </div>
+
+                  {/* COMPANY NAME + TOGGLE */}
+                  <div className="flex flex-col gap-2">
+                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                      Company Name
+                    </label>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                      Are you representing a company? If yes, complete this field with your official Company Name. If you are not representing a company, then please enable the switch below labeled &quot;I&apos;m not representing a Company&quot;.
+                    </p>
+
+                    {!notRepresentingCompany && (
+                      <input
+                        type="text"
+                        value={data.companyName}
+                        onChange={(e) => setData(d => ({ ...d, companyName: e.target.value }))}
+                        className="p-3.5 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                        placeholder="Official Company Name"
+                      />
+                    )}
+
+                    <div className="flex items-center gap-3 mt-1 py-2 border-t-2 border-indigo-500/20">
+                      <button
+                        type="button"
+                        onClick={() => setNotRepresentingCompany(!notRepresentingCompany)}
+                        className={`w-12 h-6 rounded-full p-1 transition-colors duration-200 ease-in-out ${notRepresentingCompany ? 'bg-indigo-600' : 'bg-gray-300 dark:bg-gray-600'}`}
+                      >
+                        <div className={`w-4 h-4 bg-white rounded-full shadow-sm transform transition-transform duration-200 ease-in-out ${notRepresentingCompany ? 'translate-x-6' : 'translate-x-0'}`} />
+                      </button>
+                      <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">I&apos;m not representing a Company</span>
+                    </div>
+                  </div>
+
+                  {/* WHO ARE YOU? */}
+                  <div className="flex flex-col gap-2">
+                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                      Who are you? <span className="text-xs font-normal text-gray-500 ml-1">Help us understand your situation so we can match you with the right roadmap.*</span>
+                    </label>
+                    <div className="relative">
+                      <select
+                        value={data.whoAreYou}
+                        onChange={(e) => setData(d => ({ ...d, whoAreYou: e.target.value }))}
+                        className="w-full p-4 pr-10 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium appearance-none focus:ring-2 focus:ring-indigo-500 outline-none transition-all cursor-pointer"
+                      >
+                        <option value="" disabled className="text-gray-400">Make a selection</option>
+                        {IDENTITY_OPTIONS.map((opt) => (
+                          <option key={opt} value={opt} className="text-gray-900 bg-white dark:bg-gray-800 dark:text-white">
+                            {opt}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" size={20} />
+                    </div>
                   </div>
 
                   <div className="pt-4 flex gap-4">

@@ -20,6 +20,8 @@ export async function POST(request: NextRequest) {
       phone = "",
       service = "",
       notes = "",
+      whoAreYou = "",
+      companyName = "",
     } = body;
 
     // -----------------------------
@@ -53,7 +55,7 @@ export async function POST(request: NextRequest) {
     // -----------------------------
     const { eventId } = await createBooking(
       { date, time, duration: 60 },
-      { firstName, lastName, email, phone, service, notes }
+      { firstName, lastName, email, phone, service, notes, whoAreYou, companyName }
     );
 
     // -----------------------------
@@ -69,6 +71,8 @@ export async function POST(request: NextRequest) {
       email,
       phone,
       notes,
+      whoAreYou,
+      companyName,
       status: "confirmed",
       createdAt: new Date().toISOString(),
     };
@@ -85,6 +89,8 @@ export async function POST(request: NextRequest) {
       date: date || "",
       time: time || "",
       notes: notes || "",
+      whoAreYou: whoAreYou || "",
+      companyName: companyName || "",
       email: email || "", // shows in template
       phone: phone || "",
       clientEmail: email || "", // used only for sending
