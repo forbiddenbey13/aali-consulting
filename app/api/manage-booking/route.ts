@@ -1,44 +1,77 @@
 import { NextRequest, NextResponse } from "next/server";
-import { deleteDoc, doc, updateDoc, getDoc } from "firebase/firestore";
+import { deleteDoc, doc, updateDoc, getDoc, collection, query, getDocs, where } from "firebase/firestore";
 import { db } from "@/firebase";
 import { deleteBookingEvent, updateBookingEvent, checkSlotAvailability } from "@/lib/googleCalendar";
 import { sendCancellationEmail, sendBookingEmailToClient, sendBookingEmailToBusiness } from "@/lib/sendEmail";
 
-// DELETE: Remove a booking
+// DELETE: Remove a booking OR all bookings
 export async function DELETE(request: NextRequest) {
     try {
         const { searchParams } = new URL(request.url);
         const bookingId = searchParams.get("bookingId");
         const eventId = searchParams.get("eventId");
+        const silent = searchParams.get("silent") === "true";
+        const deleteAll = searchParams.get("deleteAll") === "true";
 
-        if (!bookingId || !eventId) {
-            return NextResponse.json({ error: "Missing bookingId or eventId" }, { status: 400 });
+        // 1. Handle "Delete All" (Clear PAST bookings only: date < today)
+        if (deleteAll) {
+            // Get today's date string in YYYY-MM-DD
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, "0");
+            const day = String(today.getDate()).padStart(2, "0");
+            const todayStr = `${year}-${month}-${day}`;
+
+            // Query for docs where date < todayStr
+            const q = query(collection(db, "bookingSlots"), where("date", "<", todayStr));
+            const snapshot = await getDocs(q);
+            const batchPromises = snapshot.docs.map(doc => deleteDoc(doc.ref));
+            await Promise.all(batchPromises);
+            return NextResponse.json({ success: true, count: snapshot.size, message: `Deleted ${snapshot.size} past records.` });
         }
 
-        // 0. Fetch booking details for email (before deleting)
+        // 2. Handle Single Delete
+        if (!bookingId) {
+            return NextResponse.json({ error: "Missing bookingId" }, { status: 400 });
+        }
+
         const bookingRef = doc(db, "bookingSlots", bookingId);
-        const bookingSnap = await getDoc(bookingRef);
-        const bookingData = bookingSnap.exists() ? bookingSnap.data() : null;
 
-        // 1. Delete from Google Calendar
-        await deleteBookingEvent(eventId);
+        // If NOT silent, we need to handle GCal and Email
+        if (!silent) {
+            if (!eventId) {
+                return NextResponse.json({ error: "Missing eventId for non-silent delete" }, { status: 400 });
+            }
 
-        // 2. Delete from Firestore
-        await deleteDoc(bookingRef);
+            // Fetch info for email
+            const bookingSnap = await getDoc(bookingRef);
+            const bookingData = bookingSnap.exists() ? bookingSnap.data() : null;
 
-        // 3. Send Cancellation Email
-        if (bookingData) {
-            const templateParams = {
-                firstName: bookingData.firstName,
-                lastName: bookingData.lastName,
-                email: bookingData.email,
-                service: bookingData.service,
-                date: bookingData.date,
-                time: bookingData.time,
-                clientEmail: bookingData.email,
-            };
-            await sendCancellationEmail(templateParams);
+            // Delete from Google Calendar
+            try {
+                await deleteBookingEvent(eventId);
+            } catch (err) {
+                console.error("Failed to delete GCal event", err);
+                // Continue to delete from DB even if GCal fails
+            }
+
+            // Send Cancellation Email
+            if (bookingData) {
+                const templateParams = {
+                    firstName: bookingData.firstName,
+                    lastName: bookingData.lastName,
+                    email: bookingData.email,
+                    service: bookingData.service,
+                    date: bookingData.date,
+                    time: bookingData.time,
+                    clientEmail: bookingData.email,
+                };
+                await sendCancellationEmail(templateParams);
+            }
         }
+
+        // Always delete from Firestore
+        await deleteDoc(bookingRef);
 
         return NextResponse.json({ success: true });
     } catch (error: any) {

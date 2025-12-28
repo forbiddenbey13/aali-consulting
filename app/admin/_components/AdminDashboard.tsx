@@ -49,6 +49,9 @@ const AdminDashboard = () => {
     const [newPlatform, setNewPlatform] = useState("");
     const [processing, setProcessing] = useState(false);
 
+    const [filterStart, setFilterStart] = useState("");
+    const [filterEnd, setFilterEnd] = useState("");
+
     // Calendar Logic State
     const [currentMonth, setCurrentMonth] = useState(new Date());
     const [monthlyBookedSlots, setMonthlyBookedSlots] = useState<Set<string>>(new Set());
@@ -175,20 +178,44 @@ const AdminDashboard = () => {
         }
     };
 
-    const handleDelete = async (booking: Booking) => {
-        if (!confirm(`Are you sure you want to cancel the booking for ${booking.firstName} ${booking.lastName}? This action cannot be undone.`)) return;
+    const handleDelete = async (booking: Booking, silent: boolean = false) => {
+        const msg = silent
+            ? `Are you sure you want to delete the record for ${booking.firstName} ${booking.lastName}? This will NOT delete the Calendar event or send an email.`
+            : `Are you sure you want to cancel the booking for ${booking.firstName} ${booking.lastName}? This action cannot be undone.`;
+
+        if (!confirm(msg)) return;
 
         setProcessing(true);
         try {
-            const res = await fetch(`/api/manage-booking?bookingId=${booking.id}&eventId=${booking.eventId}`, {
+            const res = await fetch(`/api/manage-booking?bookingId=${booking.id}&eventId=${booking.eventId}&silent=${silent}`, {
                 method: "DELETE",
             });
             if (!res.ok) throw new Error("Failed to delete confirmation");
 
             await fetchBookings();
-            alert("Booking cancelled successfully.");
+            alert("Booking/Record deleted successfully.");
         } catch (error: any) {
-            alert("Error cancelling booking: " + error.message);
+            alert("Error deleting: " + error.message);
+        } finally {
+            setProcessing(false);
+        }
+    };
+
+    const handleDeleteAllClients = async () => {
+        if (!confirm("WARNING: Are you sure you want to delete all PAST booking records from the database? This will only remove clients with dates BEFORE today. This action CANNOT be undone.")) return;
+
+        setProcessing(true);
+        try {
+            const res = await fetch(`/api/manage-booking?deleteAll=true`, {
+                method: "DELETE",
+            });
+            if (!res.ok) throw new Error("Failed to delete all bookings");
+
+            const data = await res.json();
+            await fetchBookings();
+            alert(data.message || `Successfully deleted ${data.count} records.`);
+        } catch (error: any) {
+            alert("Error deleting all: " + error.message);
         } finally {
             setProcessing(false);
         }
@@ -235,14 +262,14 @@ const AdminDashboard = () => {
     };
 
     const handleExportCSV = () => {
-        if (bookings.length === 0) return;
+        if (displayData.length === 0) return; // Export filtered data
 
         const headers = [
             "Date", "Time", "Service", "Platform", "First Name", "Last Name",
             "Email", "Phone", "Company Name", "Identity", "Notes", "Created At"
         ];
 
-        const rows = bookings.map(b => [
+        const rows = displayData.map(b => [
             b.date,
             b.time,
             `"${b.service}"`,
@@ -279,7 +306,29 @@ const AdminDashboard = () => {
         return bookingDate >= today;
     }).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
-    const displayData = activeTab === "upcoming" ? upcomingBookings : bookings;
+    // Filter Logic
+    const getFilteredData = () => {
+        let data = activeTab === "upcoming" ? upcomingBookings : bookings;
+
+        if (filterStart) {
+            data = data.filter(b => b.date >= filterStart);
+        }
+        if (filterEnd) {
+            data = data.filter(b => b.date <= filterEnd);
+        }
+
+        // Ensure Clients tab is sorted by date desc (newest first) by default if not upcoming
+        if (activeTab === "clients") {
+            data = [...data].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        }
+
+        return data;
+    };
+
+    // State for Details Modal
+    const [selectedDetailBooking, setSelectedDetailBooking] = useState<Booking | null>(null);
+
+    const displayData = getFilteredData();
 
     if (loading) {
         return <div className="flex items-center justify-center min-h-[60vh]"><div className="animate-spin rounded-full h-10 w-10 border-t-2 border-indigo-600"></div></div>;
@@ -300,7 +349,7 @@ const AdminDashboard = () => {
                         className="object-contain"
                     />
                     <h1 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                        AALI Consulting <span className="text-indigo-600 text-sm bg-indigo-50 dark:bg-indigo-900/30 px-2 py-0.5 rounded-full border border-indigo-200 dark:border-indigo-800">Admin</span>
+                        Admin Dashboard
                     </h1>
                 </div>
 
@@ -332,13 +381,13 @@ const AdminDashboard = () => {
             <div className="max-w-[95%] mx-auto p-4 md:p-8">
 
                 {/* Stats / Controls */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+                <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-4 mb-8">
                     <div className="flex bg-gray-100 dark:bg-gray-800 p-1 rounded-xl">
                         <button
                             onClick={() => setActiveTab("upcoming")}
                             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${activeTab === "upcoming"
-                                    ? "bg-white dark:bg-gray-700 text-indigo-600 shadow-sm"
-                                    : "text-gray-500 hover:text-gray-700 dark:text-gray-400"
+                                ? "bg-white dark:bg-gray-700 text-indigo-600 shadow-sm"
+                                : "text-gray-500 hover:text-gray-700 dark:text-gray-400"
                                 }`}
                         >
                             <Calendar size={16} /> Booked Dates ({upcomingBookings.length})
@@ -346,20 +395,63 @@ const AdminDashboard = () => {
                         <button
                             onClick={() => setActiveTab("clients")}
                             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${activeTab === "clients"
-                                    ? "bg-white dark:bg-gray-700 text-indigo-600 shadow-sm"
-                                    : "text-gray-500 hover:text-gray-700 dark:text-gray-400"
+                                ? "bg-white dark:bg-gray-700 text-indigo-600 shadow-sm"
+                                : "text-gray-500 hover:text-gray-700 dark:text-gray-400"
                                 }`}
                         >
                             <Users size={16} /> Clients ({bookings.length})
                         </button>
                     </div>
 
-                    <button
-                        onClick={handleExportCSV}
-                        className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl font-semibold shadow-lg hover:shadow-indigo-500/30 transition-all active:scale-95"
-                    >
-                        <Download size={18} /> Export CSV
-                    </button>
+                    {/* Filter & Actions */}
+                    <div className="flex flex-col md:flex-row items-center gap-4 w-full xl:w-auto">
+
+                        {/* Date Filters */}
+                        <div className="flex items-center gap-2 bg-white dark:bg-gray-800 p-1.5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+                            <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 px-2 uppercase">Filter:</span>
+                            <input
+                                type="date"
+                                value={filterStart}
+                                onChange={(e) => setFilterStart(e.target.value)}
+                                className="bg-gray-50 dark:bg-gray-900 border-none rounded-lg text-sm px-2 py-1.5 text-gray-700 dark:text-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none"
+                                placeholder="Start Date"
+                            />
+                            <span className="text-gray-400">-</span>
+                            <input
+                                type="date"
+                                value={filterEnd}
+                                onChange={(e) => setFilterEnd(e.target.value)}
+                                className="bg-gray-50 dark:bg-gray-900 border-none rounded-lg text-sm px-2 py-1.5 text-gray-700 dark:text-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none"
+                                placeholder="End Date"
+                            />
+                            {(filterStart || filterEnd) && (
+                                <button
+                                    onClick={() => { setFilterStart(""); setFilterEnd(""); }}
+                                    className="p-1.5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition"
+                                    title="Clear Filter"
+                                >
+                                    <X size={16} />
+                                </button>
+                            )}
+                        </div>
+
+                        <div className="flex gap-3 ml-auto md:ml-0">
+                            {activeTab === "clients" && (
+                                <button
+                                    onClick={handleDeleteAllClients}
+                                    className="flex items-center gap-2 bg-red-100 hover:bg-red-200 text-red-700 dark:bg-red-900/30 dark:hover:bg-red-900/50 dark:text-red-300 px-4 py-2 rounded-xl font-semibold transition-all whitespace-nowrap"
+                                >
+                                    <Trash2 size={18} /> Delete All Clients
+                                </button>
+                            )}
+                            <button
+                                onClick={handleExportCSV}
+                                className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl font-semibold shadow-lg hover:shadow-indigo-500/30 transition-all active:scale-95 whitespace-nowrap"
+                            >
+                                <Download size={18} /> Export CSV
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Data Table */}
@@ -369,8 +461,7 @@ const AdminDashboard = () => {
                             <thead className="bg-gray-50 dark:bg-gray-700/50 border-b border-gray-100 dark:border-gray-700">
                                 <tr>
                                     <th className="px-6 py-4 font-semibold text-gray-700 dark:text-gray-300">Date & Time</th>
-                                    <th className="px-6 py-4 font-semibold text-gray-700 dark:text-gray-300">First Name</th>
-                                    <th className="px-6 py-4 font-semibold text-gray-700 dark:text-gray-300">Last Name</th>
+                                    <th className="px-6 py-4 font-semibold text-gray-700 dark:text-gray-300">Name</th>
                                     <th className="px-6 py-4 font-semibold text-gray-700 dark:text-gray-300">Email</th>
                                     <th className="px-6 py-4 font-semibold text-gray-700 dark:text-gray-300">Phone</th>
                                     <th className="px-6 py-4 font-semibold text-gray-700 dark:text-gray-300">Service</th>
@@ -384,7 +475,7 @@ const AdminDashboard = () => {
                             <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
                                 {displayData.length === 0 ? (
                                     <tr>
-                                        <td colSpan={11} className="px-6 py-10 text-center text-gray-500">
+                                        <td colSpan={10} className="px-6 py-10 text-center text-gray-500">
                                             No bookings found.
                                         </td>
                                     </tr>
@@ -399,8 +490,15 @@ const AdminDashboard = () => {
                                                     {booking.time}
                                                 </div>
                                             </td>
-                                            <td className="px-6 py-4 text-gray-700 dark:text-gray-300">{booking.firstName || "---"}</td>
-                                            <td className="px-6 py-4 text-gray-700 dark:text-gray-300">{booking.lastName || "---"}</td>
+                                            {/* Clickable Name */}
+                                            <td className="px-6 py-4">
+                                                <button
+                                                    onClick={() => setSelectedDetailBooking(booking)}
+                                                    className="font-semibold text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300 hover:underline text-left"
+                                                >
+                                                    {booking.firstName} {booking.lastName}
+                                                </button>
+                                            </td>
                                             <td className="px-6 py-4 text-gray-500 dark:text-gray-400">{booking.email || "---"}</td>
                                             <td className="px-6 py-4 text-gray-500 dark:text-gray-400">{booking.phone || "---"}</td>
                                             <td className="px-6 py-4">
@@ -416,20 +514,36 @@ const AdminDashboard = () => {
                                             </td>
                                             <td className="px-6 py-4 text-right sticky right-0 bg-white dark:bg-gray-900 md:bg-transparent">
                                                 <div className="flex items-center justify-end gap-2">
-                                                    <button
-                                                        onClick={() => openRescheduleModal(booking)}
-                                                        className="p-2 text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 rounded-lg transition-colors"
-                                                        title="Reschedule"
-                                                    >
-                                                        <RefreshCw size={18} />
-                                                    </button>
-                                                    <button
-                                                        onClick={() => handleDelete(booking)}
-                                                        className="p-2 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg transition-colors"
-                                                        title="Cancel Booking"
-                                                    >
-                                                        <Trash2 size={18} />
-                                                    </button>
+                                                    {/* UPCOMING: Show Reschedule + Standard Delete */}
+                                                    {activeTab === "upcoming" && (
+                                                        <>
+                                                            <button
+                                                                onClick={() => openRescheduleModal(booking)}
+                                                                className="p-2 text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 rounded-lg transition-colors"
+                                                                title="Reschedule"
+                                                            >
+                                                                <RefreshCw size={18} />
+                                                            </button>
+                                                            <button
+                                                                onClick={() => handleDelete(booking, false)} // Not silent
+                                                                className="p-2 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg transition-colors"
+                                                                title="Cancel Booking"
+                                                            >
+                                                                <Trash2 size={18} />
+                                                            </button>
+                                                        </>
+                                                    )}
+
+                                                    {/* CLIENTS: Show Silent Delete ONLY */}
+                                                    {activeTab === "clients" && (
+                                                        <button
+                                                            onClick={() => handleDelete(booking, true)} // Silent delete
+                                                            className="p-2 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-400 rounded-lg transition-colors"
+                                                            title="Delete Record Only (Silent)"
+                                                        >
+                                                            <Trash2 size={18} />
+                                                        </button>
+                                                    )}
                                                 </div>
                                             </td>
                                         </tr>
@@ -440,6 +554,97 @@ const AdminDashboard = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Client Details Modal */}
+            {selectedDetailBooking && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overflow-y-auto" onClick={() => setSelectedDetailBooking(null)}>
+                    <div className="bg-white dark:bg-gray-800 w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden scale-100 animate-fadeIn my-auto" onClick={e => e.stopPropagation()}>
+                        <div className="p-6 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center bg-gray-50 dark:bg-gray-800/50">
+                            <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                                <Users size={20} className="text-indigo-600" />
+                                Client Details
+                            </h3>
+                            <button
+                                onClick={() => setSelectedDetailBooking(null)}
+                                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition"
+                            >
+                                <X size={24} />
+                            </button>
+                        </div>
+
+                        <div className="p-6 space-y-4">
+                            <div className="flex items-center gap-4 mb-4">
+                                <div className="h-16 w-16 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-300 text-2xl font-bold">
+                                    {selectedDetailBooking.firstName[0]}
+                                    {selectedDetailBooking.lastName[0]}
+                                </div>
+                                <div>
+                                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                                        {selectedDetailBooking.firstName} {selectedDetailBooking.lastName}
+                                    </h2>
+                                    <p className="text-gray-500 dark:text-gray-400 text-sm">
+                                        {selectedDetailBooking.whoAreYou || "Client"}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="p-3 bg-gray-50 dark:bg-gray-700/30 rounded-xl">
+                                    <label className="text-xs font-semibold text-gray-500 uppercase">First Name</label>
+                                    <p className="text-gray-900 dark:text-white break-words">{selectedDetailBooking.firstName}</p>
+                                </div>
+                                <div className="p-3 bg-gray-50 dark:bg-gray-700/30 rounded-xl">
+                                    <label className="text-xs font-semibold text-gray-500 uppercase">Last Name</label>
+                                    <p className="text-gray-900 dark:text-white break-words">{selectedDetailBooking.lastName}</p>
+                                </div>
+                                <div className="p-3 bg-gray-50 dark:bg-gray-700/30 rounded-xl">
+                                    <label className="text-xs font-semibold text-gray-500 uppercase">Email</label>
+                                    <p className="text-gray-900 dark:text-white break-words">{selectedDetailBooking.email}</p>
+                                </div>
+                                <div className="p-3 bg-gray-50 dark:bg-gray-700/30 rounded-xl">
+                                    <label className="text-xs font-semibold text-gray-500 uppercase">Phone</label>
+                                    <p className="text-gray-900 dark:text-white">{selectedDetailBooking.phone}</p>
+                                </div>
+                                <div className="p-3 bg-gray-50 dark:bg-gray-700/30 rounded-xl">
+                                    <label className="text-xs font-semibold text-gray-500 uppercase">Company</label>
+                                    <p className="text-gray-900 dark:text-white">{selectedDetailBooking.companyName || "---"}</p>
+                                </div>
+                                <div className="p-3 bg-gray-50 dark:bg-gray-700/30 rounded-xl">
+                                    <label className="text-xs font-semibold text-gray-500 uppercase">Service</label>
+                                    <p className="text-gray-900 dark:text-white">{selectedDetailBooking.service}</p>
+                                </div>
+                                <div className="p-3 bg-gray-50 dark:bg-gray-700/30 rounded-xl border border-indigo-100 dark:border-indigo-900/30 md:col-span-2">
+                                    <label className="text-xs font-semibold text-indigo-500 uppercase flex items-center gap-1"><Calendar size={12} /> Appointment</label>
+                                    <div className="flex justify-between items-center mt-1">
+                                        <p className="text-gray-900 dark:text-white font-medium">
+                                            {new Date(selectedDetailBooking.date + 'T00:00:00').toLocaleDateString(undefined, { weekday: 'short', month: 'long', day: 'numeric', year: 'numeric' })}
+                                        </p>
+                                        <div className="text-sm bg-white dark:bg-gray-600 px-2 py-1 rounded border border-gray-200 dark:border-gray-500">
+                                            {formatTime12h(selectedDetailBooking.time)}
+                                        </div>
+                                    </div>
+                                    <div className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                                        Platform: <span className="font-semibold">{selectedDetailBooking.platform || "Not specified"}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {selectedDetailBooking.notes && (
+                                <div className="p-4 bg-gray-50 dark:bg-gray-700/30 rounded-xl">
+                                    <label className="text-xs font-semibold text-gray-500 uppercase mb-2 block">Notes</label>
+                                    <p className="text-gray-700 dark:text-gray-300 text-sm whitespace-pre-wrap">
+                                        {selectedDetailBooking.notes}
+                                    </p>
+                                </div>
+                            )}
+
+                            <div className="text-xs text-gray-400 text-center mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+                                Booking Created: {new Date(selectedDetailBooking.createdAt).toLocaleString()}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {/* Reschedule Modal */}
             {isModalOpen && selectedBooking && (
@@ -567,8 +772,8 @@ const AdminDashboard = () => {
                                             key={opt}
                                             onClick={() => setNewPlatform(opt)}
                                             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all border ${newPlatform === opt
-                                                    ? "bg-indigo-600 text-white border-indigo-600 shadow-sm"
-                                                    : "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-600 hover:border-indigo-300 hover:bg-indigo-50 dark:hover:bg-gray-600"
+                                                ? "bg-indigo-600 text-white border-indigo-600 shadow-sm"
+                                                : "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-600 hover:border-indigo-300 hover:bg-indigo-50 dark:hover:bg-gray-600"
                                                 }`}
                                         >
                                             {opt}
