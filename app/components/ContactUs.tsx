@@ -38,6 +38,7 @@ type FormData = {
   notes: string;
   whoAreYou: string;
   companyName: string;
+  platform: string;
 };
 
 
@@ -61,6 +62,7 @@ const ContactUs: React.FC = () => {
     notes: "",
     whoAreYou: "",
     companyName: "",
+    platform: "",
   });
 
 
@@ -255,6 +257,7 @@ const ContactUs: React.FC = () => {
           notes: data.notes,
           whoAreYou: data.whoAreYou,
           companyName: notRepresentingCompany ? "" : data.companyName,
+          platform: data.platform,
         }),
       });
 
@@ -602,6 +605,26 @@ const ContactUs: React.FC = () => {
                         <div className={`w-4 h-4 bg-white rounded-full shadow-sm transform transition-transform duration-200 ease-in-out ${notRepresentingCompany ? 'translate-x-6' : 'translate-x-0'}`} />
                       </button>
                       <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">I&apos;m not representing a Company</span>
+                    </div>
+                  </div>
+
+                  {/* MEETING PLATFORM */}
+                  <div className="flex flex-col gap-2">
+                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                      Meeting Platform
+                    </label>
+                    <div className="relative">
+                      <select
+                        value={data.platform}
+                        onChange={(e) => setData(d => ({ ...d, platform: e.target.value }))}
+                        className="w-full p-4 pr-10 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium appearance-none focus:ring-2 focus:ring-indigo-500 outline-none transition-all cursor-pointer"
+                      >
+                        <option value="" disabled className="text-gray-400">Select a platform</option>
+                        <option value="Google Meet">Google Meet</option>
+                        <option value="Zoom">Zoom</option>
+                        <option value="Microsoft Teams">Microsoft Teams</option>
+                      </select>
+                      <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" size={20} />
                     </div>
                   </div>
 

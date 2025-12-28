@@ -19,6 +19,7 @@ export async function POST(request: NextRequest) {
       email = "",
       phone = "",
       service = "",
+      platform = "",
       notes = "",
       whoAreYou = "",
       companyName = "",
@@ -55,7 +56,7 @@ export async function POST(request: NextRequest) {
     // -----------------------------
     const { eventId } = await createBooking(
       { date, time, duration: 60 },
-      { firstName, lastName, email, phone, service, notes, whoAreYou, companyName }
+      { firstName, lastName, email, phone, service, platform, notes, whoAreYou, companyName }
     );
 
     // -----------------------------
@@ -66,6 +67,7 @@ export async function POST(request: NextRequest) {
       date,
       time,
       service,
+      platform,
       firstName,
       lastName,
       email,
@@ -88,6 +90,7 @@ export async function POST(request: NextRequest) {
       service: service || "",
       date: date || "",
       time: time || "",
+      platform: platform || "",
       notes: notes || "",
       whoAreYou: whoAreYou || "",
       companyName: companyName || "",

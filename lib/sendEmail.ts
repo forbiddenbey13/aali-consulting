@@ -16,6 +16,16 @@ export async function sendBookingEmailToClient(templateParams: any) {
   }, clientTemplateId); // Pass specific template ID if available
 }
 
+export async function sendCancellationEmail(templateParams: any) {
+  // Use user-provided template ID for cancellation
+  const cancelTemplateId = "template_ujrbhbm";
+
+  return sendEmail({
+    ...templateParams,
+    to_email: templateParams.clientEmail || process.env.NEXT_PUBLIC_BUSINESS_EMAIL, // Fallback if clientEmail missing? Actually we need both.
+  }, cancelTemplateId);
+}
+
 async function sendEmail(templateParams: any, templateIdOverride?: string) {
   try {
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;

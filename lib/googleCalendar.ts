@@ -95,6 +95,7 @@ export async function createBooking(
     email: string;
     phone?: string;
     service: string;
+    platform?: string;
     notes?: string;
     whoAreYou?: string;
     companyName?: string;
@@ -107,6 +108,7 @@ export async function createBooking(
     summary: `${customer.service} - ${customer.firstName} ${customer.lastName}`,
     description: `
 Service: ${customer.service}
+Platform: ${customer.platform || "N/A"}
 Name: ${customer.firstName} ${customer.lastName}
 Email: ${customer.email}
 Phone: ${customer.phone || "N/A"}
@@ -131,5 +133,72 @@ Notes: ${customer.notes || "None"}
   } catch (err: any) {
     console.error("❌ Error creating event:", err.message);
     throw new Error("Failed to create booking");
+  }
+}
+
+/* ---------------------------------------------
+   DELETE BOOKING EVENT
+---------------------------------------------- */
+export async function deleteBookingEvent(eventId: string) {
+  try {
+    await calendar.events.delete({
+      calendarId: process.env.GOOGLE_CALENDAR_ID!,
+      eventId: eventId,
+    });
+    return true;
+  } catch (err: any) {
+    console.error("❌ Error deleting event:", err.message);
+    // If 404/410, it's already gone, so we can consider it success for our sync purposes
+    if (err.code === 404 || err.code === 410) return true;
+    throw new Error("Failed to delete booking from calendar");
+  }
+}
+
+/* ---------------------------------------------
+   UPDATE BOOKING EVENT
+---------------------------------------------- */
+export async function updateBookingEvent(
+  eventId: string,
+  { date, time, duration, platform }: { date: string; time: string; duration: number, platform?: string }
+) {
+  const start = buildDateTime(date, time);
+  const end = new Date(new Date(start).getTime() + duration * 60000).toISOString();
+
+  try {
+    // First, get the existing event to preserve other details (description, attendees, etc.)
+    const existingEvent = await calendar.events.get({
+      calendarId: process.env.GOOGLE_CALENDAR_ID!,
+      eventId: eventId,
+    });
+
+    // Update Platform in description if provided
+    let newDescription = existingEvent.data.description || "";
+    if (platform) {
+      // Regex to find "Platform: <anything>" and replace it
+      if (/Platform: .*/.test(newDescription)) {
+        newDescription = newDescription.replace(/Platform: .*/, `Platform: ${platform}`);
+      } else {
+        // Prepend or Append if missing. Let's prepend after Service
+        newDescription = `Platform: ${platform}\n` + newDescription;
+      }
+    }
+
+    const updatedEvent = {
+      ...existingEvent.data,
+      description: newDescription,
+      start: { dateTime: start, timeZone: "America/Toronto" },
+      end: { dateTime: end, timeZone: "America/Toronto" },
+    };
+
+    await calendar.events.update({
+      calendarId: process.env.GOOGLE_CALENDAR_ID!,
+      eventId: eventId,
+      requestBody: updatedEvent,
+    });
+
+    return true;
+  } catch (err: any) {
+    console.error("❌ Error updating event:", err.message);
+    throw new Error("Failed to update booking in calendar");
   }
 }
