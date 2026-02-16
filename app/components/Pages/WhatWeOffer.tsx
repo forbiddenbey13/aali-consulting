@@ -11,9 +11,10 @@ interface OfferCard {
 interface WhatWeOfferProps {
   heading: string;
   cards: OfferCard[];
+  onLearnMore?: (index: number) => void;
 }
 
-const WhatWeOffer: React.FC<WhatWeOfferProps> = ({ heading, cards }) => {
+const WhatWeOffer: React.FC<WhatWeOfferProps> = ({ heading, cards, onLearnMore }) => {
   return (
     <section id="what-we-do" className="px-6 md:px-10 py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
       <h2 className="text-3xl font-bold mb-14 text-center text-gray-900 dark:text-white">
@@ -37,15 +38,35 @@ const WhatWeOffer: React.FC<WhatWeOfferProps> = ({ heading, cards }) => {
             </h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm mb-8">{card.description}</p>
 
-            {/* Only show button if link exists */}
-            {card.link && (
-              <a
-                href={card.link}
-                className="inline-block bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-100 text-sm font-medium px-5 py-2 rounded-full transition"
-              >
-                Learn more
-              </a>
-            )}
+             {/* Only show button if link exists */}
+              {card.link ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onLearnMore) {
+                      onLearnMore(i);
+                    } else {
+                      // If the link is an anchor to #explore-services, scroll smoothly
+                      if (typeof card.link === 'string' && card.link.startsWith('#')) {
+                        const el = document.querySelector(card.link as string);
+                        if (el) {
+                          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          // Optionally, set focus for accessibility
+                          if (el instanceof HTMLElement) {
+                            el.tabIndex = -1;
+                            el.focus();
+                          }
+                        }
+                      } else if (typeof card.link === 'string') {
+                        window.open(card.link, '_blank');
+                      }
+                    }
+                  }}
+                  className="inline-block bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-100 text-sm font-medium px-5 py-2 rounded-full transition"
+                >
+                  Learn more
+                </button>
+              ) : null}
           </div>
         ))}
       </div>

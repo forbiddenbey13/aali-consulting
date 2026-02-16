@@ -39,38 +39,38 @@ const HomePage: React.FC = () => {
       title: "Monthly Close & Reconciliations",
       description:
         "Banks, AR/AP, GST/HST and more—kept accurate and on time so you always have clean, reliable numbers.",
-      link: "/TaxService",
+      link: "#explore-services",
     },
     {
       title: "Payroll & Compliance",
       description:
         "End-to-end payroll support plus slips (T4, T5, T5018, WSIB) filed correctly and stress-free.",
-      link: "/Bookkeeping&Accounting",
+      link: "#explore-services",
     },
     {
       title: "Dashboards That Drive Decisions",
       description:
         "Clear views of cashflow, margins, and KPIs—so you know what’s working and where to act.",
-      link: "/StrategicPlanning",
+      link: "#explore-services",
     },
     {
       title: "E-Commerce Accounting",
       description:
         "Seamless mapping for Shopify, Amazon, and other platforms with landed-cost models for real margins.",
-      link: "/Systems&TechnologyImplementation",
+      link: "#explore-services",
     },
     {
       title: "Non-Profit & Charity Expertise",
       description:
         "Fund accounting, donation receipting, and T3010-ready reporting tailored to NFP requirements.",
-      link: "#",
+      link: "#explore-services",
       special: true,
     },
     {
       title: "Year-End Ready, Every Month",
       description:
         "Organized books and tidy workpapers that make tax filing and CRA reviews smooth, accurate, and stress-free.",
-      link: "/TaxService",
+      link: "#explore-services",
     }
   ];
   const faqs = [
@@ -312,6 +312,22 @@ A smooth, stress-free year-end every year — because your books were already re
 
 
 
+  const [openServiceIndex, setOpenServiceIndex] = useState<number | null>(null);
+
+  // Callback for Learn More button
+  const handleLearnMore = (index: number) => {
+    setOpenServiceIndex(index);
+    // Scroll to the accordion section
+    const el = document.getElementById('explore-services');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (el instanceof HTMLElement) {
+        el.tabIndex = -1;
+        el.focus();
+      }
+    }
+  };
+
   return (
     <div className="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 transition-colors duration-300">
       <Header />
@@ -326,7 +342,7 @@ A smooth, stress-free year-end every year — because your books were already re
 
       {/* What We Do */}
       {/* What We Do Section */}
-      <WhatWeOffer heading="What We Offer" cards={offerCards} />
+      <WhatWeOffer heading="What We Offer" cards={offerCards} onLearnMore={handleLearnMore} />
       <WhyChooseUs
         image={whyChooseData.image}
         title={whyChooseData.title}
@@ -338,10 +354,14 @@ A smooth, stress-free year-end every year — because your books were already re
         paragraphs={FactData.paragraphs}
         reverse={true}
       />
-      <ServiceAccordion
-        heading="Explore Our Services in Detail"
-        services={servicesList}
-      />
+      <div id="explore-services">
+        <ServiceAccordion
+          heading="Explore Our Services in Detail"
+          services={servicesList}
+          openIndex={openServiceIndex}
+          setOpenIndex={setOpenServiceIndex}
+        />
+      </div>
       <ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
       {/* Resources */}
       <ResourcesSection heading="Resources" resources={resourcesData} />

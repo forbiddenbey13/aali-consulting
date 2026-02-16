@@ -27,12 +27,27 @@ const heroImages = [
 
 const HomePage: React.FC = () => {
   const [slide, setSlide] = useState(0);
+  const [openServiceIndex, setOpenServiceIndex] = useState<number | null>(null);
   useEffect(() => {
     const interval = setInterval(() => {
       setSlide((prev) => (prev + 1) % heroImages.length);
     }, 4000);
     return () => clearInterval(interval);
   }, []);
+
+  // Callback for Learn More button (same as PersonalTax)
+  const handleLearnMore = (index: number) => {
+    setOpenServiceIndex(index);
+    // Scroll to the accordion section
+    const el = document.getElementById('explore-services');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (el instanceof HTMLElement) {
+        el.tabIndex = -1;
+        el.focus();
+      }
+    }
+  };
 
   const offerCards = [
     {
@@ -486,7 +501,7 @@ A tax process that runs itself—accurate, documented, and audit-ready—freeing
 
       {/* What We Do */}
       {/* What We Do Section */}
-      <WhatWeOffer heading="What We Offer" cards={offerCards} />
+      <WhatWeOffer heading="What We Offer" cards={offerCards} onLearnMore={handleLearnMore} />
       <ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
       <WhyChooseUs
         image={whyChooseData.image}
@@ -499,6 +514,8 @@ A tax process that runs itself—accurate, documented, and audit-ready—freeing
           <ServiceAccordion
             heading="Explore Our Services in Detail"
             services={servicesList}
+            openIndex={openServiceIndex}
+            setOpenIndex={setOpenServiceIndex}
           />
         </div>
       </div>

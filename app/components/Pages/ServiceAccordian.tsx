@@ -1,6 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Plus, Minus } from "lucide-react";
+
 
 interface ServiceItem {
   title: string;
@@ -11,14 +12,30 @@ interface ServiceAccordionProps {
   heading: string;
   services: ServiceItem[];
   id?: string;
+  openIndex?: number | null;
+  setOpenIndex?: (index: number | null) => void;
 }
+
 
 const ServiceAccordion: React.FC<ServiceAccordionProps> = ({
   heading,
   services,
   id,
+  openIndex: controlledOpenIndex,
+  setOpenIndex: controlledSetOpenIndex,
 }) => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const isControlled = controlledOpenIndex !== undefined && controlledSetOpenIndex !== undefined;
+  const [uncontrolledOpenIndex, setUncontrolledOpenIndex] = useState<number | null>(null);
+  const openIndex = isControlled ? controlledOpenIndex : uncontrolledOpenIndex;
+  const setOpenIndex = isControlled ? controlledSetOpenIndex : setUncontrolledOpenIndex;
+
+  // If controlled, sync internal state with prop
+  useEffect(() => {
+    if (isControlled && controlledOpenIndex !== undefined) {
+      setUncontrolledOpenIndex(controlledOpenIndex);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [controlledOpenIndex]);
 
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);

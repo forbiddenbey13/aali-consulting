@@ -16,6 +16,20 @@ import FAQSection from '../components/Pages/FAQ';
 
 const HomePage: React.FC = () => {
   const [slide, setSlide] = useState(0);
+  const [openServiceIndex, setOpenServiceIndex] = useState<number | null>(null);
+  // Callback for Learn More button
+  const handleLearnMore = (index: number) => {
+    setOpenServiceIndex(index);
+    // Scroll to the accordion section
+    const el = document.getElementById('explore-services');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (el instanceof HTMLElement) {
+        el.tabIndex = -1;
+        el.focus();
+      }
+    }
+  };
   useEffect(() => {
     const interval = setInterval(() => {
       setSlide((prev) => (prev + 1) % heroImages.length);
@@ -23,44 +37,44 @@ const HomePage: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const offerCards = [
-    {
-      title: "Disability Support (DTC & ODSP)",
-      description:
-        "Help with eligibility, applications, appeals, and safe budgeting strategies, including RDSP setup for long-term security.",
-      link: "#services-detail",
-    },
-    {
-      title: "Family Disability Planning",
-      description:
-        "Guidance for children, young adults, and families, including Henson Trusts and transitions at age 18.",
-      link: "#services-detail",
-    },
-    {
-      title: "Job Loss Strategy",
-      description:
-        "Support for severance, EI, cashflow, and your transition to re-employment, freelancing, or business ownership.",
-      link: "#services-detail",
-    },
-    {
-      title: "Separation & Divorce",
-      description:
-        "Financial clarity for property division, RRSP/TFSA transfers, CPP credits, and support tax planning.",
-      link: "#services-detail",
-    },
-    {
-      title: "Loss of a Loved One",
-      description:
-        "Estate tax returns, CPP survivor benefits, probate support, and CRA clearance so families don’t miss critical steps.",
-      link: "#services-detail",
-    },
-    {
-      title: "Accident Recovery",
-      description:
-        "Navigation of EI, WSIB, LTD, and insurer forms, plus return-to-work planning and disability tax credits.",
-      link: "#services-detail",
-    }
-  ];
+   const offerCards = [
+     {
+       title: "Disability Support (DTC & ODSP)",
+       description:
+         "Help with eligibility, applications, appeals, and safe budgeting strategies, including RDSP setup for long-term security.",
+       link: "#explore-services",
+     },
+     {
+       title: "Family Disability Planning",
+       description:
+         "Guidance for children, young adults, and families, including Henson Trusts and transitions at age 18.",
+       link: "#explore-services",
+     },
+     {
+       title: "Job Loss Strategy",
+       description:
+         "Support for severance, EI, cashflow, and your transition to re-employment, freelancing, or business ownership.",
+       link: "#explore-services",
+     },
+     {
+       title: "Separation & Divorce",
+       description:
+         "Financial clarity for property division, RRSP/TFSA transfers, CPP credits, and support tax planning.",
+       link: "#explore-services",
+     },
+     {
+       title: "Loss of a Loved One",
+       description:
+         "Estate tax returns, CPP survivor benefits, probate support, and CRA clearance so families don’t miss critical steps.",
+       link: "#explore-services",
+     },
+     {
+       title: "Accident Recovery",
+       description:
+         "Navigation of EI, WSIB, LTD, and insurer forms, plus return-to-work planning and disability tax credits.",
+       link: "#explore-services",
+     }
+   ];
   const faqs = [
     {
       question:
@@ -386,7 +400,7 @@ A calm, guided path through the financial aftermath of loss. You’ll know what 
 
       {/* What We Do */}
       {/* What We Do Section */}
-      <WhatWeOffer heading="What We Offer" cards={offerCards} />
+       <WhatWeOffer heading="What We Offer" cards={offerCards} onLearnMore={handleLearnMore} />
       <CallToAction
         heading="Difficult Transitions Don’t Have to Be Faced Alone."
         subheading="We simplify benefits, forms, and CRA compliance — so whether it’s disability, separation, or loss, you’ll have trusted guidance."
@@ -401,11 +415,14 @@ A calm, guided path through the financial aftermath of loss. You’ll know what 
       />
 
 
-      <ServiceAccordion
-        id="explore-services"
-        heading="Explore Our Services in Detail"
-        services={servicesList}
-      />
+       <div id="explore-services">
+         <ServiceAccordion
+           heading="Explore Our Services in Detail"
+           services={servicesList}
+           openIndex={openServiceIndex}
+           setOpenIndex={setOpenServiceIndex}
+         />
+       </div>
       <ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
       {/* Resources */}
       <ResourcesSection heading="Resources" resources={resourcesData} />

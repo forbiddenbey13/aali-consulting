@@ -27,6 +27,7 @@ const heroImages = [
 
 const HomePage: React.FC = () => {
   const [slide, setSlide] = useState(0);
+  const [openServiceIndex, setOpenServiceIndex] = useState<number | null>(null);
   useEffect(() => {
     const interval = setInterval(() => {
       setSlide((prev) => (prev + 1) % heroImages.length);
@@ -34,36 +35,56 @@ const HomePage: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Callback for Learn More button (same as Corporate/Personal Tax)
+  const handleLearnMore = (index: number) => {
+    setOpenServiceIndex(index);
+    // Scroll to the accordion section
+    const el = document.getElementById('explore-services');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (el instanceof HTMLElement) {
+        el.tabIndex = -1;
+        el.focus();
+      }
+    }
+  };
+
   const offerCards = [
     {
       title: "Disability & Family Support",
       description:
         "DTC & ODSP eligibility, applications, appeals, RDSP setup, ODSP-safe budgets, and disability planning for children and families.",
+      link: "#explore-services",
     },
     {
       title: "Accident & Health Recovery",
       description:
         "EI/WSIB/LTD claims, insurer forms, treatment/therapy expense tracking, DTC/ODSP integration, and return-to-work coordination.",
+      link: "#explore-services",
     },
     {
       title: "Job Loss & Transition",
       description:
         "Severance review, EI setup, survival budgeting, RRSP rollover strategies, and guided pathways back into employment, freelancing, or starting an e-commerce business.",
+      link: "#explore-services",
     },
     {
       title: "Separation & Divorce Tax Planning",
       description:
         "Comprehensive support with property division, RRSP/TFSA transfers, CPP credit splits, support tax optimization, and creating a clear roadmap for financial stability post-divorce.",
+      link: "#explore-services",
     },
     {
       title: "Estate & Bereavement",
       description:
         "Estate tax returns, CPP survivor benefits, probate, CRA clearance, and step-by-step distribution guidance for families after loss.",
+      link: "#explore-services",
     },
     {
       title: "Complex Life Events",
       description:
         "Specialized tax roadmaps for unique situations like relocation, cross-border life changes, or multi-factor cases requiring integrated financial and legal alignment.",
+      link: "#explore-services",
     }
   ];
   const faqs = [
@@ -329,7 +350,7 @@ A calm, coordinated plan that turns disruption into direction—helping you navi
 
       {/* What We Do */}
       {/* What We Do Section */}
-      <WhatWeOffer heading="What We Offer" cards={offerCards} />
+      <WhatWeOffer heading="What We Offer" cards={offerCards} onLearnMore={handleLearnMore} />
       <ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
       <WhyChooseUs
         image={whyChooseData.image}
@@ -337,10 +358,14 @@ A calm, coordinated plan that turns disruption into direction—helping you navi
         paragraphs={whyChooseData.paragraphs}
       />
 
-      <ServiceAccordion
-        heading="Explore Our Services in Detail"
-        services={servicesList}
-      />
+      <div id="explore-services">
+        <ServiceAccordion
+          heading="Explore Our Services in Detail"
+          services={servicesList}
+          openIndex={openServiceIndex}
+          setOpenIndex={setOpenServiceIndex}
+        />
+      </div>
 
       {/* Resources */}
       <ResourcesSection heading="Resources" resources={resourcesData} />

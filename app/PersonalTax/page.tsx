@@ -27,6 +27,7 @@ const heroImages = [
 
 const HomePage: React.FC = () => {
   const [slide, setSlide] = useState(0);
+  const [openServiceIndex, setOpenServiceIndex] = useState<number | null>(null);
   useEffect(() => {
     const interval = setInterval(() => {
       setSlide((prev) => (prev + 1) % heroImages.length);
@@ -338,6 +339,20 @@ You’ll never feel lost between two systems. From your first Canadian tax retur
 
 
 
+  // Callback for Learn More button
+  const handleLearnMore = (index: number) => {
+    setOpenServiceIndex(index);
+    // Scroll to the accordion section
+    const el = document.getElementById('explore-services');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (el instanceof HTMLElement) {
+        el.tabIndex = -1;
+        el.focus();
+      }
+    }
+  };
+
   return (
     <div className="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 transition-colors duration-300">
       <Header />
@@ -352,7 +367,7 @@ You’ll never feel lost between two systems. From your first Canadian tax retur
 
       {/* What We Do */}
       {/* What We Do Section */}
-      <WhatWeOffer heading="What We Offer" cards={offerCards} />
+      <WhatWeOffer heading="What We Offer" cards={offerCards} onLearnMore={handleLearnMore} />
       <ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
       <WhyChooseUs
         image={whyChooseData.image}
@@ -364,6 +379,8 @@ You’ll never feel lost between two systems. From your first Canadian tax retur
         <ServiceAccordion
           heading="Explore Our Services in Detail"
           services={servicesList}
+          openIndex={openServiceIndex}
+          setOpenIndex={setOpenServiceIndex}
         />
       </div>
 

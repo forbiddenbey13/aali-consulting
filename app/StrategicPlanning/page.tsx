@@ -393,6 +393,22 @@ A clear, tax-smart strategy that turns complexity into control—preserving your
 
 
 
+  const [openServiceIndex, setOpenServiceIndex] = useState<number | null>(null);
+
+  // Callback for Learn More button
+  const handleLearnMore = (index: number) => {
+    setOpenServiceIndex(index);
+    // Scroll to the accordion section
+    const el = document.getElementById('explore-services');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (el instanceof HTMLElement) {
+        el.tabIndex = -1;
+        el.focus();
+      }
+    }
+  };
+
   return (
     <div className="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 transition-colors duration-300">
       <Header />
@@ -408,16 +424,20 @@ A clear, tax-smart strategy that turns complexity into control—preserving your
 
       {/* What We Do */}
       {/* What We Do Section */}
-      <WhatWeOffer heading="What We Offer" cards={offerCards} />
+      <WhatWeOffer heading="What We Offer" cards={offerCards} onLearnMore={handleLearnMore} />
       <WhyChooseUs
         image={whyChooseData.image}
         title={whyChooseData.title}
         paragraphs={whyChooseData.paragraphs}
       />
-      <ServiceAccordion
-        heading="Explore Our Services in Detail"
-        services={servicesList}
-      />
+      <div id="explore-services">
+        <ServiceAccordion
+          heading="Explore Our Services in Detail"
+          services={servicesList}
+          openIndex={openServiceIndex}
+          setOpenIndex={setOpenServiceIndex}
+        />
+      </div>
       <ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
       {/* Resources */}
       <ResourcesSection heading="Resources" resources={resourcesData} />

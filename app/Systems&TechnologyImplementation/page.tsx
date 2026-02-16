@@ -39,37 +39,37 @@ const HomePage: React.FC = () => {
       title: "Accounting & Payroll Software Setup",
       description:
         "QuickBooks, Xero, Wave, FreshBooks, and payroll tools—configured to fit your business.",
-      link: "/TaxService",
+      link: "#explore-services",
     },
     {
       title: "E-Commerce & POS Integrations",
       description:
         "Seamlessly connect Shopify, Amazon, inventory, and point-of-sale systems for real-time financial clarity.",
-      link: "/Bookkeeping&Accounting",
+      link: "#explore-services",
     },
     {
       title: "ERP & Advanced Systems",
       description:
         "Set up or integrate with NetSuite, Sage Intacct, or Microsoft Dynamics 365 Business Central.",
-      link: "/StrategicPlanning",
+      link: "#explore-services",
     },
     {
       title: "Custom Implementation Process",
       description:
         "Needs assessment → Full setup & customization → Training and ongoing support.",
-      link: "/Systems&TechnologyImplementation",
+      link: "#explore-services",
     },
     {
       title: "Automation & Data Workflows",
       description:
         "Dropbox, Tableau dashboards, API connectors, and automated reporting that save hours of manual work.",
-      link: "#",
+      link: "#explore-services",
     },
     {
       title: "Secure Migration & Scalability",
       description:
         "Data migration, system clean-up, and scalable frameworks so your tools grow with your business.",
-      link: "/Systems&TechnologyImplementation",
+      link: "#explore-services",
     }
   ];
   const faqs = [
@@ -380,6 +380,22 @@ A clean, secure migration that minimizes downtime — and a flexible, scalable s
 
 
 
+  const [openServiceIndex, setOpenServiceIndex] = useState<number | null>(null);
+
+  // Callback for Learn More button
+  const handleLearnMore = (index: number) => {
+    setOpenServiceIndex(index);
+    // Scroll to the accordion section
+    const el = document.getElementById('explore-services');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (el instanceof HTMLElement) {
+        el.tabIndex = -1;
+        el.focus();
+      }
+    }
+  };
+
   return (
     <div className="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 transition-colors duration-300">
       <Header />
@@ -394,17 +410,21 @@ A clean, secure migration that minimizes downtime — and a flexible, scalable s
 
       {/* What We Do */}
       {/* What We Do Section */}
-      <WhatWeOffer heading="What We Offer" cards={offerCards} />
+      <WhatWeOffer heading="What We Offer" cards={offerCards} onLearnMore={handleLearnMore} />
       <WhyChooseUs
         image={whyChooseData.image}
         title={whyChooseData.title}
         paragraphs={whyChooseData.paragraphs}
       />
 
-      <ServiceAccordion
-        heading="Explore Our Services in Detail"
-        services={servicesList}
-      />
+      <div id="explore-services">
+        <ServiceAccordion
+          heading="Explore Our Services in Detail"
+          services={servicesList}
+          openIndex={openServiceIndex}
+          setOpenIndex={setOpenServiceIndex}
+        />
+      </div>
       <ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
       {/* Resources */}
       <ResourcesSection heading="Resources" resources={resourcesData} />
