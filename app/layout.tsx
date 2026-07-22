@@ -16,6 +16,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "AALI - Consulting",
   description: "Financial Planning",
+  metadataBase: new URL("https://aaliconsulting.ca/"),
+  alternates: {
+    canonical: "./",
+  },
 };
 
 export default function RootLayout({
@@ -24,8 +28,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>{children}</Providers>
