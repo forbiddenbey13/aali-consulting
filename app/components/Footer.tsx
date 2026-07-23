@@ -125,7 +125,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/Systems&TechnologyImplementation"
+                  href="/SystemsandTechnologyImplementation"
                   className="hover:text-blue-400 transition"
                 >
                   Technology Solutions
@@ -133,7 +133,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/CFOAdvisory&Governance"
+                  href="/CFOAdvisoryandGovernance"
                   className="hover:text-blue-400 transition"
                 >
                   CFO Advisory & Governance
@@ -141,7 +141,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/Disability&LifePlanning"
+                  href="/DisabilityandLifePlanning"
                   className="hover:text-blue-400 transition"
                 >
                   Disability & Life Planning

@@ -61,7 +61,7 @@ const HomePage: React.FC = () => {
       title: "Retirement & Estate (65+)",
       description:
         "Maximize income sustainability, minimize taxes, coordinate healthcare costs, and align estate planning with family goals and charitable intentions.",
-      link: "/CFOAdvisory&Governance",
+      link: "/CFOAdvisoryandGovernance",
     },
     {
       title: "Specialized Planning",
@@ -80,13 +80,13 @@ const HomePage: React.FC = () => {
       title: "SME Financial Planning",
       description:
         "Integrated cashflow, retirement, and tax strategies that align business profits with personal goals — helping owners build, protect, and grow long-term wealth.",
-      link: "/CFOAdvisory&Governance",
+      link: "/CFOAdvisoryandGovernance",
     },
     {
       title: "Strategic Wealth & Family Planning",
       description:
         "Comprehensive wealth management for high-net-worth families — covering investments, trusts, estate transfers, and tax-efficient succession to preserve legacy and security.",
-      link: "/CFOAdvisory&Governance",
+      link: "/CFOAdvisoryandGovernance",
     },
   ];
   const faqs = [

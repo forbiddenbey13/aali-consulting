@@ -55,7 +55,7 @@ const HomePage: React.FC = () => {
       title: "Cross-Border & International Planning",
       description:
         "Canada←>US residency, treaty rules, payroll/social security, LLC/S-corp pitfalls, and arrival/departure returns.",
-      link: "/Systems&TechnologyImplementation",
+      link: "/SystemsandTechnologyImplementation",
     },
     {
       title: "Succession & Estate Alignment",
@@ -67,7 +67,7 @@ const HomePage: React.FC = () => {
       title: "Governance & Reporting Packs",
       description:
         "Clear board/executive dashboards, risk tracking, and financial playbooks that simplify decision-making.",
-      link: "/Systems&TechnologyImplementation",
+      link: "/SystemsandTechnologyImplementation",
     },
   ];
   const faqs = [

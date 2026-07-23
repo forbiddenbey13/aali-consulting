@@ -137,7 +137,7 @@ const Header: React.FC = () => {
                   </li>
                   <li>
                     <Link
-                      href="/Systems&TechnologyImplementation"
+                      href="/SystemsandTechnologyImplementation"
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                       onClick={() => setOpenMenu(null)}
                     >
@@ -146,7 +146,7 @@ const Header: React.FC = () => {
                   </li>
                   <li>
                     <Link
-                      href="/CFOAdvisory&Governance"
+                      href="/CFOAdvisoryandGovernance"
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                       onClick={() => setOpenMenu(null)}
                     >
@@ -155,7 +155,7 @@ const Header: React.FC = () => {
                   </li>
                   <li>
                     <Link
-                      href="/Disability&LifePlanning"
+                      href="/DisabilityandLifePlanning"
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                       onClick={() => setOpenMenu(null)}
                     >
@@ -180,7 +180,7 @@ const Header: React.FC = () => {
                 <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
                   <li>
                     <Link
-                      href="/NCW&E"
+                      href="/NCWandE"
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                       onClick={() => setOpenMenu(null)}
                     >
@@ -189,7 +189,7 @@ const Header: React.FC = () => {
                   </li>
                   <li>
                     <Link
-                      href="/NMB&LF"
+                      href="/NMBandLF"
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                       onClick={() => setOpenMenu(null)}
                     >
@@ -272,19 +272,19 @@ const Header: React.FC = () => {
                     Financial Planning
                   </Link>
                   <Link
-                    href="/Systems&TechnologyImplementation"
+                    href="/SystemsandTechnologyImplementation"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Technology Solutions
                   </Link>
                   <Link
-                    href="/CFOAdvisory&Governance"
+                    href="/CFOAdvisoryandGovernance"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     CFO Advisory & Governance
                   </Link>
                   <Link
-                    href="/Disability&LifePlanning"
+                    href="/DisabilityandLifePlanning"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Disability & Life Planning
@@ -304,10 +304,16 @@ const Header: React.FC = () => {
               </button>
               {openMenu === "mobile-newcomers" && (
                 <div className="flex flex-col space-y-3 mt-3 pl-4 text-base text-gray-600 dark:text-gray-400">
-                  <Link href="/NCW&E" onClick={() => setMobileMenuOpen(false)}>
+                  <Link
+                    href="/NCWandE"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
                     Work & Business Setup
                   </Link>
-                  <Link href="/NMB&LF" onClick={() => setMobileMenuOpen(false)}>
+                  <Link
+                    href="/NMBandLF"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
                     Money & Life Setup
                   </Link>
                 </div>

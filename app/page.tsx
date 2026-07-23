@@ -202,7 +202,7 @@ const HomePage: React.FC = () => {
               move faster, decisions improve.
             </p>
             <a
-              href="/Systems&TechnologyImplementation"
+              href="/SystemsandTechnologyImplementation"
               className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition"
             >
               Learn more
@@ -220,7 +220,7 @@ const HomePage: React.FC = () => {
               Canada-US setups—for safer, faster decisions.
             </p>
             <a
-              href="/CFOAdvisory&Governance"
+              href="/CFOAdvisoryandGovernance"
               className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition"
             >
               Learn more
@@ -243,7 +243,7 @@ const HomePage: React.FC = () => {
               tax-smart steps handled.
             </p>
             <a
-              href="/Disability&LifePlanning"
+              href="/DisabilityandLifePlanning"
               className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition"
             >
               Learn more
@@ -457,7 +457,7 @@ const HomePage: React.FC = () => {
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">{s.text}</p>
                 <a
-                  href="/Systems&TechnologyImplementation"
+                  href="/SystemsandTechnologyImplementation"
                   className="btn-primary"
                 >
                   Learn More
@@ -494,7 +494,7 @@ const HomePage: React.FC = () => {
                   {s.title}
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">{s.text}</p>
-                <a href="/CFOAdvisory&Governance" className="btn-primary">
+                <a href="/CFOAdvisoryandGovernance" className="btn-primary">
                   Learn More
                 </a>
               </div>
@@ -529,7 +529,7 @@ const HomePage: React.FC = () => {
                   {s.title}
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">{s.text}</p>
-                <a href="/Disability&LifePlanning" className="btn-primary">
+                <a href="/DisabilityandLifePlanning" className="btn-primary">
                   Learn More
                 </a>
               </div>
