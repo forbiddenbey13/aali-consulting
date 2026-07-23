@@ -1,29 +1,27 @@
 "use client";
-import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import React from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { Plus, Minus, ChevronDown } from "lucide-react";
-import { useEffect, useState } from 'react';
-import HeroSection from '../components/Pages/Hero';
-import WhatWeOffer from '../components/Pages/WhatWeOffer';
-import WhyChooseUs from '../components/Pages/WhyChooseUs';
-import ServiceAccordion from '../components/Pages/ServiceAccordian';
-import ThreeStepProcess from '../components/Pages/ThreeStep';
-import ResourcesSection from '../components/Pages/Resources';
-import CallToAction from '../components/Pages/CallToAction';
-import FAQSection from '../components/Pages/FAQ';
+import { useEffect, useState } from "react";
+import HeroSection from "../components/Pages/Hero";
+import WhatWeOffer from "../components/Pages/WhatWeOffer";
+import WhyChooseUs from "../components/Pages/WhyChooseUs";
+import ServiceAccordion from "../components/Pages/ServiceAccordian";
+import ThreeStepProcess from "../components/Pages/ThreeStep";
+import ResourcesSection from "../components/Pages/Resources";
+import CallToAction from "../components/Pages/CallToAction";
+import FAQSection from "../components/Pages/FAQ";
 
 const heroImages = [
-  '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-  '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-  '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
-  '/Web Assets/NEW/Hero Section/f0065b10-07c3-47d4-bf72-adaf37d2c25a-scaled.jpeg-1.webp',
-  '/Web Assets/NEW/Hero Section/gettyimages-1488522537-640x640.jpg',
-  '/Web Assets/NEW/Hero Section/premium_photo-1661761077411-d50cba031848.jpeg',
-  '/Web Assets/NEW/Hero Section/TPC-exterior-building-b.jpg',
+  "/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png",
+  "/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg",
+  "/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp",
+  "/Web Assets/NEW/Hero Section/f0065b10-07c3-47d4-bf72-adaf37d2c25a-scaled.jpeg-1.webp",
+  "/Web Assets/NEW/Hero Section/gettyimages-1488522537-640x640.jpg",
+  "/Web Assets/NEW/Hero Section/premium_photo-1661761077411-d50cba031848.jpeg",
+  "/Web Assets/NEW/Hero Section/TPC-exterior-building-b.jpg",
 ];
-
-
 
 const HomePage: React.FC = () => {
   const [slide, setSlide] = useState(0);
@@ -45,7 +43,7 @@ const HomePage: React.FC = () => {
       title: "Young Families & Homebuyers (26–34)",
       description:
         "Plan childcare credits, use FHSA and RRSP Home Buyers’ Plan, balance family expenses, and build sustainable financial security.",
-      link: "/Bookkeeping&Accounting",
+      link: "/BookkeepingandAccounting",
     },
     {
       title: "Mid-Career Professionals (35–50)",
@@ -130,12 +128,13 @@ Our clients often work with us on a quarterly or semi-annual cadence, where we r
   ];
 
   const heroImages = [
-    '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-    '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-    '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
+    "/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png",
+    "/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg",
+    "/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp",
   ];
   const whyChooseData = {
-    image: "/Web Assets/Images/NEW/Strategic Financial Planning/Image-empty-state.jpg.png",
+    image:
+      "/Web Assets/Images/NEW/Strategic Financial Planning/Image-empty-state.jpg.png",
     title: "Why Choose AALI Consulting For Financial Planning",
     paragraphs: [
       `At AALI Consulting, financial planning isn’t just about numbers — it’s about direction. We help you understand how every financial decision connects to your bigger goals: saving for a first home, balancing family priorities, funding education, planning retirement, or leaving a legacy. Our advisors look at the complete picture — tax, cashflow, debt, benefits, and investment strategy — so your plan works in real life, not just on paper.`,
@@ -346,8 +345,8 @@ Advisor Coordination – Work alongside your accountants, lawyers, and portfolio
 The Result:
 
 
-A clear, tax-smart strategy that turns complexity into control—preserving your wealth, protecting your family, and building a legacy that lasts for generations.`
-    }
+A clear, tax-smart strategy that turns complexity into control—preserving your wealth, protecting your family, and building a legacy that lasts for generations.`,
+    },
   ];
 
   const processSteps = [
@@ -391,17 +390,15 @@ A clear, tax-smart strategy that turns complexity into control—preserving your
     },
   ];
 
-
-
   const [openServiceIndex, setOpenServiceIndex] = useState<number | null>(null);
 
   // Callback for Learn More button
   const handleLearnMore = (index: number) => {
     setOpenServiceIndex(index);
     // Scroll to the accordion section
-    const el = document.getElementById('explore-services');
+    const el = document.getElementById("explore-services");
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
       if (el instanceof HTMLElement) {
         el.tabIndex = -1;
         el.focus();
@@ -424,7 +421,11 @@ A clear, tax-smart strategy that turns complexity into control—preserving your
 
       {/* What We Do */}
       {/* What We Do Section */}
-      <WhatWeOffer heading="What We Offer" cards={offerCards} onLearnMore={handleLearnMore} />
+      <WhatWeOffer
+        heading="What We Offer"
+        cards={offerCards}
+        onLearnMore={handleLearnMore}
+      />
       <WhyChooseUs
         image={whyChooseData.image}
         title={whyChooseData.title}
@@ -448,18 +449,13 @@ A clear, tax-smart strategy that turns complexity into control—preserving your
         buttonLink="/ContactUs"
       />
 
-
-
-
       {/* FAQs */}
       {/* ✅ FAQs — Updated Design */}
       <FAQSection heading="Frequently Asked Questions" faqs={faqs} />
-
 
       <Footer />
     </div>
   );
 };
-
 
 export default HomePage;

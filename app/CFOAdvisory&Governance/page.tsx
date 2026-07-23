@@ -1,29 +1,27 @@
 "use client";
-import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import React from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { Plus, Minus, ChevronDown } from "lucide-react";
-import { useEffect, useState } from 'react';
-import HeroSection from '../components/Pages/Hero';
-import WhatWeOffer from '../components/Pages/WhatWeOffer';
-import WhyChooseUs from '../components/Pages/WhyChooseUs';
-import ServiceAccordion from '../components/Pages/ServiceAccordian';
-import ThreeStepProcess from '../components/Pages/ThreeStep';
-import ResourcesSection from '../components/Pages/Resources';
-import CallToAction from '../components/Pages/CallToAction';
-import FAQSection from '../components/Pages/FAQ';
+import { useEffect, useState } from "react";
+import HeroSection from "../components/Pages/Hero";
+import WhatWeOffer from "../components/Pages/WhatWeOffer";
+import WhyChooseUs from "../components/Pages/WhyChooseUs";
+import ServiceAccordion from "../components/Pages/ServiceAccordian";
+import ThreeStepProcess from "../components/Pages/ThreeStep";
+import ResourcesSection from "../components/Pages/Resources";
+import CallToAction from "../components/Pages/CallToAction";
+import FAQSection from "../components/Pages/FAQ";
 
 const heroImages = [
-  '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-  '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-  '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
-  '/Web Assets/NEW/Hero Section/f0065b10-07c3-47d4-bf72-adaf37d2c25a-scaled.jpeg-1.webp',
-  '/Web Assets/NEW/Hero Section/gettyimages-1488522537-640x640.jpg',
-  '/Web Assets/NEW/Hero Section/premium_photo-1661761077411-d50cba031848.jpeg',
-  '/Web Assets/NEW/Hero Section/TPC-exterior-building-b.jpg',
+  "/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png",
+  "/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg",
+  "/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp",
+  "/Web Assets/NEW/Hero Section/f0065b10-07c3-47d4-bf72-adaf37d2c25a-scaled.jpeg-1.webp",
+  "/Web Assets/NEW/Hero Section/gettyimages-1488522537-640x640.jpg",
+  "/Web Assets/NEW/Hero Section/premium_photo-1661761077411-d50cba031848.jpeg",
+  "/Web Assets/NEW/Hero Section/TPC-exterior-building-b.jpg",
 ];
-
-
 
 const HomePage: React.FC = () => {
   const [slide, setSlide] = useState(0);
@@ -45,7 +43,7 @@ const HomePage: React.FC = () => {
       title: "Enterprise-Grade Support",
       description:
         "Transfer pricing, multi-entity consolidation, and controversy/audit playbooks to keep large organizations compliant and board-ready.",
-      link: "/Bookkeeping&Accounting",
+      link: "/BookkeepingandAccounting",
     },
     {
       title: "Faith-Based & NFP Finance",
@@ -70,12 +68,11 @@ const HomePage: React.FC = () => {
       description:
         "Clear board/executive dashboards, risk tracking, and financial playbooks that simplify decision-making.",
       link: "/Systems&TechnologyImplementation",
-    }
+    },
   ];
   const faqs = [
     {
-      question:
-        "What does a CFO advisory service actually include?",
+      question: "What does a CFO advisory service actually include?",
       answer: `CFO Advisory means providing strategic financial leadership without the full-time cost of an in-house CFO.
 We oversee the full finance function — from monthly close discipline and FP&A reporting to cashflow forecasting, OpCo/HoldCo planning, and tax governance.
 Our team acts as your financial backbone — ensuring every decision, from pricing to investment, aligns with your growth strategy and risk profile.
@@ -83,7 +80,8 @@ Our team acts as your financial backbone — ensuring every decision, from prici
 You get the insight and control of a CFO, scaled to your business size and goals.`,
     },
     {
-      question: "Do you work with both small businesses and large organizations?",
+      question:
+        "Do you work with both small businesses and large organizations?",
       answer: `
 Absolutely. Our CFO advisory framework is scalable — supporting both:
 SMEs and family-owned businesses seeking control over cashflow, profitability, and structure.
@@ -93,7 +91,8 @@ Larger enterprises managing intercompany complexity, transfer pricing, or audit 
 For faith-based or not-for-profit organizations, we also provide specialized governance and board compliance support, ensuring transparency and CRA readiness without administrative overload.`,
     },
     {
-      question: "How is this different from standard accounting or bookkeeping?",
+      question:
+        "How is this different from standard accounting or bookkeeping?",
       answer: `Accounting records and reconciles the past — CFO advisory plans for the future.
 Instead of simply reporting what happened, we:
 Interpret the data to explain why it happened.
@@ -121,7 +120,7 @@ Whether you’re presenting to investors, donors, or your board, we help you com
     // '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
     // '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
     // '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
-    '/Web Assets/Images/NEW/CFO Advisory & Governance/auditing-financial-report-computer-screen.jpg.png'
+    "/Web Assets/Images/NEW/CFO Advisory & Governance/auditing-financial-report-computer-screen.jpg.png",
   ];
   const whyChooseData = {
     image: "/Web Assets/Images/NEW/CFO Advisory & Governance/14-1-768x432.jpg",
@@ -134,8 +133,6 @@ Whether you’re presenting to investors, donors, or your board, we help you com
       `,
     ],
   };
-
-
 
   const servicesList = [
     {
@@ -381,17 +378,15 @@ Reports that speak the language of leadership — concise, visual, and transpare
     },
   ];
 
-
-
   const [openServiceIndex, setOpenServiceIndex] = useState<number | null>(null);
 
   // Callback for Learn More button
   const handleLearnMore = (index: number) => {
     setOpenServiceIndex(index);
     // Scroll to the accordion section
-    const el = document.getElementById('explore-services');
+    const el = document.getElementById("explore-services");
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
       if (el instanceof HTMLElement) {
         el.tabIndex = -1;
         el.focus();
@@ -413,7 +408,11 @@ Reports that speak the language of leadership — concise, visual, and transpare
 
       {/* What We Do */}
       {/* What We Do Section */}
-      <WhatWeOffer heading="What We Offer" cards={offerCards} onLearnMore={handleLearnMore} />
+      <WhatWeOffer
+        heading="What We Offer"
+        cards={offerCards}
+        onLearnMore={handleLearnMore}
+      />
       <WhyChooseUs
         image={whyChooseData.image}
         title={whyChooseData.title}
@@ -438,18 +437,13 @@ Reports that speak the language of leadership — concise, visual, and transpare
         buttonLink="/ContactUs"
       />
 
-
-
-
       {/* FAQs */}
       {/* ✅ FAQs — Updated Design */}
       <FAQSection heading="Frequently Asked Questions" faqs={faqs} />
-
 
       <Footer />
     </div>
   );
 };
-
 
 export default HomePage;
