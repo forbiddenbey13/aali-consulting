@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://aaliconsulting.ca/cfoadvisoryandgovernance", // Hardcoded exact lowercase URL
+    canonical: "/cfoadvisoryandgovernance", // Hardcoded exact lowercase URL
   },
 };
 
-export default function CFOAdvisoryandGovernanceLayout({
+export default function cfoadvisoryandgovernanceLayout({
   children,
 }: {
   children: React.ReactNode;

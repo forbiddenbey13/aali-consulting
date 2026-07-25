@@ -1,8 +1,8 @@
-import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { CheckCircle } from 'lucide-react';
-import MapleLeafLogo from '../components/MapleLeafLogo';
+import React from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { CheckCircle } from "lucide-react";
+import MapleLeafLogo from "../components/MapleLeafLogo";
 
 // The main BookkeepingPage component.
 // It displays a landing page for bookkeeping and accounting services.
@@ -12,18 +12,18 @@ const BookkeepingPage: React.FC = () => {
     {
       number: "1",
       title: "Assess & Recommend",
-      text: "We audit your current process and choose the best-fit tools."
+      text: "We audit your current process and choose the best-fit tools.",
     },
     {
       number: "2",
       title: "Set Up & Customize",
-      text: "Full setup of your accounting system to match your business."
+      text: "Full setup of your accounting system to match your business.",
     },
     {
       number: "3",
       title: "Train and Support",
-      text: "We train your team and provide post-setup assistance."
-    }
+      text: "We train your team and provide post-setup assistance.",
+    },
   ];
 
   // Data for the bookkeeping services list.
@@ -31,7 +31,7 @@ const BookkeepingPage: React.FC = () => {
     "QuickBooks (Online/Desktop)",
     "Xero, Wave, FreshBooks",
     "Payroll & Invoicing Tools",
-    "POS & Inventory Integrations"
+    "POS & Inventory Integrations",
   ];
 
   // Data for the accounting services list.
@@ -39,7 +39,7 @@ const BookkeepingPage: React.FC = () => {
     "Needs Assessment & Software Matching",
     "Full System Setup & Configuration",
     "Data Migration & Integration",
-    "Staff Onboarding & Ongoing Support "
+    "Staff Onboarding & Ongoing Support ",
   ];
 
   // FAQs as a hashmap (question -> answer).
@@ -51,7 +51,7 @@ const BookkeepingPage: React.FC = () => {
     "Do you offer training to my staff?":
       "Yes — we provide one-on-one or team training so your staff can confidently use the new system from day one.",
     "What if I run into issues after implementations?":
-      "We offer post-implementation support to help you troubleshoot, adjust settings, and make sure everything continues running smoothly."
+      "We offer post-implementation support to help you troubleshoot, adjust settings, and make sure everything continues running smoothly.",
   };
 
   return (
@@ -66,16 +66,21 @@ const BookkeepingPage: React.FC = () => {
           Smarter Systems. Better Results. <br className="hidden md:block" />
         </h1>
         <p className="mt-4 md:mt-6 max-w-2xl text-base md:text-lg text-gray-700 dark:text-gray-300">
-          We implement powerful accounting and financial software solutions to streamline your workflow and reduce stress.
+          We implement powerful accounting and financial software solutions to
+          streamline your workflow and reduce stress.
         </p>
-        <a href="/ContactUs"><button className="mt-8 bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 inline-block">
-          Start My Setup
-        </button></a>
+        <a href="/contactus">
+          <button className="mt-8 bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 inline-block">
+            Start My Setup
+          </button>
+        </a>
       </section>
 
       {/* 3-Step Process section */}
       <section className="px-4 md:px-10 py-16 md:py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
-        <h2 className="text-3xl font-bold text-center mb-8 md:mb-12 text-gray-900 dark:text-white">Our 3-Step Process</h2>
+        <h2 className="text-3xl font-bold text-center mb-8 md:mb-12 text-gray-900 dark:text-white">
+          Our 3-Step Process
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-6xl mx-auto">
           {steps.map((step, i) => (
             <div
@@ -85,8 +90,12 @@ const BookkeepingPage: React.FC = () => {
               <div className="text-3xl md:text-4xl font-bold text-blue-700 mb-2 md:mb-4">
                 {step.number}
               </div>
-              <h3 className="font-semibold text-lg md:text-xl mb-1 md:mb-2 text-gray-900 dark:text-white">{step.title}</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">{step.text}</p>
+              <h3 className="font-semibold text-lg md:text-xl mb-1 md:mb-2 text-gray-900 dark:text-white">
+                {step.title}
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                {step.text}
+              </p>
             </div>
           ))}
         </div>
@@ -94,15 +103,20 @@ const BookkeepingPage: React.FC = () => {
 
       {/* Services section */}
       <section className="px-10 py-24 bg-blue-50 dark:bg-gray-800 transition-colors duration-300">
-        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">What We Offer</h2>
+        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+          What We Offer
+        </h2>
         <div className="grid md:grid-cols-2 divide-x divide-gray-300 max-w-6xl mx-auto">
           {/* Bookkeeping services list */}
           <div className="px-8 border-r border-gray-300 dark:border-gray-700">
-            <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-4 text-center">Software & Systems</h3>
+            <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-4 text-center">
+              Software & Systems
+            </h3>
             <ul className="space-y-3 text-gray-700 dark:text-gray-300">
               {bookkeepingServices.map((service, i) => (
                 <li key={i} className="flex items-start">
-                  <CheckCircle className="text-blue-600 mr-2 w-5 h-5" /> {service}
+                  <CheckCircle className="text-blue-600 mr-2 w-5 h-5" />{" "}
+                  {service}
                 </li>
               ))}
             </ul>
@@ -110,11 +124,14 @@ const BookkeepingPage: React.FC = () => {
 
           {/* Accounting services list */}
           <div className="px-8">
-            <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-4 text-center">Services Included</h3>
+            <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-4 text-center">
+              Services Included
+            </h3>
             <ul className="space-y-3 text-gray-700 dark:text-gray-300">
               {accountingServices.map((service, i) => (
                 <li key={i} className="flex items-start">
-                  <CheckCircle className="text-blue-600 mr-2 w-5 h-5" /> {service}
+                  <CheckCircle className="text-blue-600 mr-2 w-5 h-5" />{" "}
+                  {service}
                 </li>
               ))}
             </ul>
@@ -128,20 +145,36 @@ const BookkeepingPage: React.FC = () => {
           <MapleLeafLogo />
         </div>
         <div>
-          <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Why Choose Us?</h2>
+          <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+            Why Choose Us?
+          </h2>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-            AALIConsulting makes system implementation simple, strategic, and stress-free. We help businesses transition to modern accounting and financial tools that improve efficiency and accuracy from day one. From selecting the right software (like QuickBooks, Xero, or Wave) to full setup, data migration, and team training, we guide you through each step. Our hands-on approach ensures your systems are aligned with your business goals—saving you time and reducing costly errors in the long run.
+            AALIConsulting makes system implementation simple, strategic, and
+            stress-free. We help businesses transition to modern accounting and
+            financial tools that improve efficiency and accuracy from day one.
+            From selecting the right software (like QuickBooks, Xero, or Wave)
+            to full setup, data migration, and team training, we guide you
+            through each step. Our hands-on approach ensures your systems are
+            aligned with your business goals—saving you time and reducing costly
+            errors in the long run.
           </p>
         </div>
       </section>
 
       {/* FAQs section */}
       <section className="px-10 py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">Frequently Asked Questions</h2>
+        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+          Frequently Asked Questions
+        </h2>
         <div className="max-w-3xl mx-auto space-y-4">
           {Object.entries(faqs).map(([question, answer], i) => (
-            <details key={i} className="bg-white dark:bg-gray-800 shadow rounded-lg p-4 group">
-              <summary className="cursor-pointer font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">{question}</summary>
+            <details
+              key={i}
+              className="bg-white dark:bg-gray-800 shadow rounded-lg p-4 group"
+            >
+              <summary className="cursor-pointer font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
+                {question}
+              </summary>
               <p className="mt-2 text-gray-600 dark:text-gray-300">{answer}</p>
             </details>
           ))}
@@ -155,3 +188,9 @@ const BookkeepingPage: React.FC = () => {
 };
 
 export default BookkeepingPage;
+
+export const metadata = {
+  alternates: {
+    canonical: "/ssbr", // Resolves to https://aaliconsulting.ca/ssbr
+  },
+};

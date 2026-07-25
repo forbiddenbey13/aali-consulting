@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
             first step with clarity and confidence.
           </p>
           <a
-            href="/ContactUs"
+            href="/contactus"
             className="inline-block bg-blue-600 hover:bg-blue-700 !text-white font-medium px-7 py-3 rounded-full shadow-md transition"
           >
             Book Consultation
@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/AboutUs"
+                  href="/aboutus"
                   className="hover:text-blue-400 transition"
                 >
                   Newcomers: Work & Business
@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/AboutUs"
+                  href="/aboutus"
                   className="hover:text-blue-400 transition"
                 >
                   Newcomers: Money & Life Setup
@@ -78,7 +78,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/AboutUs"
+                  href="/aboutus"
                   className="hover:text-blue-400 transition"
                 >
                   About Us
@@ -86,7 +86,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/ContactUs"
+                  href="/contactus"
                   className="hover:text-blue-400 transition"
                 >
                   Contact Us
@@ -101,7 +101,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/TaxService"
+                  href="/taxservice"
                   className="hover:text-blue-400 transition"
                 >
                   Tax Services (Personal & Corporate)
@@ -109,7 +109,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/BookkeepingandAccounting"
+                  href="/bookkeepingandaccounting"
                   className="hover:text-blue-400 transition"
                 >
                   Accounting & Bookkeeping
@@ -117,7 +117,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/StrategicPlanning"
+                  href="/strategicplanning"
                   className="hover:text-blue-400 transition"
                 >
                   Strategic Financial Planning
@@ -125,7 +125,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/SystemsandTechnologyImplementation"
+                  href="/systemsandtechnologyimplementation"
                   className="hover:text-blue-400 transition"
                 >
                   Technology Solutions
@@ -133,7 +133,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/CFOAdvisoryandGovernance"
+                  href="/cfoadvisoryandgovernance"
                   className="hover:text-blue-400 transition"
                 >
                   CFO Advisory & Governance
@@ -141,7 +141,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/DisabilityandLifePlanning"
+                  href="/disabilityandlifeplanning"
                   className="hover:text-blue-400 transition"
                 >
                   Disability & Life Planning

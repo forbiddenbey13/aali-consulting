@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://aaliconsulting.ca/systemsandtechnologyimplementation", // Hardcoded exact lowercase URL
+    canonical: "/systemsandtechnologyimplementation", // Hardcoded exact lowercase URL
   },
 };
 

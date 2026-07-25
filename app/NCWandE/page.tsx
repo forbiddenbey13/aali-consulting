@@ -98,7 +98,7 @@ export default function NCWEPage() {
             professionally, or build an online business — with clear, compliant,
             and step-by-step guidance for the Canadian market.
           </p>
-          <a href="/ContactUs" className="btn-primary font-semibold">
+          <a href="/contactus" className="btn-primary font-semibold">
             Book a 1:1 Coaching
           </a>
         </div>
@@ -345,7 +345,7 @@ export default function NCWEPage() {
           <h2 className="text-2xl md:text-3xl font-bold !text-white mb-4 drop-shadow-lg">
             Bring This Program to Your Community
           </h2>
-          <a href="/ContactUs" className="btn-primary font-semibold">
+          <a href="/contactus" className="btn-primary font-semibold">
             Book A 1:1 Coaching
           </a>
         </div>

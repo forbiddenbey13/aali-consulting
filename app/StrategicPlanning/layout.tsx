@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://aaliconsulting.ca/strategicplanning",
+    canonical: "/strategicplanning",
   },
 };
 
-export default function StrategicPlanningLayout({
+export default function strategicplanningLayout({
   children,
 }: {
   children: React.ReactNode;

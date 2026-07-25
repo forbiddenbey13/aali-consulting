@@ -13,13 +13,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "AALI - Consulting",
-  description: "Financial Planning",
-  metadataBase: new URL("https://aaliconsulting.ca/"),
-  alternates: {
-    canonical: "./",
-  },
+// export const metadata: Metadata = {
+//   title: "AALI - Consulting",
+//   description: "Financial Planning",
+//   metadataBase: new URL("https://aaliconsulting.ca/"),
+//   alternates: {
+//     canonical: "./",
+//   },
+// };
+
+export const metadata = {
+  metadataBase: new URL("https://aaliconsulting.ca"),
+  // ... other global metadata
 };
 
 export default function RootLayout({

@@ -111,13 +111,13 @@ const HomePage: React.FC = () => {
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <a
-              href="/ContactUs"
+              href="/contactus"
               className="bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition"
             >
               Book Now
             </a>
             <a
-              href="/AboutUs"
+              href="/aboutus"
               className="bg-white/80 dark:bg-gray-800/80 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-white px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition"
             >
               Learn More
@@ -148,7 +148,7 @@ const HomePage: React.FC = () => {
               savings, and zero surprises.
             </p>
             <a
-              href="/TaxService"
+              href="/taxservice"
               className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition"
             >
               Learn more
@@ -166,7 +166,7 @@ const HomePage: React.FC = () => {
               savings, and zero surprises.
             </p>
             <a
-              href="/BookkeepingandAccounting"
+              href="/bookkeepingandaccounting"
               className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition"
             >
               Learn more
@@ -184,7 +184,7 @@ const HomePage: React.FC = () => {
               decisions into confident, compounding progress.
             </p>
             <a
-              href="/StrategicPlanning"
+              href="/strategicplanning"
               className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition"
             >
               Learn more
@@ -202,7 +202,7 @@ const HomePage: React.FC = () => {
               move faster, decisions improve.
             </p>
             <a
-              href="/SystemsandTechnologyImplementation"
+              href="/systemsandtechnologyimplementation"
               className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition"
             >
               Learn more
@@ -220,7 +220,7 @@ const HomePage: React.FC = () => {
               Canada-US setups—for safer, faster decisions.
             </p>
             <a
-              href="/CFOAdvisoryandGovernance"
+              href="/cfoadvisoryandgovernance"
               className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition"
             >
               Learn more
@@ -243,7 +243,7 @@ const HomePage: React.FC = () => {
               tax-smart steps handled.
             </p>
             <a
-              href="/DisabilityandLifePlanning"
+              href="/disabilityandlifeplanning"
               className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition"
             >
               Learn more
@@ -353,7 +353,7 @@ const HomePage: React.FC = () => {
                 <p className="text-gray-700 dark:text-gray-300 text-lg mb-8">
                   {s.text}
                 </p>
-                <a href="/BookkeepingandAccounting" className="btn-primary">
+                <a href="/bookkeepingandaccounting" className="btn-primary">
                   Learn more
                 </a>
               </div>
@@ -373,7 +373,7 @@ const HomePage: React.FC = () => {
                 <p className="text-gray-700 dark:text-gray-300 text-lg mb-8">
                   {s.text}
                 </p>
-                <a href="/TaxService" className="btn-primary">
+                <a href="/taxservice" className="btn-primary">
                   Learn more
                 </a>
               </div>
@@ -421,7 +421,7 @@ const HomePage: React.FC = () => {
                   {s.title}
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">{s.text}</p>
-                <a href="/StrategicPlanning" className="btn-primary">
+                <a href="/strategicplanning" className="btn-primary">
                   Learn More
                 </a>
               </div>
@@ -457,7 +457,7 @@ const HomePage: React.FC = () => {
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">{s.text}</p>
                 <a
-                  href="/SystemsandTechnologyImplementation"
+                  href="/systemsandtechnologyimplementation"
                   className="btn-primary"
                 >
                   Learn More
@@ -494,7 +494,7 @@ const HomePage: React.FC = () => {
                   {s.title}
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">{s.text}</p>
-                <a href="/CFOAdvisoryandGovernance" className="btn-primary">
+                <a href="/cfoadvisoryandgovernance" className="btn-primary">
                   Learn More
                 </a>
               </div>
@@ -529,7 +529,7 @@ const HomePage: React.FC = () => {
                   {s.title}
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">{s.text}</p>
-                <a href="/DisabilityandLifePlanning" className="btn-primary">
+                <a href="/disabilityandlifeplanning" className="btn-primary">
                   Learn More
                 </a>
               </div>
@@ -599,7 +599,7 @@ const HomePage: React.FC = () => {
         <p className="text-gray-600 dark:text-gray-300 mb-8">
           Your financial future starts with one smart decision.
         </p>
-        <a href="/ContactUs" className="btn-primary">
+        <a href="/contactus" className="btn-primary">
           Book Now
         </a>
       </section>

@@ -37,25 +37,25 @@ const HomePage: React.FC = () => {
       title: "Owner & CEO Guidance",
       description:
         "Monthly close discipline, cashflow forecasting, FP&A, and OpCo/HoldCo planning aligned with growth and succession goals.",
-      link: "/TaxService",
+      link: "/taxservice",
     },
     {
       title: "Enterprise-Grade Support",
       description:
         "Transfer pricing, multi-entity consolidation, and controversy/audit playbooks to keep large organizations compliant and board-ready.",
-      link: "/BookkeepingandAccounting",
+      link: "/bookkeepingandaccounting",
     },
     {
       title: "Faith-Based & NFP Finance",
       description:
         "Charity registration support, compliant donation receipting systems, guidance on related business rules, and customized board reporting that keeps stakeholders confident.",
-      link: "/StrategicPlanning",
+      link: "/strategicplanning",
     },
     {
       title: "Cross-Border & International Planning",
       description:
         "Canada←>US residency, treaty rules, payroll/social security, LLC/S-corp pitfalls, and arrival/departure returns.",
-      link: "/SystemsandTechnologyImplementation",
+      link: "/systemsandtechnologyimplementation",
     },
     {
       title: "Succession & Estate Alignment",
@@ -67,7 +67,7 @@ const HomePage: React.FC = () => {
       title: "Governance & Reporting Packs",
       description:
         "Clear board/executive dashboards, risk tracking, and financial playbooks that simplify decision-making.",
-      link: "/SystemsandTechnologyImplementation",
+      link: "/systemsandtechnologyimplementation",
     },
   ];
   const faqs = [
@@ -403,7 +403,7 @@ Reports that speak the language of leadership — concise, visual, and transpare
         title="Clarity and Control for Leaders Who Can’t Afford Guesswork."
         subtitle="Turning Numbers Into Clear, Confident Decisions."
         buttonText="Get Started"
-        buttonLink="/ContactUs"
+        buttonLink="/contactus"
       />
 
       {/* What We Do */}
@@ -434,7 +434,7 @@ Reports that speak the language of leadership — concise, visual, and transpare
         heading="Lead With Confidence, Govern With Clarity."
         subheading="Partner with us to strengthen controls, streamline reporting, and align tax, cashflow, and governance with your long-term vision."
         buttonText="Book Now"
-        buttonLink="/ContactUs"
+        buttonLink="/contactus"
       />
 
       {/* FAQs */}

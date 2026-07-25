@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "/nmbandlf", // Hardcoded exact lowercase URL
+    canonical: "/personaltax",
   },
 };
 
-export default function nmbandlfLayout({
+export default function personaltaxLayout({
   children,
 }: {
   children: React.ReactNode;

@@ -1,18 +1,17 @@
 "use client";
-import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import React from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { Plus, Minus, ChevronDown } from "lucide-react";
-import { useEffect, useState } from 'react';
-import HeroSection from '../components/Pages/Hero';
-import WhatWeOffer from '../components/Pages/WhatWeOffer';
-import WhyChooseUs from '../components/Pages/WhyChooseUs';
-import ServiceAccordion from '../components/Pages/ServiceAccordian';
-import ThreeStepProcess from '../components/Pages/ThreeStep';
-import ResourcesSection from '../components/Pages/Resources';
-import CallToAction from '../components/Pages/CallToAction';
-import FAQSection from '../components/Pages/FAQ';
-
+import { useEffect, useState } from "react";
+import HeroSection from "../components/Pages/Hero";
+import WhatWeOffer from "../components/Pages/WhatWeOffer";
+import WhyChooseUs from "../components/Pages/WhyChooseUs";
+import ServiceAccordion from "../components/Pages/ServiceAccordian";
+import ThreeStepProcess from "../components/Pages/ThreeStep";
+import ResourcesSection from "../components/Pages/Resources";
+import CallToAction from "../components/Pages/CallToAction";
+import FAQSection from "../components/Pages/FAQ";
 
 const HomePage: React.FC = () => {
   const [slide, setSlide] = useState(0);
@@ -21,9 +20,9 @@ const HomePage: React.FC = () => {
   const handleLearnMore = (index: number) => {
     setOpenServiceIndex(index);
     // Scroll to the accordion section
-    const el = document.getElementById('explore-services');
+    const el = document.getElementById("explore-services");
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
       if (el instanceof HTMLElement) {
         el.tabIndex = -1;
         el.focus();
@@ -37,48 +36,47 @@ const HomePage: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-   const offerCards = [
-     {
-       title: "Disability Support (DTC & ODSP)",
-       description:
-         "Help with eligibility, applications, appeals, and safe budgeting strategies, including RDSP setup for long-term security.",
-       link: "#explore-services",
-     },
-     {
-       title: "Family Disability Planning",
-       description:
-         "Guidance for children, young adults, and families, including Henson Trusts and transitions at age 18.",
-       link: "#explore-services",
-     },
-     {
-       title: "Job Loss Strategy",
-       description:
-         "Support for severance, EI, cashflow, and your transition to re-employment, freelancing, or business ownership.",
-       link: "#explore-services",
-     },
-     {
-       title: "Separation & Divorce",
-       description:
-         "Financial clarity for property division, RRSP/TFSA transfers, CPP credits, and support tax planning.",
-       link: "#explore-services",
-     },
-     {
-       title: "Loss of a Loved One",
-       description:
-         "Estate tax returns, CPP survivor benefits, probate support, and CRA clearance so families don’t miss critical steps.",
-       link: "#explore-services",
-     },
-     {
-       title: "Accident Recovery",
-       description:
-         "Navigation of EI, WSIB, LTD, and insurer forms, plus return-to-work planning and disability tax credits.",
-       link: "#explore-services",
-     }
-   ];
+  const offerCards = [
+    {
+      title: "Disability Support (DTC & ODSP)",
+      description:
+        "Help with eligibility, applications, appeals, and safe budgeting strategies, including RDSP setup for long-term security.",
+      link: "#explore-services",
+    },
+    {
+      title: "Family Disability Planning",
+      description:
+        "Guidance for children, young adults, and families, including Henson Trusts and transitions at age 18.",
+      link: "#explore-services",
+    },
+    {
+      title: "Job Loss Strategy",
+      description:
+        "Support for severance, EI, cashflow, and your transition to re-employment, freelancing, or business ownership.",
+      link: "#explore-services",
+    },
+    {
+      title: "Separation & Divorce",
+      description:
+        "Financial clarity for property division, RRSP/TFSA transfers, CPP credits, and support tax planning.",
+      link: "#explore-services",
+    },
+    {
+      title: "Loss of a Loved One",
+      description:
+        "Estate tax returns, CPP survivor benefits, probate support, and CRA clearance so families don’t miss critical steps.",
+      link: "#explore-services",
+    },
+    {
+      title: "Accident Recovery",
+      description:
+        "Navigation of EI, WSIB, LTD, and insurer forms, plus return-to-work planning and disability tax credits.",
+      link: "#explore-services",
+    },
+  ];
   const faqs = [
     {
-      question:
-        "What’s included in Disability & Life Planning?",
+      question: "What’s included in Disability & Life Planning?",
       answer: `Disability & Life Planning brings together the financial, tax, and benefit systems that support individuals and families with disabilities.
 We help you:
 Apply for or appeal the Disability Tax Credit (DTC) and ODSP.
@@ -111,7 +109,8 @@ Cashflow and tax management that protect benefits while growing savings
 Our plans keep benefits secure while helping families build sustainable, long-term financial health.`,
     },
     {
-      question: "What makes AALI Consulting different from other disability planning services?",
+      question:
+        "What makes AALI Consulting different from other disability planning services?",
       answer: `
 Unlike agencies that only file forms, we combine tax expertise, financial planning, and compassionate guidance under one roof. We don’t just secure benefits — we help families:
 Understand the full financial picture
@@ -121,12 +120,13 @@ Build plans that last through every stage of life`,
   ];
 
   const heroImages = [
-    '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-    '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-    '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
+    "/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png",
+    "/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg",
+    "/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp",
   ];
   const whyChooseData = {
-    image: "/Web Assets/Images/NEW/Disability & Life Planning/Canada-Disability-Laws.jpeg",
+    image:
+      "/Web Assets/Images/NEW/Disability & Life Planning/Canada-Disability-Laws.jpeg",
     title: "Why work with us",
     paragraphs: [
       `At AALI Consulting, we understand that life’s biggest challenges don’t come with an instruction manual. Navigating disability benefits, ODSP, DTC applications, or major family transitions can feel overwhelming — especially when every form, doctor’s letter, and deadline matters. That’s why our approach is built on calm, step-by-step guidance. We coordinate benefits, complete paperwork, and ensure your financial plan aligns with your medical, family, and personal needs — so you can focus on recovery, stability, and peace of mind.`,
@@ -136,8 +136,6 @@ Build plans that last through every stage of life`,
       `,
     ],
   };
-
-
 
   const servicesList = [
     {
@@ -384,8 +382,6 @@ A calm, guided path through the financial aftermath of loss. You’ll know what 
     },
   ];
 
-
-
   return (
     <div className="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 transition-colors duration-300">
       <Header />
@@ -395,17 +391,21 @@ A calm, guided path through the financial aftermath of loss. You’ll know what 
         title="Guidance Through Life’s Toughest Transitions"
         subtitle="Compassionate, step-by-step support for disability, accidents, job loss, separation, and family loss—so you stay financially steady and secure."
         buttonText="Get Started"
-        buttonLink="/ContactUs"
+        buttonLink="/contactus"
       />
 
       {/* What We Do */}
       {/* What We Do Section */}
-       <WhatWeOffer heading="What We Offer" cards={offerCards} onLearnMore={handleLearnMore} />
+      <WhatWeOffer
+        heading="What We Offer"
+        cards={offerCards}
+        onLearnMore={handleLearnMore}
+      />
       <CallToAction
         heading="Difficult Transitions Don’t Have to Be Faced Alone."
         subheading="We simplify benefits, forms, and CRA compliance — so whether it’s disability, separation, or loss, you’ll have trusted guidance."
         buttonText="Book Now"
-        buttonLink="/ContactUs"
+        buttonLink="/contactus"
         backgroundImage="/Web Assets/Images/NEW/Disability & Life Planning/7fc47ae7-db85-43f3-ab85-d8e3a54eaf39-640w.jpg.png"
       />
       <WhyChooseUs
@@ -414,15 +414,14 @@ A calm, guided path through the financial aftermath of loss. You’ll know what 
         paragraphs={whyChooseData.paragraphs}
       />
 
-
-       <div id="explore-services">
-         <ServiceAccordion
-           heading="Explore Our Services in Detail"
-           services={servicesList}
-           openIndex={openServiceIndex}
-           setOpenIndex={setOpenServiceIndex}
-         />
-       </div>
+      <div id="explore-services">
+        <ServiceAccordion
+          heading="Explore Our Services in Detail"
+          services={servicesList}
+          openIndex={openServiceIndex}
+          setOpenIndex={setOpenServiceIndex}
+        />
+      </div>
       <ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
       {/* Resources */}
       <ResourcesSection heading="Resources" resources={resourcesData} />
@@ -430,21 +429,16 @@ A calm, guided path through the financial aftermath of loss. You’ll know what 
         heading="Support When You Need It Most."
         subheading="Get clear, compassionate guidance through disability claims, job loss, family transitions, or estate matters."
         buttonText="Book Now"
-        buttonLink="/ContactUs"
+        buttonLink="/contactus"
       />
-
-
-
 
       {/* FAQs */}
       {/* ✅ FAQs — Updated Design */}
       <FAQSection heading="Frequently Asked Questions" faqs={faqs} />
 
-
       <Footer />
     </div>
   );
 };
-
 
 export default HomePage;

@@ -37,31 +37,31 @@ const HomePage: React.FC = () => {
       title: "Students & Young Adults (17–25)",
       description:
         "Smart filing, tuition credits, starter TFSA, and simple budgets that set a strong financial foundation early on in your life or career.",
-      link: "/TaxService",
+      link: "/taxservice",
     },
     {
       title: "Young Families & Homebuyers (26–34)",
       description:
         "Plan childcare credits, use FHSA and RRSP Home Buyers’ Plan, balance family expenses, and build sustainable financial security.",
-      link: "/BookkeepingandAccounting",
+      link: "/bookkeepingandaccounting",
     },
     {
       title: "Mid-Career Professionals (35–50)",
       description:
         "Optimize taxes, maximize RESP savings, manage equity compensation, and create debt and housing strategies that protect growing family wealth.",
-      link: "/StrategicPlanning",
+      link: "/strategicplanning",
     },
     {
       title: "Pre-Retirement (50–64)",
       description:
         "Coordinate CPP/OAS timing, design smart RRIF/LIF withdrawals, protect estates, and position wealth for a smooth retirement transition.",
-      link: "/TaxService",
+      link: "/taxservice",
     },
     {
       title: "Retirement & Estate (65+)",
       description:
         "Maximize income sustainability, minimize taxes, coordinate healthcare costs, and align estate planning with family goals and charitable intentions.",
-      link: "/CFOAdvisoryandGovernance",
+      link: "/cfoadvisoryandgovernance",
     },
     {
       title: "Specialized Planning",
@@ -74,19 +74,19 @@ const HomePage: React.FC = () => {
       title: "Cross-Border Financial Planning",
       description:
         "Integrated tax, investment, and residency planning between Canada and abroad — reducing double taxation and keeping your global finances compliant and clear.",
-      link: "/TaxService",
+      link: "/taxservice",
     },
     {
       title: "SME Financial Planning",
       description:
         "Integrated cashflow, retirement, and tax strategies that align business profits with personal goals — helping owners build, protect, and grow long-term wealth.",
-      link: "/CFOAdvisoryandGovernance",
+      link: "/cfoadvisoryandgovernance",
     },
     {
       title: "Strategic Wealth & Family Planning",
       description:
         "Comprehensive wealth management for high-net-worth families — covering investments, trusts, estate transfers, and tax-efficient succession to preserve legacy and security.",
-      link: "/CFOAdvisoryandGovernance",
+      link: "/cfoadvisoryandgovernance",
     },
   ];
   const faqs = [
@@ -416,7 +416,7 @@ A clear, tax-smart strategy that turns complexity into control—preserving your
         At Every Stage of Life"
         subtitle="We help you make confident, tax-smart financial decisions at every stage of life."
         buttonText="Get Started"
-        buttonLink="/ContactUs"
+        buttonLink="/contactus"
       />
 
       {/* What We Do */}
@@ -446,7 +446,7 @@ A clear, tax-smart strategy that turns complexity into control—preserving your
         heading="Plan Today, Thrive Tomorrow."
         subheading="Start Building Your Financial Roadmap"
         buttonText="Book Now"
-        buttonLink="/ContactUs"
+        buttonLink="/contactus"
       />
 
       {/* FAQs */}

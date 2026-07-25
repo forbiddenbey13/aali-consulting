@@ -32,3 +32,9 @@ const ConsultationPage: React.FC = () => {
 };
 
 export default ConsultationPage;
+
+export const metadata = {
+  alternates: {
+    canonical: "/consult", // Resolves to https://aaliconsulting.ca/consult
+  },
+};

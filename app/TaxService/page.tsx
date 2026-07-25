@@ -1,19 +1,17 @@
 "use client";
-import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import React from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
-import { useEffect, useState } from 'react';
-import HeroSection from '../components/Pages/Hero';
-import WhatWeOffer from '../components/Pages/WhatWeOffer';
-import WhyChooseUs from '../components/Pages/WhyChooseUs';
-import ServiceAccordion from '../components/Pages/ServiceAccordian';
-import ThreeStepProcess from '../components/Pages/ThreeStep';
-import ResourcesSection from '../components/Pages/Resources';
-import CallToAction from '../components/Pages/CallToAction';
-import FAQSection from '../components/Pages/FAQ';
-
-
+import { useEffect, useState } from "react";
+import HeroSection from "../components/Pages/Hero";
+import WhatWeOffer from "../components/Pages/WhatWeOffer";
+import WhyChooseUs from "../components/Pages/WhyChooseUs";
+import ServiceAccordion from "../components/Pages/ServiceAccordian";
+import ThreeStepProcess from "../components/Pages/ThreeStep";
+import ResourcesSection from "../components/Pages/Resources";
+import CallToAction from "../components/Pages/CallToAction";
+import FAQSection from "../components/Pages/FAQ";
 
 const HomePage: React.FC = () => {
   const [slide, setSlide] = useState(0);
@@ -29,32 +27,30 @@ const HomePage: React.FC = () => {
       title: "Personal Taxes (Individuals & Families)",
       description:
         "Simple, accurate personal tax filing that maximizes credits, deductions, and refunds—covering students, families, retirees, newcomers, and cross-border compliance confidently.",
-      link: "/PersonalTax",
+      link: "/personaltax",
     },
     {
       title: "Corporate Taxes (SMEs & NFP & Charities)",
       description:
         "Comprehensive corporate tax strategies including T2 returns, GST/HST compliance, salary vs. dividends, OpCo/HoldCo planning, and full CRA audit readiness for businesses at every stage of growth.",
-      link: "/CorporateTaxes",
+      link: "/corporatetaxes",
     },
-
 
     {
       title: "Life & Estate Tax Planning",
       description:
         "Expert guidance through separation, divorce, estates, non-resident filings, and final returns—simplifying complex transitions with clear, compassionate, compliant, and forward-looking tax strategies that protect your future.",
-      link: "/Life&EstateTaxPlanning",
+      link: "/lifeandestatetaxplanning",
     },
-
   ];
   const faqs = [
     {
-      question:
-        "Do you only file my taxes, or do you also help with planning?",
+      question: "Do you only file my taxes, or do you also help with planning?",
       answer: `We do both. Filing is just the starting point—our real value comes from tax planning. We help you identify deductions, time your RRSP/TFSA/FHSA contributions, plan family or corporate income, and structure decisions to reduce tax over time, not just this year`,
     },
     {
-      question: "Can you handle complex situations like cross-border taxes or rental properties?",
+      question:
+        "Can you handle complex situations like cross-border taxes or rental properties?",
       answer: `
 Yes. We regularly handle cross-border (Canada ↔ U.S.) filings, non-resident returns, and multiple-property rental income. Whether you earn abroad, own investment property, or are moving between countries, we ensure your filings stay compliant and optimized under both CRA and IRS rules.`,
     },
@@ -76,12 +72,13 @@ If the CRA reaches out, we’re your first call. We review their request, prepar
   ];
 
   const heroImages = [
-    '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-    '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-    '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
+    "/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png",
+    "/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg",
+    "/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp",
   ];
   const whyChooseData = {
-    image: "/Web Assets/Images/NEW/Tax Services Page/Corporate Tax Page/istockphoto-1129810557-612x612.jpg",
+    image:
+      "/Web Assets/Images/NEW/Tax Services Page/Corporate Tax Page/istockphoto-1129810557-612x612.jpg",
     title: "Why Choose AALI Consulting For Taxes",
     paragraphs: [
       `At AALI Consulting, taxes aren’t just about filing forms—they’re about building financial confidence. We bring clarity and precision to every stage of your tax life cycle, from personal and corporate filings to estate, disability, and cross-border planning. Our approach blends compliance with strategy, helping you minimize tax burdens, protect wealth, and uncover opportunities that others often miss.`,
@@ -91,9 +88,6 @@ If the CRA reaches out, we’re your first call. We review their request, prepar
       `,
     ],
   };
-
-
-
 
   const processSteps = [
     {
@@ -136,8 +130,6 @@ If the CRA reaches out, we’re your first call. We review their request, prepar
     },
   ];
 
-
-
   return (
     <div className="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 transition-colors duration-300">
       <Header />
@@ -147,7 +139,7 @@ If the CRA reaches out, we’re your first call. We review their request, prepar
         title="Simple, Stress-Free Taxes — For Every Stage of Life & Business"
         subtitle="From first-time student returns to cross-border corporate filings, we make taxes clear, compliant, and optimized."
         buttonText="Get Started"
-        buttonLink="/ContactUs"
+        buttonLink="/contactus"
       />
 
       {/* What We Do */}
@@ -157,21 +149,32 @@ If the CRA reaches out, we’re your first call. We review their request, prepar
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 items-center">
           {/* Left column: Heading and description, vertically centered */}
           <div className="flex flex-col justify-center h-full md:col-span-1">
-            <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Who This<br /> Service Is For</h2>
+            <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+              Who This
+              <br /> Service Is For
+            </h2>
             <p className="text-gray-700 dark:text-gray-300 text-lg max-w-xs">
-              Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
-
-
+              Organically grow the holistic world view of disruptive innovation
+              via workplace diversity and empowerment.
             </p>
           </div>
           {/* Right: 3x3 grid of images, some with rotation */}
           <div className="md:col-span-2 grid grid-cols-2 gap-8 justify-items-center">
             {[
-              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Professionals & Contractors.png" },
-              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/SMEs.png", rotate: "" },
-              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Systems & Technology.png", },
-              { img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Newcomers to Canada.png", rotate: "" },
-
+              {
+                img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Professionals & Contractors.png",
+              },
+              {
+                img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/SMEs.png",
+                rotate: "",
+              },
+              {
+                img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Systems & Technology.png",
+              },
+              {
+                img: "/Web Assets/Images/NEW/Homepage/Clients We Serve (Homepage)/Newcomers to Canada.png",
+                rotate: "",
+              },
             ].map((group, i) => (
               <div
                 key={i}
@@ -197,28 +200,20 @@ If the CRA reaches out, we’re your first call. We review their request, prepar
       />
       <ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
 
-
-
-
       <CallToAction
         heading="Simple. Compliant. Optimized."
         subheading="Whether you’re filing your very first return or managing complex corporate taxes — we’ll guide you step by step.”"
         buttonText="Book Now"
-        buttonLink="/ContactUs"
+        buttonLink="/contactus"
       />
-
-
-
 
       {/* FAQs */}
       {/* ✅ FAQs — Updated Design */}
       <FAQSection heading="Frequently Asked Questions" faqs={faqs} />
 
-
       <Footer />
     </div>
   );
 };
-
 
 export default HomePage;

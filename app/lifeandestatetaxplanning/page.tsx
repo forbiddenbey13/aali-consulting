@@ -1,29 +1,27 @@
 "use client";
-import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import React from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { Plus, Minus, ChevronDown } from "lucide-react";
-import { useEffect, useState } from 'react';
-import HeroSection from '../components/Pages/Hero';
-import WhatWeOffer from '../components/Pages/WhatWeOffer';
-import WhyChooseUs from '../components/Pages/WhyChooseUs';
-import ServiceAccordion from '../components/Pages/ServiceAccordian';
-import ThreeStepProcess from '../components/Pages/ThreeStep';
-import ResourcesSection from '../components/Pages/Resources';
-import CallToAction from '../components/Pages/CallToAction';
-import FAQSection from '../components/Pages/FAQ';
+import { useEffect, useState } from "react";
+import HeroSection from "../components/Pages/Hero";
+import WhatWeOffer from "../components/Pages/WhatWeOffer";
+import WhyChooseUs from "../components/Pages/WhyChooseUs";
+import ServiceAccordion from "../components/Pages/ServiceAccordian";
+import ThreeStepProcess from "../components/Pages/ThreeStep";
+import ResourcesSection from "../components/Pages/Resources";
+import CallToAction from "../components/Pages/CallToAction";
+import FAQSection from "../components/Pages/FAQ";
 
 const heroImages = [
-  '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-  '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-  '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
-  '/Web Assets/NEW/Hero Section/f0065b10-07c3-47d4-bf72-adaf37d2c25a-scaled.jpeg-1.webp',
-  '/Web Assets/NEW/Hero Section/gettyimages-1488522537-640x640.jpg',
-  '/Web Assets/NEW/Hero Section/premium_photo-1661761077411-d50cba031848.jpeg',
-  '/Web Assets/NEW/Hero Section/TPC-exterior-building-b.jpg',
+  "/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png",
+  "/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg",
+  "/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp",
+  "/Web Assets/NEW/Hero Section/f0065b10-07c3-47d4-bf72-adaf37d2c25a-scaled.jpeg-1.webp",
+  "/Web Assets/NEW/Hero Section/gettyimages-1488522537-640x640.jpg",
+  "/Web Assets/NEW/Hero Section/premium_photo-1661761077411-d50cba031848.jpeg",
+  "/Web Assets/NEW/Hero Section/TPC-exterior-building-b.jpg",
 ];
-
-
 
 const HomePage: React.FC = () => {
   const [slide, setSlide] = useState(0);
@@ -39,9 +37,9 @@ const HomePage: React.FC = () => {
   const handleLearnMore = (index: number) => {
     setOpenServiceIndex(index);
     // Scroll to the accordion section
-    const el = document.getElementById('explore-services');
+    const el = document.getElementById("explore-services");
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
       if (el instanceof HTMLElement) {
         el.tabIndex = -1;
         el.focus();
@@ -85,16 +83,16 @@ const HomePage: React.FC = () => {
       description:
         "Specialized tax roadmaps for unique situations like relocation, cross-border life changes, or multi-factor cases requiring integrated financial and legal alignment.",
       link: "#explore-services",
-    }
+    },
   ];
   const faqs = [
     {
-      question:
-        "What tax help can I get if I lose my job?",
+      question: "What tax help can I get if I lose my job?",
       answer: `Losing your job can impact your taxes in several ways. You may be eligible for Employment Insurance (EI) benefits, which can provide temporary income support. Additionally, severance pay and any unused vacation pay are considered taxable income. We can help you navigate these changes, optimize your tax situation, and ensure you claim all eligible credits and deductions during this transition.`,
     },
     {
-      question: "How does the Disability Tax Credit (DTC) or ODSP affect my taxes?",
+      question:
+        "How does the Disability Tax Credit (DTC) or ODSP affect my taxes?",
       answer: `
 The DTC can provide significant tax relief by reducing your taxable income and allowing access to additional credits. If you’re receiving ODSP, it’s crucial to understand how these benefits interact with your overall tax situation. We can help you navigate these complexities, ensuring you maximize your benefits while remaining compliant with tax regulations.`,
     },
@@ -103,15 +101,16 @@ The DTC can provide significant tax relief by reducing your taxable income and a
       answer: `Yes. We provide comprehensive support for individuals navigating separation, divorce, or the loss of a loved one. This includes assistance with tax implications, benefit claims, and financial planning to ensure a smooth transition during these challenging times.`,
     },
     {
-      question: "Can you work alongside my lawyer, insurer, or financial advisor?",
+      question:
+        "Can you work alongside my lawyer, insurer, or financial advisor?",
       answer: `Absolutely. We believe in a collaborative approach to ensure all aspects of your financial and legal situation are aligned. We can coordinate with your existing professionals to provide seamless support and comprehensive solutions tailored to your needs.`,
     },
   ];
 
   const heroImages = [
-    '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-    '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-    '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
+    "/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png",
+    "/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg",
+    "/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp",
   ];
   const whyChooseData = {
     image: "/Assets/financial-planning.jpg",
@@ -124,8 +123,6 @@ The DTC can provide significant tax relief by reducing your taxable income and a
       `,
     ],
   };
-
-
 
   const servicesList = [
     {
@@ -290,7 +287,6 @@ The Result:
 A calm, coordinated plan that turns disruption into direction—helping you navigate change with financial confidence, emotional stability, and a clear path forward.
 `,
     },
-
   ];
 
   const processSteps = [
@@ -334,8 +330,6 @@ A calm, coordinated plan that turns disruption into direction—helping you navi
     },
   ];
 
-
-
   return (
     <div className="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 transition-colors duration-300">
       <Header />
@@ -345,12 +339,16 @@ A calm, coordinated plan that turns disruption into direction—helping you navi
         title="Life Events, Taxed Smarter"
         subtitle="Compassionate, step-by-step tax support for disability, job loss, accidents, separation, and estate needs—so you can focus on life, not paperwork."
         buttonText="File Your Taxes"
-        buttonLink="/ContactUs"
+        buttonLink="/contactus"
       />
 
       {/* What We Do */}
       {/* What We Do Section */}
-      <WhatWeOffer heading="What We Offer" cards={offerCards} onLearnMore={handleLearnMore} />
+      <WhatWeOffer
+        heading="What We Offer"
+        cards={offerCards}
+        onLearnMore={handleLearnMore}
+      />
       <ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
       <WhyChooseUs
         image={whyChooseData.image}
@@ -373,21 +371,16 @@ A calm, coordinated plan that turns disruption into direction—helping you navi
         heading="Lead With Confidence, Govern With Clarity."
         subheading="Partner with us to strengthen controls, streamline reporting, and align tax, cashflow, and governance with your long-term vision."
         buttonText="Book Now"
-        buttonLink="/ContactUs"
+        buttonLink="/contactus"
       />
-
-
-
 
       {/* FAQs */}
       {/* ✅ FAQs — Updated Design */}
       <FAQSection heading="Frequently Asked Questions" faqs={faqs} />
 
-
       <Footer />
     </div>
   );
 };
-
 
 export default HomePage;
