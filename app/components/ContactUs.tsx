@@ -430,7 +430,7 @@ const contactus: React.FC = () => {
               </div>
               <div>
                 <p className="font-semibold text-gray-900 dark:text-white">Need help?</p>
-                <p>info@aaliconsulting.ca</p>
+                <p>contact@aaliconsulting.ca</p>
               </div>
             </div>
           </div>

@@ -211,7 +211,7 @@ const Header: React.FC = () => {
             href="/contactus"
             className="hover:text-blue-600 dark:hover:text-blue-400 transition"
           >
-            Contact Us
+            Contact
           </Link>
         </nav>
 
