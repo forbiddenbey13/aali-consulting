@@ -1,29 +1,27 @@
 "use client";
-import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import React from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { Plus, Minus, ChevronDown } from "lucide-react";
-import { useEffect, useState } from 'react';
-import HeroSection from '../components/Pages/Hero';
-import WhatWeOffer from '../components/Pages/WhatWeOffer';
-import WhyChooseUs from '../components/Pages/WhyChooseUs';
-import ServiceAccordion from '../components/Pages/ServiceAccordian';
-import ThreeStepProcess from '../components/Pages/ThreeStep';
-import ResourcesSection from '../components/Pages/Resources';
-import CallToAction from '../components/Pages/CallToAction';
-import FAQSection from '../components/Pages/FAQ';
+import { useEffect, useState } from "react";
+import HeroSection from "../components/Pages/Hero";
+import WhatWeOffer from "../components/Pages/WhatWeOffer";
+import WhyChooseUs from "../components/Pages/WhyChooseUs";
+import ServiceAccordion from "../components/Pages/ServiceAccordian";
+import ThreeStepProcess from "../components/Pages/ThreeStep";
+import ResourcesSection from "../components/Pages/Resources";
+import CallToAction from "../components/Pages/CallToAction";
+import FAQSection from "../components/Pages/FAQ";
 
 const heroImages = [
-  '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-  '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-  '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
-  '/Web Assets/NEW/Hero Section/f0065b10-07c3-47d4-bf72-adaf37d2c25a-scaled.jpeg-1.webp',
-  '/Web Assets/NEW/Hero Section/gettyimages-1488522537-640x640.jpg',
-  '/Web Assets/NEW/Hero Section/premium_photo-1661761077411-d50cba031848.jpeg',
-  '/Web Assets/NEW/Hero Section/TPC-exterior-building-b.jpg',
+  "/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png",
+  "/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg",
+  "/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp",
+  "/Web Assets/NEW/Hero Section/f0065b10-07c3-47d4-bf72-adaf37d2c25a-scaled.jpeg-1.webp",
+  "/Web Assets/NEW/Hero Section/gettyimages-1488522537-640x640.jpg",
+  "/Web Assets/NEW/Hero Section/premium_photo-1661761077411-d50cba031848.jpeg",
+  "/Web Assets/NEW/Hero Section/TPC-exterior-building-b.jpg",
 ];
-
-
 
 const HomePage: React.FC = () => {
   const [slide, setSlide] = useState(0);
@@ -70,12 +68,11 @@ const HomePage: React.FC = () => {
       description:
         "Data migration, system clean-up, and scalable frameworks so your tools grow with your business.",
       link: "#explore-services",
-    }
+    },
   ];
   const faqs = [
     {
-      question:
-        "What exactly does “Systems & Technology Implementation” mean?",
+      question: "What exactly does “Systems & Technology Implementation” mean?",
       answer: `It means taking your accounting and financial processes — like invoicing, payroll, reporting, and approvals — and digitizing them through modern, integrated software.
 We don’t just recommend tools — we analyze your workflow, choose the right platforms (QuickBooks, Xero, Plooto, Dext, or custom apps), and build a seamless system that automates repetitive work and eliminates double data entry.
 
@@ -125,10 +122,11 @@ Our approach ensures your systems don’t just get implemented — they evolve w
     // '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
     // '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
     // '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
-    '/Web Assets/Images/NEW/Systems & Technology Implementation/913779463-1024x683.jpg'
+    "/Web Assets/Images/NEW/Systems & Technology Implementation/913779463-1024x683.jpg",
   ];
   const whyChooseData = {
-    image: "/Web Assets/Images/NEW/Systems & Technology Implementation/what-is-system-integration.jpeg.webp",
+    image:
+      "/Web Assets/Images/NEW/Systems & Technology Implementation/what-is-system-integration.jpeg.webp",
     title: "Implementation That Fits Your Business, Not the Other Way Around",
     paragraphs: [
       `Technology should simplify your operations — not force you to adapt to it. At AALI Consulting, every system we implement begins with understanding your workflow, goals, and team structure. Whether it’s setting up accounting platforms like QuickBooks or Xero, integrating e-commerce and ERP systems, or automating data flow between departments, we design solutions that mirror how your business actually runs. The result is an ecosystem that’s intuitive, reliable, and built to evolve as you grow.`,
@@ -145,7 +143,6 @@ Our approach ensures your systems don’t just get implemented — they evolve w
       `Managing your finances shouldn’t feel overwhelming. With automated reconciliations, payroll scheduling, and visual dashboards, we handle the numbers so you can focus on building your business. From compliance to cashflow, every detail stays organized, accurate, and up to date — giving you peace of mind and the confidence to plan ahead.`,
     ],
   };
-
 
   const servicesList = [
     {
@@ -378,17 +375,15 @@ A clean, secure migration that minimizes downtime — and a flexible, scalable s
     },
   ];
 
-
-
   const [openServiceIndex, setOpenServiceIndex] = useState<number | null>(null);
 
   // Callback for Learn More button
   const handleLearnMore = (index: number) => {
     setOpenServiceIndex(index);
     // Scroll to the accordion section
-    const el = document.getElementById('explore-services');
+    const el = document.getElementById("explore-services");
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
       if (el instanceof HTMLElement) {
         el.tabIndex = -1;
         el.focus();
@@ -405,12 +400,16 @@ A clean, secure migration that minimizes downtime — and a flexible, scalable s
         title="Smarter Systems, Seamless Workflows"
         subtitle="From accounting tools to full-scale ERP and automation, we design, integrate, and support the technology that powers your business."
         buttonText="Get Started"
-        buttonLink="/ContactUs"
+        buttonLink="/contactus"
       />
 
       {/* What We Do */}
       {/* What We Do Section */}
-      <WhatWeOffer heading="What We Offer" cards={offerCards} onLearnMore={handleLearnMore} />
+      <WhatWeOffer
+        heading="What We Offer"
+        cards={offerCards}
+        onLearnMore={handleLearnMore}
+      />
       <WhyChooseUs
         image={whyChooseData.image}
         title={whyChooseData.title}
@@ -432,21 +431,16 @@ A clean, secure migration that minimizes downtime — and a flexible, scalable s
         heading="Work Smarter with the Right Systems."
         subheading="Start Building Your Streamlined Workflow Today"
         buttonText="Book Now"
-        buttonLink="/ContactUs"
+        buttonLink="/contactus"
       />
-
-
-
 
       {/* FAQs */}
       {/* ✅ FAQs — Updated Design */}
       <FAQSection heading="Frequently Asked Questions" faqs={faqs} />
 
-
       <Footer />
     </div>
   );
 };
-
 
 export default HomePage;

@@ -1,29 +1,27 @@
 "use client";
-import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import React from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { Plus, Minus, ChevronDown } from "lucide-react";
-import { useEffect, useState } from 'react';
-import HeroSection from '../components/Pages/Hero';
-import WhatWeOffer from '../components/Pages/WhatWeOffer';
-import WhyChooseUs from '../components/Pages/WhyChooseUs';
-import ServiceAccordion from '../components/Pages/ServiceAccordian';
-import ThreeStepProcess from '../components/Pages/ThreeStep';
-import ResourcesSection from '../components/Pages/Resources';
-import CallToAction from '../components/Pages/CallToAction';
-import FAQSection from '../components/Pages/FAQ';
+import { useEffect, useState } from "react";
+import HeroSection from "../components/Pages/Hero";
+import WhatWeOffer from "../components/Pages/WhatWeOffer";
+import WhyChooseUs from "../components/Pages/WhyChooseUs";
+import ServiceAccordion from "../components/Pages/ServiceAccordian";
+import ThreeStepProcess from "../components/Pages/ThreeStep";
+import ResourcesSection from "../components/Pages/Resources";
+import CallToAction from "../components/Pages/CallToAction";
+import FAQSection from "../components/Pages/FAQ";
 
 const heroImages = [
-  '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-  '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-  '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
-  '/Web Assets/NEW/Hero Section/f0065b10-07c3-47d4-bf72-adaf37d2c25a-scaled.jpeg-1.webp',
-  '/Web Assets/NEW/Hero Section/gettyimages-1488522537-640x640.jpg',
-  '/Web Assets/NEW/Hero Section/premium_photo-1661761077411-d50cba031848.jpeg',
-  '/Web Assets/NEW/Hero Section/TPC-exterior-building-b.jpg',
+  "/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png",
+  "/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg",
+  "/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp",
+  "/Web Assets/NEW/Hero Section/f0065b10-07c3-47d4-bf72-adaf37d2c25a-scaled.jpeg-1.webp",
+  "/Web Assets/NEW/Hero Section/gettyimages-1488522537-640x640.jpg",
+  "/Web Assets/NEW/Hero Section/premium_photo-1661761077411-d50cba031848.jpeg",
+  "/Web Assets/NEW/Hero Section/TPC-exterior-building-b.jpg",
 ];
-
-
 
 const HomePage: React.FC = () => {
   const [slide, setSlide] = useState(0);
@@ -71,12 +69,11 @@ const HomePage: React.FC = () => {
       description:
         "Organized books and tidy workpapers that make tax filing and CRA reviews smooth, accurate, and stress-free.",
       link: "#explore-services",
-    }
+    },
   ];
   const faqs = [
     {
-      question:
-        "What’s the difference between bookkeeping and accounting?",
+      question: "What’s the difference between bookkeeping and accounting?",
       answer: `
 Bookkeeping focuses on recording daily financial transactions — things like sales, expenses, payroll, and bank reconciliations — ensuring your books stay accurate and up to date.
 Accounting, on the other hand, interprets that data to produce financial statements, reports, and insights that drive business decisions.
@@ -107,12 +104,13 @@ More importantly, we tailor each stack to your business size and industry — fr
   ];
 
   const heroImages = [
-    '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-    '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-    '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
+    "/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png",
+    "/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg",
+    "/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp",
   ];
   const whyChooseData = {
-    image: "/Web Assets/Images/NEW/Bookkeeping & Accounting Page/7-differences-between-book-keeping-and-accounting-1.jpeg",
+    image:
+      "/Web Assets/Images/NEW/Bookkeeping & Accounting Page/7-differences-between-book-keeping-and-accounting-1.jpeg",
     title: "What Makes Us Different",
     paragraphs: [
       `At AALI Consulting, bookkeeping isn’t just data entry — it’s decision support. We build systems that give you clarity, not clutter. Every reconciliation, payroll run, and dashboard is designed to keep your books tax-ready and your strategy focused on growth. Whether you’re a small business, nonprofit, or multi-entity operation, our approach blends precision accounting with modern automation — so you see your real financial picture in real time.`,
@@ -125,7 +123,6 @@ More importantly, we tailor each stack to your business size and industry — fr
       `Managing your finances shouldn’t feel overwhelming. With automated reconciliations, payroll scheduling, and visual dashboards, we handle the numbers so you can focus on building your business. From compliance to cashflow, every detail stays organized, accurate, and up to date — giving you peace of mind and the confidence to plan ahead.`,
     ],
   };
-
 
   const servicesList = [
     {
@@ -310,17 +307,15 @@ A smooth, stress-free year-end every year — because your books were already re
     },
   ];
 
-
-
   const [openServiceIndex, setOpenServiceIndex] = useState<number | null>(null);
 
   // Callback for Learn More button
   const handleLearnMore = (index: number) => {
     setOpenServiceIndex(index);
     // Scroll to the accordion section
-    const el = document.getElementById('explore-services');
+    const el = document.getElementById("explore-services");
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
       if (el instanceof HTMLElement) {
         el.tabIndex = -1;
         el.focus();
@@ -337,12 +332,16 @@ A smooth, stress-free year-end every year — because your books were already re
         title="Clean Books. Clear Decisions. Confident Growth."
         subtitle="Stay organized, stay complaint. Let us handle your books so you can focus on growth"
         buttonText="Get Started"
-        buttonLink="/ContactUs"
+        buttonLink="/contactus"
       />
 
       {/* What We Do */}
       {/* What We Do Section */}
-      <WhatWeOffer heading="What We Offer" cards={offerCards} onLearnMore={handleLearnMore} />
+      <WhatWeOffer
+        heading="What We Offer"
+        cards={offerCards}
+        onLearnMore={handleLearnMore}
+      />
       <WhyChooseUs
         image={whyChooseData.image}
         title={whyChooseData.title}
@@ -369,21 +368,16 @@ A smooth, stress-free year-end every year — because your books were already re
         heading="Take Control of Your Books. Take Control of Your Business."
         subheading="Let’s Build Your Books Together"
         buttonText="Book Now"
-        buttonLink="/ContactUs"
+        buttonLink="/contactus"
       />
-
-
-
 
       {/* FAQs */}
       {/* ✅ FAQs — Updated Design */}
       <FAQSection heading="Frequently Asked Questions" faqs={faqs} />
 
-
       <Footer />
     </div>
   );
 };
-
 
 export default HomePage;

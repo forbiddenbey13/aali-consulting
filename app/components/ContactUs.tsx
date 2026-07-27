@@ -1,6 +1,16 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
-import { ChevronLeft, ChevronRight, CheckCircle, Clock, Calendar, User, Briefcase, Check, ChevronDown } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  CheckCircle,
+  Clock,
+  Calendar,
+  User,
+  Briefcase,
+  Check,
+  ChevronDown,
+} from "lucide-react";
 import Image from "next/image";
 
 // ---------- Config ----------
@@ -13,10 +23,7 @@ const SERVICES = [
   "System Implementation",
 ];
 
-const TIME_SLOTS = [
-  "09:00", "11:00",
-  "13:00", "15:00", "16:00"
-];
+const TIME_SLOTS = ["09:00", "11:00", "13:00", "15:00", "16:00"];
 
 const IDENTITY_OPTIONS = [
   "Newcomers to Canada",
@@ -41,10 +48,9 @@ type FormData = {
   platform: string;
 };
 
-
 type Step = 1 | 2 | 3;
 
-const ContactUs: React.FC = () => {
+const contactus: React.FC = () => {
   // State
   const [currentStep, setCurrentStep] = useState<Step>(1);
   const [selectedDate, setSelectedDate] = useState<string>("");
@@ -65,11 +71,14 @@ const ContactUs: React.FC = () => {
     platform: "",
   });
 
-
-  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
+    {},
+  );
   const [currentMonth, setCurrentMonth] = useState(new Date());
   // Data for valid days check
-  const [monthlyBookedSlots, setMonthlyBookedSlots] = useState<Set<string>>(new Set());
+  const [monthlyBookedSlots, setMonthlyBookedSlots] = useState<Set<string>>(
+    new Set(),
+  );
 
   // Precise availability for the selected day - REMOVED redundant state
   // const [availability, setAvailability] = useState<Record<string, boolean>>({});
@@ -83,19 +92,27 @@ const ContactUs: React.FC = () => {
 
   // Fetch availability when date changes
   useEffect(() => {
-    const startOfMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1);
+    const startOfMonth = new Date(
+      currentMonth.getFullYear(),
+      currentMonth.getMonth(),
+      1,
+    );
     // Fetch 2 months ahead to ensure "Next Available" (30 days lookahead) has data
-    const endOfMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 2, 1);
+    const endOfMonth = new Date(
+      currentMonth.getFullYear(),
+      currentMonth.getMonth() + 2,
+      1,
+    );
 
     const fetchMonthlySlots = async () => {
       // Use new strict backend logic
       try {
-        const response = await fetch('/api/monthly-availability', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+        const response = await fetch("/api/monthly-availability", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             startDate: formatDate(startOfMonth),
-            endDate: formatDate(endOfMonth)
+            endDate: formatDate(endOfMonth),
           }),
         });
 
@@ -104,13 +121,15 @@ const ContactUs: React.FC = () => {
           // bookedMap: { "2025-12-25": ["09:00", "11:00"] or ["ALL"] }
 
           const newSet = new Set<string>();
-          Object.entries(bookedMap as Record<string, string[]>).forEach(([dateStr, times]) => {
-            if (times.includes("ALL")) {
-              newSet.add(`${dateStr}TALL`);
-            } else {
-              times.forEach(t => newSet.add(`${dateStr}T${t}`));
-            }
-          });
+          Object.entries(bookedMap as Record<string, string[]>).forEach(
+            ([dateStr, times]) => {
+              if (times.includes("ALL")) {
+                newSet.add(`${dateStr}TALL`);
+              } else {
+                times.forEach((t) => newSet.add(`${dateStr}T${t}`));
+              }
+            },
+          );
 
           setMonthlyBookedSlots(newSet);
         }
@@ -163,7 +182,9 @@ const ContactUs: React.FC = () => {
     if (monthlyBookedSlots.has(`${dateStr}TALL`)) return true;
 
     // 2. All slots booked
-    return TIME_SLOTS.every(time => monthlyBookedSlots.has(`${dateStr}T${time}`));
+    return TIME_SLOTS.every((time) =>
+      monthlyBookedSlots.has(`${dateStr}T${time}`),
+    );
   };
 
   const isDateDisabled = (date: Date | null) => {
@@ -189,12 +210,12 @@ const ContactUs: React.FC = () => {
 
     // Also block past times
     const now = new Date();
-    const [hours, minutes] = time.split(':').map(Number);
+    const [hours, minutes] = time.split(":").map(Number);
     const slotDate = new Date(selectedDate);
-    // Explicitly handle "T00:00:00" parsing safety if needed, 
-    // but selectedDate is YYYY-MM-DD, so new Date(selectedDate) is usually UTC. 
+    // Explicitly handle "T00:00:00" parsing safety if needed,
+    // but selectedDate is YYYY-MM-DD, so new Date(selectedDate) is usually UTC.
     // Ideally use: new Date(selectedDate + 'T00:00:00')
-    const localSlotDate = new Date(selectedDate + 'T' + time);
+    const localSlotDate = new Date(selectedDate + "T" + time);
 
     // Simple check: create date object for comparison
     const d = new Date(selectedDate);
@@ -203,13 +224,19 @@ const ContactUs: React.FC = () => {
     return d < now;
   };
 
-  const nextMonth = () => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1));
-  const previousMonth = () => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1));
+  const nextMonth = () =>
+    setCurrentMonth(
+      new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1),
+    );
+  const previousMonth = () =>
+    setCurrentMonth(
+      new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1),
+    );
 
   // Handlers
   const handleServiceSelect = (service: string) => {
     setSelectedService(service);
-    setData(prev => ({ ...prev, service }));
+    setData((prev) => ({ ...prev, service }));
     setTimeout(() => setCurrentStep(2), 300); // Auto-advance
   };
 
@@ -220,14 +247,14 @@ const ContactUs: React.FC = () => {
 
   const handleTimeSelect = (time: string) => {
     setSelectedTime(time);
-    setData(prev => ({ ...prev, date: selectedDate, time }));
+    setData((prev) => ({ ...prev, date: selectedDate, time }));
     // Auto-scroll or something? Maybe just let user click Next or auto-advance
     // Let's auto-advance to step 3 for smooth UX
     setTimeout(() => setCurrentStep(3), 300);
   };
 
   const handleBack = () => {
-    if (currentStep > 1) setCurrentStep(prev => (prev - 1) as Step);
+    if (currentStep > 1) setCurrentStep((prev) => (prev - 1) as Step);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -236,16 +263,17 @@ const ContactUs: React.FC = () => {
     if (!data.firstName.trim()) e2.firstName = "First name is required.";
     if (!data.lastName.trim()) e2.lastName = "Last name is required.";
     if (!data.email.trim()) e2.email = "Email is required.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) e2.email = "Enter a valid email.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
+      e2.email = "Enter a valid email.";
 
     setErrors(e2);
     if (Object.keys(e2).length) return;
 
     setSubmitting(true);
     try {
-      const response = await fetch('/api/create-booking', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/create-booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           date: selectedDate,
           time: selectedTime,
@@ -261,7 +289,7 @@ const ContactUs: React.FC = () => {
         }),
       });
 
-      if (!response.ok) throw new Error('Failed to create booking');
+      if (!response.ok) throw new Error("Failed to create booking");
 
       setShowSuccess(true);
     } catch (error) {
@@ -273,29 +301,51 @@ const ContactUs: React.FC = () => {
   };
 
   // Render Helpers
-  const renderStepIndicator = (step: number, label: string, icon: React.ReactNode) => {
+  const renderStepIndicator = (
+    step: number,
+    label: string,
+    icon: React.ReactNode,
+  ) => {
     const isActive = currentStep === step;
     const isCompleted = currentStep > step;
 
     return (
-      <div className={`relative flex flex-col items-start gap-2 pl-8 pb-10 border-l-2 last:border-0 ${isCompleted ? 'border-indigo-600 dark:border-indigo-400' : 'border-gray-200 dark:border-gray-700'}`}>
-        <div className={`absolute -left-[9px] top-0 w-4 h-4 rounded-full border-2 transition-all duration-300 bg-white dark:bg-gray-900 
-          ${isActive ? 'border-indigo-600 scale-125' : isCompleted ? 'border-indigo-600 bg-indigo-600' : 'border-gray-300 dark:border-gray-600'}`}>
-          {isCompleted && <div className="w-full h-full bg-indigo-600 rounded-full" />}
+      <div
+        className={`relative flex flex-col items-start gap-2 pl-8 pb-10 border-l-2 last:border-0 ${isCompleted ? "border-indigo-600 dark:border-indigo-400" : "border-gray-200 dark:border-gray-700"}`}
+      >
+        <div
+          className={`absolute -left-[9px] top-0 w-4 h-4 rounded-full border-2 transition-all duration-300 bg-white dark:bg-gray-900 
+          ${isActive ? "border-indigo-600 scale-125" : isCompleted ? "border-indigo-600 bg-indigo-600" : "border-gray-300 dark:border-gray-600"}`}
+        >
+          {isCompleted && (
+            <div className="w-full h-full bg-indigo-600 rounded-full" />
+          )}
         </div>
 
-        <div className={`transition-all duration-300 ${isActive ? 'opacity-100 translate-x-1' : 'opacity-60'}`}>
-          <h4 className={`text-sm font-bold uppercase tracking-wider mb-1 ${isActive ? 'text-indigo-600 dark:text-indigo-400' : 'text-gray-500 dark:text-gray-400'}`}>
+        <div
+          className={`transition-all duration-300 ${isActive ? "opacity-100 translate-x-1" : "opacity-60"}`}
+        >
+          <h4
+            className={`text-sm font-bold uppercase tracking-wider mb-1 ${isActive ? "text-indigo-600 dark:text-indigo-400" : "text-gray-500 dark:text-gray-400"}`}
+          >
             Step {step}
           </h4>
           <div className="text-lg font-semibold text-gray-900 dark:text-white flex items-center gap-2">
             {icon}
             <span>{label}</span>
           </div>
-          {isCompleted && step === 1 && <div className="text-sm text-indigo-600 dark:text-indigo-400 mt-1 font-medium">{selectedService}</div>}
+          {isCompleted && step === 1 && (
+            <div className="text-sm text-indigo-600 dark:text-indigo-400 mt-1 font-medium">
+              {selectedService}
+            </div>
+          )}
           {isCompleted && step === 2 && selectedDate && selectedTime && (
             <div className="text-sm text-indigo-600 dark:text-indigo-400 mt-1 font-medium">
-              {new Date(selectedDate + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}, {formatTime12h(selectedTime)}
+              {new Date(selectedDate + "T00:00:00").toLocaleDateString(
+                "en-US",
+                { month: "short", day: "numeric" },
+              )}
+              , {formatTime12h(selectedTime)}
             </div>
           )}
         </div>
@@ -310,9 +360,24 @@ const ContactUs: React.FC = () => {
           <div className="w-20 h-20 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
             <Check className="w-10 h-10 text-emerald-600 dark:text-emerald-400" />
           </div>
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Booking Confirmed!</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Booking Confirmed!
+          </h2>
           <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-            Thank you, {data.firstName}. Your consultation for <span className="font-semibold text-indigo-600 dark:text-indigo-400">{selectedService}</span> is scheduled for <span className="font-semibold">{new Date(selectedDate + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'long', day: 'numeric' })}</span> at <span className="font-semibold">{formatTime12h(selectedTime)}</span>.
+            Thank you, {data.firstName}. Your consultation for{" "}
+            <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+              {selectedService}
+            </span>{" "}
+            is scheduled for{" "}
+            <span className="font-semibold">
+              {new Date(selectedDate + "T00:00:00").toLocaleDateString(
+                "en-US",
+                { weekday: "short", month: "long", day: "numeric" },
+              )}
+            </span>{" "}
+            at{" "}
+            <span className="font-semibold">{formatTime12h(selectedTime)}</span>
+            .
           </p>
           <p className="text-sm text-gray-500 dark:text-gray-400 mb-8">
             Check your email for the Google Meet link.
@@ -330,9 +395,10 @@ const ContactUs: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 md:p-8 lg:p-12 font-sans flex flex-col items-center justify-center">
-      <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center animate-fadeIn">Book a Free Consultation</h1>
+      <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center animate-fadeIn">
+        Book a Free Consultation
+      </h1>
       <div className="bg-white dark:bg-gray-800 w-full max-w-6xl rounded-[32px] shadow-2xl overflow-hidden flex flex-col lg:flex-row min-h-[700px]">
-
         {/* LEFT SIDEBAR */}
         <div className="w-full lg:w-[320px] bg-gray-50 dark:bg-gray-800/50 border-r border-gray-100 dark:border-gray-700 p-8 flex flex-col">
           <div className="mb-10">
@@ -344,9 +410,10 @@ const ContactUs: React.FC = () => {
                 height={50}
                 className="object-contain"
               />
-              <span className="font-bold text-lg text-gray-900 dark:text-white tracking-tight">AALI Consulting</span>
+              <span className="font-bold text-lg text-gray-900 dark:text-white tracking-tight">
+                AALI Consulting
+              </span>
             </div>
-
           </div>
 
           <div className="flex-1">
@@ -363,7 +430,7 @@ const ContactUs: React.FC = () => {
               </div>
               <div>
                 <p className="font-semibold text-gray-900 dark:text-white">Need help?</p>
-                <p>contact@aaliconsulting.ca</p>
+                <p>info@aaliconsulting.ca</p>
               </div>
             </div>
           </div>
@@ -371,22 +438,26 @@ const ContactUs: React.FC = () => {
 
         {/* RIGHT CONTENT */}
         <div className="flex-1 p-6 md:p-10 lg:p-14 overflow-y-auto relative">
-
           {/* Header Navigation for Mobile / History */}
           {currentStep > 1 && (
-            <button onClick={handleBack} className="absolute top-8 left-8 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition text-gray-500">
+            <button
+              onClick={handleBack}
+              className="absolute top-8 left-8 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition text-gray-500"
+            >
               <ChevronLeft size={24} />
             </button>
           )}
 
           <div className="max-w-3xl mx-auto pt-8">
-
-
             {/* STEP 1: SERVICE */}
             {currentStep === 1 && (
               <div className="animate-fadeIn">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Select a Service</h2>
-                <p className="text-gray-500 dark:text-gray-400 mb-8">What can we help you with today?</p>
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                  Select a Service
+                </h2>
+                <p className="text-gray-500 dark:text-gray-400 mb-8">
+                  What can we help you with today?
+                </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {SERVICES.map((s) => (
@@ -394,15 +465,21 @@ const ContactUs: React.FC = () => {
                       key={s}
                       onClick={() => handleServiceSelect(s)}
                       className={`p-6 rounded-2xl border-2 text-left transition-all duration-200 hover:shadow-md group
-                         ${selectedService === s
-                          ? 'border-indigo-600 bg-indigo-50 dark:bg-indigo-900/20'
-                          : 'border-gray-100 dark:border-gray-700 hover:border-indigo-200 dark:hover:border-indigo-800 bg-white dark:bg-gray-800'}`}
+                         ${
+                           selectedService === s
+                             ? "border-indigo-600 bg-indigo-50 dark:bg-indigo-900/20"
+                             : "border-gray-100 dark:border-gray-700 hover:border-indigo-200 dark:hover:border-indigo-800 bg-white dark:bg-gray-800"
+                         }`}
                     >
                       <div className="flex justify-between items-center">
-                        <span className={`font-semibold text-lg ${selectedService === s ? 'text-indigo-700 dark:text-indigo-300' : 'text-gray-700 dark:text-gray-200 group-hover:text-indigo-600'}`}>
+                        <span
+                          className={`font-semibold text-lg ${selectedService === s ? "text-indigo-700 dark:text-indigo-300" : "text-gray-700 dark:text-gray-200 group-hover:text-indigo-600"}`}
+                        >
                           {s}
                         </span>
-                        {selectedService === s && <CheckCircle className="text-indigo-600" size={20} />}
+                        {selectedService === s && (
+                          <CheckCircle className="text-indigo-600" size={20} />
+                        )}
                       </div>
                     </button>
                   ))}
@@ -413,22 +490,41 @@ const ContactUs: React.FC = () => {
             {/* STEP 2: DATE & TIME */}
             {currentStep === 2 && (
               <div className="animate-fadeIn">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Select Date & Time</h2>
-                <p className="text-gray-500 dark:text-gray-400 mb-8">When would you like to meet?</p>
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                  Select Date & Time
+                </h2>
+                <p className="text-gray-500 dark:text-gray-400 mb-8">
+                  When would you like to meet?
+                </p>
 
                 <div className="flex flex-col xl:flex-row gap-10">
                   {/* Calendar */}
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-6">
-                      <button onClick={previousMonth} className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"><ChevronLeft /></button>
+                      <button
+                        onClick={previousMonth}
+                        className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+                      >
+                        <ChevronLeft />
+                      </button>
                       <span className="font-bold text-lg text-gray-900 dark:text-white">
-                        {currentMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                        {currentMonth.toLocaleDateString("en-US", {
+                          month: "long",
+                          year: "numeric",
+                        })}
                       </span>
-                      <button onClick={nextMonth} className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"><ChevronRight /></button>
+                      <button
+                        onClick={nextMonth}
+                        className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+                      >
+                        <ChevronRight />
+                      </button>
                     </div>
 
                     <div className="grid grid-cols-7 gap-2 mb-2 text-center text-xs font-semibold text-gray-400 uppercase tracking-widest">
-                      {['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'].map(d => <div key={d}>{d}</div>)}
+                      {["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"].map((d) => (
+                        <div key={d}>{d}</div>
+                      ))}
                     </div>
 
                     <div className="grid grid-cols-7 gap-2">
@@ -443,9 +539,13 @@ const ContactUs: React.FC = () => {
                             disabled={disabled}
                             onClick={() => handleDateSelect(date)}
                             className={`aspect-square rounded-full flex items-center justify-center text-sm font-medium transition-all
-                                ${isSel ? 'bg-indigo-600 text-white shadow-lg scale-105' :
-                                disabled ? 'bg-gray-100 dark:bg-gray-800 text-gray-300 dark:text-gray-600 cursor-not-allowed' :
-                                  'text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700'}
+                                ${
+                                  isSel
+                                    ? "bg-indigo-600 text-white shadow-lg scale-105"
+                                    : disabled
+                                      ? "bg-gray-100 dark:bg-gray-800 text-gray-300 dark:text-gray-600 cursor-not-allowed"
+                                      : "text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700"
+                                }
                               `}
                           >
                             {date.getDate()}
@@ -459,13 +559,19 @@ const ContactUs: React.FC = () => {
                   <div className="w-full xl:w-[280px] border-l border-gray-100 dark:border-gray-700 pl-0 xl:pl-10 pt-8 xl:pt-0">
                     <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
                       {selectedDate
-                        ? new Date(selectedDate + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })
+                        ? new Date(
+                            selectedDate + "T00:00:00",
+                          ).toLocaleDateString("en-US", {
+                            weekday: "long",
+                            month: "long",
+                            day: "numeric",
+                          })
                         : "Select a date first"}
                     </h3>
 
                     {selectedDate ? (
                       <div className="flex flex-col gap-3 max-h-[350px] overflow-y-auto pr-2 custom-scrollbar">
-                        {TIME_SLOTS.map(t => {
+                        {TIME_SLOTS.map((t) => {
                           const disabled = isTimeDisabled(t);
                           return (
                             <button
@@ -473,11 +579,13 @@ const ContactUs: React.FC = () => {
                               disabled={disabled}
                               onClick={() => handleTimeSelect(t)}
                               className={`w-full py-3 px-4 rounded-xl border text-sm font-semibold transition-all
-                                  ${selectedTime === t
-                                  ? 'border-indigo-600 bg-indigo-600 text-white shadow-md'
-                                  : disabled
-                                    ? 'border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-300 dark:text-gray-600 cursor-not-allowed'
-                                    : 'border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:border-indigo-500 hover:text-indigo-600'}
+                                  ${
+                                    selectedTime === t
+                                      ? "border-indigo-600 bg-indigo-600 text-white shadow-md"
+                                      : disabled
+                                        ? "border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-300 dark:text-gray-600 cursor-not-allowed"
+                                        : "border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:border-indigo-500 hover:text-indigo-600"
+                                  }
                                 `}
                             >
                               {formatTime12h(t)}
@@ -499,8 +607,12 @@ const ContactUs: React.FC = () => {
             {/* STEP 3: DETAILS */}
             {currentStep === 3 && (
               <div className="animate-fadeIn">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Your Details</h2>
-                <p className="text-gray-500 dark:text-gray-400 mb-8">Please provide your contact information.</p>
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                  Your Details
+                </h2>
+                <p className="text-gray-500 dark:text-gray-400 mb-8">
+                  Please provide your contact information.
+                </p>
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                   <div className="bg-indigo-50 dark:bg-indigo-900/20 p-5 rounded-2xl flex items-center justify-between border border-indigo-100 dark:border-indigo-800/50">
@@ -509,69 +621,116 @@ const ContactUs: React.FC = () => {
                         <Calendar size={20} />
                       </div>
                       <div>
-                        <p className="text-sm text-gray-500 dark:text-indigo-300 font-medium uppercase tracking-wide">Selected Slot</p>
+                        <p className="text-sm text-gray-500 dark:text-indigo-300 font-medium uppercase tracking-wide">
+                          Selected Slot
+                        </p>
                         <p className="font-bold text-gray-900 dark:text-white">
-                          {new Date(selectedDate + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })} • {formatTime12h(selectedTime)}
+                          {new Date(
+                            selectedDate + "T00:00:00",
+                          ).toLocaleDateString("en-US", {
+                            weekday: "short",
+                            month: "short",
+                            day: "numeric",
+                          })}{" "}
+                          • {formatTime12h(selectedTime)}
                         </p>
                       </div>
                     </div>
-                    <button type="button" onClick={() => setCurrentStep(2)} className="text-sm font-semibold text-indigo-600 hover:underline">Change</button>
+                    <button
+                      type="button"
+                      onClick={() => setCurrentStep(2)}
+                      className="text-sm font-semibold text-indigo-600 hover:underline"
+                    >
+                      Change
+                    </button>
                   </div>
 
                   <div className="grid grid-cols-2 gap-5">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">First Name</label>
+                      <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        First Name
+                      </label>
                       <input
                         type="text"
                         value={data.firstName}
-                        onChange={e => setData(d => ({ ...d, firstName: e.target.value }))}
+                        onChange={(e) =>
+                          setData((d) => ({ ...d, firstName: e.target.value }))
+                        }
                         className="p-3.5 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
                         placeholder="John"
                       />
-                      {errors.firstName && <span className="text-red-500 text-xs font-medium">{errors.firstName}</span>}
+                      {errors.firstName && (
+                        <span className="text-red-500 text-xs font-medium">
+                          {errors.firstName}
+                        </span>
+                      )}
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">Last Name</label>
+                      <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        Last Name
+                      </label>
                       <input
                         type="text"
                         value={data.lastName}
-                        onChange={e => setData(d => ({ ...d, lastName: e.target.value }))}
+                        onChange={(e) =>
+                          setData((d) => ({ ...d, lastName: e.target.value }))
+                        }
                         className="p-3.5 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
                         placeholder="Doe"
                       />
-                      {errors.lastName && <span className="text-red-500 text-xs font-medium">{errors.lastName}</span>}
+                      {errors.lastName && (
+                        <span className="text-red-500 text-xs font-medium">
+                          {errors.lastName}
+                        </span>
+                      )}
                     </div>
                   </div>
 
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">Email Address</label>
+                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                      Email Address
+                    </label>
                     <input
                       type="email"
                       value={data.email}
-                      onChange={e => setData(d => ({ ...d, email: e.target.value }))}
+                      onChange={(e) =>
+                        setData((d) => ({ ...d, email: e.target.value }))
+                      }
                       className="p-3.5 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
                       placeholder="john@example.com"
                     />
-                    {errors.email && <span className="text-red-500 text-xs font-medium">{errors.email}</span>}
+                    {errors.email && (
+                      <span className="text-red-500 text-xs font-medium">
+                        {errors.email}
+                      </span>
+                    )}
                   </div>
 
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">Phone Number (Optional)</label>
+                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                      Phone Number (Optional)
+                    </label>
                     <input
                       type="tel"
                       value={data.phone}
-                      onChange={e => setData(d => ({ ...d, phone: e.target.value }))}
+                      onChange={(e) =>
+                        setData((d) => ({ ...d, phone: e.target.value }))
+                      }
                       className="p-3.5 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
                       placeholder="+1 (555) 000-0000"
                     />
                   </div>
 
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">Additional Notes</label>
+                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                      Additional Notes
+                    </label>
                     <textarea
                       rows={3}
                       value={data.notes}
-                      onChange={e => setData(d => ({ ...d, notes: e.target.value }))}
+                      onChange={(e) =>
+                        setData((d) => ({ ...d, notes: e.target.value }))
+                      }
                       className="p-3.5 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
                       placeholder="Anything else we should know?"
                     />
@@ -583,14 +742,23 @@ const ContactUs: React.FC = () => {
                       Company Name
                     </label>
                     <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                      Are you representing a company? If yes, complete this field with your official Company Name. If you are not representing a company, then please enable the switch below labeled &quot;I&apos;m not representing a Company&quot;.
+                      Are you representing a company? If yes, complete this
+                      field with your official Company Name. If you are not
+                      representing a company, then please enable the switch
+                      below labeled &quot;I&apos;m not representing a
+                      Company&quot;.
                     </p>
 
                     {!notRepresentingCompany && (
                       <input
                         type="text"
                         value={data.companyName}
-                        onChange={(e) => setData(d => ({ ...d, companyName: e.target.value }))}
+                        onChange={(e) =>
+                          setData((d) => ({
+                            ...d,
+                            companyName: e.target.value,
+                          }))
+                        }
                         className="p-3.5 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
                         placeholder="Official Company Name"
                       />
@@ -599,12 +767,18 @@ const ContactUs: React.FC = () => {
                     <div className="flex items-center gap-3 mt-1 py-2 border-t-2 border-indigo-500/20">
                       <button
                         type="button"
-                        onClick={() => setNotRepresentingCompany(!notRepresentingCompany)}
-                        className={`w-12 h-6 rounded-full p-1 transition-colors duration-200 ease-in-out ${notRepresentingCompany ? 'bg-indigo-600' : 'bg-gray-300 dark:bg-gray-600'}`}
+                        onClick={() =>
+                          setNotRepresentingCompany(!notRepresentingCompany)
+                        }
+                        className={`w-12 h-6 rounded-full p-1 transition-colors duration-200 ease-in-out ${notRepresentingCompany ? "bg-indigo-600" : "bg-gray-300 dark:bg-gray-600"}`}
                       >
-                        <div className={`w-4 h-4 bg-white rounded-full shadow-sm transform transition-transform duration-200 ease-in-out ${notRepresentingCompany ? 'translate-x-6' : 'translate-x-0'}`} />
+                        <div
+                          className={`w-4 h-4 bg-white rounded-full shadow-sm transform transition-transform duration-200 ease-in-out ${notRepresentingCompany ? "translate-x-6" : "translate-x-0"}`}
+                        />
                       </button>
-                      <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">I&apos;m not representing a Company</span>
+                      <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">
+                        I&apos;m not representing a Company
+                      </span>
                     </div>
                   </div>
 
@@ -616,37 +790,59 @@ const ContactUs: React.FC = () => {
                     <div className="relative">
                       <select
                         value={data.platform}
-                        onChange={(e) => setData(d => ({ ...d, platform: e.target.value }))}
+                        onChange={(e) =>
+                          setData((d) => ({ ...d, platform: e.target.value }))
+                        }
                         className="w-full p-4 pr-10 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium appearance-none focus:ring-2 focus:ring-indigo-500 outline-none transition-all cursor-pointer"
                       >
-                        <option value="" disabled className="text-gray-400">Select a platform</option>
+                        <option value="" disabled className="text-gray-400">
+                          Select a platform
+                        </option>
                         <option value="Google Meet">Google Meet</option>
                         <option value="Zoom">Zoom</option>
                         <option value="Microsoft Teams">Microsoft Teams</option>
                       </select>
-                      <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" size={20} />
+                      <ChevronDown
+                        className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none"
+                        size={20}
+                      />
                     </div>
                   </div>
 
                   {/* WHO ARE YOU? */}
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                      Who are you? <span className="text-xs font-normal text-gray-500 ml-1">Help us understand your situation so we can match you with the right roadmap.*</span>
+                      Who are you?{" "}
+                      <span className="text-xs font-normal text-gray-500 ml-1">
+                        Help us understand your situation so we can match you
+                        with the right roadmap.*
+                      </span>
                     </label>
                     <div className="relative">
                       <select
                         value={data.whoAreYou}
-                        onChange={(e) => setData(d => ({ ...d, whoAreYou: e.target.value }))}
+                        onChange={(e) =>
+                          setData((d) => ({ ...d, whoAreYou: e.target.value }))
+                        }
                         className="w-full p-4 pr-10 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium appearance-none focus:ring-2 focus:ring-indigo-500 outline-none transition-all cursor-pointer"
                       >
-                        <option value="" disabled className="text-gray-400">Make a selection</option>
+                        <option value="" disabled className="text-gray-400">
+                          Make a selection
+                        </option>
                         {IDENTITY_OPTIONS.map((opt) => (
-                          <option key={opt} value={opt} className="text-gray-900 bg-white dark:bg-gray-800 dark:text-white">
+                          <option
+                            key={opt}
+                            value={opt}
+                            className="text-gray-900 bg-white dark:bg-gray-800 dark:text-white"
+                          >
                             {opt}
                           </option>
                         ))}
                       </select>
-                      <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" size={20} />
+                      <ChevronDown
+                        className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none"
+                        size={20}
+                      />
                     </div>
                   </div>
 
@@ -666,11 +862,9 @@ const ContactUs: React.FC = () => {
                       )}
                     </button>
                   </div>
-
                 </form>
               </div>
             )}
-
           </div>
         </div>
       </div>
@@ -678,4 +872,4 @@ const ContactUs: React.FC = () => {
   );
 };
 
-export default ContactUs;
+export default contactus;

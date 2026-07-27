@@ -1,29 +1,27 @@
 "use client";
-import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import React from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { Plus, Minus, ChevronDown } from "lucide-react";
-import { useEffect, useState } from 'react';
-import HeroSection from '../components/Pages/Hero';
-import WhatWeOffer from '../components/Pages/WhatWeOffer';
-import WhyChooseUs from '../components/Pages/WhyChooseUs';
-import ServiceAccordion from '../components/Pages/ServiceAccordian';
-import ThreeStepProcess from '../components/Pages/ThreeStep';
-import ResourcesSection from '../components/Pages/Resources';
-import CallToAction from '../components/Pages/CallToAction';
-import FAQSection from '../components/Pages/FAQ';
+import { useEffect, useState } from "react";
+import HeroSection from "../components/Pages/Hero";
+import WhatWeOffer from "../components/Pages/WhatWeOffer";
+import WhyChooseUs from "../components/Pages/WhyChooseUs";
+import ServiceAccordion from "../components/Pages/ServiceAccordian";
+import ThreeStepProcess from "../components/Pages/ThreeStep";
+import ResourcesSection from "../components/Pages/Resources";
+import CallToAction from "../components/Pages/CallToAction";
+import FAQSection from "../components/Pages/FAQ";
 
 const heroImages = [
-  '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-  '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-  '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
-  '/Web Assets/NEW/Hero Section/f0065b10-07c3-47d4-bf72-adaf37d2c25a-scaled.jpeg-1.webp',
-  '/Web Assets/NEW/Hero Section/gettyimages-1488522537-640x640.jpg',
-  '/Web Assets/NEW/Hero Section/premium_photo-1661761077411-d50cba031848.jpeg',
-  '/Web Assets/NEW/Hero Section/TPC-exterior-building-b.jpg',
+  "/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png",
+  "/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg",
+  "/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp",
+  "/Web Assets/NEW/Hero Section/f0065b10-07c3-47d4-bf72-adaf37d2c25a-scaled.jpeg-1.webp",
+  "/Web Assets/NEW/Hero Section/gettyimages-1488522537-640x640.jpg",
+  "/Web Assets/NEW/Hero Section/premium_photo-1661761077411-d50cba031848.jpeg",
+  "/Web Assets/NEW/Hero Section/TPC-exterior-building-b.jpg",
 ];
-
-
 
 const HomePage: React.FC = () => {
   const [slide, setSlide] = useState(0);
@@ -71,12 +69,11 @@ const HomePage: React.FC = () => {
       description:
         "Specialized filings for disability, final/estate returns, inheritance planning, or separation/divorce adjustments.",
       link: "#explore-services",
-    }
+    },
   ];
   const faqs = [
     {
-      question:
-        "When should I file my personal tax return in Canada?",
+      question: "When should I file my personal tax return in Canada?",
       answer: `Ideally, as soon as you receive your T-slips (usually by February). Starting early allows us to review deductions, RRSP/FHSA contributions, and benefit eligibility—ensuring no credits are missed and avoiding last-minute stress.`,
     },
     {
@@ -87,7 +84,8 @@ Absolutely. We specialize in catching up on late or missed filings, even for mul
 For faith-based or not-for-profit organizations, we also provide specialized governance and board compliance support, ensuring transparency and CRA readiness without administrative overload.`,
     },
     {
-      question: "Do you help with investment, crypto, or rental income reporting?",
+      question:
+        "Do you help with investment, crypto, or rental income reporting?",
       answer: `Yes. We handle all investment types—including T3/T5 slips, rental properties, and crypto transactions. Our approach ensures your income is accurately reported while maximizing eligible expenses, deductions, and capital gains exemptions.
 
 Our focus isn’t compliance — it’s clarity. We turn numbers into strategy, helping owners make confident, informed business decisions.`,
@@ -100,12 +98,13 @@ We use encrypted portals for document uploads, cross-check every entry against C
   ];
 
   const heroImages = [
-    '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-    '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-    '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
+    "/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png",
+    "/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg",
+    "/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp",
   ];
   const whyChooseData = {
-    image: "/Web Assets/Images/NEW/Tax Services Page/Main Tax Page/istockphoto-915633582-612x612.jpg",
+    image:
+      "/Web Assets/Images/NEW/Tax Services Page/Main Tax Page/istockphoto-915633582-612x612.jpg",
     title: "Why Choose AALI Consulting",
     paragraphs: [
       `Taxes shouldn’t feel stressful or confusing — and with AALI Consulting, they don’t have to be. Our team takes the time to understand your full financial picture, not just your slips and forms. Whether you’re a student filing your first return, a newcomer navigating cross-border reporting, or a retiree managing investments and benefits, we handle every detail with accuracy and care. From optimizing deductions to planning for future tax years, we make sure your filing does more than meet deadlines — it moves you forward.`,
@@ -115,8 +114,6 @@ We use encrypted portals for document uploads, cross-check every entry against C
       `,
     ],
   };
-
-
 
   const servicesList = [
     {
@@ -293,7 +290,6 @@ The Result:
 You’ll never feel lost between two systems. From your first Canadian tax return to long-term cross-border wealth management, we help you stay compliant, minimize taxes, and build financial stability on both sides of the border.
 `,
     },
-
   ];
 
   const processSteps = [
@@ -337,15 +333,13 @@ You’ll never feel lost between two systems. From your first Canadian tax retur
     },
   ];
 
-
-
   // Callback for Learn More button
   const handleLearnMore = (index: number) => {
     setOpenServiceIndex(index);
     // Scroll to the accordion section
-    const el = document.getElementById('explore-services');
+    const el = document.getElementById("explore-services");
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
       if (el instanceof HTMLElement) {
         el.tabIndex = -1;
         el.focus();
@@ -362,12 +356,16 @@ You’ll never feel lost between two systems. From your first Canadian tax retur
         title="Personal Taxes Made Simple, Clear, and Stress-Free"
         subtitle="From students and newcomers to retirees and families, we file accurately, optimize refunds, and plan smarter for the year ahead."
         buttonText="File Your Taxes Today"
-        buttonLink="/ContactUs"
+        buttonLink="/contactus"
       />
 
       {/* What We Do */}
       {/* What We Do Section */}
-      <WhatWeOffer heading="What We Offer" cards={offerCards} onLearnMore={handleLearnMore} />
+      <WhatWeOffer
+        heading="What We Offer"
+        cards={offerCards}
+        onLearnMore={handleLearnMore}
+      />
       <ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
       <WhyChooseUs
         image={whyChooseData.image}
@@ -390,21 +388,16 @@ You’ll never feel lost between two systems. From your first Canadian tax retur
         heading="Lead With Confidence, Govern With Clarity."
         subheading="Partner with us to strengthen controls, streamline reporting, and align tax, cashflow, and governance with your long-term vision."
         buttonText="Book Now"
-        buttonLink="/ContactUs"
+        buttonLink="/contactus"
       />
-
-
-
 
       {/* FAQs */}
       {/* ✅ FAQs — Updated Design */}
       <FAQSection heading="Frequently Asked Questions" faqs={faqs} />
 
-
       <Footer />
     </div>
   );
 };
-
 
 export default HomePage;

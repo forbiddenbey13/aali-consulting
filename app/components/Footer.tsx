@@ -8,15 +8,16 @@ const Footer: React.FC = () => {
         {/* Left Section: CTA */}
         <div>
           <h2 className="text-3xl md:text-4xl font-semibold !text-white mb-6 leading-snug">
-            Let’s Talk About Your <br className="hidden md:block" /> Financial Goals!
+            Let’s Talk About Your <br className="hidden md:block" /> Financial
+            Goals!
           </h2>
           <p className="!text-white text-base leading-relaxed mb-8 max-w-md">
-            Whether you’re filing taxes, launching a business, or planning ahead —
-            we’re here to help. Book your free consultation today and take the
+            Whether you’re filing taxes, launching a business, or planning ahead
+            — we’re here to help. Book your free consultation today and take the
             first step with clarity and confidence.
           </p>
           <a
-            href="/ContactUs"
+            href="/contactus"
             className="inline-block bg-blue-600 hover:bg-blue-700 !text-white font-medium px-7 py-3 rounded-full shadow-md transition"
           >
             Book Consultation
@@ -47,13 +48,50 @@ const Footer: React.FC = () => {
         <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-10">
           {/* Navigation */}
           <div>
-            <h4 className="!text-white font-semibold text-lg mb-4">Navigation</h4>
+            <h4 className="!text-white font-semibold text-lg mb-4">
+              Navigation
+            </h4>
             <ul className="space-y-2">
-              <li><Link href="/#what-we-do" className="hover:text-blue-400 transition">Services</Link></li>
-              <li><Link href="/AboutUs" className="hover:text-blue-400 transition">Newcomers: Work & Business</Link></li>
-              <li><Link href="/AboutUs" className="hover:text-blue-400 transition">Newcomers: Money & Life Setup</Link></li>
-              <li><Link href="/AboutUs" className="hover:text-blue-400 transition">About Us</Link></li>
-              <li><Link href="/ContactUs" className="hover:text-blue-400 transition">Contact Us</Link></li>
+              <li>
+                <Link
+                  href="/#what-we-do"
+                  className="hover:text-blue-400 transition"
+                >
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/aboutus"
+                  className="hover:text-blue-400 transition"
+                >
+                  Newcomers: Work & Business
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/aboutus"
+                  className="hover:text-blue-400 transition"
+                >
+                  Newcomers: Money & Life Setup
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/aboutus"
+                  className="hover:text-blue-400 transition"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contactus"
+                  className="hover:text-blue-400 transition"
+                >
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -61,12 +99,54 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="!text-white font-semibold text-lg mb-4">Services</h4>
             <ul className="space-y-2">
-              <li><Link href="/TaxService" className="hover:text-blue-400 transition">Tax Services (Personal & Corporate)</Link></li>
-              <li><Link href="/Bookkeeping&Accounting" className="hover:text-blue-400 transition">Accounting & Bookkeeping</Link></li>
-              <li><Link href="/StrategicPlanning" className="hover:text-blue-400 transition">Strategic Financial Planning</Link></li>
-              <li><Link href="/Systems&TechnologyImplementation" className="hover:text-blue-400 transition">Technology Solutions</Link></li>
-              <li><Link href="/CFOAdvisory&Governance" className="hover:text-blue-400 transition">CFO Advisory & Governance</Link></li>
-              <li><Link href="/Disability&LifePlanning" className="hover:text-blue-400 transition">Disability & Life Planning</Link></li>
+              <li>
+                <Link
+                  href="/taxservice"
+                  className="hover:text-blue-400 transition"
+                >
+                  Tax Services (Personal & Corporate)
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/bookkeepingandaccounting"
+                  className="hover:text-blue-400 transition"
+                >
+                  Accounting & Bookkeeping
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/strategicplanning"
+                  className="hover:text-blue-400 transition"
+                >
+                  Strategic Financial Planning
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/systemsandtechnologyimplementation"
+                  className="hover:text-blue-400 transition"
+                >
+                  Technology Solutions
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/cfoadvisoryandgovernance"
+                  className="hover:text-blue-400 transition"
+                >
+                  CFO Advisory & Governance
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/disabilityandlifeplanning"
+                  className="hover:text-blue-400 transition"
+                >
+                  Disability & Life Planning
+                </Link>
+              </li>
             </ul>
           </div>
 

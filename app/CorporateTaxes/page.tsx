@@ -1,29 +1,27 @@
 "use client";
-import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import React from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { Plus, Minus, ChevronDown } from "lucide-react";
-import { useEffect, useState } from 'react';
-import HeroSection from '../components/Pages/Hero';
-import WhatWeOffer from '../components/Pages/WhatWeOffer';
-import WhyChooseUs from '../components/Pages/WhyChooseUs';
-import ServiceAccordion from '../components/Pages/ServiceAccordian';
-import ThreeStepProcess from '../components/Pages/ThreeStep';
-import ResourcesSection from '../components/Pages/Resources';
-import CallToAction from '../components/Pages/CallToAction';
-import FAQSection from '../components/Pages/FAQ';
+import { useEffect, useState } from "react";
+import HeroSection from "../components/Pages/Hero";
+import WhatWeOffer from "../components/Pages/WhatWeOffer";
+import WhyChooseUs from "../components/Pages/WhyChooseUs";
+import ServiceAccordion from "../components/Pages/ServiceAccordian";
+import ThreeStepProcess from "../components/Pages/ThreeStep";
+import ResourcesSection from "../components/Pages/Resources";
+import CallToAction from "../components/Pages/CallToAction";
+import FAQSection from "../components/Pages/FAQ";
 
 const heroImages = [
-  '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-  '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-  '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
-  '/Web Assets/NEW/Hero Section/f0065b10-07c3-47d4-bf72-adaf37d2c25a-scaled.jpeg-1.webp',
-  '/Web Assets/NEW/Hero Section/gettyimages-1488522537-640x640.jpg',
-  '/Web Assets/NEW/Hero Section/premium_photo-1661761077411-d50cba031848.jpeg',
-  '/Web Assets/NEW/Hero Section/TPC-exterior-building-b.jpg',
+  "/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png",
+  "/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg",
+  "/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp",
+  "/Web Assets/NEW/Hero Section/f0065b10-07c3-47d4-bf72-adaf37d2c25a-scaled.jpeg-1.webp",
+  "/Web Assets/NEW/Hero Section/gettyimages-1488522537-640x640.jpg",
+  "/Web Assets/NEW/Hero Section/premium_photo-1661761077411-d50cba031848.jpeg",
+  "/Web Assets/NEW/Hero Section/TPC-exterior-building-b.jpg",
 ];
-
-
 
 const HomePage: React.FC = () => {
   const [slide, setSlide] = useState(0);
@@ -35,13 +33,13 @@ const HomePage: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Callback for Learn More button (same as PersonalTax)
+  // Callback for Learn More button (same as personaltax)
   const handleLearnMore = (index: number) => {
     setOpenServiceIndex(index);
     // Scroll to the accordion section
-    const el = document.getElementById('explore-services');
+    const el = document.getElementById("explore-services");
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
       if (el instanceof HTMLElement) {
         el.tabIndex = -1;
         el.focus();
@@ -109,12 +107,11 @@ const HomePage: React.FC = () => {
       description:
         "Streamlining tax workflows, implementing technology solutions, and enhancing data accuracy for efficient tax processes.",
       link: "#explore-services",
-    }
+    },
   ];
   const faqs = [
     {
-      question:
-        "When should my corporation file a T2 return?",
+      question: "When should my corporation file a T2 return?",
       answer: `Every corporation in Canada must file a T2 return within six months of its fiscal year-end, even if no tax is owed. For example, if your corporation's year-end is December 31, the T2 return is due by June 30 of the following year.`,
     },
     {
@@ -135,12 +132,13 @@ Our team can help you navigate the registration process, ensure compliance, and 
   ];
 
   const heroImages = [
-    '/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png',
-    '/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg',
-    '/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp',
+    "/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png",
+    "/Web Assets/NEW/Hero Section/Business-Culture-in-Canada-Evolved-Metrics-1-1024x565.jpg",
+    "/Web Assets/NEW/Hero Section/CH-23b-meeting-935x530px.jpg.webp",
   ];
   const whyChooseData = {
-    image: "/Web Assets/Images/NEW/Tax Services Page/Corporate Tax Page/corporate-tax-scaled.jpg",
+    image:
+      "/Web Assets/Images/NEW/Tax Services Page/Corporate Tax Page/corporate-tax-scaled.jpg",
     title: "Why Choose AALI Consulting",
     paragraphs: [
       `At AALI Consulting, we go beyond compliance — we design corporate tax strategies that strengthen your business foundation. Whether you’re managing your first year-end as a new corporation or overseeing multi-entity operations with intercompany transactions, our team ensures your filings are not only accurate but strategically aligned. From T2 returns and GST/HST to salary vs. dividend planning and OpCo/HoldCo structuring, we deliver clarity, efficiency, and tax positions that stand up to CRA scrutiny.`,
@@ -150,8 +148,6 @@ Our team can help you navigate the registration process, ensure compliance, and 
       `,
     ],
   };
-
-
 
   const servicesList = [
     {
@@ -440,8 +436,6 @@ The Result:
 A tax process that runs itself—accurate, documented, and audit-ready—freeing your team to focus on strategy instead of spreadsheets.
 `,
     },
-
-
   ];
 
   const processSteps = [
@@ -485,8 +479,6 @@ A tax process that runs itself—accurate, documented, and audit-ready—freeing
     },
   ];
 
-
-
   return (
     <div className="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 transition-colors duration-300">
       <Header />
@@ -496,12 +488,16 @@ A tax process that runs itself—accurate, documented, and audit-ready—freeing
         title="Corporate Taxes Made Clear, Compliant, and Strategic"
         subtitle="From T2 returns to GST/HST, OpCo/HoldCo planning, and CRA audits—we simplify complexity so your business runs tax-smart."
         buttonText="Request a Consultation"
-        buttonLink="/ContactUs"
+        buttonLink="/contactus"
       />
 
       {/* What We Do */}
       {/* What We Do Section */}
-      <WhatWeOffer heading="What We Offer" cards={offerCards} onLearnMore={handleLearnMore} />
+      <WhatWeOffer
+        heading="What We Offer"
+        cards={offerCards}
+        onLearnMore={handleLearnMore}
+      />
       <ThreeStepProcess heading="Our 3-Step Process" steps={processSteps} />
       <WhyChooseUs
         image={whyChooseData.image}
@@ -526,21 +522,16 @@ A tax process that runs itself—accurate, documented, and audit-ready—freeing
         heading="Smarter Corporate Taxes, Less Stress."
         subheading="Get expert planning, precise filings, and audit-ready compliance so your business stays efficient, tax-smart, and always one step ahead."
         buttonText="Book Now"
-        buttonLink="/ContactUs"
+        buttonLink="/contactus"
       />
-
-
-
 
       {/* FAQs */}
       {/* ✅ FAQs — Updated Design */}
       <FAQSection heading="Frequently Asked Questions" faqs={faqs} />
 
-
       <Footer />
     </div>
   );
 };
-
 
 export default HomePage;
