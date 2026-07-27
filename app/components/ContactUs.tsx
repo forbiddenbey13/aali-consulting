@@ -411,7 +411,7 @@ const contactus: React.FC = () => {
                 className="object-contain"
               />
               <span className="font-bold text-lg text-gray-900 dark:text-white tracking-tight">
-                AALI Consulting
+                AALI Consulting & Associates
               </span>
             </div>
           </div>
@@ -429,7 +429,9 @@ const contactus: React.FC = () => {
                 <User className="w-full h-full p-2 text-gray-400" />
               </div>
               <div>
-                <p className="font-semibold text-gray-900 dark:text-white">Need help?</p>
+                <p className="font-semibold text-gray-900 dark:text-white">
+                  Need help?
+                </p>
                 <p>contact@aaliconsulting.ca</p>
               </div>
             </div>

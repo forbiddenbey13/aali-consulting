@@ -42,7 +42,7 @@ const Header: React.FC = () => {
               className="object-contain md:w-[75px] md:h-[75px]"
             />
             <span className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white">
-              AALI Consulting
+              AALI Consulting & Associates
             </span>
           </Link>
         </div>
