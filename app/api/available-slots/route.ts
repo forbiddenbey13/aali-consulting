@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getBookedSlots } from '@/lib/googleCalendar';
+import { getEventsForRange } from '@/lib/outlookCalendar'; // Updated import
 import { DateTime } from 'luxon';
 
 export async function POST(request: NextRequest) {
@@ -17,7 +17,8 @@ export async function POST(request: NextRequest) {
         // Safety check just in case
         if (!startOfDay.isValid) return NextResponse.json({ error: 'Invalid date' }, { status: 400 });
 
-        const dayEvents = await getBookedSlots(startOfDay.toISO()!, endOfDay.toISO()!);
+        // Fetch events using Microsoft Graph logic
+        const dayEvents = await getEventsForRange(startOfDay.toISO()!, endOfDay.toISO()!);
 
         // 2. Check each slot
         const availability: Record<string, boolean> = {};
@@ -35,13 +36,17 @@ export async function POST(request: NextRequest) {
             // Check strict overlap
             // An event overlaps if: (EventStart < SlotEnd) && (EventEnd > SlotStart)
             const isBlocked = dayEvents.some((event: any) => {
-                const evStart = event.start?.dateTime || event.start?.date;
-                const evEnd = event.end?.dateTime || event.end?.date;
+                // Microsoft all-day events block the whole calendar day
+                if (event.isAllDay) return true;
+
+                const evStart = event.start?.dateTime;
+                const evEnd = event.end?.dateTime;
 
                 if (!evStart || !evEnd) return false;
 
-                const eStartDt = DateTime.fromISO(evStart, { zone: 'America/Toronto' });
-                let eEndDt = DateTime.fromISO(evEnd, { zone: 'America/Toronto' });
+                // Microsoft Graph returns times in UTC format
+                const eStartDt = DateTime.fromISO(evStart, { zone: 'UTC' });
+                const eEndDt = DateTime.fromISO(evEnd, { zone: 'UTC' });
 
                 return (eStartDt < slotEnd) && (eEndDt > slotStart);
             });

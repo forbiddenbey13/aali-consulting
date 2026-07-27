@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { deleteDoc, doc, updateDoc, getDoc, collection, query, getDocs, where } from "firebase/firestore";
 import { db } from "@/firebase";
-import { deleteBookingEvent, updateBookingEvent, checkSlotAvailability } from "@/lib/googleCalendar";
+// Updated import to point to outlookCalendar
+import { deleteBookingEvent, updateBookingEvent, checkSlotAvailability } from "@/lib/outlookCalendar";
 import { sendCancellationEmail, sendBookingEmailToClient, sendBookingEmailToBusiness } from "@/lib/sendEmail";
 
 // DELETE: Remove a booking OR all bookings
@@ -37,7 +38,7 @@ export async function DELETE(request: NextRequest) {
 
         const bookingRef = doc(db, "bookingSlots", bookingId);
 
-        // If NOT silent, we need to handle GCal and Email
+        // If NOT silent, we need to handle Calendar and Email
         if (!silent) {
             if (!eventId) {
                 return NextResponse.json({ error: "Missing eventId for non-silent delete" }, { status: 400 });
@@ -47,12 +48,12 @@ export async function DELETE(request: NextRequest) {
             const bookingSnap = await getDoc(bookingRef);
             const bookingData = bookingSnap.exists() ? bookingSnap.data() : null;
 
-            // Delete from Google Calendar
+            // Delete from Outlook Calendar
             try {
                 await deleteBookingEvent(eventId);
             } catch (err) {
-                console.error("Failed to delete GCal event", err);
-                // Continue to delete from DB even if GCal fails
+                console.error("Failed to delete Outlook event", err);
+                // Continue to delete from DB even if Calendar fails
             }
 
             // Send Cancellation Email
@@ -90,8 +91,17 @@ export async function PATCH(request: NextRequest) {
             return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
         }
 
-        // 1. Check Availability
-        const isAvailable = await checkSlotAvailability({ date, time, duration: 60 });
+        // -----------------------------
+        // DATE & TIME CALCULATION
+        // -----------------------------
+        const startDateTimeObj = new Date(`${date}T${time}:00`);
+        const endDateTimeObj = new Date(startDateTimeObj.getTime() + 60 * 60 * 1000); // Add 60 minutes
+        
+        const startDateTime = startDateTimeObj.toISOString();
+        const endDateTime = endDateTimeObj.toISOString();
+
+        // 1. Check Availability (Using new start/end signature)
+        const isAvailable = await checkSlotAvailability(startDateTime, endDateTime);
         if (!isAvailable) {
             return NextResponse.json({ error: "Selected time slot is not available" }, { status: 409 });
         }
@@ -104,8 +114,12 @@ export async function PATCH(request: NextRequest) {
         }
         const originalData = bookingSnap.data();
 
-        // 3. Update Google Calendar
-        await updateBookingEvent(eventId, { date, time, duration: 60, platform });
+        // 3. Update Outlook Calendar
+        await updateBookingEvent(eventId, { 
+            start: startDateTime, 
+            end: endDateTime, 
+            platform 
+        });
 
         // 4. Update Firestore
         const updateData: any = {

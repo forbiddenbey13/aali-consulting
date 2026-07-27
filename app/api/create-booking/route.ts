@@ -1,8 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { checkSlotAvailability, createBooking } from "@/lib/googleCalendar";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "@/firebase";
-
+import { checkSlotAvailability, createBooking } from "@/lib/outlookCalendar";
 import {
   sendBookingEmailToBusiness,
   sendBookingEmailToClient,
@@ -13,7 +10,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const {
       date = "",
-      time = "",
+      time = "", 
       firstName = "",
       lastName = "",
       email = "",
@@ -25,9 +22,7 @@ export async function POST(request: NextRequest) {
       companyName = "",
     } = body;
 
-    // -----------------------------
-    // VALIDATION
-    // -----------------------------
+    // 1. VALIDATION
     if (!date || !time || !firstName || !lastName || !email || !service) {
       return NextResponse.json(
         { error: "Missing required fields" },
@@ -35,14 +30,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // -----------------------------
-    // CHECK CALENDAR SLOT
-    // -----------------------------
-    const isAvailable = await checkSlotAvailability({
-      date,
-      time,
-      duration: 60,
-    });
+    // 2. DATE & TIME CALCULATION (Updated to 30 Minutes)
+    const startDateTimeObj = new Date(`${date}T${time}:00`);
+    // 30 minutes * 60 seconds * 1000 milliseconds
+    const endDateTimeObj = new Date(startDateTimeObj.getTime() + 30 * 60 * 1000); 
+    
+    const startDateTime = startDateTimeObj.toISOString();
+    const endDateTime = endDateTimeObj.toISOString();
+
+    // 3. CHECK OUTLOOK CALENDAR SLOT
+    const isAvailable = await checkSlotAvailability(startDateTime, endDateTime);
 
     if (!isAvailable) {
       return NextResponse.json(
@@ -51,67 +48,42 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // -----------------------------
-    // CREATE GOOGLE CALENDAR EVENT
-    // -----------------------------
-    const { eventId } = await createBooking(
-      { date, time, duration: 60 },
-      { firstName, lastName, email, phone, service, platform, notes, whoAreYou, companyName }
-    );
+    // 4. CREATE OUTLOOK EVENT
+    const createdEvent = await createBooking({
+      title: `${service} - ${firstName} ${lastName}`,
+      start: startDateTime,
+      end: endDateTime,
+      attendeeEmail: email,
+      attendeeName: `${firstName} ${lastName}`
+    });
 
-    // -----------------------------
-    // SAVE TO FIRESTORE
-    // -----------------------------
-    const bookingData = {
-      eventId,
-      date,
-      time,
-      service,
-      platform,
+    const eventId = createdEvent.id;
+
+    // 5. EMAIL TEMPLATE PARAMETERS
+    const templateParams = {
       firstName,
       lastName,
-      email,
-      phone,
+      service,
+      date,
+      time,
+      platform,
       notes,
       whoAreYou,
       companyName,
-      status: "confirmed",
-      createdAt: new Date().toISOString(),
+      email, 
+      phone,
+      clientEmail: email, 
     };
 
-    const docRef = await addDoc(collection(db, "bookingSlots"), bookingData);
-
-    // -----------------------------
-    // EMAIL TEMPLATE PARAMETERS
-    // -----------------------------
-    const templateParams = {
-      firstName: firstName || "",
-      lastName: lastName || "",
-      service: service || "",
-      date: date || "",
-      time: time || "",
-      platform: platform || "",
-      notes: notes || "",
-      whoAreYou: whoAreYou || "",
-      companyName: companyName || "",
-      email: email || "", // shows in template
-      phone: phone || "",
-      clientEmail: email || "", // used only for sending
-    };
-
-    // -----------------------------
-    // SEND EMAILS
-    // -----------------------------
-    const businessEmailSent = await sendBookingEmailToBusiness(templateParams);
-    const clientEmailSent = await sendBookingEmailToClient(templateParams);
+    // 6. SEND CONFIRMATION EMAILS
+    await sendBookingEmailToBusiness(templateParams);
+    await sendBookingEmailToClient(templateParams);
 
     return NextResponse.json({
       success: true,
-      bookingId: docRef.id,
       eventId,
-      businessEmailSent,
-      clientEmailSent,
     });
+    
   } catch (error: any) {
     console.error("Error creating booking:", error);
     return NextResponse.json(
