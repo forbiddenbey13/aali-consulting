@@ -339,7 +339,7 @@ A calm, coordinated plan that turns disruption into direction—helping you navi
         title="Life Events, Taxed Smarter"
         subtitle="Compassionate, step-by-step tax support for disability, job loss, accidents, separation, and estate needs—so you can focus on life, not paperwork."
         buttonText="File Your Taxes"
-        buttonLink="/contactus"
+        buttonLink="/contact-us"
       />
 
       {/* What We Do */}
@@ -371,7 +371,7 @@ A calm, coordinated plan that turns disruption into direction—helping you navi
         heading="Lead With Confidence, Govern With Clarity."
         subheading="Partner with us to strengthen controls, streamline reporting, and align tax, cashflow, and governance with your long-term vision."
         buttonText="Book Now"
-        buttonLink="/contactus"
+        buttonLink="/contact-us"
       />
 
       {/* FAQs */}

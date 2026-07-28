@@ -20,6 +20,6 @@ export default HomePage;
 
 export const metadata = {
   alternates: {
-    canonical: "/contactus", // Resolves to https://aaliconsulting.ca/contactus
+    canonical: "/contact-us", // Resolves to https://aaliconsulting.ca/contact-us
   },
 };

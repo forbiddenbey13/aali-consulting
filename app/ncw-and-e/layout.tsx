@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "/disabilityandlifeplanning", // Hardcoded exact lowercase URL
+    canonical: "/ncw-and-e", // Hardcoded exact lowercase URL
   },
 };
 
-export default function disabilityandlifeplanningLayout({
+export default function ncwandeLayout({
   children,
 }: {
   children: React.ReactNode;

@@ -391,7 +391,7 @@ A calm, guided path through the financial aftermath of loss. You’ll know what 
         title="Guidance Through Life’s Toughest Transitions"
         subtitle="Compassionate, step-by-step support for disability, accidents, job loss, separation, and family loss—so you stay financially steady and secure."
         buttonText="Get Started"
-        buttonLink="/contactus"
+        buttonLink="/contact-us"
       />
 
       {/* What We Do */}
@@ -405,7 +405,7 @@ A calm, guided path through the financial aftermath of loss. You’ll know what 
         heading="Difficult Transitions Don’t Have to Be Faced Alone."
         subheading="We simplify benefits, forms, and CRA compliance — so whether it’s disability, separation, or loss, you’ll have trusted guidance."
         buttonText="Book Now"
-        buttonLink="/contactus"
+        buttonLink="/contact-us"
         backgroundImage="/Web Assets/Images/NEW/Disability & Life Planning/7fc47ae7-db85-43f3-ab85-d8e3a54eaf39-640w.jpg.png"
       />
       <WhyChooseUs
@@ -429,7 +429,7 @@ A calm, guided path through the financial aftermath of loss. You’ll know what 
         heading="Support When You Need It Most."
         subheading="Get clear, compassionate guidance through disability claims, job loss, family transitions, or estate matters."
         buttonText="Book Now"
-        buttonLink="/contactus"
+        buttonLink="/contact-us"
       />
 
       {/* FAQs */}

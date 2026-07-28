@@ -69,7 +69,7 @@ const BookkeepingPage: React.FC = () => {
           We implement powerful accounting and financial software solutions to
           streamline your workflow and reduce stress.
         </p>
-        <a href="/contactus">
+        <a href="/contact-us">
           <button className="mt-8 bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 inline-block">
             Start My Setup
           </button>

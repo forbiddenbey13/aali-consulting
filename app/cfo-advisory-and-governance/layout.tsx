@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "/lifeandestatetaxplanning",
+    canonical: "/cfo-advisory-and-governance", // Hardcoded exact lowercase URL
   },
 };
 
-export default function lifeandestatetaxplanningLayout({
+export default function cfoadvisoryandgovernanceLayout({
   children,
 }: {
   children: React.ReactNode;

@@ -43,7 +43,7 @@ const HomePage: React.FC = () => {
       title: "Enterprise-Grade Support",
       description:
         "Transfer pricing, multi-entity consolidation, and controversy/audit playbooks to keep large organizations compliant and board-ready.",
-      link: "/bookkeepingandaccounting",
+      link: "/bookkeeping-and-accounting",
     },
     {
       title: "Faith-Based & NFP Finance",
@@ -403,7 +403,7 @@ Reports that speak the language of leadership — concise, visual, and transpare
         title="Clarity and Control for Leaders Who Can’t Afford Guesswork."
         subtitle="Turning Numbers Into Clear, Confident Decisions."
         buttonText="Get Started"
-        buttonLink="/contactus"
+        buttonLink="/contact-us"
       />
 
       {/* What We Do */}
@@ -434,7 +434,7 @@ Reports that speak the language of leadership — concise, visual, and transpare
         heading="Lead With Confidence, Govern With Clarity."
         subheading="Partner with us to strengthen controls, streamline reporting, and align tax, cashflow, and governance with your long-term vision."
         buttonText="Book Now"
-        buttonLink="/contactus"
+        buttonLink="/contact-us"
       />
 
       {/* FAQs */}

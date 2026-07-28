@@ -290,7 +290,7 @@ export default function aboutusPage() {
           </p>
           <div className="flex flex-row justify-center gap-6 mb-4">
             <a
-              href="/contactus"
+              href="/contact-us"
               className="px-10 py-3 rounded-full font-semibold text-white shadow-lg text-lg"
               style={{
                 background: "linear-gradient(90deg, #3b82f6 0%, #2563eb 100%)",
@@ -443,13 +443,13 @@ export default function aboutusPage() {
           </h2>
           <div className="flex justify-center gap-4 mb-8">
             <a
-              href="/contactus"
+              href="/contact-us"
               className="bg-blue-600 text-white px-8 py-3 rounded-full shadow hover:bg-blue-700 font-semibold transition"
             >
               Book A Consultation
             </a>
             <a
-              href="/contactus"
+              href="/contact-us"
               className="bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-600 px-8 py-3 rounded-full shadow font-semibold text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition"
             >
               Contact Us

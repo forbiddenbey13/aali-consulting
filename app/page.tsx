@@ -111,13 +111,13 @@ const HomePage: React.FC = () => {
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <a
-              href="/contactus"
+              href="/contact-us"
               className="bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-600 transition"
             >
               Book Now
             </a>
             <a
-              href="/aboutus"
+              href="/about-us"
               className="bg-white/80 dark:bg-gray-800/80 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-white px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition"
             >
               Learn More
@@ -166,7 +166,7 @@ const HomePage: React.FC = () => {
               savings, and zero surprises.
             </p>
             <a
-              href="/bookkeepingandaccounting"
+              href="/bookkeeping-and-accounting"
               className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition"
             >
               Learn more
@@ -220,7 +220,7 @@ const HomePage: React.FC = () => {
               Canada-US setups—for safer, faster decisions.
             </p>
             <a
-              href="/cfoadvisoryandgovernance"
+              href="/cfo-advisory-and-governance"
               className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition"
             >
               Learn more
@@ -243,7 +243,7 @@ const HomePage: React.FC = () => {
               tax-smart steps handled.
             </p>
             <a
-              href="/disabilityandlifeplanning"
+              href="/disability-and-life-planning"
               className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition"
             >
               Learn more
@@ -353,7 +353,7 @@ const HomePage: React.FC = () => {
                 <p className="text-gray-700 dark:text-gray-300 text-lg mb-8">
                   {s.text}
                 </p>
-                <a href="/bookkeepingandaccounting" className="btn-primary">
+                <a href="/bookkeeping-and-accounting" className="btn-primary">
                   Learn more
                 </a>
               </div>
@@ -494,7 +494,7 @@ const HomePage: React.FC = () => {
                   {s.title}
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">{s.text}</p>
-                <a href="/cfoadvisoryandgovernance" className="btn-primary">
+                <a href="/cfo-advisory-and-governance" className="btn-primary">
                   Learn More
                 </a>
               </div>
@@ -529,7 +529,7 @@ const HomePage: React.FC = () => {
                   {s.title}
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">{s.text}</p>
-                <a href="/disabilityandlifeplanning" className="btn-primary">
+                <a href="/disability-and-life-planning" className="btn-primary">
                   Learn More
                 </a>
               </div>
@@ -599,7 +599,7 @@ const HomePage: React.FC = () => {
         <p className="text-gray-600 dark:text-gray-300 mb-8">
           Your financial future starts with one smart decision.
         </p>
-        <a href="/contactus" className="btn-primary">
+        <a href="/contact-us" className="btn-primary">
           Book Now
         </a>
       </section>

@@ -33,14 +33,14 @@ const HomePage: React.FC = () => {
       title: "Corporate Taxes (SMEs & NFP & Charities)",
       description:
         "Comprehensive corporate tax strategies including T2 returns, GST/HST compliance, salary vs. dividends, OpCo/HoldCo planning, and full CRA audit readiness for businesses at every stage of growth.",
-      link: "/corporatetaxes",
+      link: "/corporate-taxes",
     },
 
     {
       title: "Life & Estate Tax Planning",
       description:
         "Expert guidance through separation, divorce, estates, non-resident filings, and final returns—simplifying complex transitions with clear, compassionate, compliant, and forward-looking tax strategies that protect your future.",
-      link: "/lifeandestatetaxplanning",
+      link: "/life-and-estate-tax-planning",
     },
   ];
   const faqs = [
@@ -139,7 +139,7 @@ If the CRA reaches out, we’re your first call. We review their request, prepar
         title="Simple, Stress-Free Taxes — For Every Stage of Life & Business"
         subtitle="From first-time student returns to cross-border corporate filings, we make taxes clear, compliant, and optimized."
         buttonText="Get Started"
-        buttonLink="/contactus"
+        buttonLink="/contact-us"
       />
 
       {/* What We Do */}
@@ -204,7 +204,7 @@ If the CRA reaches out, we’re your first call. We review their request, prepar
         heading="Simple. Compliant. Optimized."
         subheading="Whether you’re filing your very first return or managing complex corporate taxes — we’ll guide you step by step.”"
         buttonText="Book Now"
-        buttonLink="/contactus"
+        buttonLink="/contact-us"
       />
 
       {/* FAQs */}

@@ -99,7 +99,7 @@ export default function NMBLFPage() {
             taxes, benefits, housing, credit, and school admissions — with
             culturally aware, plain-language guidance every step of the way.
           </p>
-          <a href="/contactus" className="btn-primary font-semibold">
+          <a href="/contact-us" className="btn-primary font-semibold">
             Book a 1:1 Session
           </a>
         </div>
@@ -291,7 +291,7 @@ export default function NMBLFPage() {
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 drop-shadow-lg">
             Get Started Today — Let’s Build Your Canadian Foundation
           </h2>
-          <a href="/contactus" className="btn-primary font-semibold">
+          <a href="/contact-us" className="btn-primary font-semibold">
             Book a 1:1 Session
           </a>
         </div>

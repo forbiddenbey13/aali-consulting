@@ -332,7 +332,7 @@ A smooth, stress-free year-end every year — because your books were already re
         title="Clean Books. Clear Decisions. Confident Growth."
         subtitle="Stay organized, stay complaint. Let us handle your books so you can focus on growth"
         buttonText="Get Started"
-        buttonLink="/contactus"
+        buttonLink="/contact-us"
       />
 
       {/* What We Do */}
@@ -368,7 +368,7 @@ A smooth, stress-free year-end every year — because your books were already re
         heading="Take Control of Your Books. Take Control of Your Business."
         subheading="Let’s Build Your Books Together"
         buttonText="Book Now"
-        buttonLink="/contactus"
+        buttonLink="/contact-us"
       />
 
       {/* FAQs */}

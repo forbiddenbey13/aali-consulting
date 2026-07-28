@@ -356,7 +356,7 @@ You’ll never feel lost between two systems. From your first Canadian tax retur
         title="Personal Taxes Made Simple, Clear, and Stress-Free"
         subtitle="From students and newcomers to retirees and families, we file accurately, optimize refunds, and plan smarter for the year ahead."
         buttonText="File Your Taxes Today"
-        buttonLink="/contactus"
+        buttonLink="/contact-us"
       />
 
       {/* What We Do */}
@@ -388,7 +388,7 @@ You’ll never feel lost between two systems. From your first Canadian tax retur
         heading="Lead With Confidence, Govern With Clarity."
         subheading="Partner with us to strengthen controls, streamline reporting, and align tax, cashflow, and governance with your long-term vision."
         buttonText="Book Now"
-        buttonLink="/contactus"
+        buttonLink="/contact-us"
       />
 
       {/* FAQs */}

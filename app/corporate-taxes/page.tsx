@@ -488,7 +488,7 @@ A tax process that runs itself—accurate, documented, and audit-ready—freeing
         title="Corporate Taxes Made Clear, Compliant, and Strategic"
         subtitle="From T2 returns to GST/HST, OpCo/HoldCo planning, and CRA audits—we simplify complexity so your business runs tax-smart."
         buttonText="Request a Consultation"
-        buttonLink="/contactus"
+        buttonLink="/contact-us"
       />
 
       {/* What We Do */}
@@ -522,7 +522,7 @@ A tax process that runs itself—accurate, documented, and audit-ready—freeing
         heading="Smarter Corporate Taxes, Less Stress."
         subheading="Get expert planning, precise filings, and audit-ready compliance so your business stays efficient, tax-smart, and always one step ahead."
         buttonText="Book Now"
-        buttonLink="/contactus"
+        buttonLink="/contact-us"
       />
 
       {/* FAQs */}

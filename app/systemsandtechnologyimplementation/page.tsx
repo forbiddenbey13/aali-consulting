@@ -400,7 +400,7 @@ A clean, secure migration that minimizes downtime — and a flexible, scalable s
         title="Smarter Systems, Seamless Workflows"
         subtitle="From accounting tools to full-scale ERP and automation, we design, integrate, and support the technology that powers your business."
         buttonText="Get Started"
-        buttonLink="/contactus"
+        buttonLink="/contact-us"
       />
 
       {/* What We Do */}
@@ -431,7 +431,7 @@ A clean, secure migration that minimizes downtime — and a flexible, scalable s
         heading="Work Smarter with the Right Systems."
         subheading="Start Building Your Streamlined Workflow Today"
         buttonText="Book Now"
-        buttonLink="/contactus"
+        buttonLink="/contact-us"
       />
 
       {/* FAQs */}

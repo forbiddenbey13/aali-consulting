@@ -43,7 +43,7 @@ const HomePage: React.FC = () => {
       title: "Young Families & Homebuyers (26–34)",
       description:
         "Plan childcare credits, use FHSA and RRSP Home Buyers’ Plan, balance family expenses, and build sustainable financial security.",
-      link: "/bookkeepingandaccounting",
+      link: "/bookkeeping-and-accounting",
     },
     {
       title: "Mid-Career Professionals (35–50)",
@@ -61,7 +61,7 @@ const HomePage: React.FC = () => {
       title: "Retirement & Estate (65+)",
       description:
         "Maximize income sustainability, minimize taxes, coordinate healthcare costs, and align estate planning with family goals and charitable intentions.",
-      link: "/cfoadvisoryandgovernance",
+      link: "/cfo-advisory-and-governance",
     },
     {
       title: "Specialized Planning",
@@ -80,13 +80,13 @@ const HomePage: React.FC = () => {
       title: "SME Financial Planning",
       description:
         "Integrated cashflow, retirement, and tax strategies that align business profits with personal goals — helping owners build, protect, and grow long-term wealth.",
-      link: "/cfoadvisoryandgovernance",
+      link: "/cfo-advisory-and-governance",
     },
     {
       title: "Strategic Wealth & Family Planning",
       description:
         "Comprehensive wealth management for high-net-worth families — covering investments, trusts, estate transfers, and tax-efficient succession to preserve legacy and security.",
-      link: "/cfoadvisoryandgovernance",
+      link: "/cfo-advisory-and-governance",
     },
   ];
   const faqs = [
@@ -416,7 +416,7 @@ A clear, tax-smart strategy that turns complexity into control—preserving your
         At Every Stage of Life"
         subtitle="We help you make confident, tax-smart financial decisions at every stage of life."
         buttonText="Get Started"
-        buttonLink="/contactus"
+        buttonLink="/contact-us"
       />
 
       {/* What We Do */}
@@ -446,7 +446,7 @@ A clear, tax-smart strategy that turns complexity into control—preserving your
         heading="Plan Today, Thrive Tomorrow."
         subheading="Start Building Your Financial Roadmap"
         buttonText="Book Now"
-        buttonLink="/contactus"
+        buttonLink="/contact-us"
       />
 
       {/* FAQs */}
