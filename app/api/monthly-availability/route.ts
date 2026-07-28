@@ -25,16 +25,26 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: 'Invalid dates' }, { status: 400 });
         }
 
-        // Fetch events from Outlook instead of Google
+        // Fetch events from Outlook
         const events = await getEventsForRange(startDt.toISO()!, endDt.toISO()!);
 
         const bookedMap: Record<string, string[]> = {};
+
+        // Establish what "today" is in your timezone so we can block it out
+        const today = DateTime.now().setZone('America/Toronto').startOf('day');
 
         // 2. Iterate through every day in the range
         let current = startDt;
         while (current <= endDt) {
             const dateStr = current.toISODate(); // YYYY-MM-DD
             if (!dateStr) break;
+
+            // NEW: If the current date in the loop is today or earlier, block the whole day
+            if (current <= today) {
+                bookedMap[dateStr] = ["ALL"];
+                current = current.plus({ days: 1 });
+                continue; // Skip the Outlook check and move to the next day
+            }
 
             const dayBookedSlots: string[] = [];
             

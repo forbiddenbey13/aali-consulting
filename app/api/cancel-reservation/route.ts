@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { db } from "@/firebase";
 import { doc, deleteDoc } from "firebase/firestore";
 
+export const dynamic = 'force-dynamic';
 export async function POST(req: Request) {
   try {
     const { slotId, bookingId } = await req.json();
