@@ -101,7 +101,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/taxservice"
+                  href="/tax-service"
                   className="hover:text-blue-400 transition"
                 >
                   Tax Services (Personal & Corporate)
@@ -117,7 +117,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/strategicplanning"
+                  href="/strategic-planning"
                   className="hover:text-blue-400 transition"
                 >
                   Strategic Financial Planning
@@ -125,7 +125,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/systemsandtechnologyimplementation"
+                  href="/systems-and-technology-implementation"
                   className="hover:text-blue-400 transition"
                 >
                   Technology Solutions

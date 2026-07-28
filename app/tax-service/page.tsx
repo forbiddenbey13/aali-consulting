@@ -27,7 +27,7 @@ const HomePage: React.FC = () => {
       title: "Personal Taxes (Individuals & Families)",
       description:
         "Simple, accurate personal tax filing that maximizes credits, deductions, and refunds—covering students, families, retirees, newcomers, and cross-border compliance confidently.",
-      link: "/personaltax",
+      link: "/personal-tax",
     },
     {
       title: "Corporate Taxes (SMEs & NFP & Charities)",

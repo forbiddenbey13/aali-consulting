@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "/strategicplanning",
+    canonical: "/systems-and-technology-implementation", // Hardcoded exact lowercase URL
   },
 };
 
-export default function strategicplanningLayout({
+export default function systemsandtechnologyimplementationLayout({
   children,
 }: {
   children: React.ReactNode;

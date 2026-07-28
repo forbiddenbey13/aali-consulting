@@ -110,7 +110,7 @@ const Header: React.FC = () => {
                 <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
                   <li>
                     <Link
-                      href="/taxservice"
+                      href="/tax-service"
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                       onClick={() => setOpenMenu(null)}
                     >
@@ -128,7 +128,7 @@ const Header: React.FC = () => {
                   </li>
                   <li>
                     <Link
-                      href="/strategicplanning"
+                      href="/strategic-planning"
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                       onClick={() => setOpenMenu(null)}
                     >
@@ -137,7 +137,7 @@ const Header: React.FC = () => {
                   </li>
                   <li>
                     <Link
-                      href="/systemsandtechnologyimplementation"
+                      href="/systems-and-technology-implementation"
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                       onClick={() => setOpenMenu(null)}
                     >
@@ -254,7 +254,7 @@ const Header: React.FC = () => {
               {openMenu === "mobile-services" && (
                 <div className="flex flex-col space-y-3 mt-3 pl-4 text-base text-gray-600 dark:text-gray-400">
                   <Link
-                    href="/taxservice"
+                    href="/tax-service"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Tax Services
@@ -266,13 +266,13 @@ const Header: React.FC = () => {
                     Bookkeeping
                   </Link>
                   <Link
-                    href="/strategicplanning"
+                    href="/strategic-planning"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Financial Planning
                   </Link>
                   <Link
-                    href="/systemsandtechnologyimplementation"
+                    href="/systems-and-technology-implementation"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Technology Solutions

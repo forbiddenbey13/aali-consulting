@@ -148,7 +148,7 @@ const HomePage: React.FC = () => {
               savings, and zero surprises.
             </p>
             <a
-              href="/taxservice"
+              href="/tax-service"
               className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition"
             >
               Learn more
@@ -184,7 +184,7 @@ const HomePage: React.FC = () => {
               decisions into confident, compounding progress.
             </p>
             <a
-              href="/strategicplanning"
+              href="/strategic-planning"
               className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition"
             >
               Learn more
@@ -202,7 +202,7 @@ const HomePage: React.FC = () => {
               move faster, decisions improve.
             </p>
             <a
-              href="/systemsandtechnologyimplementation"
+              href="/systems-and-technology-implementation"
               className="inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-sm font-medium px-5 py-2 rounded-full transition"
             >
               Learn more
@@ -373,7 +373,7 @@ const HomePage: React.FC = () => {
                 <p className="text-gray-700 dark:text-gray-300 text-lg mb-8">
                   {s.text}
                 </p>
-                <a href="/taxservice" className="btn-primary">
+                <a href="/tax-service" className="btn-primary">
                   Learn more
                 </a>
               </div>
@@ -421,7 +421,7 @@ const HomePage: React.FC = () => {
                   {s.title}
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">{s.text}</p>
-                <a href="/strategicplanning" className="btn-primary">
+                <a href="/strategic-planning" className="btn-primary">
                   Learn More
                 </a>
               </div>
@@ -457,7 +457,7 @@ const HomePage: React.FC = () => {
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">{s.text}</p>
                 <a
-                  href="/systemsandtechnologyimplementation"
+                  href="/systems-and-technology-implementation"
                   className="btn-primary"
                 >
                   Learn More

@@ -33,7 +33,7 @@ const HomePage: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Callback for Learn More button (same as personaltax)
+  // Callback for Learn More button (same as personal-tax)
   const handleLearnMore = (index: number) => {
     setOpenServiceIndex(index);
     // Scroll to the accordion section

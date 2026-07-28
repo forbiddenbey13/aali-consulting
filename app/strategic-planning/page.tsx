@@ -37,7 +37,7 @@ const HomePage: React.FC = () => {
       title: "Students & Young Adults (17–25)",
       description:
         "Smart filing, tuition credits, starter TFSA, and simple budgets that set a strong financial foundation early on in your life or career.",
-      link: "/taxservice",
+      link: "/tax-service",
     },
     {
       title: "Young Families & Homebuyers (26–34)",
@@ -49,13 +49,13 @@ const HomePage: React.FC = () => {
       title: "Mid-Career Professionals (35–50)",
       description:
         "Optimize taxes, maximize RESP savings, manage equity compensation, and create debt and housing strategies that protect growing family wealth.",
-      link: "/strategicplanning",
+      link: "/strategic-planning",
     },
     {
       title: "Pre-Retirement (50–64)",
       description:
         "Coordinate CPP/OAS timing, design smart RRIF/LIF withdrawals, protect estates, and position wealth for a smooth retirement transition.",
-      link: "/taxservice",
+      link: "/tax-service",
     },
     {
       title: "Retirement & Estate (65+)",
@@ -74,7 +74,7 @@ const HomePage: React.FC = () => {
       title: "Cross-Border Financial Planning",
       description:
         "Integrated tax, investment, and residency planning between Canada and abroad — reducing double taxation and keeping your global finances compliant and clear.",
-      link: "/taxservice",
+      link: "/tax-service",
     },
     {
       title: "SME Financial Planning",

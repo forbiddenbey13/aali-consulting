@@ -83,9 +83,49 @@ const nextConfig: NextConfig = {
         destination: "/nmb-and-lf",
         permanent: true,
       },
-       {
+      {
         source: "/NMBandLF",
         destination: "/nmb-and-lf",
+        permanent: true,
+      },
+      {
+        source: "/personaltax",
+        destination: "/personal-tax",
+        permanent: true,
+      },
+      {
+        source: "/PersonalTax",
+        destination: "/personal-tax",
+        permanent: true,
+      },
+      {
+        source: "/strategicplanning",
+        destination: "/strategic-planning",
+        permanent: true,
+      },
+      {
+        source: "/StrategicPlanning",
+        destination: "/strategic-planning",
+        permanent: true,
+      },
+      {
+        source: "/systemsandtechnologyimplementation",
+        destination: "/systems-and-technology-implementation",
+        permanent: true,
+      },
+      {
+        source: "/Systems&TechnologyImplementation",
+        destination: "/systems-and-technology-implementation",
+        permanent: true,
+      },
+      {
+        source: "/taxservice",
+        destination: "/tax-service",
+        permanent: true,
+      },
+      {
+        source: "/TaxService",
+        destination: "/tax-service",
         permanent: true,
       },
     ];

@@ -37,7 +37,7 @@ const HomePage: React.FC = () => {
       title: "Owner & CEO Guidance",
       description:
         "Monthly close discipline, cashflow forecasting, FP&A, and OpCo/HoldCo planning aligned with growth and succession goals.",
-      link: "/taxservice",
+      link: "/tax-service",
     },
     {
       title: "Enterprise-Grade Support",
@@ -49,13 +49,13 @@ const HomePage: React.FC = () => {
       title: "Faith-Based & NFP Finance",
       description:
         "Charity registration support, compliant donation receipting systems, guidance on related business rules, and customized board reporting that keeps stakeholders confident.",
-      link: "/strategicplanning",
+      link: "/strategic-planning",
     },
     {
       title: "Cross-Border & International Planning",
       description:
         "Canada←>US residency, treaty rules, payroll/social security, LLC/S-corp pitfalls, and arrival/departure returns.",
-      link: "/systemsandtechnologyimplementation",
+      link: "/systems-and-technology-implementation",
     },
     {
       title: "Succession & Estate Alignment",
@@ -67,7 +67,7 @@ const HomePage: React.FC = () => {
       title: "Governance & Reporting Packs",
       description:
         "Clear board/executive dashboards, risk tracking, and financial playbooks that simplify decision-making.",
-      link: "/systemsandtechnologyimplementation",
+      link: "/systems-and-technology-implementation",
     },
   ];
   const faqs = [
