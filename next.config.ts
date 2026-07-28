@@ -14,16 +14,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/contactus",
-        destination: "/contact-us",
-        permanent: true,
-      },
-      {
-        source: "/ContactUs",
-        destination: "/contact-us",
-        permanent: true,
-      },
-      {
         source: "/bookkeepingandaccounting",
         destination: "/bookkeeping-and-accounting",
         permanent: true,
@@ -49,6 +39,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/contactus",
+        destination: "/contact-us",
+        permanent: true,
+      },
+      {
+        source: "/ContactUs",
+        destination: "/contact-us",
+        permanent: true,
+      },
+      {
         source: "/corporatetaxes",
         destination: "/corporate-taxes",
         permanent: true,
@@ -66,6 +66,16 @@ const nextConfig: NextConfig = {
       {
         source: "/Disability&LifePlanning",
         destination: "/disability-and-life-planning",
+        permanent: true,
+      },
+      {
+        source: "/lifeandestatetaxplanning",
+        destination: "/life-and-estate-tax-planning",
+        permanent: true,
+      },
+      {
+        source: "/Life&EstateTaxPlanning",
+        destination: "/life-and-estate-tax-planning",
         permanent: true,
       },
       {
@@ -96,6 +106,11 @@ const nextConfig: NextConfig = {
       {
         source: "/PersonalTax",
         destination: "/personal-tax",
+        permanent: true,
+      },
+      {
+        source: "/SSBR",
+        destination: "/ssbr",
         permanent: true,
       },
       {
