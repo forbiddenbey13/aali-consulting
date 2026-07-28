@@ -273,7 +273,7 @@ export default function NMBLFPage() {
             </ul>
           </div>
           <img
-            src="/Web Assets/Images/NEW/Newcomers & Expats/Money, Benefits & Life Setup/Childcare+support.jpg.webp"
+            src="/Web Assets/Images/NEW/Newcomers & Expats/Money, Benefits & Life Setup/childcaresupport.webp"
             alt="Progress"
             className="rounded-xl shadow-lg object-cover w-full h-64 md:h-72"
           />
