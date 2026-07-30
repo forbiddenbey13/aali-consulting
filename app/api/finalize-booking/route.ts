@@ -5,11 +5,12 @@ import {
   collection, doc, runTransaction, serverTimestamp,
 } from "firebase/firestore";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2025-08-27.basil", // ✅ unchanged
-});
-
 export async function POST(req: Request) {
+  // ✅ MOVED HERE: Stripe now initializes only when the endpoint is actually called, avoiding build crashes.
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+    apiVersion: "2025-08-27.basil", // ✅ unchanged
+  });
+
   try {
     const { paymentIntentId, slotId, booking } = (await req.json()) as {
       paymentIntentId: string;

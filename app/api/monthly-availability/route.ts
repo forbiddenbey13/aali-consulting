@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getBookedSlots } from '@/lib/googleCalendar';
+import { getEventsForRange } from '@/lib/outlookCalendar';
 import { DateTime } from 'luxon';
 
 // Config - duplicate from frontend, ideally shared constant
 const TIME_SLOTS = [
-    "09:00", "11:00",
-    "13:00", "15:00", "16:00"
+    "09:00", "10:00", "11:00", "12:00",
+    "13:00", "14:00", "15:00", "16:00"
 ];
 
 export async function POST(request: NextRequest) {
@@ -25,10 +25,13 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: 'Invalid dates' }, { status: 400 });
         }
 
-        const events = await getBookedSlots(startDt.toISO()!, endDt.toISO()!);
+        // Fetch events from Outlook
+        const events = await getEventsForRange(startDt.toISO()!, endDt.toISO()!);
 
         const bookedMap: Record<string, string[]> = {};
-        // Format: { "2025-12-25": ["09:00", "11:00"] } or { "2025-12-25": ["ALL"] }
+
+        // Establish what "today" is in your timezone so we can block it out
+        const today = DateTime.now().setZone('America/Toronto').startOf('day');
 
         // 2. Iterate through every day in the range
         let current = startDt;
@@ -36,15 +39,21 @@ export async function POST(request: NextRequest) {
             const dateStr = current.toISODate(); // YYYY-MM-DD
             if (!dateStr) break;
 
+            // NEW: If the current date in the loop is today or earlier, block the whole day
+            if (current <= today) {
+                bookedMap[dateStr] = ["ALL"];
+                current = current.plus({ days: 1 });
+                continue; // Skip the Outlook check and move to the next day
+            }
+
             const dayBookedSlots: string[] = [];
+            
             // Fast check: All day events
             const allDayBlock = events.find((e: any) => {
-                const eStart = e.start?.date; // YYYY-MM-DD for all-day
-                // Google 'end.date' is exclusive (next day) for all-day events.
-                // e.g. Start 2025-12-25, End 2025-12-26 covers 25th.
-                if (eStart && e.end?.date) {
-                    const eStartDt = DateTime.fromISO(eStart, { zone: 'America/Toronto' });
-                    const eEndDt = DateTime.fromISO(e.end.date, { zone: 'America/Toronto' });
+                // Microsoft Graph flags all-day events with `isAllDay` and sets times to midnight UTC
+                if (e.isAllDay && e.start?.dateTime && e.end?.dateTime) {
+                    const eStartDt = DateTime.fromISO(e.start.dateTime, { zone: 'UTC' });
+                    const eEndDt = DateTime.fromISO(e.end.dateTime, { zone: 'UTC' });
                     return current >= eStartDt && current < eEndDt;
                 }
                 return false;
@@ -59,15 +68,16 @@ export async function POST(request: NextRequest) {
                     const slotEnd = slotStart.plus({ minutes: 60 });
 
                     const isBlocked = events.some((e: any) => {
-                        // Skip if all-day (handled above, or different check)
-                        if (e.start?.date) return false;
+                        // Skip if all-day (already handled above)
+                        if (e.isAllDay) return false;
 
                         const eStart = e.start?.dateTime;
                         const eEnd = e.end?.dateTime;
                         if (!eStart || !eEnd) return false;
 
-                        const eStartDt = DateTime.fromISO(eStart, { zone: 'America/Toronto' });
-                        const eEndDt = DateTime.fromISO(eEnd, { zone: 'America/Toronto' });
+                        // Microsoft Graph returns times in UTC format
+                        const eStartDt = DateTime.fromISO(eStart, { zone: 'UTC' });
+                        const eEndDt = DateTime.fromISO(eEnd, { zone: 'UTC' });
 
                         // Strict overlap
                         return (eStartDt < slotEnd) && (eEndDt > slotStart);
