@@ -285,7 +285,7 @@ export default function NMBLFPage() {
         <img
           src="/Web Assets/Images/NEW/Newcomers & Expats/Money, Benefits & Life Setup/trca-newcomers-canada-nygep.jpg"
           alt="Community"
-          className="absolute inset-0 w-full h-full object-cover object-center opacity-80"
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-30"
         />
         <div className="relative z-10 text-center max-w-2xl mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 drop-shadow-lg">

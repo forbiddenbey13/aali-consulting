@@ -20,8 +20,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/strategic-planning",
     "/systems-and-technology-implementation",
     "/tax-service",
-    "/login",
-    "/dashboard",
   ];
 
   return routes.map((route) => ({
