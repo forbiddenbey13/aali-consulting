@@ -24,6 +24,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   metadataBase: new URL("https://aaliconsulting.ca"),
+  other: { "msvalidate.01": "12810C7D817BF9850B312F0022451336" },
   // ... other global metadata
 };
 
