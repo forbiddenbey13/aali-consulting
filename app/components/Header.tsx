@@ -28,7 +28,7 @@ const Header: React.FC = () => {
     <header className="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50 w-full transition-colors duration-300">
       <div className="flex items-center justify-between relative w-full px-6 py-4 md:px-10">
         {/* LEFT — Logo */}
-        <div className="flex-shrink-0 z-50">
+        <div className="z-50">
           <Link
             href="/"
             className="flex items-center space-x-2"
