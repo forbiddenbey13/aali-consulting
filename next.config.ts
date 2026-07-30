@@ -34,11 +34,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/Consult",
-        destination: "/consult",
-        permanent: true,
-      },
-      {
         source: "/contactus",
         destination: "/contact-us",
         permanent: true,
@@ -106,11 +101,6 @@ const nextConfig: NextConfig = {
       {
         source: "/PersonalTax",
         destination: "/personal-tax",
-        permanent: true,
-      },
-      {
-        source: "/SSBR",
-        destination: "/ssbr",
         permanent: true,
       },
       {
