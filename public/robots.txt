@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Allow: /_next/static/
+
+Disallow: /api/
+Disallow: /admin/
+
+Sitemap: https://aaliconsulting.ca/sitemap.xml
