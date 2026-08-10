@@ -25,6 +25,9 @@ const geistMono = Geist_Mono({
 export const metadata = {
   metadataBase: new URL("https://aaliconsulting.ca"),
   other: { "msvalidate.01": "12810C7D817BF9850B312F0022451336" },
+  title: "Aali Consulting & Associates | Business & Strategic Planning",
+  description:
+    "Professional consulting services including strategic planning, accounting, and tax solutions.",
   // ... other global metadata
 };
 
