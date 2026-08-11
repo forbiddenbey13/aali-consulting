@@ -2,8 +2,8 @@
 import React from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
 import { useEffect, useState } from "react";
+
 
 const heroImages = [
   "/Web Assets/NEW/Hero Section/0F658223-E6EE-4686-854D-0F20371DDBFE.png",
@@ -14,6 +14,8 @@ const heroImages = [
   "/Web Assets/NEW/Hero Section/premium_photo-1661761077411-d50cba031848.jpeg",
   "/Web Assets/NEW/Hero Section/TPC-exterior-building-b.jpg",
 ];
+
+
 
 const HomePage: React.FC = () => {
   const [slide, setSlide] = useState(0);
@@ -590,6 +592,8 @@ const HomePage: React.FC = () => {
           ))}
         </div>
       </section>
+
+
 
       {/* CTA */}
       <section className="text-center py-20 bg-white dark:bg-gray-800 transition-colors duration-300">

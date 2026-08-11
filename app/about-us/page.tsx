@@ -2,6 +2,57 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Image from "next/image";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaTwitter,
+} from "react-icons/fa";
+
+interface TeamMember {
+  name: string;
+  role: string;
+  bio: string;
+  image: string;
+  socials: {
+    facebook?: string;
+    instagram?: string;
+    linkedin?: string;
+    twitter?: string;
+  };
+}
+
+const teamMembers: TeamMember[] = [
+  {
+    name: "Abid Ali",
+    role: "Founder & Principal Consultant",
+    bio: "Leads Aali Consulting's vision, creative direction, and client experience, ensuring every project meets the highest production standards.",
+    image: "/Assets/team/abid.png", // Update with your actual image path
+    socials: { facebook: "#", instagram: "#", linkedin: "#", twitter: "#" },
+  },
+  {
+    name: "Muhammad Ali",
+    role: "Director",
+    bio: "Oversees artistic execution across modelling, animation, and renders, shaping the studio's visual identity and guiding creative quality.",
+    image: "/Assets/team/muhammad.png", // Update with your actual image path
+    socials: { facebook: "#", instagram: "#", linkedin: "#", twitter: "#" },
+  },
+  {
+    name: "Rohan Dhawan",
+    role: "Backend Developer",
+    bio: "Integrates and optimizes 3D assets in Unreal Engine, bridging art and technology through workflows using Unreal Engine and Blender.",
+    image: "/Assets/team/rohan.png", // Update with your actual image path
+    socials: { facebook: "#", instagram: "#", linkedin: "#", twitter: "#" },
+  },
+  {
+    name: "Shama Rani",
+    role: "Lead Frontend Developer",
+    bio: "Integrates and optimizes 3D assets in Unreal Engine, bridging art and technology through workflows using Unreal Engine and Blender.",
+    image: "/Assets/team/shama1.png",
+    socials: { facebook: "#", instagram: "#", linkedin: "#", twitter: "#" },
+  },
+];
 
 const CORE_VALUES = [
   {
@@ -327,6 +378,93 @@ export default function aboutusPage() {
               className="fill-white dark:fill-gray-900 transition-colors duration-300"
             />
           </svg>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 md:px-8 bg-white text-gray-900">
+        <div className="max-w-7xl mx-auto text-center">
+          {/* Section Header */}
+          <p className="text-[var(--color-blue-600)] max-w-2xl mx-auto text-lg mb-5">
+            Our Team
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+            The People Behind Your Plan
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base mb-20">
+            A small, direct team - you always know who you're talking to.
+          </p>
+
+          {/* Team Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {teamMembers.map((member, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center text-center group"
+              >
+                <div className="relative w-60 h-60 mb-6 rounded-full overflow-hidden shadow-md">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+
+                {/* Name & Role */}
+                <h3 className="text-sm font-bold text-gray-900 mb-1">
+                  {member.name}
+                </h3>
+                <p className="text-[var(--color-blue-600)] text-xs font-medium uppercase tracking-wider mb-3">
+                  {member.role}
+                </p>
+
+                {/* Bio */}
+                {/* <p className="text-gray-500 text-xs leading-relaxed mb-6">
+                  {member.bio}
+                </p> */}
+
+                {/* Social Icons */}
+                {/* <div className="flex items-center space-x-3 mt-auto">
+                  {member.socials.facebook && (
+                    <a
+                      href={member.socials.facebook}
+                      aria-label="Facebook"
+                      className="w-7 h-7 rounded-full bg-gray-900 text-white flex items-center justify-center text-xs hover:bg-teal-500 transition-colors"
+                    >
+                      <FaFacebookF />
+                    </a>
+                  )}
+                  {member.socials.instagram && (
+                    <a
+                      href={member.socials.instagram}
+                      aria-label="Instagram"
+                      className="w-7 h-7 rounded-full bg-gray-900 text-white flex items-center justify-center text-xs hover:bg-teal-500 transition-colors"
+                    >
+                      <FaInstagram />
+                    </a>
+                  )}
+                  {member.socials.linkedin && (
+                    <a
+                      href={member.socials.linkedin}
+                      aria-label="LinkedIn"
+                      className="w-7 h-7 rounded-full bg-gray-900 text-white flex items-center justify-center text-xs hover:bg-teal-500 transition-colors"
+                    >
+                      <FaLinkedinIn />
+                    </a>
+                  )}
+                  {member.socials.twitter && (
+                    <a
+                      href={member.socials.twitter}
+                      aria-label="Twitter"
+                      className="w-7 h-7 rounded-full bg-gray-900 text-white flex items-center justify-center text-xs hover:bg-teal-500 transition-colors"
+                    >
+                      <FaTwitter />
+                    </a>
+                  )}
+                </div> */}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
