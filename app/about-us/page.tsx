@@ -40,7 +40,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: "Rohan Dhawan",
-    role: "Backend Developer",
+    role: "Lead Backend Developer",
     bio: "Integrates and optimizes 3D assets in Unreal Engine, bridging art and technology through workflows using Unreal Engine and Blender.",
     image: "/Assets/team/rohan.png", // Update with your actual image path
     socials: { facebook: "#", instagram: "#", linkedin: "#", twitter: "#" },
